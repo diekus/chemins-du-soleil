@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chemins du Soleil</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <header class="app-header">
+    <img src="images/logo.png" alt="Chemins du Soleil">
+  </header>
+
+  <main class="app-main">
+
+    <form class="search-form" novalidate>
+
+      <div class="form-row">
+        <label id="lbl-start">From</label>
+        <station-input
+          name="start"
+          aria-labelledby="lbl-start"
+          placeholder="Start station…"
+        ></station-input>
+      </div>
+
+      <div class="form-row">
+        <label id="lbl-dest">To</label>
+        <station-input
+          name="destination"
+          aria-labelledby="lbl-dest"
+          placeholder="Destination…"
+        ></station-input>
+      </div>
+
+      <div class="form-row">
+        <label id="lbl-diff">Maximum difficulty</label>
+        <difficulty-selector aria-labelledby="lbl-diff"></difficulty-selector>
+      </div>
+
+      <p class="form-error" role="alert"></p>
+
+      <button type="submit" class="btn-find">Find route</button>
+
+    </form>
+
+    <route-result></route-result>
+
+  </main>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+/* ── station-input ─────────────────────────────────────────────────────────── */
+station-input {
+  display: block;
+  position: relative;
+}
+
+station-input .si-input {
+  width: 100%;
+  padding: var(--sp-3) var(--sp-4);
+  font-family: var(--font);
+  font-size: 1rem;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-md);
+  outline: none;
+  transition: border-color 0.15s;
+}
+station-input .si-input:focus { border-color: var(--color-primary); }
+
+station-input .si-listbox {
+  position: absolute;
+  inset-inline: 0;
+  top: calc(100% + 4px);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-md);
+  max-height: 220px;
+  overflow-y: auto;
+  z-index: 200;
+  list-style: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  overscroll-behavior: contain;
+}
+
+station-input .si-option {
+  padding: var(--sp-3) var(--sp-4);
+  cursor: pointer;
+  font-size: 0.9375rem;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+station-input .si-option:hover,
+station-input .si-option[aria-selected="true"] {
+  background: var(--color-accent);
+  color: var(--color-text);
+}
+
+/* ── difficulty-selector ───────────────────────────────────────────────────── */
+difficulty-selector {
+  display: block;
+}
+
+difficulty-selector select {
+  width: 100%;
+  padding: var(--sp-3) var(--sp-4);
+  font-family: var(--font);
+  font-size: 1rem;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-md);
+  outline: none;
+  cursor: pointer;
+  appearance: auto;
+  transition: border-color 0.15s;
+}
+difficulty-selector select:focus { border-color: var(--color-primary); }
+
+/* ── route-result ──────────────────────────────────────────────────────────── */
+route-result { display: block; }
+
+.result-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  list-style: none;
+}
+
+.route-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+
+.route-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-3) var(--sp-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.route-label {
+  font-weight: var(--fw-bold);
+  font-size: 0.875rem;
+}
+
+.route-stops {
+  font-size: 0.75rem;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-secondary);
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-pill);
+  padding: 2px var(--sp-3);
+}
+
+.route-steps {
+  list-style: none;
+  padding: var(--sp-2) 0;
+}
+
+.route-step {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-2) var(--sp-4);
+  font-size: 0.9375rem;
+}
+
+.step-icon  { width: 1.5rem; text-align: center; flex-shrink: 0; }
+.step-name  { flex: 1; font-weight: var(--fw-semibold); }
+.step-flag  { flex-shrink: 0; }
+
+/* Slope difficulty dot — semantic colours only */
+.diff-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1px solid transparent;
+}
+.diff-dot[data-d="green"] { background: var(--color-slope-green); }
+.diff-dot[data-d="blue"]  { background: var(--color-slope-blue); }
+.diff-dot[data-d="red"]   { background: var(--color-slope-red); }
+.diff-dot[data-d="black"] { background: var(--color-slope-black); border-color: var(--color-border); }
+
+/* ── No-route empty state ──────────────────────────────────────────────────── */
+.no-route {
+  text-align: center;
+  padding: var(--sp-8) var(--sp-4);
+  color: var(--color-text-secondary);
+}
+.no-route-icon  { font-size: 2.5rem; display: block; margin-bottom: var(--sp-3); }
+.no-route-title {
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+  margin-bottom: var(--sp-2);
+}
+
+/* ── Loading skeleton ──────────────────────────────────────────────────────── */
+.loading-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+.skeleton-card {
+  height: 140px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-lg);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.45; }
+}

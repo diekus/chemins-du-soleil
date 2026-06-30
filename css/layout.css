@@ -1,0 +1,76 @@
+/* ── App shell ─────────────────────────────────────────────────────────────── */
+.app-header {
+  padding: var(--sp-4);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+}
+
+.app-header img {
+  height: 28px;
+  display: block;
+}
+
+.app-main {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: var(--sp-6) var(--sp-4) var(--sp-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+}
+
+/* ── Search form ───────────────────────────────────────────────────────────── */
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.form-row > label {
+  font-size: 0.75rem;
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-secondary);
+}
+
+.form-error {
+  font-size: 0.875rem;
+  color: var(--color-slope-red);
+  display: none;
+  padding: 0 var(--sp-1);
+}
+.form-error.visible { display: block; }
+
+/* ── Find route button ─────────────────────────────────────────────────────── */
+.btn-find {
+  width: 100%;
+  padding: var(--sp-4) var(--sp-6);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-family: var(--font);
+  font-size: 1rem;
+  font-weight: var(--fw-semibold);
+  border: none;
+  border-radius: var(--r-md);
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+.btn-find:hover  { opacity: 0.85; }
+.btn-find:active { opacity: 0.70; }
+.btn-find:focus-visible {
+  outline: 2px solid var(--color-slope-blue);
+  outline-offset: 3px;
+}
+
+/* ── Desktop ───────────────────────────────────────────────────────────────── */
+@media (min-width: 640px) {
+  .app-main { padding: var(--sp-8) var(--sp-6); }
+}
