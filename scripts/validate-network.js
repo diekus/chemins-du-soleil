@@ -1,8 +1,9 @@
 #!/usr/bin/env node
-'use strict';
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, resolve } from 'path';
 
-const fs = require('fs');
-const path = require('path');
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // ── ANSI colours ─────────────────────────────────────────────────────────────
 const G = '\x1b[32m'; // green
@@ -37,11 +38,11 @@ function section(title) {
 }
 
 // ── Load file ─────────────────────────────────────────────────────────────────
-const networkPath = path.resolve(__dirname, '..', 'data', 'network.json');
+const networkPath = resolve(__dirname, '..', 'data', 'network.json');
 
 let raw;
 try {
-  raw = fs.readFileSync(networkPath, 'utf8');
+  raw = readFileSync(networkPath, 'utf8');
 } catch (e) {
   process.stderr.write(`${R}✗ Cannot read ${networkPath}: ${e.message}${X}\n`);
   process.exit(1);

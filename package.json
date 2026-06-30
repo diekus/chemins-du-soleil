@@ -1,0 +1,9 @@
+{
+  "type": "module",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "test":     "node --test src/*.test.js",
+    "validate": "node scripts/validate-network.js",
+    "smoke":    "node scripts/smoke-test.js"
+  }
+}
