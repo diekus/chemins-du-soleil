@@ -1,0 +1,303 @@
+{
+  "_meta": {
+    "season": "2024/25",
+    "scope": "Portes du Soleil — main cross-border circuit: Morzine / Les Gets / Avoriaz / Les Lindarets (FR) and Pointe de Mossettes / Les Crosets / Champéry / Morgins (CH), plus the Châtel sub-area (FR). Seed data for algorithm development and testing.",
+    "schema_version": "1"
+  },
+  "nodes": [
+    {
+      "id": "morzine-village",
+      "name": "Morzine",
+      "country": "FR",
+      "lift_type": "gondola",
+      "connections": [
+        {
+          "to": "super-morzine-top",
+          "name": "Super Morzine",
+          "type": "lift",
+          "difficulty": "green",
+          "bidirectional": true
+        },
+        {
+          "to": "morzine-pleney",
+          "name": "Pleney",
+          "type": "lift",
+          "difficulty": "green",
+          "bidirectional": true
+        },
+        {
+          "to": "avoriaz",
+          "name": "Prodains Express",
+          "type": "lift",
+          "difficulty": "green",
+          "bidirectional": true
+        }
+      ]
+    },
+    {
+      "id": "super-morzine-top",
+      "name": "Super Morzine",
+      "country": "FR",
+      "lift_type": "gondola",
+      "connections": [
+        {
+          "to": "morzine-village",
+          "name": "Super Morzine",
+          "type": "lift",
+          "difficulty": "green",
+          "bidirectional": true
+        },
+        {
+          "to": "avoriaz",
+          "name": "Zore",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
+      "id": "morzine-pleney",
+      "name": "Pleney",
+      "country": "FR",
+      "lift_type": "gondola",
+      "connections": [
+        {
+          "to": "morzine-village",
+          "name": "Pleney",
+          "type": "lift",
+          "difficulty": "green",
+          "bidirectional": true
+        },
+        {
+          "to": "les-gets-chavannes",
+          "name": "Nantaux",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
+      "id": "les-gets-chavannes",
+      "name": "Les Gets – Chavannes",
+      "country": "FR",
+      "lift_type": "chairlift",
+      "connections": [
+        {
+          "to": "avoriaz",
+          "name": "Chavannes",
+          "type": "slope",
+          "difficulty": "blue"
+        },
+        {
+          "to": "les-lindarets",
+          "name": "Lindarets descent",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
+      "id": "avoriaz",
+      "name": "Avoriaz",
+      "country": "FR",
+      "lift_type": "telecabin",
+      "connections": [
+        {
+          "to": "morzine-village",
+          "name": "Prodains Express",
+          "type": "lift",
+          "difficulty": "green",
+          "bidirectional": true
+        },
+        {
+          "to": "les-lindarets",
+          "name": "Lindarets",
+          "type": "lift",
+          "difficulty": "green"
+        },
+        {
+          "to": "les-lindarets",
+          "name": "Hauts Forts",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "les-lindarets",
+      "name": "Les Lindarets",
+      "country": "FR",
+      "lift_type": "chairlift",
+      "connections": [
+        {
+          "to": "pointe-de-mossettes",
+          "name": "Mossettes Express",
+          "type": "lift",
+          "difficulty": "green"
+        },
+        {
+          "to": "les-gets-chavannes",
+          "name": "Chavannes Express",
+          "type": "lift",
+          "difficulty": "green"
+        },
+        {
+          "to": "avoriaz",
+          "name": "Arare",
+          "type": "lift",
+          "difficulty": "green"
+        }
+      ]
+    },
+    {
+      "id": "pointe-de-mossettes",
+      "name": "Pointe de Mossettes",
+      "country": "CH",
+      "lift_type": "chairlift",
+      "connections": [
+        {
+          "to": "les-crosets",
+          "name": "Grand Conche",
+          "type": "slope",
+          "difficulty": "blue"
+        },
+        {
+          "to": "les-crosets",
+          "name": "Chavanette",
+          "type": "slope",
+          "difficulty": "black"
+        },
+        {
+          "to": "les-lindarets",
+          "name": "Mossettes descent",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "les-crosets",
+      "name": "Les Crosets",
+      "country": "CH",
+      "lift_type": "gondola",
+      "connections": [
+        {
+          "to": "champery",
+          "name": "Champéry cable car",
+          "type": "lift",
+          "difficulty": "green",
+          "bidirectional": true
+        },
+        {
+          "to": "morgins",
+          "name": "Foilleuse",
+          "type": "lift",
+          "difficulty": "green",
+          "bidirectional": true
+        },
+        {
+          "to": "morgins",
+          "name": "Ripaille",
+          "type": "slope",
+          "difficulty": "blue"
+        },
+        {
+          "to": "pointe-de-mossettes",
+          "name": "Conches",
+          "type": "lift",
+          "difficulty": "green"
+        }
+      ]
+    },
+    {
+      "id": "champery",
+      "name": "Champéry",
+      "country": "CH",
+      "lift_type": "telecabin",
+      "connections": [
+        {
+          "to": "les-crosets",
+          "name": "Champéry cable car",
+          "type": "lift",
+          "difficulty": "green",
+          "bidirectional": true
+        }
+      ]
+    },
+    {
+      "id": "morgins",
+      "name": "Morgins",
+      "country": "CH",
+      "lift_type": "gondola",
+      "connections": [
+        {
+          "to": "les-crosets",
+          "name": "Foilleuse",
+          "type": "lift",
+          "difficulty": "green",
+          "bidirectional": true
+        },
+        {
+          "to": "super-chatel",
+          "name": "Recon",
+          "type": "lift",
+          "difficulty": "green"
+        }
+      ]
+    },
+    {
+      "id": "chatel-village",
+      "name": "Châtel",
+      "country": "FR",
+      "lift_type": "gondola",
+      "connections": [
+        {
+          "to": "pre-la-joux",
+          "name": "Super-Châtel",
+          "type": "lift",
+          "difficulty": "green"
+        }
+      ]
+    },
+    {
+      "id": "pre-la-joux",
+      "name": "Pré-la-Joux",
+      "country": "FR",
+      "lift_type": "chairlift",
+      "connections": [
+        {
+          "to": "super-chatel",
+          "name": "Linga",
+          "type": "lift",
+          "difficulty": "green"
+        },
+        {
+          "to": "chatel-village",
+          "name": "Plaine Dranse",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
+      "id": "super-chatel",
+      "name": "Super-Châtel",
+      "country": "FR",
+      "lift_type": "chairlift",
+      "connections": [
+        {
+          "to": "morgins",
+          "name": "Brochaux",
+          "type": "slope",
+          "difficulty": "red"
+        },
+        {
+          "to": "pre-la-joux",
+          "name": "Linga descent",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    }
+  ]
+}
