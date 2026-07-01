@@ -47,12 +47,14 @@ station-input .si-option[aria-selected="true"] {
   color: var(--color-text);
 }
 
-/* ── difficulty-selector ───────────────────────────────────────────────────── */
-difficulty-selector {
+/* ── difficulty-selector / preference-selector ─────────────────────────────── */
+difficulty-selector,
+preference-selector {
   display: block;
 }
 
-difficulty-selector select {
+difficulty-selector select,
+preference-selector select {
   width: 100%;
   padding: var(--sp-3) var(--sp-4);
   font-family: var(--font);
@@ -66,7 +68,8 @@ difficulty-selector select {
   appearance: auto;
   transition: border-color 0.15s;
 }
-difficulty-selector select:focus { border-color: var(--color-primary); }
+difficulty-selector select:focus,
+preference-selector select:focus { border-color: var(--color-primary); }
 
 /* ── route-result ──────────────────────────────────────────────────────────── */
 route-result { display: block; }
@@ -137,6 +140,23 @@ route-result { display: block; }
 .diff-dot[data-d="blue"]  { background: var(--color-slope-blue); }
 .diff-dot[data-d="red"]   { background: var(--color-slope-red); }
 .diff-dot[data-d="black"] { background: var(--color-slope-black); border-color: var(--color-border); }
+/* Lift steps carry no piste colour — render as invisible placeholder to preserve alignment */
+.diff-dot--lift { background: transparent; border-color: transparent; }
+
+/* ── Preference badge in route card header ──────────────────────────────────── */
+.route-pref-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  font-size: 0.75rem;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-secondary);
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-pill);
+  padding: 2px var(--sp-3);
+  margin-inline: auto var(--sp-2);
+}
 
 /* ── No-route empty state ──────────────────────────────────────────────────── */
 .no-route {

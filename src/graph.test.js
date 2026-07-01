@@ -9,7 +9,7 @@ const SIMPLE = {
     {
       id: 'a', name: 'A', country: 'FR', lift_type: 'gondola',
       connections: [
-        { to: 'b', name: 'AB', type: 'lift',  difficulty: 'green' },
+        { to: 'b', name: 'AB', type: 'lift',  difficulty: 'silver' },
         { to: 'c', name: 'AC', type: 'slope', difficulty: 'blue'  },
       ],
     },
@@ -29,7 +29,7 @@ const BIDI_MISSING_REVERSE = {
     {
       id: 'a', name: 'A', country: 'FR', lift_type: 'gondola',
       connections: [
-        { to: 'b', name: 'CableCar', type: 'lift', difficulty: 'green', bidirectional: true },
+        { to: 'b', name: 'CableCar', type: 'lift', difficulty: 'silver', bidirectional: true },
       ],
     },
     { id: 'b', name: 'B', country: 'CH', lift_type: 'telecabin', connections: [] },
@@ -42,7 +42,7 @@ const BIDI_WITH_REVERSE = {
     {
       id: 'a', name: 'A', country: 'FR', lift_type: 'gondola',
       connections: [
-        { to: 'b', name: 'CableCar', type: 'lift', difficulty: 'green', bidirectional: true },
+        { to: 'b', name: 'CableCar', type: 'lift', difficulty: 'silver', bidirectional: true },
       ],
     },
     {
@@ -57,10 +57,11 @@ const BIDI_WITH_REVERSE = {
 // ── Tests ─────────────────────────────────────────────────────────────────────
 
 test('DIFFICULTY_WEIGHT has correct values', () => {
-  assert.equal(DIFFICULTY_WEIGHT.green, 1);
-  assert.equal(DIFFICULTY_WEIGHT.blue,  2);
-  assert.equal(DIFFICULTY_WEIGHT.red,   3);
-  assert.equal(DIFFICULTY_WEIGHT.black, 4);
+  assert.equal(DIFFICULTY_WEIGHT.silver, 1);
+  assert.equal(DIFFICULTY_WEIGHT.green,  1);
+  assert.equal(DIFFICULTY_WEIGHT.blue,   2);
+  assert.equal(DIFFICULTY_WEIGHT.red,    3);
+  assert.equal(DIFFICULTY_WEIGHT.black,  4);
 });
 
 test('G1 — loadGraph builds correct edge count', () => {
@@ -74,7 +75,7 @@ test('G1 — edge weights match difficulty', () => {
   const ab = graph.get('a').find(e => e.name === 'AB');
   const ac = graph.get('a').find(e => e.name === 'AC');
   const bc = graph.get('b').find(e => e.name === 'BC');
-  assert.equal(ab.weight, 1); // green
+  assert.equal(ab.weight, 1); // silver
   assert.equal(ac.weight, 2); // blue
   assert.equal(bc.weight, 3); // red
 });
@@ -91,7 +92,7 @@ test('G2 — loadGraph safety net inserts missing reverse edge', () => {
 test('G2 — safety net reverse edge has correct weight', () => {
   const graph = loadGraph(BIDI_MISSING_REVERSE);
   const reverse = graph.get('b').find(e => e.to === 'a' && e.name === 'CableCar');
-  assert.equal(reverse.weight, 1); // green
+  assert.equal(reverse.weight, 1); // silver
 });
 
 test('G3 — loadGraph deduplicates when reverse already exists', () => {

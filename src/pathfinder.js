@@ -1,23 +1,27 @@
 import { DIFFICULTY_WEIGHT } from './graph.js';
 
 /**
- * Returns up to k lowest-cost simple routes from startId to endId,
- * sorted ascending by cost, respecting maxDifficulty as a hard ceiling.
+ * Returns up to k simple routes from startId to endId, respecting maxDifficulty
+ * as a hard ceiling. When preferDifficulty is set, routes containing more steps
+ * at that difficulty are ranked first (preference score DESC, then cost ASC).
  *
- * Uses Yen's K-Shortest Simple Paths algorithm.
+ * Uses Yen's K-Shortest Simple Paths algorithm. Internally runs with 2×k
+ * candidates when a preference is active so the re-ranking has enough material.
  * Returns [] if no route exists under the given constraints.
- * Returns [{ path, cost:0, steps:[] }] when startId === endId.
+ * Returns [{ path, cost:0, steps:[], preferenceScore:0 }] when startId === endId.
  *
- * Each route: { path: string[], cost: number, steps: Step[] }
+ * Each route: { path: string[], cost: number, steps: Step[], preferenceScore: number }
  * Each step:  { from, to, name, type, difficulty }
  */
-export function findRoutes(graph, startId, endId, maxDifficulty, k = 3) {
+export function findRoutes(graph, startId, endId, maxDifficulty, k = 3, preferDifficulty = null) {
   if (startId === endId) {
-    return [{ path: [startId], cost: 0, steps: [] }];
+    return [{ path: [startId], cost: 0, steps: [], preferenceScore: 0 }];
   }
 
-  const maxWeight = DIFFICULTY_WEIGHT[maxDifficulty] ?? Infinity;
-  const NONE = new Set();
+  // When a preference is active, collect more candidates before re-ranking.
+  const internalK  = preferDifficulty ? Math.max(k * 2, 6) : k;
+  const maxWeight  = DIFFICULTY_WEIGHT[maxDifficulty] ?? Infinity;
+  const NONE       = new Set();
 
   const first = dijkstra(graph, startId, endId, maxWeight, NONE, NONE);
   if (!first) return [];
@@ -28,7 +32,7 @@ export function findRoutes(graph, startId, endId, maxDifficulty, k = 3) {
   const B    = [];
   const seen = new Set([pathKey(first)]);
 
-  for (let ki = 1; ki < k; ki++) {
+  for (let ki = 1; ki < internalK; ki++) {
     const prevPath = A[ki - 1];
 
     for (let i = 0; i < prevPath.path.length - 1; i++) {
@@ -82,7 +86,18 @@ export function findRoutes(graph, startId, endId, maxDifficulty, k = 3) {
     A.push(B.shift());
   }
 
-  return A;
+  // Annotate each route with a preference score, then re-rank if needed.
+  for (const route of A) {
+    route.preferenceScore = preferDifficulty
+      ? route.steps.filter(s => s.difficulty === preferDifficulty).length
+      : 0;
+  }
+
+  if (preferDifficulty) {
+    A.sort((a, b) => (b.preferenceScore - a.preferenceScore) || (a.cost - b.cost));
+  }
+
+  return A.slice(0, k);
 }
 
 // ── Internal helpers ──────────────────────────────────────────────────────────

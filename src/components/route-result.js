@@ -3,12 +3,18 @@ const COUNTRY_NAME = { FR: 'France', CH: 'Switzerland' };
 const STEP_ICON = { lift: '🚡', slope: '⛷️' };
 
 class RouteResult extends HTMLElement {
-  #routes = undefined; // undefined=idle, null=loading, []=no route, [...]=results
-  #nodes  = new Map();
+  #routes           = undefined; // undefined=idle, null=loading, []=no route, [...]=results
+  #nodes            = new Map();
+  #preferDifficulty = null;
 
   /** Pass the nodeMap (Map<id, node>) so country flags can be resolved. */
   set nodes(map) {
     this.#nodes = map instanceof Map ? map : new Map();
+  }
+
+  /** Pass the active preferred difficulty (string or null) for badge labelling. */
+  set preferDifficulty(val) {
+    this.#preferDifficulty = val || null;
   }
 
   /**
@@ -42,10 +48,19 @@ class RouteResult extends HTMLElement {
     const label = index === 0 ? 'Best route' : `Alternative ${index + 1}`;
     const stops = `${route.steps.length} stop${route.steps.length !== 1 ? 's' : ''}`;
     const steps = route.steps.map(s => this.#stepHTML(s)).join('');
+
+    const prefBadge = (this.#preferDifficulty && route.preferenceScore > 0)
+      ? `<span class="route-pref-badge" aria-label="${route.preferenceScore} ${this.#preferDifficulty} steps">
+           <span class="diff-dot" data-d="${this.#preferDifficulty}" aria-hidden="true"></span>
+           ${route.preferenceScore} ${this.#preferDifficulty}
+         </span>`
+      : '';
+
     return `
       <li class="route-card">
         <div class="route-card-header">
           <span class="route-label">${label}</span>
+          ${prefBadge}
           <span class="route-stops" aria-label="${route.steps.length} stops">${stops}</span>
         </div>
         <ol class="route-steps" aria-label="${label}">${steps}</ol>
@@ -54,21 +69,22 @@ class RouteResult extends HTMLElement {
   }
 
   #stepHTML(step) {
-    const country  = this.#nodes.get(step.from)?.country ?? null;
-    const flag     = country ? FLAGS[country] ?? '' : '';
+    const country   = this.#nodes.get(step.from)?.country ?? null;
+    const flag      = country ? FLAGS[country] ?? '' : '';
     const flagLabel = country ? COUNTRY_NAME[country] ?? '' : '';
-    const icon     = STEP_ICON[step.type] ?? '•';
+    const icon      = STEP_ICON[step.type] ?? '•';
+
+    // Difficulty dot only shown for slopes — lifts have no piste colour.
+    const diffDot = step.type === 'slope'
+      ? `<span class="diff-dot" data-d="${step.difficulty}" role="img" aria-label="${step.difficulty} slope"></span>`
+      : `<span class="diff-dot diff-dot--lift" aria-hidden="true"></span>`;
+
     return `
       <li class="route-step">
         <span class="step-icon" aria-hidden="true">${icon}</span>
         <span class="step-name">${step.name}</span>
         <span class="step-flag" aria-label="${flagLabel}">${flag}</span>
-        <span
-          class="diff-dot"
-          data-d="${step.difficulty}"
-          role="img"
-          aria-label="${step.difficulty} slope"
-        ></span>
+        ${diffDot}
       </li>
     `;
   }

@@ -5,11 +5,11 @@ import { findRoutes } from './pathfinder.js';
 
 // ── Fixture ───────────────────────────────────────────────────────────────────
 //
-//  start ──EasyLift(green,lift)──► mid1 ──BlueRun(blue,slope)──► end
+//  start ──EasyLift(silver,lift)──► mid1 ──BlueRun(blue,slope)──► end
 //  start ──HardSlope(black,slope)─► mid2 ──GreenFlat(green,slope)► end
 //  island  (no connections — disconnected)
 //
-//  Route costs (green=1, blue=2, black=4):
+//  Route costs (silver=1, blue=2, black=4, green=1):
 //    R1: start→mid1→end  = 1+2 = 3   (lower cost)
 //    R2: start→mid2→end  = 4+1 = 5
 
@@ -18,7 +18,7 @@ const NET = {
     {
       id: 'start', name: 'Start', country: 'FR', lift_type: 'gondola',
       connections: [
-        { to: 'mid1', name: 'EasyLift',  type: 'lift',  difficulty: 'green' },
+        { to: 'mid1', name: 'EasyLift',  type: 'lift',  difficulty: 'silver' },
         { to: 'mid2', name: 'HardSlope', type: 'slope', difficulty: 'black' },
       ],
     },
@@ -52,7 +52,7 @@ test('P1 — findRoutes returns correct ordered steps for a known route', () => 
   assert.equal(best.steps.length, 2);
 
   assert.deepEqual(best.steps[0], {
-    from: 'start', to: 'mid1', name: 'EasyLift', type: 'lift', difficulty: 'green',
+    from: 'start', to: 'mid1', name: 'EasyLift', type: 'lift', difficulty: 'silver',
   });
   assert.deepEqual(best.steps[1], {
     from: 'mid1', to: 'end', name: 'BlueRun', type: 'slope', difficulty: 'blue',
@@ -62,7 +62,7 @@ test('P1 — findRoutes returns correct ordered steps for a known route', () => 
 test('P2 — findRoutes returns lowest-cost route first', () => {
   const routes = findRoutes(graph, 'start', 'end', 'black', 2);
   assert.equal(routes.length, 2);
-  assert.equal(routes[0].cost, 3); // R1: green(1) + blue(2)
+  assert.equal(routes[0].cost, 3); // R1: silver(1) + blue(2)
   assert.equal(routes[1].cost, 5); // R2: black(4) + green(1)
   assert.ok(routes[0].cost <= routes[1].cost);
 });
@@ -86,7 +86,7 @@ test('P4 — findRoutes returns empty array when no route exists', () => {
 test('P5 — findRoutes handles startId === endId', () => {
   const routes = findRoutes(graph, 'start', 'start', 'black');
   assert.equal(routes.length, 1);
-  assert.deepEqual(routes[0], { path: ['start'], cost: 0, steps: [] });
+  assert.deepEqual(routes[0], { path: ['start'], cost: 0, steps: [], preferenceScore: 0 });
 });
 
 test('P6 — findRoutes returns k distinct routes when k routes exist', () => {

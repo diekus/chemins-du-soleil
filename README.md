@@ -37,7 +37,7 @@ python3 -m http.server 8000
 
 The resort network is stored in [`data/network.json`](data/network.json) as a directed weighted graph of lift stations and slope connections.
 
-Current coverage: **13 nodes** across Morzine, Les Gets, Avoriaz, Les Lindarets (🇫🇷) and Pointe de Mossettes, Les Crosets, Champéry, Morgins (🇨🇭), plus the Châtel sub-area (🇫🇷).
+Current coverage: **606 nodes, 882 directed edges** — OSM-derived network with piste junction nodes (schema v2). Source: OpenStreetMap / Overpass API. Every named lift has its own base and summit node. Piste endpoints within 75 m of each other are clustered into junction nodes, enabling slope-to-slope routing without requiring a lift transition. Cross-resort corridors and the Saint-Jean-d'Aulps domain are supplemented with manually-specified edges. Resorts covered: Avoriaz, Morzine, Les Gets, Châtel, La Chapelle d'Abondance, Montriond, Saint-Jean-d'Aulps (🇫🇷) and Champéry, Les Crosets, Morgins (🇨🇭). Generator: [`scripts/generate-from-osm.js`](scripts/generate-from-osm.js). See [`specs/2026-06-30-network-expansion/`](specs/2026-06-30-network-expansion/) for scope.
 
 ### Validate the data
 
@@ -79,6 +79,7 @@ specs/
   2026-06-30-data-model/       Phase 1 spec
   2026-06-30-pathfinding-engine/ Phase 2 spec
   2026-06-30-core-ui/          Phase 3 spec
+  2026-06-30-network-expansion/ Network data expansion spec
 images/
   icon.png
   logo.png

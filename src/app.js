@@ -2,12 +2,14 @@ import { loadGraph } from './graph.js';
 import { findRoutes } from './pathfinder.js';
 import './components/station-input.js';
 import './components/difficulty-selector.js';
+import './components/preference-selector.js';
 import './components/route-result.js';
 
 const form       = document.querySelector('.search-form');
 const startEl    = document.querySelector('station-input[name="start"]');
 const destEl     = document.querySelector('station-input[name="destination"]');
 const diffEl     = document.querySelector('difficulty-selector');
+const prefEl     = document.querySelector('preference-selector');
 const resultEl   = document.querySelector('route-result');
 const errorEl    = document.querySelector('.form-error');
 
@@ -23,7 +25,10 @@ async function init() {
   graph   = loadGraph(network);
   nodeMap = new Map(network.nodes.map(n => [n.id, n]));
 
-  const stations = network.nodes.map(({ id, name, country }) => ({ id, name, country }));
+  // Junction nodes are routing-internal; only lifts and villages appear in search.
+  const stations = network.nodes
+    .filter(nd => nd.station_type !== 'junction')
+    .map(({ id, name, country }) => ({ id, name, country }));
   startEl.stations = stations;
   destEl.stations  = stations;
 }
@@ -37,6 +42,7 @@ form.addEventListener('submit', e => {
   const startId    = startEl.value;
   const endId      = destEl.value;
   const difficulty = diffEl.value;
+  const preference = prefEl.value || null;
 
   if (!startId || !endId) {
     showError('Please select both a start and a destination from the list.');
@@ -47,12 +53,13 @@ form.addEventListener('submit', e => {
     return;
   }
 
-  // Pass nodes for country lookups, then set loading state.
-  resultEl.nodes  = nodeMap;
-  resultEl.routes = null;
+  // Pass nodes for country lookups and current preference for labelling, then set loading state.
+  resultEl.nodes            = nodeMap;
+  resultEl.preferDifficulty = preference;
+  resultEl.routes           = null;
 
   // findRoutes is synchronous — set result immediately.
-  resultEl.routes = findRoutes(graph, startId, endId, difficulty, 3);
+  resultEl.routes = findRoutes(graph, startId, endId, difficulty, 3, preference);
 });
 
 function showError(msg) {
