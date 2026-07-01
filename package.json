@@ -1,9 +1,14 @@
 {
   "type": "module",
-  "engines": { "node": ">=18" },
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
-    "test":     "node --test src/*.test.js",
+    "test": "node --test src/*.test.js",
     "validate": "node scripts/validate-network.js",
-    "smoke":    "node scripts/smoke-test.js"
+    "smoke": "node scripts/smoke-test.js"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.3"
   }
 }

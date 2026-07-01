@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Chemins du Soleil</title>
+  <meta name="theme-color" content="#2E2E2E">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="images/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/icon-192.png">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
@@ -57,5 +61,10 @@
   </main>
 
   <script type="module" src="src/app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
+    }
+  </script>
 </body>
 </html>
