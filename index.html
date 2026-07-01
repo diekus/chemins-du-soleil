@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chemins du Soleil</title>
+  <meta name="theme-color" content="#2E2E2E">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="images/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/icon-192.png">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <header class="app-header">
+    <img src="images/logo.png" alt="Chemins du Soleil">
+  </header>
+
+  <main class="app-main">
+
+    <form class="search-form" novalidate>
+
+      <div class="form-row">
+        <label id="lbl-start">From</label>
+        <station-input
+          name="start"
+          aria-labelledby="lbl-start"
+          placeholder="Start station…"
+        ></station-input>
+      </div>
+
+      <div class="form-row">
+        <label id="lbl-dest">To</label>
+        <station-input
+          name="destination"
+          aria-labelledby="lbl-dest"
+          placeholder="Destination…"
+        ></station-input>
+      </div>
+
+      <div class="form-row">
+        <label id="lbl-diff">Maximum difficulty</label>
+        <difficulty-selector aria-labelledby="lbl-diff"></difficulty-selector>
+      </div>
+
+      <div class="form-row">
+        <label id="lbl-pref">Preferred difficulty</label>
+        <preference-selector aria-labelledby="lbl-pref"></preference-selector>
+      </div>
+
+      <p class="form-error" role="alert"></p>
+
+      <button type="submit" class="btn-find">Find route</button>
+
+    </form>
+
+    <route-result></route-result>
+
+  </main>
+
+  <script type="module" src="src/app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
+    }
+  </script>
+</body>
+</html>

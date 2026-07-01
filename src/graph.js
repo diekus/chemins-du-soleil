@@ -1,8 +1,9 @@
 export const DIFFICULTY_WEIGHT = Object.freeze({
-  green: 1,
-  blue:  2,
-  red:   3,
-  black: 4,
+  silver: 1, // lifts — always traversable, not a slope difficulty
+  green:  1,
+  blue:   2,
+  red:    3,
+  black:  4,
 });
 
 /**

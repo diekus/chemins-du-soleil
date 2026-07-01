@@ -13,10 +13,11 @@ const D = '\x1b[2m';  // dim
 const X = '\x1b[0m';  // reset
 
 // ── Allowed values ────────────────────────────────────────────────────────────
-const DIFFICULTIES   = new Set(['green', 'blue', 'red', 'black']);
+const DIFFICULTIES   = new Set(['silver', 'green', 'blue', 'red', 'black']);
 const LIFT_TYPES     = new Set(['chairlift', 'gondola', 'telecabin', 'surface', 'button', null]);
 const COUNTRIES      = new Set(['FR', 'CH']);
 const CONN_TYPES     = new Set(['lift', 'slope']);
+const STATION_TYPES  = new Set(['village', 'lift-base', 'lift-top', 'junction']);
 
 // ── State ─────────────────────────────────────────────────────────────────────
 let totalErrors = 0;
@@ -82,6 +83,7 @@ if (totalErrors === 0) process.stdout.write(`  ${G}✓${X} ${nodes.length} node 
 // ── Check 2: Node field enums ─────────────────────────────────────────────────
 section('2  Node field enums');
 let nodeEnumErrors = 0;
+const schemaVersion = network._meta && network._meta.schema_version;
 
 for (const node of nodes) {
   if (!COUNTRIES.has(node.country)) {
@@ -94,9 +96,20 @@ for (const node of nodes) {
   } else {
     pass(`Node "${node.id}": lift_type "${node.lift_type}" valid`);
   }
+  if (schemaVersion === '2') {
+    if (node.station_type === undefined) {
+      fail(`Node "${node.id}": missing station_type (required in schema v2) — must be village, lift-base, lift-top, or junction`);
+      nodeEnumErrors++;
+    } else if (!STATION_TYPES.has(node.station_type)) {
+      fail(`Node "${node.id}": invalid station_type "${node.station_type}" — must be village, lift-base, lift-top, or junction`);
+      nodeEnumErrors++;
+    } else {
+      pass(`Node "${node.id}": station_type "${node.station_type}" valid`);
+    }
+  }
 }
 
-if (nodeEnumErrors === 0) process.stdout.write(`  ${G}✓${X} All node country and lift_type values are valid\n`);
+if (nodeEnumErrors === 0) process.stdout.write(`  ${G}✓${X} All node country, lift_type${schemaVersion === '2' ? ', and station_type' : ''} values are valid\n`);
 
 // ── Check 3: Connection referential integrity and enums ───────────────────────
 section('3  Connection referential integrity and enums');
