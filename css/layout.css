@@ -4,10 +4,11 @@
   border-bottom: 1px solid var(--color-border);
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .app-header img {
-  height: 28px;
+  height: 56px;
   display: block;
 }
 
@@ -68,6 +69,17 @@
 .btn-find:focus-visible {
   outline: 2px solid var(--color-slope-blue);
   outline-offset: 3px;
+}
+
+/* ── Footer ────────────────────────────────────────────────────────────────── */
+.app-footer {
+  text-align: center;
+  padding: var(--sp-4);
+  color: var(--color-text-secondary);
+}
+
+.app-footer small {
+  font-size: 0.75rem;
 }
 
 /* ── Desktop ───────────────────────────────────────────────────────────────── */
