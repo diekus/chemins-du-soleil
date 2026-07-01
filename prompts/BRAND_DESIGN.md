@@ -61,3 +61,23 @@ Fallback stack: `'Nunito', system-ui, -apple-system, sans-serif`
 - **Central motif**: the S-curve with arrows evokes a ski run. It may appear in loading states, empty states, and decorative contexts.
 - **Country indicators**: emoji flags 🇫🇷 🇨🇭 appear alongside every lift or station name in the UI.
 - **Slope dots**: the four coloured dots (green / blue / red / black) from the icon are a recurring UI pattern for displaying or selecting difficulty.
+
+## BACKGROUND
+
+The page background is an animated canvas of soft, diffuse colour blobs — rendered via `src/blob-bg.js` on a `<canvas id="blob-bg">` element (CSS `filter: blur(72px)`, `opacity: 0.65` in light mode, `0.35` in dark mode). The effect reads as ambient light rather than graphic decoration, keeping focus on the form.
+
+### Behaviour
+- **Mouse / touch follower**: one blob (radius 320 px, colour `#BAF0FF` — the accent colour) drifts toward the pointer using spring physics (`k = 0.0004`, damping `0.97`). It trails slowly rather than snapping.
+- **Ambient blobs**: three additional blobs float independently on slow Lissajous paths (period ~21–28 s per axis) so the background is never static even when the user is not interacting.
+
+### Colour palette
+| Mode | Follower | Ambient blobs |
+|---|---|---|
+| Light | `rgb(186, 240, 255)` — accent | Variations in the `#A8D4FF`–`#C8E8FF` range |
+| Dark | `rgb(70, 175, 230)` | Deeper blues / indigo / teal |
+
+### Implementation notes
+- The canvas is `position: fixed; inset: 0; z-index: -1; pointer-events: none` — it never captures input.
+- On resize the canvas pixel dimensions are updated in JS (`canvas.width/height = innerWidth/height`) to avoid scaling artefacts.
+- Dark-mode colour selection happens once at script load via `matchMedia('(prefers-color-scheme: dark)')`.
+- The blob colours are intentionally restricted to the existing `--color-accent` hue family. No new hues are introduced, keeping the palette rule intact.

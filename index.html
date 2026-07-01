@@ -14,6 +14,8 @@
 </head>
 <body>
 
+  <canvas id="blob-bg" aria-hidden="true"></canvas>
+
   <header class="app-header">
     <img src="images/logo.png" alt="Chemins du Soleil">
   </header>
@@ -61,6 +63,7 @@
   </main>
 
   <script type="module" src="src/app.js"></script>
+  <script type="module" src="src/blob-bg.js"></script>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js');
