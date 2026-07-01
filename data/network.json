@@ -6340,7 +6340,14 @@
       "country": "CH",
       "station_type": "junction",
       "lift_type": null,
-      "connections": []
+      "connections": [
+        {
+          "to": "lift_198298433_base",
+          "name": "Descent to Champoussin",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
     },
     {
       "id": "jct_0014",
@@ -6393,7 +6400,14 @@
       "country": "CH",
       "station_type": "junction",
       "lift_type": null,
-      "connections": []
+      "connections": [
+        {
+          "to": "lift_8216151_base",
+          "name": "Descent to Champoussin",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
     },
     {
       "id": "jct_0018",
@@ -7290,7 +7304,14 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
-      "connections": []
+      "connections": [
+        {
+          "to": "jct_0032",
+          "name": "La Perdrix Blanche",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
     },
     {
       "id": "jct_0087",
@@ -7508,7 +7529,14 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
-      "connections": []
+      "connections": [
+        {
+          "to": "lift_32312982_base",
+          "name": "Creux",
+          "type": "slope",
+          "difficulty": "black"
+        }
+      ]
     },
     {
       "id": "jct_0101",
@@ -8332,7 +8360,14 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
-      "connections": []
+      "connections": [
+        {
+          "to": "lift_24916417_base",
+          "name": "Abricotine",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
     },
     {
       "id": "jct_0178",
@@ -8573,7 +8608,14 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
-      "connections": []
+      "connections": [
+        {
+          "to": "lift_24916410_base",
+          "name": "Vaineuve traverse",
+          "type": "slope",
+          "difficulty": "green"
+        }
+      ]
     },
     {
       "id": "jct_0196",
@@ -9139,7 +9181,14 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
-      "connections": []
+      "connections": [
+        {
+          "to": "lift_677468931_base",
+          "name": "La Casse Noisette",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
     },
     {
       "id": "jct_0255",
@@ -9147,7 +9196,14 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
-      "connections": []
+      "connections": [
+        {
+          "to": "lift_30749922_base",
+          "name": "Descent from Queyset",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
     },
     {
       "id": "jct_0256",
@@ -9155,7 +9211,14 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
-      "connections": []
+      "connections": [
+        {
+          "to": "lift_30720552_base",
+          "name": "Traverse to Queyset",
+          "type": "slope",
+          "difficulty": "green"
+        }
+      ]
     },
     {
       "id": "jct_0264",
@@ -9163,7 +9226,14 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
-      "connections": []
+      "connections": [
+        {
+          "to": "lift_8215843_base",
+          "name": "Descent to Rochassons",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
     },
     {
       "id": "jct_0273",
@@ -9241,7 +9311,14 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
-      "connections": []
+      "connections": [
+        {
+          "to": "lift_32312982_base",
+          "name": "Le Crôt",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
     },
     {
       "id": "jct_0292",
@@ -9400,6 +9477,21 @@
         {
           "to": "lift_23275859_base",
           "name": "Access Grande Terche gondola",
+          "type": "slope",
+          "difficulty": "green"
+        }
+      ]
+    },
+    {
+      "id": "morgins",
+      "name": "Morgins",
+      "country": "CH",
+      "station_type": "village",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "lift_8215989_base",
+          "name": "Access Morgins-Foilleuse gondola",
           "type": "slope",
           "difficulty": "green"
         }

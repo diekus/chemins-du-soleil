@@ -46,8 +46,15 @@ class RouteResult extends HTMLElement {
 
   #cardHTML(route, index) {
     const label = index === 0 ? 'Best route' : `Alternative ${index + 1}`;
-    const stops = `${route.steps.length} stop${route.steps.length !== 1 ? 's' : ''}`;
-    const steps = route.steps.map(s => this.#stepHTML(s)).join('');
+    const displaySteps = route.steps.filter((s, i, arr) => {
+      if (i === 0) return true;
+      const p = arr[i - 1];
+      const sCountry = this.#nodes.get(s.from)?.country ?? null;
+      const pCountry = this.#nodes.get(p.from)?.country ?? null;
+      return !(s.name === p.name && sCountry === pCountry && s.difficulty === p.difficulty);
+    });
+    const stops = `${displaySteps.length} stop${displaySteps.length !== 1 ? 's' : ''}`;
+    const steps = displaySteps.map(s => this.#stepHTML(s)).join('');
 
     const prefBadge = (this.#preferDifficulty && route.preferenceScore > 0)
       ? `<span class="route-pref-badge" aria-label="${route.preferenceScore} ${this.#preferDifficulty} steps">
