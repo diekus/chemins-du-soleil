@@ -56,6 +56,12 @@
           "name": "Mercheuson - Planachaux",
           "type": "slope",
           "difficulty": "blue"
+        },
+        {
+          "to": "lift_8216408_base",
+          "name": "16 Grand Conche",
+          "type": "slope",
+          "difficulty": "red"
         }
       ]
     },
@@ -371,6 +377,12 @@
           "name": "Morgins-Foilleuse",
           "type": "lift",
           "difficulty": "silver"
+        },
+        {
+          "to": "morgins",
+          "name": "Access to Morgins village",
+          "type": "slope",
+          "difficulty": "green"
         }
       ]
     },
@@ -1243,7 +1255,14 @@
       "country": "CH",
       "station_type": "lift-top",
       "lift_type": "surface",
-      "connections": []
+      "connections": [
+        {
+          "to": "jct_0034",
+          "name": "Écottis descent",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
     },
     {
       "id": "lift_24899026_base",
@@ -1398,7 +1417,9 @@
       "country": "CH",
       "station_type": "lift-top",
       "lift_type": "chairlift",
-      "connections": []
+      "connections": [
+        { "to": "lift_8216398_base", "name": "Grand Paradis to Planachaux", "type": "slope", "difficulty": "green" }
+      ]
     },
     {
       "id": "lift_24916407_base",
@@ -2003,7 +2024,9 @@
       "country": "FR",
       "station_type": "lift-top",
       "lift_type": "surface",
-      "connections": []
+      "connections": [
+        { "to": "lift_8215532_base", "name": "Cuboré to Les Crosets", "type": "slope", "difficulty": "red" }
+      ]
     },
     {
       "id": "lift_29285752_base",
@@ -2086,7 +2109,9 @@
       "country": "FR",
       "station_type": "lift-top",
       "lift_type": "chairlift",
-      "connections": []
+      "connections": [
+        { "to": "lift_8215532_base", "name": "Cuboré to Les Crosets", "type": "slope", "difficulty": "red" }
+      ]
     },
     {
       "id": "lift_29286845_base",
@@ -3435,7 +3460,14 @@
       "country": "FR",
       "station_type": "lift-top",
       "lift_type": "surface",
-      "connections": []
+      "connections": [
+        {
+          "to": "jct_0121",
+          "name": "Chaux Longe to Panoramique",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
     },
     {
       "id": "lift_31770801_base",
@@ -3788,7 +3820,9 @@
       "country": "CH",
       "station_type": "lift-top",
       "lift_type": "surface",
-      "connections": []
+      "connections": [
+        { "to": "lift_8216398_base", "name": "Babylift Planachaux", "type": "slope", "difficulty": "green" }
+      ]
     },
     {
       "id": "lift_96366493_base",
@@ -4177,7 +4211,8 @@
           "name": "Traverse to Chapelle",
           "type": "slope",
           "difficulty": "green"
-        }
+        },
+        { "to": "lift_30353553_base", "name": "Return to Trashers", "type": "slope", "difficulty": "green" }
       ]
     },
     {
@@ -5449,7 +5484,8 @@
           "name": "Arare 2",
           "type": "lift",
           "difficulty": "silver"
-        }
+        },
+        { "to": "jct_0077", "name": "Arare 2", "type": "slope", "difficulty": "blue" }
       ]
     },
     {
@@ -5458,7 +5494,9 @@
       "country": "FR",
       "station_type": "lift-top",
       "lift_type": "surface",
-      "connections": []
+      "connections": [
+        { "to": "lift_750062606_base", "name": "Arare 2", "type": "slope", "difficulty": "green" }
+      ]
     },
     {
       "id": "lift_750062609_base",
@@ -5565,7 +5603,9 @@
       "country": "FR",
       "station_type": "lift-top",
       "lift_type": "chairlift",
-      "connections": []
+      "connections": [
+        { "to": "lift_8215843_base", "name": "Pierre Longue to Rochassons", "type": "slope", "difficulty": "green" }
+      ]
     },
     {
       "id": "lift_1010800534_base",
@@ -6669,7 +6709,14 @@
       "country": "CH",
       "station_type": "junction",
       "lift_type": null,
-      "connections": []
+      "connections": [
+        {
+          "to": "lift_8215989_base",
+          "name": "Descent to Morgins",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
     },
     {
       "id": "jct_0034",
@@ -6677,7 +6724,14 @@
       "country": "CH",
       "station_type": "junction",
       "lift_type": null,
-      "connections": []
+      "connections": [
+        {
+          "to": "lift_8215989_base",
+          "name": "Chalet Neuf to Morgins",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
     },
     {
       "id": "jct_0035",
@@ -6700,7 +6754,9 @@
       "country": "CH",
       "station_type": "junction",
       "lift_type": null,
-      "connections": []
+      "connections": [
+        { "to": "lift_198298433_base", "name": "Les Bochasses", "type": "slope", "difficulty": "blue" }
+      ]
     },
     {
       "id": "jct_0039",
@@ -7498,7 +7554,9 @@
       "country": "CH",
       "station_type": "junction",
       "lift_type": null,
-      "connections": []
+      "connections": [
+        { "to": "lift_198298433_base", "name": "Les Bochasses", "type": "slope", "difficulty": "red" }
+      ]
     },
     {
       "id": "jct_0098",
@@ -7533,6 +7591,12 @@
         {
           "to": "lift_32312982_base",
           "name": "Creux",
+          "type": "slope",
+          "difficulty": "black"
+        },
+        {
+          "to": "lift_31738075_base",
+          "name": "Les Creux to Les Gets",
           "type": "slope",
           "difficulty": "black"
         }
@@ -7574,7 +7638,9 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
-      "connections": []
+      "connections": [
+        { "to": "lift_24916412_base", "name": "Zore", "type": "slope", "difficulty": "blue" }
+      ]
     },
     {
       "id": "jct_0104",
@@ -7590,7 +7656,9 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
-      "connections": []
+      "connections": [
+        { "to": "lift_1075520907_base", "name": "Conches", "type": "slope", "difficulty": "red" }
+      ]
     },
     {
       "id": "jct_0106",
@@ -7864,7 +7932,14 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
-      "connections": []
+      "connections": [
+        {
+          "to": "lift_8215989_base",
+          "name": "Panoramique to Morgins",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
     },
     {
       "id": "jct_0135",
@@ -9044,7 +9119,14 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
-      "connections": []
+      "connections": [
+        {
+          "to": "lift_8215989_base",
+          "name": "Descent to Morgins",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
     },
     {
       "id": "jct_0239",
@@ -9264,7 +9346,14 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
-      "connections": []
+      "connections": [
+        {
+          "to": "jct_0213",
+          "name": "Hermine descent to Chamossière",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
     },
     {
       "id": "jct_0278",
@@ -9394,7 +9483,9 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
-      "connections": []
+      "connections": [
+        { "to": "jct_0095", "name": "Tronchey", "type": "slope", "difficulty": "green" }
+      ]
     },
     {
       "id": "jct_0315",
