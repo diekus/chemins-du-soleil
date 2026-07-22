@@ -1,4 +1,4 @@
-const CACHE_NAME = 'chemins-du-soleil-v1';
+const CACHE_NAME = 'chemins-du-soleil-v2';
 
 const PRECACHE = [
   '/',
@@ -20,11 +20,21 @@ const PRECACHE = [
   '/src/app.js',
   '/src/graph.js',
   '/src/pathfinder.js',
+  '/src/weather.js',
+  '/src/conditions.js',
   '/src/components/difficulty-selector.js',
   '/src/components/preference-selector.js',
   '/src/components/route-result.js',
   '/src/components/station-input.js',
+  '/src/components/tab-bar.js',
+  '/src/components/location-gate.js',
+  '/src/components/weather-hero.js',
+  '/src/components/avalanche-banner.js',
+  '/src/components/lift-status-list.js',
   '/data/network.json',
+  '/data/resorts.json',
+  '/data/avalanche.json',
+  '/data/lift-status.json',
 ];
 
 self.addEventListener('install', (event) => {
@@ -45,8 +55,22 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
+// Live-conditions data origins: always hit the network. Caching these here would
+// let a stale response be served transparently and stamped as "current" by the
+// app — the app's own localStorage cache already handles the offline case
+// honestly (with a real "last updated" time), so the SW must stay out of the way.
+const NETWORK_ONLY_ORIGINS = [
+  'https://api.open-meteo.com',
+  'https://open-piste.raed.workers.dev',
+];
+
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
+
+  if (NETWORK_ONLY_ORIGINS.some(origin => event.request.url.startsWith(origin))) {
+    event.respondWith(fetch(event.request));
+    return;
+  }
 
   event.respondWith(
     caches.match(event.request).then((cached) => {

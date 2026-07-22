@@ -1,0 +1,11 @@
+{
+  "_meta": {
+    "scope": "Static fallback avalanche risk, keyed by resort slug. Used when open-piste has no live avalanche_risk value for a resort, and always supplies sector/note since open-piste's field is a bare 1-5 integer with no descriptive detail. Hand-updated, not authoritative — see mission.md non-goals.",
+    "schema_version": "1"
+  },
+  "resorts": {
+    "avoriaz": { "level": 2, "sector": "Chavanette", "note": null },
+    "morzine":  { "level": 2, "sector": "Morzine",   "note": null },
+    "chatel":   { "level": 2, "sector": "Linga",      "note": null }
+  }
+}

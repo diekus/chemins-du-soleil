@@ -66,6 +66,14 @@
   --color-slope-red:        #E90C00;
   --color-slope-black:      #000000;
 
+  /* Informational UI (live conditions dashboard) — see prompts/BRAND_DESIGN.md.
+     Fixed across light/dark except where noted; never used for general UI. */
+  --color-hero-bg:          #163A5C;
+  --color-hero-text:        #FFFFFF;
+  --color-warning-bg:       #FBF0CE;
+  --color-warning-icon:     #755A0E;
+  --color-status-open:      #1F9D55;
+
   /* Typography */
   --font:                   'Nunito', system-ui, -apple-system, sans-serif;
   --fw-regular:             400;
@@ -121,6 +129,11 @@
     --color-slope-blue:       #4D8FE0;
     --color-slope-red:        #FF3D33;
     /* green and black unchanged */
+
+    --color-warning-bg:       #3A331A;
+    --color-warning-icon:     #E0BB4D;
+    --color-status-open:      #4CC97F;
+    /* --color-hero-bg / --color-hero-text intentionally unchanged — fixed "photo card" surface */
   }
 }
 
@@ -139,10 +152,16 @@ html {
   background: var(--color-background);
   -webkit-font-smoothing: antialiased;
   text-size-adjust: 100%;
+  /* The sticky header's compact/expanded states animate its own height.
+     Without this, the browser's scroll-anchoring feature compensates by
+     nudging scrollY, which can push it back across that threshold and
+     cause the header to flicker between states. */
+  overflow-anchor: none;
 }
 
 body {
   min-height: 100dvh;
   line-height: 1.5;
+  overflow-anchor: none;
 }
 

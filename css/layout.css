@@ -1,16 +1,47 @@
 /* ── App shell ─────────────────────────────────────────────────────────────── */
 .app-header {
+  position: sticky;
+  top: 0;
+  z-index: 150;
   padding: var(--sp-4);
   border-bottom: 1px solid var(--color-border);
   display: flex;
   align-items: center;
   justify-content: center;
+  background: var(--color-background); /* fallback for browsers without color-mix() */
+  background: color-mix(in srgb, var(--color-background) 78%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: padding 0.25s ease;
 }
 
 .app-header img {
   height: 56px;
   display: block;
+  transition: height 0.25s ease;
 }
+
+.app-header--compact {
+  padding: var(--sp-2) var(--sp-4);
+}
+.app-header--compact img {
+  height: 32px;
+}
+
+.header-temp {
+  position: absolute;
+  right: var(--sp-4);
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font);
+  font-weight: var(--fw-bold);
+  font-size: 1.125rem;
+  color: var(--color-text);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.app-header--show-temp .header-temp { opacity: 1; }
 
 .app-main {
   max-width: 480px;
@@ -19,6 +50,34 @@
   display: flex;
   flex-direction: column;
   gap: var(--sp-6);
+}
+
+/* ── Tabbed views ──────────────────────────────────────────────────────────── */
+/* Room for the fixed tab-bar so content/footer is never hidden behind it. */
+body { padding-bottom: 56px; }
+
+/* ── Alerts view ───────────────────────────────────────────────────────────── */
+.alerts-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+.alerts-content[hidden] { display: none; }
+
+.alerts-empty {
+  text-align: center;
+  color: var(--color-text-secondary);
+  padding: var(--sp-8) var(--sp-4);
+}
+
+/* ── Dashboard section label ──────────────────────────────────────────────── */
+.section-label {
+  font-size: 0.75rem;
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--sp-2);
 }
 
 /* ── Search form ───────────────────────────────────────────────────────────── */
@@ -69,6 +128,25 @@
 .btn-find:focus-visible {
   outline: 2px solid var(--color-slope-blue);
   outline-offset: 3px;
+}
+
+/* ── Secondary text button ────────────────────────────────────────────────── */
+.btn-text {
+  width: 100%;
+  padding: var(--sp-3) var(--sp-6);
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  font-family: var(--font);
+  font-size: 0.9375rem;
+  font-weight: var(--fw-semibold);
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+.btn-text:hover { color: var(--color-text); }
+.btn-text:focus-visible {
+  outline: 2px solid var(--color-slope-blue);
+  outline-offset: 2px;
 }
 
 /* ── Footer ────────────────────────────────────────────────────────────────── */
