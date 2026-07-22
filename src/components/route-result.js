@@ -98,7 +98,7 @@ class RouteResult extends HTMLElement {
 
   #loadingHTML() {
     return `
-      <div class="loading-cards" aria-busy="true" aria-label="Finding routes…">
+      <div class="loading-cards" role="status" aria-busy="true" aria-label="Finding routes…">
         <div class="skeleton-card"></div>
         <div class="skeleton-card"></div>
       </div>

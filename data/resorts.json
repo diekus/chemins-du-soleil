@@ -1,0 +1,11 @@
+{
+  "_meta": {
+    "scope": "Hand-maintained resort-level centroids for the Live Conditions Dashboard's nearest-resort geolocation match. French side only — open-piste (the live weather/avalanche/lift-status source) doesn't cover the Swiss side yet. `slug` doubles as the open-piste resort slug.",
+    "schema_version": "1"
+  },
+  "resorts": [
+    { "slug": "avoriaz", "name": "Avoriaz", "country": "FR", "elevation": 1800, "lat": 46.1919, "lon": 6.7719 },
+    { "slug": "morzine", "name": "Morzine", "country": "FR", "elevation": 1000, "lat": 46.1791, "lon": 6.7093 },
+    { "slug": "chatel",  "name": "Châtel",  "country": "FR", "elevation": 1200, "lat": 46.2632, "lon": 6.8305 }
+  ]
+}

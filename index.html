@@ -21,53 +21,88 @@
       <source srcset="images/logo_inv.png" media="(prefers-color-scheme: dark)">
       <img src="images/logo.png" alt="Chemins du Soleil">
     </picture>
+    <span class="header-temp" aria-hidden="true"></span>
   </header>
 
-  <main class="app-main">
+  <section id="view-home" role="tabpanel" aria-labelledby="tab-home">
+    <main class="app-main">
 
-    <form class="search-form" novalidate>
+      <location-gate hidden></location-gate>
 
-      <div class="form-row">
-        <label id="lbl-start">From</label>
-        <station-input
-          name="start"
-          aria-labelledby="lbl-start"
-          placeholder="Start station…"
-        ></station-input>
+      <weather-hero></weather-hero>
+
+      <avalanche-banner></avalanche-banner>
+
+      <form class="search-form" novalidate>
+
+        <div class="form-row">
+          <label id="lbl-start">From</label>
+          <station-input
+            name="start"
+            aria-labelledby="lbl-start"
+            placeholder="Start station…"
+          ></station-input>
+        </div>
+
+        <div class="form-row">
+          <label id="lbl-dest">To</label>
+          <station-input
+            name="destination"
+            aria-labelledby="lbl-dest"
+            placeholder="Destination…"
+          ></station-input>
+        </div>
+
+        <div class="form-row">
+          <label id="lbl-diff">Maximum difficulty</label>
+          <difficulty-selector aria-labelledby="lbl-diff"></difficulty-selector>
+        </div>
+
+        <div class="form-row">
+          <label id="lbl-pref">Preferred difficulty</label>
+          <preference-selector aria-labelledby="lbl-pref"></preference-selector>
+        </div>
+
+        <p class="form-error" role="alert"></p>
+
+        <button type="submit" class="btn-find">Find route</button>
+
+      </form>
+
+      <route-result></route-result>
+
+    </main>
+  </section>
+
+  <section id="view-lifts" role="tabpanel" aria-labelledby="tab-lifts" hidden>
+    <main class="app-main">
+
+      <h2 class="section-label">Lift status</h2>
+      <lift-status-list></lift-status-list>
+
+    </main>
+  </section>
+
+  <section id="view-alerts" role="tabpanel" aria-labelledby="tab-alerts" hidden>
+    <main class="app-main">
+
+      <div class="alerts-content">
+        <avalanche-banner static></avalanche-banner>
+
+        <h2 class="section-label">Lift closures</h2>
+        <lift-status-list></lift-status-list>
       </div>
 
-      <div class="form-row">
-        <label id="lbl-dest">To</label>
-        <station-input
-          name="destination"
-          aria-labelledby="lbl-dest"
-          placeholder="Destination…"
-        ></station-input>
-      </div>
+      <p class="alerts-empty" hidden>No active alerts.</p>
 
-      <div class="form-row">
-        <label id="lbl-diff">Maximum difficulty</label>
-        <difficulty-selector aria-labelledby="lbl-diff"></difficulty-selector>
-      </div>
-
-      <div class="form-row">
-        <label id="lbl-pref">Preferred difficulty</label>
-        <preference-selector aria-labelledby="lbl-pref"></preference-selector>
-      </div>
-
-      <p class="form-error" role="alert"></p>
-
-      <button type="submit" class="btn-find">Find route</button>
-
-    </form>
-
-    <route-result></route-result>
-
-  </main>
+    </main>
+  </section>
 
   <footer class="app-footer">
     <small>&copy; diekus 2026</small>
   </footer>
+
+  <tab-bar></tab-bar>
 
   <script type="module" src="src/app.js"></script>
   <script type="module" src="src/blob-bg.js"></script>
