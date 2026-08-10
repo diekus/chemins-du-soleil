@@ -1,4 +1,4 @@
-const CACHE_NAME = 'chemins-du-soleil-v2';
+const CACHE_NAME = 'chemins-du-soleil-v5';
 
 const PRECACHE = [
   '/',
@@ -22,6 +22,7 @@ const PRECACHE = [
   '/src/pathfinder.js',
   '/src/weather.js',
   '/src/conditions.js',
+  '/src/geo.js',
   '/src/components/difficulty-selector.js',
   '/src/components/preference-selector.js',
   '/src/components/route-result.js',
@@ -30,11 +31,9 @@ const PRECACHE = [
   '/src/components/location-gate.js',
   '/src/components/weather-hero.js',
   '/src/components/avalanche-banner.js',
-  '/src/components/lift-status-list.js',
+  '/src/components/resort-conditions-list.js',
   '/data/network.json',
   '/data/resorts.json',
-  '/data/avalanche.json',
-  '/data/lift-status.json',
 ];
 
 self.addEventListener('install', (event) => {

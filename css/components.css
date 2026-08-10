@@ -82,6 +82,7 @@ location-gate[hidden] { display: none; }
 
 /* ── weather-hero ──────────────────────────────────────────────────────────── */
 weather-hero { display: block; }
+weather-hero[hidden] { display: none; }
 
 .hero-card {
   background: var(--color-hero-bg);
@@ -272,75 +273,92 @@ avalanche-banner.avalanche-banner--fading { opacity: 0; }
   color: var(--color-warning-icon);
 }
 
-/* ── lift-status-list ──────────────────────────────────────────────────────── */
-lift-status-list { display: block; }
+/* ── resort-conditions-list ────────────────────────────────────────────────── */
+resort-conditions-list { display: block; }
 
-.lift-list {
+.resort-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: var(--sp-2);
+  gap: var(--sp-3);
 }
 
-.lift-row {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-3);
+.resort-card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--r-md);
-  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-lg);
+  padding: var(--sp-4);
 }
 
-.lift-dot {
+.resort-card-top {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-2);
+}
+
+.resort-flag { font-size: 1.125rem; }
+.resort-name {
+  flex: 1;
+  font-weight: var(--fw-bold);
+  font-size: 0.9375rem;
+  color: var(--color-text);
+}
+.resort-elevation {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+.resort-weather {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-3);
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--sp-2);
+}
+.resort-temp {
+  font-size: 1.25rem;
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+}
+.resort-weather--empty { font-style: italic; }
+
+.resort-avalanche {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+}
+.resort-avalanche--empty { font-style: italic; }
+
+.resort-ava-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
   flex-shrink: 0;
   background: var(--color-text-secondary);
 }
-.lift-dot[data-status="open"] { background: var(--color-status-open); }
+.resort-avalanche[data-level="1"] .resort-ava-dot { background: var(--color-slope-green); }
+.resort-avalanche[data-level="2"] .resort-ava-dot { background: var(--color-slope-blue); }
+.resort-avalanche[data-level="3"] .resort-ava-dot,
+.resort-avalanche[data-level="4"] .resort-ava-dot { background: var(--color-slope-red); }
+.resort-avalanche[data-level="5"] .resort-ava-dot { background: var(--color-slope-black); }
 
-.lift-name {
-  flex: 1;
-  font-weight: var(--fw-semibold);
-  font-size: 0.9375rem;
-}
-
-.lift-state {
-  font-size: 0.8125rem;
-  font-weight: var(--fw-semibold);
-  color: var(--color-text-secondary);
-}
-/* Colour is carried by .lift-dot alone (checked against WCAG non-text contrast,
-   3:1) — the "open" text stays the default secondary colour since green text at
-   this size doesn't clear the 4.5:1 text-contrast threshold in light mode. */
-
-.lift-list-loading {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-2);
-}
-.lift-row-skeleton {
-  height: 52px;
+.resort-card-skeleton {
+  height: 92px;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--r-md);
+  border-radius: var(--r-lg);
   animation: pulse 1.4s ease-in-out infinite;
 }
 
-.lift-list-empty {
+.resort-list-empty {
   text-align: center;
   color: var(--color-text-secondary);
   font-size: 0.875rem;
   padding: var(--sp-4);
-}
-
-.lift-list-provenance {
-  font-size: 0.75rem;
-  font-style: italic;
-  color: var(--color-text-secondary);
-  margin-bottom: var(--sp-2);
 }
 
 /* ── station-input ─────────────────────────────────────────────────────────── */

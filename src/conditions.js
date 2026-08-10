@@ -8,32 +8,14 @@ export async function fetchOpenPiste(slug) {
 }
 
 /**
- * Merge a live open-piste record with static fallback data, field by field.
- * `openPiste` may be `{}` (e.g. after a failed fetch) — every field then
- * falls back to the static data.
+ * Read the live avalanche risk out of an open-piste record.
+ * `openPiste` may be `{}` (e.g. after a failed fetch) — there's then no
+ * reading to report, not a fabricated one.
  *
  * Returns:
- *   avalanche: null | { level, sector, note, live }
- *   lifts:     null | [{ name, status }]
- *   liftsLive: boolean
+ *   avalanche: null | { level }
  */
-export function mergeConditions(openPiste, staticAvalanche, staticLifts) {
-  const weather = openPiste?.weather ?? {};
-
-  const liveLevel = weather.avalanche_risk;
-  const level = liveLevel ?? staticAvalanche?.level ?? null;
-  const avalanche = level == null ? null : {
-    level,
-    sector: staticAvalanche?.sector ?? null,
-    note:   staticAvalanche?.note ?? null,
-    live:   liveLevel != null,
-  };
-
-  const liveLifts = Array.isArray(openPiste?.lifts) ? openPiste.lifts : [];
-  const liftsLive = liveLifts.length > 0;
-  const lifts = liftsLive
-    ? liveLifts.map(l => ({ name: l.name, status: l.status }))
-    : (staticLifts ?? null);
-
-  return { avalanche, lifts, liftsLive };
+export function readAvalanche(openPiste) {
+  const level = openPiste?.weather?.avalanche_risk ?? null;
+  return { avalanche: level == null ? null : { level } };
 }

@@ -12,13 +12,7 @@ class AvalancheBanner extends HTMLElement {
    * Assign avalanche risk data:
    *   undefined → loading skeleton
    *   null      → "no data available" message, auto-dismissed after 5s
-   *   object    → { level (1-5), sector, note, live, updatedAt }
-   *               — when `live` is false, `level`/`sector`/`note` come from
-   *                 the hand-maintained data/avalanche.json, not a live
-   *                 reading. The card shows an "Example data" note (not
-   *                 "Estimated" — this isn't inferred from anything, it's a
-   *                 fallback placeholder) and auto-dismisses after 5s, same
-   *                 as the no-data case.
+   *   object    → { level (1-5), updatedAt } — always a live open-piste reading
    */
   set data(val) {
     this.#data = val;
@@ -68,9 +62,6 @@ class AvalancheBanner extends HTMLElement {
     if (d === undefined) { this.innerHTML = this.#loadingHTML();     return; }
     if (d === null)      { this.innerHTML = this.#unavailableHTML(); this.#scheduleDismiss(); return; }
     this.innerHTML = this.#bannerHTML(d);
-    // Fallback (not live) data is advisory, not authoritative — surface it
-    // briefly then get out of the way, same as the no-data case.
-    if (d.live === false) this.#scheduleDismiss();
   }
 
   #scheduleDismiss() {
@@ -87,8 +78,6 @@ class AvalancheBanner extends HTMLElement {
       this.setAttribute('aria-label', `Avalanche risk: ${label}, level ${d.level} of 5.${tapHint}`);
     }
 
-    const provenance = d.live === false
-      ? '<p class="warning-provenance">Example data — live risk level unavailable</p>' : '';
     const updated = d.updatedAt ? `<p class="warning-provenance">Updated ${this.#relativeTime(d.updatedAt)}</p>` : '';
     const chevron = this.#isStatic ? '' : '<span class="warning-chevron" aria-hidden="true">›</span>';
 
@@ -97,8 +86,7 @@ class AvalancheBanner extends HTMLElement {
         <span class="warning-icon-badge" aria-hidden="true">▲</span>
         <div class="warning-body">
           <strong>Avalanche risk: ${label}</strong>
-          <p>Level ${d.level} of 5${d.sector ? ` · ${d.sector} sector` : ''}${d.note ? ` · ${d.note}` : ''}</p>
-          ${provenance}
+          <p>Level ${d.level} of 5</p>
           ${updated}
         </div>
         ${chevron}

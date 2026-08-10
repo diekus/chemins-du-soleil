@@ -1,7 +1,7 @@
 {
   "_meta": {
     "season": "2024/25",
-    "scope": "Portes du Soleil — OSM-derived network with slope junction nodes. 141 lifts, 229 slope junctions, 808 directed edges. Schema v2.",
+    "scope": "Portes du Soleil — OSM-derived network with slope junction nodes. 148 lifts, 353 slope junctions, 961 directed edges. Schema v2.",
     "schema_version": "2"
   },
   "nodes": [
@@ -16,7 +16,7 @@
           "to": "lift_8215532_top",
           "name": "Crosets",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -29,7 +29,7 @@
       "connections": [
         {
           "to": "jct_0001",
-          "name": "Descent from Crosets",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -47,7 +47,7 @@
         },
         {
           "to": "lift_8216350_top",
-          "name": "Crosets to Marcheuson",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -56,12 +56,6 @@
           "name": "Mercheuson - Planachaux",
           "type": "slope",
           "difficulty": "blue"
-        },
-        {
-          "to": "lift_8216408_base",
-          "name": "16 Grand Conche",
-          "type": "slope",
-          "difficulty": "red"
         }
       ]
     },
@@ -76,17 +70,17 @@
           "to": "lift_8215584_top",
           "name": "Pauvre Conche",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "lift_8215630_base",
-          "name": "Pauvre Conche to Ripaille 1",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
         {
           "to": "jct_0048",
-          "name": "Pauvre Conche to Piste Bleue",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         }
@@ -130,7 +124,7 @@
           "to": "lift_8215630_top",
           "name": "Ripaille 1",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -169,7 +163,7 @@
     },
     {
       "id": "lift_8215671_base",
-      "name": "Mossettes (base)",
+      "name": "Mossettes (Champery) (base)",
       "country": "CH",
       "station_type": "lift-base",
       "lift_type": "chairlift",
@@ -178,11 +172,11 @@
           "to": "lift_8215671_top",
           "name": "Mossettes",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "lift_8215532_base",
-          "name": "Mossettes to Crosets",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -190,7 +184,7 @@
     },
     {
       "id": "lift_8215671_top",
-      "name": "Mossettes (summit)",
+      "name": "Mossettes (Champery) (summit)",
       "country": "CH",
       "station_type": "lift-top",
       "lift_type": "chairlift",
@@ -244,7 +238,7 @@
           "to": "lift_8215733_top",
           "name": "Prolays",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "jct_0144",
@@ -254,7 +248,7 @@
         },
         {
           "to": "lift_24916417_base",
-          "name": "Prolays to Lindarets",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -292,11 +286,11 @@
           "to": "lift_8215798_top",
           "name": "Chaux des Rosées",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "lift_8215843_base",
-          "name": "Chaux des Rosées to Rochassons",
+          "name": "Slope (green)",
           "type": "slope",
           "difficulty": "green"
         }
@@ -311,7 +305,7 @@
       "connections": [
         {
           "to": "jct_0249",
-          "name": "Descent from Chaux des Rosées",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         }
@@ -328,7 +322,7 @@
           "to": "lift_8215843_top",
           "name": "Rochassons",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "lift_29288813_base",
@@ -347,7 +341,7 @@
       "connections": [
         {
           "to": "lift_24916433_top",
-          "name": "Rochassons to Chaux Fleurie",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -376,12 +370,6 @@
           "to": "lift_8215989_top",
           "name": "Morgins-Foilleuse",
           "type": "lift",
-          "difficulty": "silver"
-        },
-        {
-          "to": "morgins",
-          "name": "Access to Morgins village",
-          "type": "slope",
           "difficulty": "green"
         }
       ]
@@ -395,19 +383,25 @@
       "connections": [
         {
           "to": "jct_0012",
-          "name": "Descent from Morgins-Foilleuse",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
         {
           "to": "jct_0014",
-          "name": "Descent from Morgins-Foilleuse",
+          "name": "Slope (red)",
+          "type": "slope",
+          "difficulty": "red"
+        },
+        {
+          "to": "jct_0012",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         },
         {
           "to": "lift_327582926_base",
-          "name": "Morgins-Foilleuse to Truche",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -430,7 +424,7 @@
           "to": "lift_8216054_top",
           "name": "Chaux",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -443,19 +437,19 @@
       "connections": [
         {
           "to": "lift_8215989_top",
-          "name": "Chaux to Morgins-Foilleuse",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
         {
           "to": "jct_0015",
-          "name": "Descent from Chaux",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
         {
           "to": "jct_0143",
-          "name": "Descent from Chaux",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         },
@@ -484,7 +478,7 @@
           "to": "lift_8216151_top",
           "name": "Aiguille des Champeys",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -503,13 +497,13 @@
         },
         {
           "to": "jct_0104",
-          "name": "Descent from Aiguille des Champeys",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
         {
           "to": "jct_0122",
-          "name": "Descent from Aiguille des Champeys",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -532,7 +526,7 @@
           "to": "lift_8216335_top",
           "name": "Champéry - Croix de Culet",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -568,7 +562,7 @@
           "to": "lift_8216350_top",
           "name": "Marcheuson",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -587,7 +581,7 @@
         },
         {
           "to": "jct_0001",
-          "name": "Marcheuson to Crosets",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -604,7 +598,7 @@
           "to": "lift_8216398_top",
           "name": "Planachaux",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "jct_0023",
@@ -670,7 +664,7 @@
           "to": "lift_8216408_top",
           "name": "Grand Conche",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -727,7 +721,7 @@
     },
     {
       "id": "lift_8216510_base",
-      "name": "Mossettes (base)",
+      "name": "Mossettes (Avoriaz) (base)",
       "country": "FR",
       "station_type": "lift-base",
       "lift_type": "chairlift",
@@ -736,13 +730,13 @@
           "to": "lift_8216510_top",
           "name": "Mossettes",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
     {
       "id": "lift_8216510_top",
-      "name": "Mossettes (summit)",
+      "name": "Mossettes (Avoriaz) (summit)",
       "country": "FR",
       "station_type": "lift-top",
       "lift_type": "chairlift",
@@ -766,7 +760,7 @@
           "to": "lift_8216568_top",
           "name": "Ripaille 2",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -789,7 +783,7 @@
           "to": "lift_8216644_top",
           "name": "Champeys",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -802,19 +796,19 @@
       "connections": [
         {
           "to": "lift_8216151_base",
-          "name": "Champeys to Aiguille des Champeys",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         },
         {
           "to": "lift_8216151_top",
-          "name": "Champeys to Aiguille des Champeys",
+          "name": "Slope (black)",
           "type": "slope",
           "difficulty": "black"
         },
         {
           "to": "lift_8216644_base",
-          "name": "Descent from Champeys",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         },
@@ -837,11 +831,11 @@
           "to": "lift_24898711_top",
           "name": "Morclan",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "lift_317029541_base",
-          "name": "Morclan to Tapis de Super Yeti",
+          "name": "Slope (green)",
           "type": "slope",
           "difficulty": "green"
         }
@@ -879,7 +873,7 @@
           "to": "lift_24898714_top",
           "name": "Super-Châtel",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -892,7 +886,7 @@
       "connections": [
         {
           "to": "lift_24898711_base",
-          "name": "Super-Châtel to Morclan",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -957,7 +951,7 @@
           "to": "lift_24898715_top",
           "name": "Coqs 1",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "lift_1075520907_base",
@@ -967,7 +961,7 @@
         },
         {
           "to": "lift_325533218_top",
-          "name": "Coqs 1 to Télésiège des Portes du Soleil",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -982,13 +976,13 @@
       "connections": [
         {
           "to": "lift_24898715_base",
-          "name": "Descent from Coqs 1",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
         {
           "to": "jct_0109",
-          "name": "Descent from Coqs 1",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -1017,7 +1011,7 @@
           "to": "lift_24898717_top",
           "name": "Bossons",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -1030,7 +1024,7 @@
       "connections": [
         {
           "to": "lift_24898715_base",
-          "name": "Bossons to Coqs 1",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -1053,7 +1047,7 @@
           "to": "lift_24898730_top",
           "name": "Barbossine",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -1066,13 +1060,13 @@
       "connections": [
         {
           "to": "lift_31770801_base",
-          "name": "Barbossine to Contrebandiers",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         },
         {
           "to": "lift_31770797_top",
-          "name": "Barbossine to Tronchey",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -1101,7 +1095,7 @@
           "to": "lift_24898731_top",
           "name": "Tour de Don",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -1137,7 +1131,7 @@
           "to": "lift_24898738_top",
           "name": "Chermeu",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -1150,13 +1144,13 @@
       "connections": [
         {
           "to": "lift_24899026_base",
-          "name": "Chermeu to Chalet Neuf 1",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
         {
           "to": "jct_0129",
-          "name": "Descent from Chermeu",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -1164,7 +1158,7 @@
     },
     {
       "id": "lift_24898740_base",
-      "name": "Corbeau (base)",
+      "name": "Corbeau (Chatel) (base)",
       "country": "FR",
       "station_type": "lift-base",
       "lift_type": "surface",
@@ -1173,13 +1167,13 @@
           "to": "lift_24898740_top",
           "name": "Corbeau",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
     {
       "id": "lift_24898740_top",
-      "name": "Corbeau (summit)",
+      "name": "Corbeau (Chatel) (summit)",
       "country": "FR",
       "station_type": "lift-top",
       "lift_type": "surface",
@@ -1200,7 +1194,7 @@
     },
     {
       "id": "lift_24898742_base",
-      "name": "Corbeau (base)",
+      "name": "Corbeau (Morgins) (base)",
       "country": "CH",
       "station_type": "lift-base",
       "lift_type": "chairlift",
@@ -1209,26 +1203,26 @@
           "to": "lift_24898742_top",
           "name": "Corbeau",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
     {
       "id": "lift_24898742_top",
-      "name": "Corbeau (summit)",
+      "name": "Corbeau (Morgins) (summit)",
       "country": "CH",
       "station_type": "lift-top",
       "lift_type": "chairlift",
       "connections": [
         {
           "to": "lift_24898743_base",
-          "name": "Corbeau to Écottis",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
         {
           "to": "jct_0063",
-          "name": "Descent from Corbeau",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -1245,7 +1239,7 @@
           "to": "lift_24898743_top",
           "name": "Écottis",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -1255,14 +1249,7 @@
       "country": "CH",
       "station_type": "lift-top",
       "lift_type": "surface",
-      "connections": [
-        {
-          "to": "jct_0034",
-          "name": "Écottis descent",
-          "type": "slope",
-          "difficulty": "blue"
-        }
-      ]
+      "connections": []
     },
     {
       "id": "lift_24899026_base",
@@ -1275,7 +1262,7 @@
           "to": "lift_24899026_top",
           "name": "Chalet Neuf 1",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -1288,7 +1275,7 @@
       "connections": [
         {
           "to": "jct_0033",
-          "name": "Descent from Chalet Neuf 1",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -1306,7 +1293,7 @@
         },
         {
           "to": "lift_24898743_base",
-          "name": "Chalet Neuf 1 to Écottis",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -1323,7 +1310,7 @@
           "to": "lift_24899599_top",
           "name": "Derrière Pertuis",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -1336,13 +1323,13 @@
       "connections": [
         {
           "to": "jct_0038",
-          "name": "Descent from Derrière Pertuis",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
         {
           "to": "jct_0097",
-          "name": "Descent from Derrière Pertuis",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         }
@@ -1359,7 +1346,7 @@
           "to": "lift_24899602_top",
           "name": "Sepaya I",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -1372,25 +1359,31 @@
       "connections": [
         {
           "to": "lift_24899599_base",
-          "name": "Sepaya I to Derrière Pertuis",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
         {
           "to": "lift_197938604_top",
-          "name": "Sepaya I to Sepaya II",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
         {
           "to": "lift_8216644_top",
-          "name": "Sepaya I to Champeys",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         },
         {
           "to": "lift_8216151_base",
           "name": "Traverse to Aiguille des Champeys",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_24899599_base",
+          "name": "Traverse to Derrière Pertuis",
           "type": "slope",
           "difficulty": "green"
         }
@@ -1407,7 +1400,7 @@
           "to": "lift_24900087_top",
           "name": "Grand Paradis",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -1417,9 +1410,7 @@
       "country": "CH",
       "station_type": "lift-top",
       "lift_type": "chairlift",
-      "connections": [
-        { "to": "lift_8216398_base", "name": "Grand Paradis to Planachaux", "type": "slope", "difficulty": "green" }
-      ]
+      "connections": []
     },
     {
       "id": "lift_24916407_base",
@@ -1432,7 +1423,7 @@
           "to": "lift_24916407_top",
           "name": "Chavanette",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "jct_0008",
@@ -1466,6 +1457,12 @@
           "name": "Chavanette (Le Mur Suisse)",
           "type": "slope",
           "difficulty": "black"
+        },
+        {
+          "to": "lift_29285752_base",
+          "name": "Traverse to Cuboré",
+          "type": "slope",
+          "difficulty": "green"
         }
       ]
     },
@@ -1480,11 +1477,11 @@
           "to": "lift_24916408_top",
           "name": "Chavanette 2",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "lift_24916409_base",
-          "name": "Chavanette 2 to Choucas",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -1516,7 +1513,7 @@
           "to": "lift_24916409_top",
           "name": "Choucas",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -1558,7 +1555,7 @@
           "to": "lift_24916410_top",
           "name": "Fornet",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -1580,12 +1577,18 @@
           "name": "Snowcross Pschott",
           "type": "slope",
           "difficulty": "red"
+        },
+        {
+          "to": "jct_0044",
+          "name": "Snowcross Marmottes",
+          "type": "slope",
+          "difficulty": "blue"
         }
       ]
     },
     {
       "id": "lift_24916412_base",
-      "name": "Stade (base)",
+      "name": "Stade (Avoriaz) (base)",
       "country": "FR",
       "station_type": "lift-base",
       "lift_type": "chairlift",
@@ -1594,11 +1597,11 @@
           "to": "lift_24916412_top",
           "name": "Stade",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "lift_29287623_base",
-          "name": "Stade to Tour",
+          "name": "Slope (green)",
           "type": "slope",
           "difficulty": "green"
         }
@@ -1606,7 +1609,7 @@
     },
     {
       "id": "lift_24916412_top",
-      "name": "Stade (summit)",
+      "name": "Stade (Avoriaz) (summit)",
       "country": "FR",
       "station_type": "lift-top",
       "lift_type": "chairlift",
@@ -1648,35 +1651,35 @@
           "to": "lift_24916417_top",
           "name": "Lindarets",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "lift_24916433_base",
-          "name": "Lindarets to Chaux Fleurie",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
         {
           "to": "jct_0144",
-          "name": "Lindarets to Route de la Joux Verte",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
         {
           "to": "jct_0167",
-          "name": "Lindarets to Parchets",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
         {
           "to": "lift_8215733_base",
-          "name": "Lindarets to Prolays",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
         {
           "to": "lift_29287970_base",
-          "name": "Lindarets to Léchère",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -1708,6 +1711,12 @@
           "difficulty": "blue"
         },
         {
+          "to": "lift_30610172_top",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        },
+        {
           "to": "lift_317027023_base",
           "name": "Traverse to Écoles 2",
           "type": "slope",
@@ -1726,11 +1735,11 @@
           "to": "lift_24916420_top",
           "name": "Séraussaix",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "lift_24916421_base",
-          "name": "Séraussaix to Proclou",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -1774,7 +1783,7 @@
           "to": "lift_24916421_top",
           "name": "Proclou",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -1790,6 +1799,18 @@
           "name": "Chapelle",
           "type": "slope",
           "difficulty": "blue"
+        },
+        {
+          "to": "lift_30353157_base",
+          "name": "Champ de ski Plateau 2",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_30353157_base",
+          "name": "Champ de ski Plateau 1",
+          "type": "slope",
+          "difficulty": "green"
         },
         {
           "to": "lift_317027023_base",
@@ -1810,7 +1831,7 @@
           "to": "lift_24916425_top",
           "name": "Grandes Combes",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -1846,6 +1867,12 @@
           "difficulty": "black"
         },
         {
+          "to": "jct_0045",
+          "name": "Jean Vuarnet",
+          "type": "slope",
+          "difficulty": "red"
+        },
+        {
           "to": "lift_24916412_top",
           "name": "Bleue du Lac",
           "type": "slope",
@@ -1870,11 +1897,11 @@
           "to": "lift_24916433_top",
           "name": "Chaux Fleurie",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "lift_24916417_base",
-          "name": "Chaux Fleurie to Lindarets",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -1918,7 +1945,7 @@
           "to": "lift_24916937_top",
           "name": "Combes",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -1954,7 +1981,7 @@
           "to": "lift_29283986_top",
           "name": "Hameau",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -2008,7 +2035,7 @@
           "to": "lift_29283989_top",
           "name": "Cuboré",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "jct_0315",
@@ -2024,9 +2051,7 @@
       "country": "FR",
       "station_type": "lift-top",
       "lift_type": "surface",
-      "connections": [
-        { "to": "lift_8215532_base", "name": "Cuboré to Les Crosets", "type": "slope", "difficulty": "red" }
-      ]
+      "connections": []
     },
     {
       "id": "lift_29285752_base",
@@ -2039,7 +2064,7 @@
           "to": "lift_29285752_top",
           "name": "Cuboré",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "jct_0073",
@@ -2087,7 +2112,7 @@
           "to": "lift_29285756_top",
           "name": "Cuboré",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "jct_0176",
@@ -2109,9 +2134,7 @@
       "country": "FR",
       "station_type": "lift-top",
       "lift_type": "chairlift",
-      "connections": [
-        { "to": "lift_8215532_base", "name": "Cuboré to Les Crosets", "type": "slope", "difficulty": "red" }
-      ]
+      "connections": []
     },
     {
       "id": "lift_29286845_base",
@@ -2124,7 +2147,7 @@
           "to": "lift_29286845_top",
           "name": "Surf",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -2137,7 +2160,7 @@
       "connections": [
         {
           "to": "jct_0059",
-          "name": "Surf to Zone Vidéo",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -2178,7 +2201,7 @@
           "to": "lift_29287623_top",
           "name": "Tour",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -2226,7 +2249,7 @@
           "to": "lift_29287970_top",
           "name": "Léchère",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "lift_8215733_base",
@@ -2245,7 +2268,7 @@
       "connections": [
         {
           "to": "lift_750062609_base",
-          "name": "Léchère to Cases",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -2268,11 +2291,11 @@
           "to": "lift_29288813_top",
           "name": "Rubis",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "lift_29288817_base",
-          "name": "Rubis to Pré la Joux",
+          "name": "Slope (green)",
           "type": "slope",
           "difficulty": "green"
         }
@@ -2304,7 +2327,7 @@
           "to": "lift_29288817_top",
           "name": "Pré la Joux",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -2317,7 +2340,7 @@
       "connections": [
         {
           "to": "jct_0256",
-          "name": "Descent from Pré la Joux",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -2340,7 +2363,7 @@
           "to": "lift_29289470_top",
           "name": "Petit Châtel",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -2370,7 +2393,7 @@
           "to": "lift_30170411_top",
           "name": "Brochaux",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -2412,7 +2435,7 @@
           "to": "lift_30351719_top",
           "name": "Baron",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -2460,7 +2483,7 @@
           "to": "lift_30352096_top",
           "name": "Zore",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -2496,7 +2519,7 @@
           "to": "lift_30353157_top",
           "name": "Écoles 1",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -2517,7 +2540,7 @@
     },
     {
       "id": "lift_30353221_base",
-      "name": "Chapelle (base)",
+      "name": "Chapelle (Avoriaz) (base)",
       "country": "FR",
       "station_type": "lift-base",
       "lift_type": "surface",
@@ -2526,13 +2549,13 @@
           "to": "lift_30353221_top",
           "name": "Chapelle",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
     {
       "id": "lift_30353221_top",
-      "name": "Chapelle (summit)",
+      "name": "Chapelle (Avoriaz) (summit)",
       "country": "FR",
       "station_type": "lift-top",
       "lift_type": "surface",
@@ -2556,7 +2579,7 @@
           "to": "lift_30353553_top",
           "name": "Trashers",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "jct_0065",
@@ -2628,7 +2651,7 @@
           "to": "lift_30482077_top",
           "name": "Chavanette 1",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -2664,7 +2687,7 @@
           "to": "lift_30610172_top",
           "name": "Plateau",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "lift_24916412_base",
@@ -2680,7 +2703,7 @@
         },
         {
           "to": "lift_225288644_top",
-          "name": "Plateau to Prodains Express 3S",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -2707,7 +2730,7 @@
         },
         {
           "to": "lift_704966472_top",
-          "name": "Plateau to Dromonts 2",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -2754,7 +2777,7 @@
           "to": "lift_30627272_top",
           "name": "Cornebois",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -2773,7 +2796,7 @@
         },
         {
           "to": "lift_8215798_base",
-          "name": "Cornebois to Chaux des Rosées",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         },
@@ -2802,7 +2825,7 @@
           "to": "lift_30685905_top",
           "name": "Dromonts 2",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "jct_0154",
@@ -2826,8 +2849,26 @@
           "difficulty": "blue"
         },
         {
+          "to": "lift_30685905_base",
+          "name": "Dromonts",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
           "to": "lift_30610172_base",
           "name": "Boulevard des Skieurs",
+          "type": "slope",
+          "difficulty": "blue"
+        },
+        {
+          "to": "lift_30685905_base",
+          "name": "Espace Dromonts",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_30685905_base",
+          "name": "Rue des Traineaux",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -2874,7 +2915,7 @@
           "to": "lift_30720552_top",
           "name": "Queyset",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -2887,7 +2928,7 @@
       "connections": [
         {
           "to": "jct_0247",
-          "name": "Descent from Queyset",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         },
@@ -2910,7 +2951,7 @@
           "to": "lift_30749922_top",
           "name": "Écho Alpin",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -2931,7 +2972,7 @@
     },
     {
       "id": "lift_30750444_base",
-      "name": "Stade (base)",
+      "name": "Stade (Chatel) (base)",
       "country": "FR",
       "station_type": "lift-base",
       "lift_type": "surface",
@@ -2940,20 +2981,20 @@
           "to": "lift_30750444_top",
           "name": "Stade",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
     {
       "id": "lift_30750444_top",
-      "name": "Stade (summit)",
+      "name": "Stade (Chatel) (summit)",
       "country": "FR",
       "station_type": "lift-top",
       "lift_type": "surface",
       "connections": [
         {
           "to": "jct_0264",
-          "name": "Descent from Stade",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         }
@@ -2970,7 +3011,7 @@
           "to": "lift_31349026_top",
           "name": "Crêt Béni",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -2994,8 +3035,14 @@
           "difficulty": "red"
         },
         {
+          "to": "lift_31349048_base",
+          "name": "Cerf Haut",
+          "type": "slope",
+          "difficulty": "red"
+        },
+        {
           "to": "lift_31349047_top",
-          "name": "Crêt Béni to Bambi",
+          "name": "Slope (green)",
           "type": "slope",
           "difficulty": "green"
         },
@@ -3024,7 +3071,7 @@
           "to": "lift_31349047_top",
           "name": "Bambi",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "jct_0090",
@@ -3043,13 +3090,13 @@
       "connections": [
         {
           "to": "jct_0185",
-          "name": "Descent from Bambi",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
         {
           "to": "lift_31349047_base",
-          "name": "Descent from Bambi",
+          "name": "Slope (green)",
           "type": "slope",
           "difficulty": "green"
         },
@@ -3061,7 +3108,7 @@
         },
         {
           "to": "jct_0237",
-          "name": "Bambi to Biche Bas",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -3090,11 +3137,11 @@
           "to": "lift_31349048_top",
           "name": "Prés 2",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "jct_0093",
-          "name": "Prés 2 to Cerf Bas",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         },
@@ -3138,7 +3185,7 @@
           "to": "lift_31349049_top",
           "name": "Prés 1",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -3168,11 +3215,11 @@
           "to": "lift_31738075_top",
           "name": "Combe",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "lift_31349047_base",
-          "name": "Combe to Bambi",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -3210,7 +3257,7 @@
           "to": "lift_31738076_top",
           "name": "Fontaines",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -3223,7 +3270,7 @@
       "connections": [
         {
           "to": "lift_31349026_top",
-          "name": "Fontaines to Crêt Béni",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         },
@@ -3235,7 +3282,7 @@
         },
         {
           "to": "lift_31349049_top",
-          "name": "Fontaines to Prés 1",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         }
@@ -3252,7 +3299,7 @@
           "to": "lift_31770794_top",
           "name": "Panthiaz",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -3280,6 +3327,12 @@
           "name": "Chemin Rural du Riz à l'Auboury",
           "type": "slope",
           "difficulty": "green"
+        },
+        {
+          "to": "lift_35881681_base",
+          "name": "Traverse to Télésiège de Braitaz",
+          "type": "slope",
+          "difficulty": "green"
         }
       ]
     },
@@ -3294,7 +3347,7 @@
           "to": "lift_31770796_top",
           "name": "Conche 2000",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -3330,7 +3383,7 @@
           "to": "lift_31770797_top",
           "name": "Tronchey",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -3349,13 +3402,13 @@
         },
         {
           "to": "jct_0187",
-          "name": "Descent from Tronchey",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
         {
           "to": "jct_0312",
-          "name": "Descent from Tronchey",
+          "name": "Slope (green)",
           "type": "slope",
           "difficulty": "green"
         },
@@ -3378,7 +3431,7 @@
           "to": "lift_31770798_top",
           "name": "Djeu des Têtes",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -3408,7 +3461,7 @@
           "to": "lift_31770799_top",
           "name": "Onnaz",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "lift_24898738_base",
@@ -3427,7 +3480,7 @@
       "connections": [
         {
           "to": "lift_31770800_base",
-          "name": "Onnaz to Chaux Longe",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -3450,7 +3503,7 @@
           "to": "lift_31770800_top",
           "name": "Chaux Longe",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -3460,14 +3513,7 @@
       "country": "FR",
       "station_type": "lift-top",
       "lift_type": "surface",
-      "connections": [
-        {
-          "to": "jct_0121",
-          "name": "Chaux Longe to Panoramique",
-          "type": "slope",
-          "difficulty": "blue"
-        }
-      ]
+      "connections": []
     },
     {
       "id": "lift_31770801_base",
@@ -3480,7 +3526,7 @@
           "to": "lift_31770801_top",
           "name": "Contrebandiers",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "jct_0159",
@@ -3490,7 +3536,7 @@
         },
         {
           "to": "lift_24898731_base",
-          "name": "Contrebandiers to Tour de Don",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         },
@@ -3534,7 +3580,7 @@
           "to": "lift_32312982_top",
           "name": "Raverettes",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "jct_0102",
@@ -3582,7 +3628,7 @@
           "to": "lift_32344730_top",
           "name": "Chamossière Express",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -3618,7 +3664,7 @@
           "to": "lift_32425248_top",
           "name": "Nyon",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -3631,7 +3677,7 @@
       "connections": [
         {
           "to": "lift_32312982_base",
-          "name": "Nyon to Raverettes",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -3672,7 +3718,7 @@
           "to": "lift_32425250_top",
           "name": "Pré Favre",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "jct_0099",
@@ -3697,7 +3743,7 @@
       "connections": [
         {
           "to": "lift_32312982_base",
-          "name": "Pré Favre to Raverettes",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -3738,7 +3784,7 @@
           "to": "lift_35881681_top",
           "name": "Télésiège de Braitaz",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -3757,7 +3803,7 @@
         },
         {
           "to": "lift_31770796_top",
-          "name": "Télésiège de Braitaz to Conche 2000",
+          "name": "Slope (green)",
           "type": "slope",
           "difficulty": "green"
         }
@@ -3774,7 +3820,7 @@
           "to": "lift_49397555_top",
           "name": "Gueilly",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -3787,7 +3833,7 @@
       "connections": [
         {
           "to": "lift_327582927_base",
-          "name": "Gueilly to Pointe de l'Au",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -3810,7 +3856,7 @@
           "to": "lift_49449610_top",
           "name": "Babylift Planachaux",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -3820,9 +3866,7 @@
       "country": "CH",
       "station_type": "lift-top",
       "lift_type": "surface",
-      "connections": [
-        { "to": "lift_8216398_base", "name": "Babylift Planachaux", "type": "slope", "difficulty": "green" }
-      ]
+      "connections": []
     },
     {
       "id": "lift_96366493_base",
@@ -3835,7 +3879,7 @@
           "to": "lift_96366493_top",
           "name": "Pointe de Nyon",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -3848,7 +3892,7 @@
       "connections": [
         {
           "to": "jct_0150",
-          "name": "Pointe de Nyon to La Combe",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         },
@@ -3871,7 +3915,7 @@
           "to": "lift_149425684_top",
           "name": "Coqs 2",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -3913,7 +3957,7 @@
           "to": "lift_151647586_top",
           "name": "Géant",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -3926,7 +3970,7 @@
       "connections": [
         {
           "to": "lift_151647586_base",
-          "name": "Descent from Géant",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -3949,7 +3993,7 @@
           "to": "lift_197938604_top",
           "name": "Sepaya II",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -3962,13 +4006,13 @@
       "connections": [
         {
           "to": "jct_0139",
-          "name": "Descent from Sepaya II",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
         {
           "to": "lift_24899602_base",
-          "name": "Sepaya II to Sepaya I",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -3991,7 +4035,7 @@
           "to": "lift_198298433_top",
           "name": "Bochasses",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -4004,19 +4048,19 @@
       "connections": [
         {
           "to": "jct_0018",
-          "name": "Descent from Bochasses",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
         {
           "to": "jct_0014",
-          "name": "Bochasses to Morgins-Foilleuse",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         },
         {
           "to": "jct_0207",
-          "name": "Descent from Bochasses",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -4033,7 +4077,7 @@
           "to": "lift_225288644_top",
           "name": "Prodains Express 3S",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -4081,7 +4125,7 @@
           "to": "lift_280176510_top",
           "name": "Poireaux 2",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -4100,7 +4144,7 @@
         },
         {
           "to": "lift_280176510_base",
-          "name": "Descent from Poireaux 2",
+          "name": "Slope (green)",
           "type": "slope",
           "difficulty": "green"
         },
@@ -4141,7 +4185,7 @@
           "to": "lift_280176511_top",
           "name": "Poireaux 1",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -4189,7 +4233,7 @@
           "to": "lift_317027023_top",
           "name": "Écoles 2",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -4211,8 +4255,7 @@
           "name": "Traverse to Chapelle",
           "type": "slope",
           "difficulty": "green"
-        },
-        { "to": "lift_30353553_base", "name": "Return to Trashers", "type": "slope", "difficulty": "green" }
+        }
       ]
     },
     {
@@ -4226,7 +4269,7 @@
           "to": "lift_317027129_top",
           "name": "Dromonts 1",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -4286,7 +4329,7 @@
           "to": "lift_317027261_top",
           "name": "Barmettes",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -4299,9 +4342,15 @@
       "connections": [
         {
           "to": "lift_24916433_base",
-          "name": "Barmettes to Chaux Fleurie",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
+        },
+        {
+          "to": "lift_24916433_base",
+          "name": "Les Barmettes",
+          "type": "slope",
+          "difficulty": "green"
         }
       ]
     },
@@ -4316,7 +4365,7 @@
           "to": "lift_317027562_top",
           "name": "Arare 1",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "jct_0077",
@@ -4364,7 +4413,7 @@
           "to": "lift_317029538_top",
           "name": "Poussinets",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -4377,7 +4426,7 @@
       "connections": [
         {
           "to": "lift_24898714_top",
-          "name": "Poussinets to Super-Châtel",
+          "name": "Slope (green)",
           "type": "slope",
           "difficulty": "green"
         },
@@ -4418,11 +4467,11 @@
           "to": "lift_317029539_top",
           "name": "Débutants",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "lift_317029559_base",
-          "name": "Débutants to Coquelets",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -4490,7 +4539,7 @@
           "to": "lift_317029540_top",
           "name": "Poussins",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -4550,7 +4599,7 @@
           "to": "lift_317029541_top",
           "name": "Tapis de Super Yeti",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -4610,7 +4659,7 @@
           "to": "lift_317029559_top",
           "name": "Coquelets",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -4670,7 +4719,7 @@
           "to": "lift_317312454_top",
           "name": "Pré-la-Vieille",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -4706,7 +4755,7 @@
           "to": "lift_317444742_top",
           "name": "Dahu",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -4719,7 +4768,13 @@
       "connections": [
         {
           "to": "lift_31349026_base",
-          "name": "Dahu to Crêt Béni",
+          "name": "Slope (green)",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_31349026_base",
+          "name": "Traverse to Crêt Béni",
           "type": "slope",
           "difficulty": "green"
         }
@@ -4736,7 +4791,7 @@
           "to": "lift_325533218_top",
           "name": "Télésiège des Portes du Soleil",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -4749,7 +4804,7 @@
       "connections": [
         {
           "to": "jct_0238",
-          "name": "Descent from Télésiège des Portes du Soleil",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         },
@@ -4790,7 +4845,7 @@
           "to": "lift_325533365_top",
           "name": "Gabelou",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -4813,7 +4868,7 @@
           "to": "lift_327582926_top",
           "name": "Truche",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -4843,11 +4898,11 @@
           "to": "lift_327582927_top",
           "name": "Pointe de l'Au",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "lift_8216644_base",
-          "name": "Pointe de l'Au to Champeys",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -4862,13 +4917,13 @@
       "connections": [
         {
           "to": "jct_0019",
-          "name": "Pointe de l'Au to 33 Pierre à Cornieule",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
         {
           "to": "jct_0030",
-          "name": "Pointe de l'Au to Didier Défago Black",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -4891,7 +4946,7 @@
           "to": "lift_327585052_top",
           "name": "Gourtet",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -4921,7 +4976,7 @@
           "to": "lift_332976755_top",
           "name": "Culet 2",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -4944,7 +4999,7 @@
           "to": "lift_332978785_top",
           "name": "Snowly",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -4974,7 +5029,7 @@
           "to": "lift_332980818_top",
           "name": "Chalet Neuf 2",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -4988,7 +5043,7 @@
     },
     {
       "id": "lift_333170100_base",
-      "name": "Chapelle (base)",
+      "name": "Chapelle (Champery) (base)",
       "country": "CH",
       "station_type": "lift-base",
       "lift_type": "surface",
@@ -4997,13 +5052,13 @@
           "to": "lift_333170100_top",
           "name": "Chapelle",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
     {
       "id": "lift_333170100_top",
-      "name": "Chapelle (summit)",
+      "name": "Chapelle (Champery) (summit)",
       "country": "CH",
       "station_type": "lift-top",
       "lift_type": "surface",
@@ -5039,7 +5094,7 @@
           "to": "lift_336811984_top",
           "name": "Loy",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -5069,7 +5124,7 @@
           "to": "lift_362159135_top",
           "name": "Prodains",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -5097,6 +5152,12 @@
           "name": "Crôt",
           "type": "slope",
           "difficulty": "blue"
+        },
+        {
+          "to": "lift_225288644_base",
+          "name": "Traverse to Prodains Express 3S",
+          "type": "slope",
+          "difficulty": "green"
         }
       ]
     },
@@ -5111,7 +5172,7 @@
           "to": "lift_446569623_top",
           "name": "Ardent",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -5124,7 +5185,7 @@
       "connections": [
         {
           "to": "lift_24916417_base",
-          "name": "Ardent to Lindarets",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -5147,7 +5208,7 @@
           "to": "lift_593806449_top",
           "name": "Lift 593806449",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -5183,7 +5244,7 @@
           "to": "lift_677468931_top",
           "name": "Pré la Joux",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -5225,7 +5286,7 @@
           "to": "lift_704966470_top",
           "name": "Dromonts 1",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -5285,7 +5346,7 @@
           "to": "lift_704966471_top",
           "name": "Dromonts 2",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -5351,7 +5412,7 @@
           "to": "lift_704966472_top",
           "name": "Dromonts 2",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -5417,7 +5478,7 @@
           "to": "lift_704966473_top",
           "name": "Dromonts 1",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -5483,9 +5544,8 @@
           "to": "lift_750062606_top",
           "name": "Arare 2",
           "type": "lift",
-          "difficulty": "silver"
-        },
-        { "to": "jct_0077", "name": "Arare 2", "type": "slope", "difficulty": "blue" }
+          "difficulty": "green"
+        }
       ]
     },
     {
@@ -5494,9 +5554,7 @@
       "country": "FR",
       "station_type": "lift-top",
       "lift_type": "surface",
-      "connections": [
-        { "to": "lift_750062606_base", "name": "Arare 2", "type": "slope", "difficulty": "green" }
-      ]
+      "connections": []
     },
     {
       "id": "lift_750062609_base",
@@ -5509,7 +5567,7 @@
           "to": "lift_750062609_top",
           "name": "Cases",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -5551,7 +5609,7 @@
           "to": "lift_800472190_top",
           "name": "Douanier",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -5570,7 +5628,7 @@
         },
         {
           "to": "lift_31770797_top",
-          "name": "Douanier to Tronchey",
+          "name": "Slope (green)",
           "type": "slope",
           "difficulty": "green"
         }
@@ -5587,11 +5645,11 @@
           "to": "lift_1009693206_top",
           "name": "Pierre Longue",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "lift_29288813_base",
-          "name": "Pierre Longue to Rubis",
+          "name": "Slope (green)",
           "type": "slope",
           "difficulty": "green"
         }
@@ -5603,9 +5661,7 @@
       "country": "FR",
       "station_type": "lift-top",
       "lift_type": "chairlift",
-      "connections": [
-        { "to": "lift_8215843_base", "name": "Pierre Longue to Rochassons", "type": "slope", "difficulty": "green" }
-      ]
+      "connections": []
     },
     {
       "id": "lift_1010800534_base",
@@ -5618,7 +5674,7 @@
           "to": "lift_1010800534_top",
           "name": "Linga",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -5631,7 +5687,7 @@
       "connections": [
         {
           "to": "lift_30749922_base",
-          "name": "Linga to Écho Alpin",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         },
@@ -5645,7 +5701,7 @@
     },
     {
       "id": "lift_1019585580_base",
-      "name": "Lac (base)",
+      "name": "Lac (Chatel) (base)",
       "country": "FR",
       "station_type": "lift-base",
       "lift_type": "surface",
@@ -5654,13 +5710,13 @@
           "to": "lift_1019585580_top",
           "name": "Lac",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
     {
       "id": "lift_1019585580_top",
-      "name": "Lac (summit)",
+      "name": "Lac (Chatel) (summit)",
       "country": "FR",
       "station_type": "lift-top",
       "lift_type": "surface",
@@ -5702,7 +5758,7 @@
           "to": "lift_1075520907_top",
           "name": "Conches",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
           "to": "lift_24898714_base",
@@ -5721,7 +5777,7 @@
       "connections": [
         {
           "to": "lift_317029538_base",
-          "name": "Conches to Poussinets",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -5744,7 +5800,7 @@
           "to": "lift_1183443459_top",
           "name": "Lac-Intrêts",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -5780,7 +5836,7 @@
           "to": "lift_1308902671_top",
           "name": "Tapis de l'Aiglon",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -5828,7 +5884,7 @@
           "to": "lift_1325467177_top",
           "name": "Lift 1325467177",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -5858,10 +5914,10 @@
           "to": "lift_23275859_top",
           "name": "Grande Terche",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         },
         {
-          "to": "jct_0321",
+          "to": "jct_0353",
           "name": "Return to Saint-Jean-d'Aulps",
           "type": "slope",
           "difficulty": "green"
@@ -5876,12 +5932,6 @@
       "lift_type": "gondola",
       "connections": [
         {
-          "to": "lift_378209423_base",
-          "name": "Traverse to Têtes",
-          "type": "slope",
-          "difficulty": "green"
-        },
-        {
           "to": "lift_297428605_base",
           "name": "Traverse to Bray",
           "type": "slope",
@@ -5894,28 +5944,10 @@
           "difficulty": "green"
         },
         {
-          "to": "lift_904857550_base",
-          "name": "Traverse to Lanches",
+          "to": "lift_378209423_base",
+          "name": "Traverse to Têtes",
           "type": "slope",
           "difficulty": "green"
-        },
-        {
-          "to": "lift_297428606_base",
-          "name": "Traverse to Esserailloux",
-          "type": "slope",
-          "difficulty": "blue"
-        },
-        {
-          "to": "lift_776556045_base",
-          "name": "Access Lac area",
-          "type": "slope",
-          "difficulty": "green"
-        },
-        {
-          "to": "lift_23275859_base",
-          "name": "La Grande Terche",
-          "type": "slope",
-          "difficulty": "blue"
         }
       ]
     },
@@ -5930,12 +5962,6 @@
           "to": "lift_288892180_top",
           "name": "Chargeau",
           "type": "lift",
-          "difficulty": "silver"
-        },
-        {
-          "to": "lift_378209423_base",
-          "name": "Traverse to Têtes base",
-          "type": "slope",
           "difficulty": "green"
         }
       ]
@@ -5948,10 +5974,16 @@
       "lift_type": "chairlift",
       "connections": [
         {
-          "to": "lift_288893232_base",
-          "name": "Chargeau to Graydon",
+          "to": "lift_297428606_top",
+          "name": "Les Têtes",
           "type": "slope",
-          "difficulty": "blue"
+          "difficulty": "red"
+        },
+        {
+          "to": "jct_0338",
+          "name": "Slope (red)",
+          "type": "slope",
+          "difficulty": "red"
         }
       ]
     },
@@ -5966,12 +5998,6 @@
           "to": "lift_288893232_top",
           "name": "Graydon",
           "type": "lift",
-          "difficulty": "silver"
-        },
-        {
-          "to": "lift_378209423_base",
-          "name": "Traverse to Têtes base",
-          "type": "slope",
           "difficulty": "green"
         }
       ]
@@ -5984,8 +6010,20 @@
       "lift_type": "chairlift",
       "connections": [
         {
+          "to": "jct_0339",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        },
+        {
+          "to": "jct_0342",
+          "name": "Slope (red)",
+          "type": "slope",
+          "difficulty": "red"
+        },
+        {
           "to": "lift_288892180_base",
-          "name": "Graydon to Chargeau",
+          "name": "Graydon",
           "type": "slope",
           "difficulty": "red"
         }
@@ -6002,7 +6040,19 @@
           "to": "lift_297428605_top",
           "name": "Bray",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_23275859_top",
+          "name": "Les Têtes",
+          "type": "slope",
+          "difficulty": "blue"
+        },
+        {
+          "to": "jct_0334",
+          "name": "Slope (red)",
+          "type": "slope",
+          "difficulty": "red"
         }
       ]
     },
@@ -6015,7 +6065,31 @@
       "connections": [
         {
           "to": "lift_23275859_top",
-          "name": "La Bray descent",
+          "name": "La Bray",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_904857550_base",
+          "name": "Les Lanches",
+          "type": "slope",
+          "difficulty": "blue"
+        },
+        {
+          "to": "lift_317020631_base",
+          "name": "Traverse to Terchette",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_378209423_base",
+          "name": "Traverse to Têtes",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_904857550_base",
+          "name": "Traverse to Lanches",
           "type": "slope",
           "difficulty": "green"
         }
@@ -6032,7 +6106,13 @@
           "to": "lift_297428606_top",
           "name": "Esserailloux",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
+        },
+        {
+          "to": "jct_0335",
+          "name": "La Grande Terche",
+          "type": "slope",
+          "difficulty": "red"
         }
       ]
     },
@@ -6044,10 +6124,34 @@
       "lift_type": "surface",
       "connections": [
         {
-          "to": "lift_23275859_top",
-          "name": "Esserailloux descent",
+          "to": "jct_0334",
+          "name": "La Grande Terche",
+          "type": "slope",
+          "difficulty": "red"
+        },
+        {
+          "to": "lift_297428605_base",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
+        },
+        {
+          "to": "lift_317020631_base",
+          "name": "Traverse to Terchette",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_378209423_base",
+          "name": "Traverse to Têtes",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_904857550_base",
+          "name": "Traverse to Lanches",
+          "type": "slope",
+          "difficulty": "green"
         }
       ]
     },
@@ -6062,7 +6166,7 @@
           "to": "lift_317020631_top",
           "name": "Terchette",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -6075,7 +6179,25 @@
       "connections": [
         {
           "to": "lift_23275859_top",
-          "name": "Terchette descent",
+          "name": "Terchette",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_297428605_base",
+          "name": "Traverse to Bray",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_378209423_base",
+          "name": "Traverse to Têtes",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_904857550_base",
+          "name": "Traverse to Lanches",
           "type": "slope",
           "difficulty": "green"
         }
@@ -6092,7 +6214,7 @@
           "to": "lift_378209423_top",
           "name": "Têtes",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -6119,7 +6241,7 @@
     },
     {
       "id": "lift_776556045_base",
-      "name": "Lac (base)",
+      "name": "Lac (Saint-Jean-d'Aulps) (base)",
       "country": "FR",
       "station_type": "lift-base",
       "lift_type": "surface",
@@ -6128,22 +6250,28 @@
           "to": "lift_776556045_top",
           "name": "Lac",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
     {
       "id": "lift_776556045_top",
-      "name": "Lac (summit)",
+      "name": "Lac (Saint-Jean-d'Aulps) (summit)",
       "country": "FR",
       "station_type": "lift-top",
       "lift_type": "surface",
       "connections": [
         {
-          "to": "lift_23275859_top",
-          "name": "Lac descent",
+          "to": "jct_0344",
+          "name": "La Chanterelle",
           "type": "slope",
-          "difficulty": "green"
+          "difficulty": "blue"
+        },
+        {
+          "to": "jct_0335",
+          "name": "Le Lac",
+          "type": "slope",
+          "difficulty": "blue"
         }
       ]
     },
@@ -6158,7 +6286,7 @@
           "to": "lift_904857550_top",
           "name": "Lanches",
           "type": "lift",
-          "difficulty": "silver"
+          "difficulty": "green"
         }
       ]
     },
@@ -6170,8 +6298,344 @@
       "lift_type": "surface",
       "connections": [
         {
-          "to": "lift_23275859_top",
-          "name": "Les Lanches descent",
+          "to": "lift_297428605_base",
+          "name": "Traverse to Bray",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_317020631_base",
+          "name": "Traverse to Terchette",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_378209423_base",
+          "name": "Traverse to Têtes",
+          "type": "slope",
+          "difficulty": "green"
+        }
+      ]
+    },
+    {
+      "id": "lift_315824148_base",
+      "name": "Torchon (base)",
+      "country": "FR",
+      "station_type": "lift-base",
+      "lift_type": "chairlift",
+      "connections": [
+        {
+          "to": "lift_315824148_top",
+          "name": "Torchon",
+          "type": "lift",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_317021227_base",
+          "name": "La Chèvrerie",
+          "type": "slope",
+          "difficulty": "green"
+        }
+      ]
+    },
+    {
+      "id": "lift_315824148_top",
+      "name": "Torchon (summit)",
+      "country": "FR",
+      "station_type": "lift-top",
+      "lift_type": "chairlift",
+      "connections": [
+        {
+          "to": "lift_315824149_base",
+          "name": "Slope (green)",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "jct_0337",
+          "name": "Le Châl",
+          "type": "slope",
+          "difficulty": "red"
+        },
+        {
+          "to": "lift_383430774_base",
+          "name": "Traverse to Follys 2",
+          "type": "slope",
+          "difficulty": "green"
+        }
+      ]
+    },
+    {
+      "id": "lift_315824149_base",
+      "name": "Follys 1 (base)",
+      "country": "FR",
+      "station_type": "lift-base",
+      "lift_type": "surface",
+      "connections": [
+        {
+          "to": "lift_315824149_top",
+          "name": "Follys 1",
+          "type": "lift",
+          "difficulty": "green"
+        },
+        {
+          "to": "jct_0327",
+          "name": "Slope (green)",
+          "type": "slope",
+          "difficulty": "green"
+        }
+      ]
+    },
+    {
+      "id": "lift_315824149_top",
+      "name": "Follys 1 (summit)",
+      "country": "FR",
+      "station_type": "lift-top",
+      "lift_type": "surface",
+      "connections": [
+        {
+          "to": "lift_315824149_base",
+          "name": "La Savine",
+          "type": "slope",
+          "difficulty": "red"
+        },
+        {
+          "to": "jct_0330",
+          "name": "L'Aigle",
+          "type": "slope",
+          "difficulty": "red"
+        },
+        {
+          "to": "lift_315824149_base",
+          "name": "Les Alpages",
+          "type": "slope",
+          "difficulty": "blue"
+        },
+        {
+          "to": "jct_0351",
+          "name": "Eterlou",
+          "type": "slope",
+          "difficulty": "red"
+        },
+        {
+          "to": "lift_383430774_top",
+          "name": "Col des Follys",
+          "type": "slope",
+          "difficulty": "green"
+        }
+      ]
+    },
+    {
+      "id": "lift_383430774_base",
+      "name": "Follys 2 (base)",
+      "country": "FR",
+      "station_type": "lift-base",
+      "lift_type": "surface",
+      "connections": [
+        {
+          "to": "lift_383430774_top",
+          "name": "Follys 2",
+          "type": "lift",
+          "difficulty": "green"
+        }
+      ]
+    },
+    {
+      "id": "lift_383430774_top",
+      "name": "Follys 2 (summit)",
+      "country": "FR",
+      "station_type": "lift-top",
+      "lift_type": "surface",
+      "connections": [
+        {
+          "to": "lift_315824149_top",
+          "name": "Col des Follys",
+          "type": "slope",
+          "difficulty": "green"
+        }
+      ]
+    },
+    {
+      "id": "lift_317021227_base",
+      "name": "Cabri (base)",
+      "country": "FR",
+      "station_type": "lift-base",
+      "lift_type": "surface",
+      "connections": [
+        {
+          "to": "lift_317021227_top",
+          "name": "Cabri",
+          "type": "lift",
+          "difficulty": "green"
+        },
+        {
+          "to": "jct_0333",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        },
+        {
+          "to": "lift_315824148_base",
+          "name": "La Chèvrerie",
+          "type": "slope",
+          "difficulty": "green"
+        }
+      ]
+    },
+    {
+      "id": "lift_317021227_top",
+      "name": "Cabri (summit)",
+      "country": "FR",
+      "station_type": "lift-top",
+      "lift_type": "surface",
+      "connections": [
+        {
+          "to": "lift_317021290_top",
+          "name": "Le Mur",
+          "type": "slope",
+          "difficulty": "red"
+        },
+        {
+          "to": "jct_0332",
+          "name": "Les Sapins Bis",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
+      "id": "lift_317021290_base",
+      "name": "École 2 (base)",
+      "country": "FR",
+      "station_type": "lift-base",
+      "lift_type": "surface",
+      "connections": [
+        {
+          "to": "lift_317021290_top",
+          "name": "École 2",
+          "type": "lift",
+          "difficulty": "green"
+        }
+      ]
+    },
+    {
+      "id": "lift_317021290_top",
+      "name": "École 2 (summit)",
+      "country": "FR",
+      "station_type": "lift-top",
+      "lift_type": "surface",
+      "connections": [
+        {
+          "to": "lift_317021227_base",
+          "name": "École 2",
+          "type": "slope",
+          "difficulty": "blue"
+        },
+        {
+          "to": "lift_317021298_base",
+          "name": "Traverse to Étangs",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_317021976_base",
+          "name": "Traverse to École 1",
+          "type": "slope",
+          "difficulty": "green"
+        }
+      ]
+    },
+    {
+      "id": "lift_317021298_base",
+      "name": "Étangs (base)",
+      "country": "FR",
+      "station_type": "lift-base",
+      "lift_type": "surface",
+      "connections": [
+        {
+          "to": "lift_317021298_top",
+          "name": "Étangs",
+          "type": "lift",
+          "difficulty": "green"
+        }
+      ]
+    },
+    {
+      "id": "lift_317021298_top",
+      "name": "Étangs (summit)",
+      "country": "FR",
+      "station_type": "lift-top",
+      "lift_type": "surface",
+      "connections": [
+        {
+          "to": "lift_317021227_base",
+          "name": "École 1",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_317021227_base",
+          "name": "Étangs",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_317021227_base",
+          "name": "Traverse to Cabri",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_317021290_base",
+          "name": "Traverse to École 2",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_317021976_base",
+          "name": "Traverse to École 1",
+          "type": "slope",
+          "difficulty": "green"
+        }
+      ]
+    },
+    {
+      "id": "lift_317021976_base",
+      "name": "École 1 (base)",
+      "country": "FR",
+      "station_type": "lift-base",
+      "lift_type": "surface",
+      "connections": [
+        {
+          "to": "lift_317021976_top",
+          "name": "École 1",
+          "type": "lift",
+          "difficulty": "green"
+        }
+      ]
+    },
+    {
+      "id": "lift_317021976_top",
+      "name": "École 1 (summit)",
+      "country": "FR",
+      "station_type": "lift-top",
+      "lift_type": "surface",
+      "connections": [
+        {
+          "to": "lift_317021227_base",
+          "name": "Traverse to Cabri",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_317021290_base",
+          "name": "Traverse to École 2",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_317021298_base",
+          "name": "Traverse to Étangs",
           "type": "slope",
           "difficulty": "green"
         }
@@ -6228,7 +6692,7 @@
         },
         {
           "to": "lift_49397555_base",
-          "name": "22 Loquet to Champoussin",
+          "name": "Portes du Soleil",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -6258,7 +6722,7 @@
       "connections": [
         {
           "to": "jct_0006",
-          "name": "Descent from Léchereuse",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -6368,7 +6832,7 @@
       "connections": [
         {
           "to": "jct_0013",
-          "name": "Descent from Morgins-Foilleuse",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -6380,14 +6844,7 @@
       "country": "CH",
       "station_type": "junction",
       "lift_type": null,
-      "connections": [
-        {
-          "to": "lift_198298433_base",
-          "name": "Descent to Champoussin",
-          "type": "slope",
-          "difficulty": "blue"
-        }
-      ]
+      "connections": []
     },
     {
       "id": "jct_0014",
@@ -6398,7 +6855,7 @@
       "connections": [
         {
           "to": "jct_0017",
-          "name": "Descent from Morgins-Foilleuse",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         }
@@ -6413,7 +6870,7 @@
       "connections": [
         {
           "to": "jct_0142",
-          "name": "Descent from Chaux",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         }
@@ -6428,7 +6885,7 @@
       "connections": [
         {
           "to": "lift_8216054_base",
-          "name": "Descent from Chaux",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         }
@@ -6440,14 +6897,7 @@
       "country": "CH",
       "station_type": "junction",
       "lift_type": null,
-      "connections": [
-        {
-          "to": "lift_8216151_base",
-          "name": "Descent to Champoussin",
-          "type": "slope",
-          "difficulty": "red"
-        }
-      ]
+      "connections": []
     },
     {
       "id": "jct_0018",
@@ -6458,13 +6908,13 @@
       "connections": [
         {
           "to": "jct_0140",
-          "name": "Descent from Bochasses",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
         {
           "to": "lift_8216151_base",
-          "name": "Bochasses to Aiguille des Champeys",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -6479,7 +6929,7 @@
       "connections": [
         {
           "to": "jct_0020",
-          "name": "33 Pierre à Cornieule to 20 Col des Portes du Soleil",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         },
@@ -6553,6 +7003,12 @@
       "connections": [
         {
           "to": "jct_0049",
+          "name": "Slope (red)",
+          "type": "slope",
+          "difficulty": "red"
+        },
+        {
+          "to": "jct_0049",
           "name": "Planachaux - Grand Paradis",
           "type": "slope",
           "difficulty": "red"
@@ -6568,13 +7024,13 @@
       "connections": [
         {
           "to": "lift_8215671_base",
-          "name": "Chemin des Jeurs to Mossettes",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
         {
           "to": "lift_29283986_base",
-          "name": "Chemin des Jeurs to Hameau",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -6661,7 +7117,7 @@
         },
         {
           "to": "jct_0122",
-          "name": "Didier Défago Black to Aiguille des Champeys",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -6709,14 +7165,7 @@
       "country": "CH",
       "station_type": "junction",
       "lift_type": null,
-      "connections": [
-        {
-          "to": "lift_8215989_base",
-          "name": "Descent to Morgins",
-          "type": "slope",
-          "difficulty": "blue"
-        }
-      ]
+      "connections": []
     },
     {
       "id": "jct_0034",
@@ -6724,14 +7173,7 @@
       "country": "CH",
       "station_type": "junction",
       "lift_type": null,
-      "connections": [
-        {
-          "to": "lift_8215989_base",
-          "name": "Chalet Neuf to Morgins",
-          "type": "slope",
-          "difficulty": "blue"
-        }
-      ]
+      "connections": []
     },
     {
       "id": "jct_0035",
@@ -6749,14 +7191,35 @@
       ]
     },
     {
-      "id": "jct_0038",
+      "id": "jct_0036",
       "name": "Junction",
       "country": "CH",
       "station_type": "junction",
       "lift_type": null,
       "connections": [
-        { "to": "lift_198298433_base", "name": "Les Bochasses", "type": "slope", "difficulty": "blue" }
+        {
+          "to": "jct_0037",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        }
       ]
+    },
+    {
+      "id": "jct_0037",
+      "name": "Junction",
+      "country": "CH",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0038",
+      "name": "Junction",
+      "country": "CH",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
     },
     {
       "id": "jct_0039",
@@ -6782,7 +7245,7 @@
       "connections": [
         {
           "to": "jct_0041",
-          "name": "16 Grand Conche to 15 Grand Conche",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -6805,7 +7268,7 @@
       "connections": [
         {
           "to": "jct_0043",
-          "name": "Descent from Chemin des Jeurs",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -6835,7 +7298,7 @@
       "connections": [
         {
           "to": "jct_0096",
-          "name": "Fornet to Retour Chavanette",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -6925,7 +7388,7 @@
       "connections": [
         {
           "to": "jct_0051",
-          "name": "Descent from Planachaux - Grand Paradis",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         }
@@ -6940,7 +7403,7 @@
       "connections": [
         {
           "to": "jct_0052",
-          "name": "Descent from Planachaux - Grand Paradis",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         }
@@ -6985,7 +7448,7 @@
       "connections": [
         {
           "to": "jct_0055",
-          "name": "16 Grand Conche to Pauvre Conche",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -7051,6 +7514,12 @@
         {
           "to": "jct_0072",
           "name": "Patenaille",
+          "type": "slope",
+          "difficulty": "red"
+        },
+        {
+          "to": "jct_0072",
+          "name": "Mur Patenaille",
           "type": "slope",
           "difficulty": "red"
         }
@@ -7148,7 +7617,7 @@
       "connections": [
         {
           "to": "lift_24916420_base",
-          "name": "Serraussaix to Séraussaix",
+          "name": "Slope (green)",
           "type": "slope",
           "difficulty": "green"
         }
@@ -7157,6 +7626,29 @@
     {
       "id": "jct_0066",
       "name": "Ripaille",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0067",
+      "name": "23 Conchette",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0068",
+          "name": "23 Conchette",
+          "type": "slope",
+          "difficulty": "black"
+        }
+      ]
+    },
+    {
+      "id": "jct_0068",
+      "name": "23 Conchette",
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
@@ -7225,7 +7717,7 @@
       "connections": [
         {
           "to": "lift_8216350_base",
-          "name": "Descent from Marcheuson",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -7289,6 +7781,52 @@
       ]
     },
     {
+      "id": "jct_0078",
+      "name": "Combette",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0079",
+          "name": "Combette",
+          "type": "slope",
+          "difficulty": "black"
+        }
+      ]
+    },
+    {
+      "id": "jct_0079",
+      "name": "Combette",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0080",
+      "name": "Pauvre Conche",
+      "country": "CH",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0081",
+          "name": "Pauvre Conche",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0081",
+      "name": "Pauvre Conche",
+      "country": "CH",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
       "id": "jct_0082",
       "name": "Junction",
       "country": "CH",
@@ -7297,7 +7835,7 @@
       "connections": [
         {
           "to": "lift_333170100_base",
-          "name": "Descent from Chapelle",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -7360,14 +7898,7 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
-      "connections": [
-        {
-          "to": "jct_0032",
-          "name": "La Perdrix Blanche",
-          "type": "slope",
-          "difficulty": "red"
-        }
-      ]
+      "connections": []
     },
     {
       "id": "jct_0087",
@@ -7406,6 +7937,18 @@
           "difficulty": "blue"
         },
         {
+          "to": "jct_0174",
+          "name": "Stade François Dides",
+          "type": "slope",
+          "difficulty": "blue"
+        },
+        {
+          "to": "jct_0174",
+          "name": "The Stash sous le Télésiège",
+          "type": "slope",
+          "difficulty": "blue"
+        },
+        {
           "to": "lift_8215733_base",
           "name": "The Stash Main Street",
           "type": "slope",
@@ -7419,7 +7962,7 @@
         },
         {
           "to": "jct_0156",
-          "name": "Descent from The Stash",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         },
@@ -7440,7 +7983,7 @@
       "connections": [
         {
           "to": "lift_31349026_base",
-          "name": "Cerf Haut to Crêt Béni",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         },
@@ -7461,7 +8004,7 @@
       "connections": [
         {
           "to": "jct_0185",
-          "name": "Uski to Bambi",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -7506,7 +8049,7 @@
       "connections": [
         {
           "to": "jct_0135",
-          "name": "Blanchot to Belette",
+          "name": "Slope (green)",
           "type": "slope",
           "difficulty": "green"
         }
@@ -7554,9 +8097,7 @@
       "country": "CH",
       "station_type": "junction",
       "lift_type": null,
-      "connections": [
-        { "to": "lift_198298433_base", "name": "Les Bochasses", "type": "slope", "difficulty": "red" }
-      ]
+      "connections": []
     },
     {
       "id": "jct_0098",
@@ -7587,20 +8128,7 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
-      "connections": [
-        {
-          "to": "lift_32312982_base",
-          "name": "Creux",
-          "type": "slope",
-          "difficulty": "black"
-        },
-        {
-          "to": "lift_31738075_base",
-          "name": "Les Creux to Les Gets",
-          "type": "slope",
-          "difficulty": "black"
-        }
-      ]
+      "connections": []
     },
     {
       "id": "jct_0101",
@@ -7638,9 +8166,7 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
-      "connections": [
-        { "to": "lift_24916412_base", "name": "Zore", "type": "slope", "difficulty": "blue" }
-      ]
+      "connections": []
     },
     {
       "id": "jct_0104",
@@ -7656,13 +8182,34 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
-      "connections": [
-        { "to": "lift_1075520907_base", "name": "Conches", "type": "slope", "difficulty": "red" }
-      ]
+      "connections": []
     },
     {
       "id": "jct_0106",
       "name": "Itinénaire Tronchey",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0107",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0108",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
+      "id": "jct_0108",
+      "name": "Junction",
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
@@ -7750,7 +8297,7 @@
       "connections": [
         {
           "to": "jct_0115",
-          "name": "Descent from La Combe",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         },
@@ -7794,7 +8341,7 @@
       "connections": [
         {
           "to": "lift_1075520907_base",
-          "name": "La Combe to Conches",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         }
@@ -7809,7 +8356,7 @@
       "connections": [
         {
           "to": "lift_24898742_base",
-          "name": "Descent from Corbeau",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -7874,7 +8421,7 @@
       "connections": [
         {
           "to": "jct_0123",
-          "name": "Descent from Aiguille des Champeys",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -7904,6 +8451,14 @@
       ]
     },
     {
+      "id": "jct_0125",
+      "name": "Junction",
+      "country": "CH",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
       "id": "jct_0126",
       "name": "Junction",
       "country": "CH",
@@ -7912,15 +8467,61 @@
       "connections": [
         {
           "to": "lift_24898743_base",
-          "name": "Descent from Écottis",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
       ]
     },
     {
+      "id": "jct_0127",
+      "name": "Junction",
+      "country": "CH",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0128",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
+      "id": "jct_0128",
+      "name": "Junction",
+      "country": "CH",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
       "id": "jct_0129",
       "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0130",
+      "name": "Mossettes",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0131",
+          "name": "Mossettes",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0131",
+      "name": "Mossettes",
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
@@ -7932,14 +8533,23 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
-      "connections": [
-        {
-          "to": "lift_8215989_base",
-          "name": "Panoramique to Morgins",
-          "type": "slope",
-          "difficulty": "blue"
-        }
-      ]
+      "connections": []
+    },
+    {
+      "id": "jct_0133",
+      "name": "Junction",
+      "country": "CH",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0134",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
     },
     {
       "id": "jct_0135",
@@ -7950,7 +8560,7 @@
       "connections": [
         {
           "to": "jct_0136",
-          "name": "Belette to Chemin Rural du Riz à l'Auboury",
+          "name": "Slope (green)",
           "type": "slope",
           "difficulty": "green"
         },
@@ -7978,6 +8588,54 @@
       ]
     },
     {
+      "id": "jct_0137",
+      "name": "La Bourgeoise",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0138",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        },
+        {
+          "to": "jct_0313",
+          "name": "Slope (red)",
+          "type": "slope",
+          "difficulty": "red"
+        },
+        {
+          "to": "jct_0314",
+          "name": "La Bourgeoise",
+          "type": "slope",
+          "difficulty": "red"
+        },
+        {
+          "to": "jct_0149",
+          "name": "La Bourgeoise",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0138",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0183",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
       "id": "jct_0139",
       "name": "Junction",
       "country": "CH",
@@ -7994,7 +8652,22 @@
       "connections": [
         {
           "to": "lift_198298433_base",
-          "name": "Descent from Bochasses",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
+      "id": "jct_0141",
+      "name": "Junction",
+      "country": "CH",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0036",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -8038,6 +8711,114 @@
       "station_type": "junction",
       "lift_type": null,
       "connections": []
+    },
+    {
+      "id": "jct_0146",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0147",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        },
+        {
+          "to": "jct_0148",
+          "name": "Slope (green)",
+          "type": "slope",
+          "difficulty": "green"
+        }
+      ]
+    },
+    {
+      "id": "jct_0147",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0149",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        },
+        {
+          "to": "jct_0149",
+          "name": "Slope (red)",
+          "type": "slope",
+          "difficulty": "red"
+        },
+        {
+          "to": "jct_0146",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
+      "id": "jct_0148",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0147",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        },
+        {
+          "to": "jct_0288",
+          "name": "Slope (green)",
+          "type": "slope",
+          "difficulty": "green"
+        }
+      ]
+    },
+    {
+      "id": "jct_0149",
+      "name": "La Bourgeoise",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0137",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        },
+        {
+          "to": "jct_0294",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        },
+        {
+          "to": "jct_0147",
+          "name": "Slope (red)",
+          "type": "slope",
+          "difficulty": "red"
+        },
+        {
+          "to": "jct_0294",
+          "name": "La Bourgeoise",
+          "type": "slope",
+          "difficulty": "red"
+        },
+        {
+          "to": "jct_0147",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
     },
     {
       "id": "jct_0150",
@@ -8144,7 +8925,7 @@
       "connections": [
         {
           "to": "jct_0157",
-          "name": "The Stash to Mossettes",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -8186,7 +8967,7 @@
         },
         {
           "to": "jct_0191",
-          "name": "L'Épervier to Lac Léman",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         }
@@ -8206,6 +8987,29 @@
           "difficulty": "red"
         }
       ]
+    },
+    {
+      "id": "jct_0160",
+      "name": "L'Écureuil",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0161",
+          "name": "L'Écureuil",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0161",
+      "name": "L'Écureuil",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
     },
     {
       "id": "jct_0162",
@@ -8290,6 +9094,12 @@
         {
           "to": "jct_0111",
           "name": "Parchets",
+          "type": "slope",
+          "difficulty": "blue"
+        },
+        {
+          "to": "jct_0111",
+          "name": "Route des Lindarets",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -8435,14 +9245,7 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
-      "connections": [
-        {
-          "to": "lift_24916417_base",
-          "name": "Abricotine",
-          "type": "slope",
-          "difficulty": "blue"
-        }
-      ]
+      "connections": []
     },
     {
       "id": "jct_0178",
@@ -8513,6 +9316,27 @@
       "connections": []
     },
     {
+      "id": "jct_0183",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0138",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        },
+        {
+          "to": "jct_0293",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
       "id": "jct_0184",
       "name": "Route du Clos Baron",
       "country": "FR",
@@ -8536,7 +9360,7 @@
       "connections": [
         {
           "to": "lift_31738075_base",
-          "name": "Bambi to Combe",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -8566,7 +9390,7 @@
       "connections": [
         {
           "to": "lift_24898731_base",
-          "name": "Tronchey to Tour de Don",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -8626,7 +9450,13 @@
       "connections": [
         {
           "to": "lift_31770797_base",
-          "name": "Lac Léman to Tronchey",
+          "name": "Slope (red)",
+          "type": "slope",
+          "difficulty": "red"
+        },
+        {
+          "to": "lift_31770797_base",
+          "name": "Lac Léman",
           "type": "slope",
           "difficulty": "red"
         }
@@ -8683,14 +9513,7 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
-      "connections": [
-        {
-          "to": "lift_24916410_base",
-          "name": "Vaineuve traverse",
-          "type": "slope",
-          "difficulty": "green"
-        }
-      ]
+      "connections": []
     },
     {
       "id": "jct_0196",
@@ -8783,6 +9606,44 @@
       ]
     },
     {
+      "id": "jct_0202",
+      "name": "Jonction Blue Velvet",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0203",
+          "name": "Jonction Blue Velvet",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
+      "id": "jct_0203",
+      "name": "Jonction Blue Velvet",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0204",
+          "name": "Jonction Mossettes",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
+      "id": "jct_0204",
+      "name": "Jonction Mossettes",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
       "id": "jct_0205",
       "name": "Ripaille - Grand Paradis",
       "country": "CH",
@@ -8806,7 +9667,7 @@
       "connections": [
         {
           "to": "lift_225288644_base",
-          "name": "Crôt to Prodains Express 3S",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -8821,7 +9682,7 @@
       "connections": [
         {
           "to": "jct_0208",
-          "name": "Descent from Bochasses",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -8831,6 +9692,52 @@
       "id": "jct_0208",
       "name": "Junction",
       "country": "CH",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0209",
+      "name": "Junction",
+      "country": "CH",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0210",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
+      "id": "jct_0210",
+      "name": "Junction",
+      "country": "CH",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0211",
+      "name": "Les Lanches",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0212",
+          "name": "Les Lanches",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0212",
+      "name": "Les Lanches",
+      "country": "FR",
       "station_type": "junction",
       "lift_type": null,
       "connections": []
@@ -8878,6 +9785,22 @@
           "difficulty": "green"
         }
       ]
+    },
+    {
+      "id": "jct_0216",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0217",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
     },
     {
       "id": "jct_0218",
@@ -8940,6 +9863,21 @@
       ]
     },
     {
+      "id": "jct_0222",
+      "name": "Combette",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0079",
+          "name": "Combette",
+          "type": "slope",
+          "difficulty": "black"
+        }
+      ]
+    },
+    {
       "id": "jct_0223",
       "name": "Aller Chavanette",
       "country": "FR",
@@ -8986,7 +9924,7 @@
       "connections": [
         {
           "to": "jct_0028",
-          "name": "Descent from Mossettes",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -9069,7 +10007,7 @@
       "connections": [
         {
           "to": "lift_30353221_base",
-          "name": "Descent from Chapelle",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -9099,6 +10037,29 @@
       "connections": []
     },
     {
+      "id": "jct_0235",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0236",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
+      "id": "jct_0236",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
       "id": "jct_0237",
       "name": "Biche Bas",
       "country": "FR",
@@ -9119,14 +10080,7 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
-      "connections": [
-        {
-          "to": "lift_8215989_base",
-          "name": "Descent to Morgins",
-          "type": "slope",
-          "difficulty": "red"
-        }
-      ]
+      "connections": []
     },
     {
       "id": "jct_0239",
@@ -9152,7 +10106,7 @@
       "connections": [
         {
           "to": "jct_0020",
-          "name": "Descent from 20 Col des Portes du Soleil",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -9190,7 +10144,7 @@
       "connections": [
         {
           "to": "jct_0150",
-          "name": "Descent from La Combe",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         }
@@ -9228,7 +10182,7 @@
       "connections": [
         {
           "to": "lift_24916937_base",
-          "name": "Descent from Combes",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -9243,14 +10197,45 @@
       "connections": [
         {
           "to": "jct_0255",
-          "name": "Descent from Queyset",
+          "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
         }
       ]
     },
     {
+      "id": "jct_0248",
+      "name": "Pré-la-Joux",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
       "id": "jct_0249",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0250",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0251",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
+      "id": "jct_0251",
       "name": "Junction",
       "country": "FR",
       "station_type": "junction",
@@ -9263,14 +10248,30 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0253",
+      "name": "Les Rhododendrons",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
       "connections": [
         {
-          "to": "lift_677468931_base",
-          "name": "La Casse Noisette",
+          "to": "jct_0254",
+          "name": "Les Rhododendrons",
           "type": "slope",
-          "difficulty": "red"
+          "difficulty": "black"
         }
       ]
+    },
+    {
+      "id": "jct_0254",
+      "name": "Les Rhododendrons",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
     },
     {
       "id": "jct_0255",
@@ -9278,14 +10279,7 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
-      "connections": [
-        {
-          "to": "lift_30749922_base",
-          "name": "Descent from Queyset",
-          "type": "slope",
-          "difficulty": "red"
-        }
-      ]
+      "connections": []
     },
     {
       "id": "jct_0256",
@@ -9293,14 +10287,84 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0257",
+      "name": "Junction",
+      "country": "CH",
+      "station_type": "junction",
+      "lift_type": null,
       "connections": [
         {
-          "to": "lift_30720552_base",
-          "name": "Traverse to Queyset",
+          "to": "jct_0258",
+          "name": "Slope (red)",
           "type": "slope",
-          "difficulty": "green"
+          "difficulty": "red"
         }
       ]
+    },
+    {
+      "id": "jct_0258",
+      "name": "Junction",
+      "country": "CH",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0259",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0260",
+          "name": "Slope (black)",
+          "type": "slope",
+          "difficulty": "black"
+        }
+      ]
+    },
+    {
+      "id": "jct_0260",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0261",
+      "name": "Junction",
+      "country": "CH",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0262",
+          "name": "Slope (red)",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0262",
+      "name": "Junction",
+      "country": "CH",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0263",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
     },
     {
       "id": "jct_0264",
@@ -9308,14 +10372,99 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0265",
+      "name": "Le Linga",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
       "connections": [
         {
-          "to": "lift_8215843_base",
-          "name": "Descent to Rochassons",
+          "to": "jct_0266",
+          "name": "Le Linga",
           "type": "slope",
           "difficulty": "red"
         }
       ]
+    },
+    {
+      "id": "jct_0266",
+      "name": "Le Linga",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0267",
+      "name": "La Forgne",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0268",
+          "name": "La Forgne",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
+      "id": "jct_0268",
+      "name": "La Forgne",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0269",
+      "name": "Le Linga",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0270",
+          "name": "Le Linga",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0270",
+      "name": "Le Linga",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0271",
+      "name": "Le Linga",
+      "country": "CH",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0272",
+          "name": "Le Linga",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0272",
+      "name": "Le Linga",
+      "country": "CH",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
     },
     {
       "id": "jct_0273",
@@ -9346,14 +10495,30 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0276",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
       "connections": [
         {
-          "to": "jct_0213",
-          "name": "Hermine descent to Chamossière",
+          "to": "jct_0277",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
       ]
+    },
+    {
+      "id": "jct_0277",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
     },
     {
       "id": "jct_0278",
@@ -9364,7 +10529,7 @@
       "connections": [
         {
           "to": "lift_31349047_top",
-          "name": "Descent from Bambi",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
@@ -9387,6 +10552,14 @@
       "connections": []
     },
     {
+      "id": "jct_0281",
+      "name": "Free Ride",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
       "id": "jct_0282",
       "name": "La Combe",
       "country": "FR",
@@ -9395,19 +10568,97 @@
       "connections": []
     },
     {
-      "id": "jct_0289",
-      "name": "Creux de la neige",
+      "id": "jct_0283",
+      "name": "Junction",
+      "country": "CH",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0284",
+      "name": "Junction",
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
       "connections": [
         {
-          "to": "lift_32312982_base",
-          "name": "Le Crôt",
+          "to": "jct_0285",
+          "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
         }
       ]
+    },
+    {
+      "id": "jct_0285",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0286",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0287",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0288",
+      "name": "Le Lac",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0148",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
+      "id": "jct_0289",
+      "name": "Creux de la neige",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0290",
+      "name": "snowpark",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0291",
+          "name": "snowpark",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
+      "id": "jct_0291",
+      "name": "snowpark",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
     },
     {
       "id": "jct_0292",
@@ -9425,6 +10676,85 @@
       ]
     },
     {
+      "id": "jct_0293",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0294",
+      "name": "La Bourgeoise",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0137",
+          "name": "La Bourgeoise",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0295",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0296",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0297",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0298",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0299",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0300",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0301",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
       "id": "jct_0302",
       "name": "Françoise Macchi",
       "country": "FR",
@@ -9440,8 +10770,63 @@
       ]
     },
     {
+      "id": "jct_0303",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0304",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0305",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0306",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
       "id": "jct_0307",
       "name": "Arête des Intrets",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0308",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0309",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
+      "id": "jct_0309",
+      "name": "Junction",
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
@@ -9483,9 +10868,23 @@
       "country": "FR",
       "station_type": "junction",
       "lift_type": null,
-      "connections": [
-        { "to": "jct_0095", "name": "Tronchey", "type": "slope", "difficulty": "green" }
-      ]
+      "connections": []
+    },
+    {
+      "id": "jct_0313",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0314",
+      "name": "La Bourgeoise",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
     },
     {
       "id": "jct_0315",
@@ -9496,7 +10895,542 @@
       "connections": []
     },
     {
+      "id": "jct_0316",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0317",
+          "name": "Slope (red)",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0317",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0318",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0319",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
+      "id": "jct_0319",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0320",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0318",
+          "name": "Slope (red)",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
       "id": "jct_0321",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "lift_317021227_base",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
+      "id": "jct_0322",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0323",
+          "name": "Slope (red)",
+          "type": "slope",
+          "difficulty": "red"
+        },
+        {
+          "to": "jct_0338",
+          "name": "Slope (red)",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0323",
+      "name": "Graydon bis",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "lift_288893232_base",
+          "name": "Graydon bis",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
+      "id": "jct_0324",
+      "name": "Les Vous",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0325",
+          "name": "Slope (red)",
+          "type": "slope",
+          "difficulty": "red"
+        },
+        {
+          "to": "jct_0325",
+          "name": "Les Vous",
+          "type": "slope",
+          "difficulty": "black"
+        }
+      ]
+    },
+    {
+      "id": "jct_0325",
+      "name": "Les Vous",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0327",
+          "name": "Slope (red)",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0326",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "lift_288892180_base",
+          "name": "Slope (red)",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0327",
+      "name": "Chemin de la Chèvrerie à Foron",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0340",
+          "name": "Chemin de la Chèvrerie à Foron",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0328",
+      "name": "Chemin Forestier des Follys",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "lift_776556045_base",
+          "name": "Chemin Forestier des Follys",
+          "type": "slope",
+          "difficulty": "red"
+        },
+        {
+          "to": "jct_0329",
+          "name": "Chemin Forestier des Follys",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0329",
+      "name": "Chemin Forestier des Follys",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0330",
+      "name": "Follys",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0331",
+          "name": "Follys",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0331",
+      "name": "Follys",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0343",
+          "name": "Follys",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0332",
+      "name": "Les Sapins Bis",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0333",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        },
+        {
+          "to": "jct_0321",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
+      "id": "jct_0333",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0334",
+      "name": "La Grande Terche",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "lift_297428606_base",
+          "name": "La Grande Terche",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0335",
+      "name": "La Grande Terche",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "lift_23275859_base",
+          "name": "La Grande Terche",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0336",
+      "name": "Le Châl",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "lift_315824148_base",
+          "name": "Le Châl",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0337",
+      "name": "Le Châl",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0338",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0326",
+          "name": "Slope (red)",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0339",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0323",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
+      "id": "jct_0340",
+      "name": "Chemin de la Chèvrerie à Foron",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0341",
+          "name": "Chemin de la Chèvrerie à Foron",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0341",
+      "name": "Chemin de la Chèvrerie à Foron",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "lift_315824148_base",
+          "name": "Chemin de la Chèvrerie à Foron",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0342",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0324",
+          "name": "Slope (red)",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0343",
+      "name": "Follys",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0329",
+          "name": "Slope (red)",
+          "type": "slope",
+          "difficulty": "red"
+        },
+        {
+          "to": "lift_776556045_base",
+          "name": "Follys",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0344",
+      "name": "La Chanterelle",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "lift_23275859_top",
+          "name": "La Chanterelle",
+          "type": "slope",
+          "difficulty": "blue"
+        },
+        {
+          "to": "lift_904857550_base",
+          "name": "Les Lanches",
+          "type": "slope",
+          "difficulty": "green"
+        }
+      ]
+    },
+    {
+      "id": "jct_0345",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0346",
+          "name": "Slope (blue)",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
+      "id": "jct_0346",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "lift_288892180_base",
+          "name": "Slope (red)",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0347",
+      "name": "Les Vous",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0348",
+          "name": "Les Vous",
+          "type": "slope",
+          "difficulty": "black"
+        }
+      ]
+    },
+    {
+      "id": "jct_0348",
+      "name": "Les Vous",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0349",
+      "name": "Les Favières",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0350",
+          "name": "Les Favières",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
+    },
+    {
+      "id": "jct_0350",
+      "name": "Les Favières",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0351",
+      "name": "Eterlou",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": []
+    },
+    {
+      "id": "jct_0352",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "jct_0330",
+          "name": "Slope (red)",
+          "type": "slope",
+          "difficulty": "red"
+        }
+      ]
+    },
+    {
+      "id": "jct_0353",
       "name": "Junction",
       "country": "FR",
       "station_type": "junction",
@@ -9568,21 +11502,6 @@
         {
           "to": "lift_23275859_base",
           "name": "Access Grande Terche gondola",
-          "type": "slope",
-          "difficulty": "green"
-        }
-      ]
-    },
-    {
-      "id": "morgins",
-      "name": "Morgins",
-      "country": "CH",
-      "station_type": "village",
-      "lift_type": null,
-      "connections": [
-        {
-          "to": "lift_8215989_base",
-          "name": "Access Morgins-Foilleuse gondola",
           "type": "slope",
           "difficulty": "green"
         }

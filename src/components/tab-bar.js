@@ -1,7 +1,7 @@
 const TABS = [
-  { view: 'home',   label: 'Home',   icon: '🏠' },
-  { view: 'lifts',  label: 'Lifts',  icon: '🚡' },
-  { view: 'alerts', label: 'Alerts', icon: '⚠️' },
+  { view: 'home',    label: 'Home',    icon: '🏠' },
+  { view: 'resorts', label: 'Resorts', icon: '🏔️' },
+  { view: 'alerts',  label: 'Alerts',  icon: '⚠️' },
 ];
 
 class TabBar extends HTMLElement {
@@ -24,7 +24,7 @@ class TabBar extends HTMLElement {
     });
   }
 
-  /** The currently active view name ('home' | 'lifts' | 'alerts'). */
+  /** The currently active view name ('home' | 'resorts' | 'alerts'). */
   get active() { return this.#active; }
 
   /** Set the active tab's visual state without dispatching 'change'. */

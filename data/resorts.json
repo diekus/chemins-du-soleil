@@ -1,11 +1,21 @@
 {
   "_meta": {
-    "scope": "Hand-maintained resort-level centroids for the Live Conditions Dashboard's nearest-resort geolocation match. French side only — open-piste (the live weather/avalanche/lift-status source) doesn't cover the Swiss side yet. `slug` doubles as the open-piste resort slug.",
-    "schema_version": "1"
+    "scope": "Hand-maintained resort-level centroids for the Live Conditions Dashboard's nearest-resort geolocation match and for the Resorts tab's overview list. Covers all thirteen Portes du Soleil resorts, including Roc d'Enfer St Jean d'Aulps — a self-contained 16-lift/32-piste sub-domain (Saint-Jean-d'Aulps + La Chèvrerie sectors) that IS fully routable in data/network.json, just not lift-linked to the rest of Portes du Soleil, so routes never cross between it and the main network. `slug` doubles as the open-piste resort slug where open-piste has a matching entry — as of 2026-08, that's avoriaz, morzine, chatel, les-gets, chapelle-abondance, abondance, torgon and st-jean-aulps; open-piste has no record at all for morgins, champoussin, les-crosets, val-dilliez or champery, so those resorts only ever show live Open-Meteo weather, with avalanche risk reported as unavailable rather than guessed.",
+    "schema_version": "2"
   },
   "resorts": [
-    { "slug": "avoriaz", "name": "Avoriaz", "country": "FR", "elevation": 1800, "lat": 46.1919, "lon": 6.7719 },
-    { "slug": "morzine", "name": "Morzine", "country": "FR", "elevation": 1000, "lat": 46.1791, "lon": 6.7093 },
-    { "slug": "chatel",  "name": "Châtel",  "country": "FR", "elevation": 1200, "lat": 46.2632, "lon": 6.8305 }
+    { "slug": "avoriaz",           "name": "Avoriaz",                     "country": "FR", "elevation": 1800, "lat": 46.1919, "lon": 6.7719 },
+    { "slug": "morzine",           "name": "Morzine",                     "country": "FR", "elevation": 1000, "lat": 46.1791, "lon": 6.7093 },
+    { "slug": "les-gets",          "name": "Les Gets",                    "country": "FR", "elevation": 1172, "lat": 46.1606, "lon": 6.6708 },
+    { "slug": "chatel",            "name": "Châtel",                      "country": "FR", "elevation": 1200, "lat": 46.2632, "lon": 6.8305 },
+    { "slug": "chapelle-abondance","name": "La Chapelle-d'Abondance",     "country": "FR", "elevation": 1020, "lat": 46.2961, "lon": 6.7881 },
+    { "slug": "abondance",         "name": "Abondance",                   "country": "FR", "elevation": 930,  "lat": 46.2797, "lon": 6.7228 },
+    { "slug": "st-jean-aulps",     "name": "Roc d'Enfer St Jean d'Aulps", "country": "FR", "elevation": 950,  "lat": 46.2148, "lon": 6.6317 },
+    { "slug": "torgon",            "name": "Torgon",                      "country": "CH", "elevation": 1085, "lat": 46.3203, "lon": 6.8764 },
+    { "slug": "morgins",           "name": "Morgins",                     "country": "CH", "elevation": 1350, "lat": 46.2382, "lon": 6.8519 },
+    { "slug": "champoussin",       "name": "Champoussin",                 "country": "CH", "elevation": 1597, "lat": 46.2083, "lon": 6.8629 },
+    { "slug": "les-crosets",       "name": "Les Crosets",                 "country": "CH", "elevation": 1670, "lat": 46.1840, "lon": 6.8349 },
+    { "slug": "val-dilliez",       "name": "Val-d'Illiez",                "country": "CH", "elevation": 948,  "lat": 46.2000, "lon": 6.9000 },
+    { "slug": "champery",          "name": "Champéry",                    "country": "CH", "elevation": 1055, "lat": 46.1830, "lon": 6.8670 }
   ]
 }

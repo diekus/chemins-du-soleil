@@ -1,7 +1,8 @@
 import { loadGraph } from './graph.js';
 import { findRoutes } from './pathfinder.js';
 import { fetchWeather } from './weather.js';
-import { fetchOpenPiste, mergeConditions } from './conditions.js';
+import { fetchOpenPiste, readAvalanche } from './conditions.js';
+import { nearestResort, VICINITY_KM } from './geo.js';
 import './components/station-input.js';
 import './components/difficulty-selector.js';
 import './components/preference-selector.js';
@@ -10,7 +11,7 @@ import './components/tab-bar.js';
 import './components/location-gate.js';
 import './components/weather-hero.js';
 import './components/avalanche-banner.js';
-import './components/lift-status-list.js';
+import './components/resort-conditions-list.js';
 
 const form       = document.querySelector('.search-form');
 const startEl    = document.querySelector('station-input[name="start"]');
@@ -22,25 +23,35 @@ const errorEl    = document.querySelector('.form-error');
 const gateEl     = document.querySelector('location-gate');
 const heroEl     = document.querySelector('weather-hero');
 const homeAvalancheEl   = document.querySelector('#view-home avalanche-banner');
-const liftsEl           = document.querySelector('#view-lifts lift-status-list');
 const alertsAvalancheEl = document.querySelector('#view-alerts avalanche-banner');
-const alertsLiftsEl     = document.querySelector('#view-alerts lift-status-list');
 const alertsContentEl   = document.querySelector('.alerts-content');
 const alertsEmptyEl     = document.querySelector('.alerts-empty');
 const headerEl          = document.querySelector('.app-header');
 const headerTempEl      = document.querySelector('.header-temp');
-
-alertsLiftsEl.closuresOnly = true;
+const resortsOverviewEl = document.querySelector('resort-conditions-list');
 
 // ── Resort resolution (geolocation / manual pick) ───────────────────────────
 
 const RESORT_STORAGE_KEY = 'cds:selected-resort';
 let currentResort = null;
 
+let resolveResortsReady;
+const resortsReady = new Promise(resolve => { resolveResortsReady = resolve; });
+
 async function initLocation() {
   const res     = await fetch('data/resorts.json');
   const { resorts } = await res.json();
   gateEl.resorts = resorts;
+  resolveResortsReady(resorts);
+
+  // The live weather card is only meaningful on the mountain. Silently
+  // re-check geolocation on every load (independent of how the resort was
+  // resolved) and hide the card if the user isn't near any known resort.
+  heroEl.hidden = true;
+  checkVicinity(resorts).then(inVicinity => {
+    heroEl.hidden = !inVicinity;
+    updateHeaderTemp();
+  });
 
   const savedSlug = localStorage.getItem(RESORT_STORAGE_KEY);
   const saved     = savedSlug && resorts.find(r => r.slug === savedSlug);
@@ -49,6 +60,21 @@ async function initLocation() {
   } else {
     gateEl.hidden = false;
   }
+}
+
+/** Resolves true if the browser's current position is within VICINITY_KM of any resort. */
+function checkVicinity(resorts) {
+  return new Promise(resolve => {
+    if (!('geolocation' in navigator)) { resolve(false); return; }
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        const nearest = nearestResort(pos.coords.latitude, pos.coords.longitude, resorts);
+        resolve(nearest != null && nearest.km <= VICINITY_KM);
+      },
+      () => resolve(false),
+      { timeout: 10000, maximumAge: 300000 },
+    );
+  });
 }
 
 gateEl.addEventListener('resolved', e => {
@@ -67,9 +93,7 @@ function onResortResolved(resort, live) {
   // Reset to loading state while fresh conditions are fetched.
   heroEl.data           = undefined;
   homeAvalancheEl.data  = undefined;
-  liftsEl.lifts         = undefined;
   alertsAvalancheEl.data = undefined;
-  alertsLiftsEl.lifts    = undefined;
   alertsEmptyEl.hidden   = true;
   setAlertsAvailable(false);
   loadConditions(resort, live);
@@ -77,7 +101,7 @@ function onResortResolved(resort, live) {
 
 function loadConditions(resort, live) {
   loadWeather(resort, live);
-  loadAvalancheAndLifts(resort);
+  loadAvalanche(resort);
 }
 
 // ── Weather ──────────────────────────────────────────────────────────────────
@@ -110,63 +134,33 @@ function setHeroData(resort, live, weather) {
   headerTempEl.textContent = `${Math.round(weather.temp)}°C`;
 }
 
-// ── Avalanche risk + lift status ────────────────────────────────────────────
+// ── Avalanche risk ───────────────────────────────────────────────────────────
 
 const CONDITIONS_CACHE_PREFIX = 'cds:conditions:';
-let staticAvalanche  = null; // { [slug]: { level, sector, note } }
-let staticLiftStatus = null; // { [slug]: [{ name, status }] }
 
-async function loadStaticFallbacks() {
-  if (staticAvalanche && staticLiftStatus) return;
-  const [avaRes, liftRes] = await Promise.all([
-    fetch('data/avalanche.json'),
-    fetch('data/lift-status.json'),
-  ]);
-  staticAvalanche  = (await avaRes.json()).resorts;
-  staticLiftStatus = (await liftRes.json()).resorts;
-}
-
-async function loadAvalancheAndLifts(resort) {
+async function loadAvalanche(resort) {
   const cacheKey = CONDITIONS_CACHE_PREFIX + resort.slug;
-  await loadStaticFallbacks();
-  const staticAva   = staticAvalanche[resort.slug] ?? null;
-  const staticLifts = staticLiftStatus[resort.slug] ?? null;
-
   try {
     const openPiste = await fetchOpenPiste(resort.slug);
-    const merged  = mergeConditions(openPiste, staticAva, staticLifts);
-    const payload = { ...merged, updatedAt: Date.now() };
+    const read    = readAvalanche(openPiste);
+    const payload = { ...read, updatedAt: Date.now() };
     localStorage.setItem(cacheKey, JSON.stringify(payload));
     applyConditions(payload);
   } catch (err) {
     console.error('open-piste fetch failed:', err);
     const cached = localStorage.getItem(cacheKey);
-    if (cached) {
-      applyConditions(JSON.parse(cached));
-    } else {
-      // No live data and no cache yet — render the static fallback so the
-      // dashboard is never blank, without claiming it was just fetched.
-      const merged = mergeConditions({}, staticAva, staticLifts);
-      applyConditions({ ...merged, updatedAt: null });
-    }
+    applyConditions(cached ? JSON.parse(cached) : { avalanche: null, updatedAt: null });
   }
 }
 
-function applyConditions({ avalanche, lifts, liftsLive, updatedAt }) {
+function applyConditions({ avalanche, updatedAt }) {
   const avalancheData = avalanche ? { ...avalanche, updatedAt } : null;
-  const estimated      = lifts != null && !liftsLive;
 
-  homeAvalancheEl.data    = avalancheData;
-  liftsEl.lifts           = lifts;
-  liftsEl.estimated       = estimated;
+  homeAvalancheEl.data   = avalancheData;
+  alertsAvalancheEl.data = avalancheData;
 
-  alertsAvalancheEl.data  = avalancheData;
-  alertsLiftsEl.lifts     = lifts;
-  alertsLiftsEl.estimated = estimated;
-
-  const closedCount = (lifts ?? []).filter(l => l.status !== 'open').length;
-  const riskLevel   = avalancheData?.level ?? 0;
-  const hasAlerts   = riskLevel >= 2 || closedCount > 0;
+  const riskLevel = avalancheData?.level ?? 0;
+  const hasAlerts = riskLevel >= 2;
   alertsContentEl.hidden = !hasAlerts;
   alertsEmptyEl.hidden    = hasAlerts;
   setAlertsAvailable(hasAlerts);
@@ -184,11 +178,52 @@ function setAlertsAvailable(available) {
   }
 }
 
+// ── Resorts overview (all Portes du Soleil resorts) ─────────────────────────
+// Weather is always live (Open-Meteo covers any coordinate). Avalanche risk is
+// live only where open-piste has a matching resort record; everywhere else it
+// reports as unavailable rather than guessing — see data/resorts.json _meta.
+
+const RESORTS_OVERVIEW_CACHE_KEY = 'cds:resorts-overview';
+let resortsOverviewStarted = false;
+
+async function loadResortsOverview() {
+  if (resortsOverviewStarted) return;
+  resortsOverviewStarted = true;
+
+  resortsOverviewEl.resorts = undefined;
+  const resorts = await resortsReady;
+
+  try {
+    const results = await Promise.all(resorts.map(loadResortSummary));
+    resortsOverviewEl.resorts = results;
+    localStorage.setItem(RESORTS_OVERVIEW_CACHE_KEY, JSON.stringify(results));
+  } catch (err) {
+    console.error('Resort overview fetch failed:', err);
+    const cached = localStorage.getItem(RESORTS_OVERVIEW_CACHE_KEY);
+    resortsOverviewEl.resorts = cached ? JSON.parse(cached) : null;
+  }
+}
+
+async function loadResortSummary(resort) {
+  const [weather, openPiste] = await Promise.all([
+    fetchWeather(resort.lat, resort.lon).catch(() => null),
+    fetchOpenPiste(resort.slug).catch(() => ({})),
+  ]);
+  const { avalanche } = readAvalanche(openPiste);
+  return {
+    slug:      resort.slug,
+    name:      resort.name,
+    country:   resort.country,
+    elevation: resort.elevation,
+    weather,
+    avalanche,
+  };
+}
+
 // ── Header scroll behaviour ─────────────────────────────────────────────────
 // The header shrinks once the page has scrolled at all, and shows the current
 // temperature once the weather hero card has scrolled out of view — so the
-// reading stays visible while browsing lift status / route results further
-// down the page.
+// reading stays visible while browsing route results further down the page.
 
 // Two thresholds, not one: toggling --compact changes the header's own height
 // (padding/logo size), which shifts scrollY right at the boundary and can
@@ -211,7 +246,7 @@ window.addEventListener('scroll', updateHeaderCompact, { passive: true });
 let heroOutOfView = false;
 
 function updateHeaderTemp() {
-  headerEl.classList.toggle('app-header--show-temp', heroOutOfView && !views.home.hidden);
+  headerEl.classList.toggle('app-header--show-temp', heroOutOfView && !views.home.hidden && !heroEl.hidden);
 }
 
 const heroObserver = new IntersectionObserver(([entry]) => {
@@ -224,9 +259,9 @@ heroObserver.observe(heroEl);
 
 const tabBar = document.querySelector('tab-bar');
 const views  = {
-  home:   document.getElementById('view-home'),
-  lifts:  document.getElementById('view-lifts'),
-  alerts: document.getElementById('view-alerts'),
+  home:    document.getElementById('view-home'),
+  resorts: document.getElementById('view-resorts'),
+  alerts:  document.getElementById('view-alerts'),
 };
 // Hidden until conditions data actually confirms there's something to alert about.
 tabBar.alertsAvailable = false;
@@ -240,6 +275,7 @@ function showView(view) {
   for (const [name, el] of Object.entries(views)) el.hidden = name !== view;
   tabBar.active = view;
   updateHeaderTemp();
+  if (view === 'resorts') loadResortsOverview();
 }
 
 tabBar.addEventListener('change', e => {

@@ -52,41 +52,6 @@ function mapLiftType(t) { return LIFT_TYPE[t] ?? 'chairlift'; }
 function liftBaseId(id) { return `lift_${id}_base`; }
 function liftTopId(id)  { return `lift_${id}_top`;  }
 
-// ── Saint-Jean-d'Aulps lifts ───────────────────────────────────────────────────
-// SJA / Grande Terche ski domain was absent from the OSM source data bounding box.
-// Lift coordinates fetched manually from OSM way API (api.openstreetmap.org).
-// Note: SJA connects to the main Portes du Soleil circuit by shuttle bus only —
-// there is no ski-in/ski-out link. It is modelled as an independent sub-domain.
-const SJA_LIFTS = [
-  // Grande Terche gondola: OSM way is recorded TOP→BASE; we swap to BASE→TOP here
-  { id: 23275859,  name: 'Grande Terche',  lift_type: 'gondola',
-    base_station: { lat: 46.2148862, lon: 6.6318332 },
-    top_station:  { lat: 46.2260879, lon: 6.6413460 }, resort_nearest: "Saint-Jean-d'Aulps" },
-  { id: 288892180, name: 'Chargeau',       lift_type: 'chair_lift',
-    base_station: { lat: 46.2037647, lon: 6.6244991 },
-    top_station:  { lat: 46.2068564, lon: 6.6296275 }, resort_nearest: "Saint-Jean-d'Aulps" },
-  { id: 288893232, name: 'Graydon',        lift_type: 'chair_lift',
-    base_station: { lat: 46.2034036, lon: 6.6239976 },
-    top_station:  { lat: 46.1988470, lon: 6.6125981 }, resort_nearest: "Saint-Jean-d'Aulps" },
-  { id: 297428605, name: 'Bray',           lift_type: 'platter',
-    base_station: { lat: 46.2141840, lon: 6.6321726 },
-    top_station:  { lat: 46.2116980, lon: 6.6315109 }, resort_nearest: "Saint-Jean-d'Aulps" },
-  { id: 297428606, name: 'Esserailloux',   lift_type: 'platter',
-    base_station: { lat: 46.2183759, lon: 6.6405357 },
-    top_station:  { lat: 46.2123912, lon: 6.6327457 }, resort_nearest: "Saint-Jean-d'Aulps" },
-  { id: 317020631, name: 'Terchette',      lift_type: 'platter',
-    base_station: { lat: 46.2142762, lon: 6.6313429 },
-    top_station:  { lat: 46.2126431, lon: 6.6303774 }, resort_nearest: "Saint-Jean-d'Aulps" },
-  { id: 378209423, name: 'Têtes',          lift_type: 'chair_lift',
-    base_station: { lat: 46.2140004, lon: 6.6330406 },
-    top_station:  { lat: 46.2070802, lon: 6.6290738 }, resort_nearest: "Saint-Jean-d'Aulps" },
-  { id: 776556045, name: 'Lac',            lift_type: 'platter',
-    base_station: { lat: 46.2149274, lon: 6.6220646 },
-    top_station:  { lat: 46.2176749, lon: 6.6282352 }, resort_nearest: "Saint-Jean-d'Aulps" },
-  { id: 904857550, name: 'Lanches',        lift_type: 'platter',
-    base_station: { lat: 46.2110545, lon: 6.6283588 },
-    top_station:  { lat: 46.2124062, lon: 6.6310332 }, resort_nearest: "Saint-Jean-d'Aulps" },
-];
 
 function haversine(a, b) {
   const R = 6371000;
@@ -130,9 +95,7 @@ class UF {
 const usedLifts  = lifts.filter(l => !EXCLUDED_RESORTS.has(l.resort_nearest));
 const usedLiftIds = new Set(usedLifts.map(l => l.id));
 const liftsById  = new Map(lifts.map(l => [l.id, l]));
-// Merge manual SJA lifts into liftsById so makeLiftNode can resolve their metadata
-for (const lift of SJA_LIFTS) liftsById.set(lift.id, lift);
-const allUsedLifts = [...usedLifts, ...SJA_LIFTS];
+const allUsedLifts = usedLifts;
 const pistesById = new Map(pistes.map(p => [p.id, p]));
 
 // Spatial data for all points
@@ -302,63 +265,43 @@ const CROSS_SECTOR = [
   { from: 'champery', to: liftBaseId(8216335), name: 'Access cable car',         type: 'slope', difficulty: 'green' },
 ];
 
-// ── Saint-Jean-d'Aulps internal routing edges ─────────────────────────────────
-// SJA has no OSM piste data to drive junction clustering, so inter-lift routes
-// are specified manually based on the known ski area topology.
+// ── Saint-Jean-d'Aulps village access ─────────────────────────────────────────
+// The village itself isn't an OSM piste/lift node, so its walk-in link to the
+// gondola base is specified manually — same treatment as morzine-village and
+// champery below. All other Roc d'Enfer connectivity (both the Saint-Jean-
+// d'Aulps and La Chèvrerie sectors, lift-linked via Col de Graydon/Col des
+// Follys) comes from real OSM piste geometry through the standard clustering
+// pipeline, same as every other resort.
 const SJA_SECTOR = [
-  // Village ↔ gondola base
   { from: 'saint-jean-daulps', to: liftBaseId(23275859),
     name: "Access Grande Terche gondola", type: 'slope', difficulty: 'green' },
   { from: liftBaseId(23275859), to: 'saint-jean-daulps',
     name: "Return to Saint-Jean-d'Aulps", type: 'slope', difficulty: 'green' },
 
-  // Gondola top → mid-mountain lift bases (plateau ~1500m)
-  { from: liftTopId(23275859), to: liftBaseId(378209423),
-    name: 'Traverse to Têtes',       type: 'slope', difficulty: 'green' },
-  { from: liftTopId(23275859), to: liftBaseId(297428605),
-    name: 'Traverse to Bray',        type: 'slope', difficulty: 'green' },
-  { from: liftTopId(23275859), to: liftBaseId(317020631),
-    name: 'Traverse to Terchette',   type: 'slope', difficulty: 'green' },
-  { from: liftTopId(23275859), to: liftBaseId(904857550),
-    name: 'Traverse to Lanches',     type: 'slope', difficulty: 'green' },
-  { from: liftTopId(23275859), to: liftBaseId(297428606),
-    name: 'Traverse to Esserailloux', type: 'slope', difficulty: 'blue' },
-  { from: liftTopId(23275859), to: liftBaseId(776556045),
-    name: 'Access Lac area',         type: 'slope', difficulty: 'green' },
-
-  // Gondola top → main descent back to valley
-  { from: liftTopId(23275859), to: liftBaseId(23275859),
-    name: 'La Grande Terche',        type: 'slope', difficulty: 'blue' },
-
-  // Têtes summit → upper Chargeau / Graydon sector
+  // Têtes summit → Chargeau/Graydon sector: OSM has no piste geometry tracing
+  // this ~500-550m descent (matches map pistes #2 "Les Têtes" red / #10
+  // "Chargeau" red), so junction clustering can't bridge it automatically.
   { from: liftTopId(378209423), to: liftBaseId(288892180),
-    name: 'Descent to Chargeau',     type: 'slope', difficulty: 'blue' },
+    name: 'Descent to Chargeau', type: 'slope', difficulty: 'blue' },
   { from: liftTopId(378209423), to: liftBaseId(288893232),
-    name: 'Descent to Graydon',      type: 'slope', difficulty: 'red'  },
+    name: 'Descent to Graydon',  type: 'slope', difficulty: 'red'  },
 
-  // Cross-lift traverses at upper sector (~1530m)
-  { from: liftTopId(288892180), to: liftBaseId(288893232),
-    name: 'Chargeau to Graydon',     type: 'slope', difficulty: 'blue' },
-  { from: liftTopId(288893232), to: liftBaseId(288892180),
-    name: 'Graydon to Chargeau',     type: 'slope', difficulty: 'red'  },
+  // Follys 1 and Follys 2 are twin drag lifts ~12m apart at Col des Follys —
+  // effectively the same physical point, but lift-station clusters never
+  // merge with each other, so Follys 2's arrivals can't reach the pistes
+  // already wired from Follys 1's top.
+  { from: liftTopId(315824149), to: liftTopId(383430774),
+    name: 'Col des Follys', type: 'slope', difficulty: 'green' },
+  { from: liftTopId(383430774), to: liftTopId(315824149),
+    name: 'Col des Follys', type: 'slope', difficulty: 'green' },
 
-  // Upper sector → back to mid-plateau (return to gondola area)
-  { from: liftBaseId(288892180), to: liftBaseId(378209423),
-    name: 'Traverse to Têtes base',  type: 'slope', difficulty: 'green' },
-  { from: liftBaseId(288893232), to: liftBaseId(378209423),
-    name: 'Traverse to Têtes base',  type: 'slope', difficulty: 'green' },
-
-  // Small lift tops → back to gondola top plateau
-  { from: liftTopId(297428605), to: liftTopId(23275859),
-    name: 'La Bray descent',         type: 'slope', difficulty: 'green' },
-  { from: liftTopId(317020631), to: liftTopId(23275859),
-    name: 'Terchette descent',       type: 'slope', difficulty: 'green' },
-  { from: liftTopId(904857550), to: liftTopId(23275859),
-    name: 'Les Lanches descent',     type: 'slope', difficulty: 'green' },
-  { from: liftTopId(297428606), to: liftTopId(23275859),
-    name: 'Esserailloux descent',    type: 'slope', difficulty: 'blue'  },
-  { from: liftTopId(776556045), to: liftTopId(23275859),
-    name: 'Lac descent',             type: 'slope', difficulty: 'green' },
+  // La Chèvrerie is one shared base area/car park (~580m across, below the
+  // OSM-piste-tracing gap threshold) serving Torchon plus the beginner
+  // cluster (Cabri/École 1/École 2/Étangs) — a flat walk, not a piste run.
+  { from: liftBaseId(315824148), to: liftBaseId(317021227),
+    name: 'La Chèvrerie', type: 'slope', difficulty: 'green' },
+  { from: liftBaseId(317021227), to: liftBaseId(315824148),
+    name: 'La Chèvrerie', type: 'slope', difficulty: 'green' },
 ];
 
 // Village node initialisation (ensure keys exist before manual edges are applied)
@@ -426,12 +369,25 @@ console.log(`  → Auto-bridged ${bridgesAdded} lift-to-lift gaps (${passes} pas
 const nodes = [];
 const addedNodes = new Set();
 
+// Some lift names collide across different resorts (e.g. two unrelated lifts
+// both called "Lac"). Disambiguate by appending the resort name wherever a
+// bare name is shared by lifts at more than one resort — otherwise the search
+// UI shows identical entries and picking the wrong one silently lands in an
+// unrelated, disconnected part of the graph.
+const resortsByName = new Map(); // bare lift name → Set(resort_nearest)
+for (const lift of allUsedLifts) {
+  if (!resortsByName.has(lift.name)) resortsByName.set(lift.name, new Set());
+  resortsByName.get(lift.name).add(lift.resort_nearest);
+}
+
 // Helper to build meta for a cluster representative node
 function makeLiftNode(repId) {
   const isBase = repId.endsWith('_base');
   const liftId = parseInt(repId.split('_')[1]);
   const lift   = liftsById.get(liftId);
-  const name   = lift?.name ?? `Lift ${liftId}`;
+  const bareName = lift?.name ?? `Lift ${liftId}`;
+  const ambiguous = (resortsByName.get(bareName)?.size ?? 0) > 1;
+  const name = ambiguous && lift?.resort_nearest ? `${bareName} (${lift.resort_nearest})` : bareName;
   return {
     id:           repId,
     name:         `${name} (${isBase ? 'base' : 'summit'})`,
@@ -456,7 +412,7 @@ for (const [ptId, pt] of pistePts) {
   }
 }
 
-// Add lift nodes first (for all used lifts including SJA manual lifts)
+// Add lift nodes first (for all used lifts)
 for (const lift of allUsedLifts) {
   for (const id of [liftBaseId(lift.id), liftTopId(lift.id)]) {
     const rep = uf.find(id);
