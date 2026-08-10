@@ -22,7 +22,6 @@ const resultEl   = document.querySelector('route-result');
 const errorEl    = document.querySelector('.form-error');
 const gateEl     = document.querySelector('location-gate');
 const heroEl     = document.querySelector('weather-hero');
-const homeAvalancheEl   = document.querySelector('#view-home avalanche-banner');
 const alertsAvalancheEl = document.querySelector('#view-alerts avalanche-banner');
 const alertsContentEl   = document.querySelector('.alerts-content');
 const alertsEmptyEl     = document.querySelector('.alerts-empty');
@@ -91,9 +90,9 @@ function onResortResolved(resort, live) {
   currentResort = resort;
   gateEl.hidden = true;
   // Reset to loading state while fresh conditions are fetched.
-  heroEl.data           = undefined;
-  homeAvalancheEl.data  = undefined;
-  alertsAvalancheEl.data = undefined;
+  heroEl.data             = undefined;
+  heroEl.avalanche        = undefined;
+  alertsAvalancheEl.data  = undefined;
   alertsEmptyEl.hidden   = true;
   setAlertsAvailable(false);
   loadConditions(resort, live);
@@ -156,8 +155,8 @@ async function loadAvalanche(resort) {
 function applyConditions({ avalanche, updatedAt }) {
   const avalancheData = avalanche ? { ...avalanche, updatedAt } : null;
 
-  homeAvalancheEl.data   = avalancheData;
-  alertsAvalancheEl.data = avalancheData;
+  heroEl.avalanche        = avalancheData;
+  alertsAvalancheEl.data  = avalancheData;
 
   const riskLevel = avalancheData?.level ?? 0;
   const hasAlerts = riskLevel >= 2;
@@ -283,9 +282,6 @@ tabBar.addEventListener('change', e => {
 });
 window.addEventListener('hashchange', () => showView(viewFromHash()));
 showView(viewFromHash());
-
-// Tapping the Home avalanche banner surfaces more detail in the Alerts view.
-homeAvalancheEl.addEventListener('details', () => { location.hash = 'alerts'; });
 
 let graph;
 let nodeMap;

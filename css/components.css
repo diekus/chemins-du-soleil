@@ -171,6 +171,39 @@ weather-hero[hidden] { display: none; }
 .hero-feels strong { font-weight: var(--fw-semibold); }
 .hero-feels span   { opacity: 0.85; }
 
+.hero-avalanche-block {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  background: rgba(255, 200, 87, 0.15);
+  border-radius: var(--r-md);
+  padding: var(--sp-2) var(--sp-3);
+  margin-bottom: var(--sp-4);
+}
+
+.hero-avalanche-icon {
+  flex-shrink: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--r-sm);
+  background: var(--color-hero-warning);
+  color: var(--color-hero-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9375rem;
+}
+
+.hero-avalanche-block strong {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: var(--fw-bold);
+}
+.hero-avalanche-block span {
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+
 .hero-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -203,6 +236,105 @@ weather-hero[hidden] { display: none; }
   font-size: 0.75rem;
   opacity: 0.7;
   margin-top: var(--sp-3);
+}
+
+.hero-toggle {
+  display: block;
+  width: 100%;
+  font-family: var(--font);
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+}
+.hero-toggle:focus-visible {
+  outline: 2px solid var(--color-hero-text);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+.hero-chevron {
+  display: block;
+  text-align: center;
+  font-size: 1rem;
+  opacity: 0.6;
+  margin-top: var(--sp-3);
+}
+
+/* ── Collapsed hero card ───────────────────────────────────────────────────
+   A slim single-row strip — the real use case is route search below it, so
+   this should read at a glance and get out of the way, not compete for
+   attention with a full card. */
+.hero-card--collapsed {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+}
+
+.hero-dot-btn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.hero-dot-btn:focus-visible {
+  outline: 2px solid var(--color-hero-text);
+  outline-offset: 2px;
+  border-radius: 50%;
+}
+
+.hero-toggle--collapsed {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-width: 0; /* allow child truncation inside a flex row */
+}
+
+.hero-compact-place {
+  flex-shrink: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.8125rem;
+  font-weight: var(--fw-semibold);
+  opacity: 0.9;
+}
+
+.hero-compact-temp {
+  flex-shrink: 0;
+  font-size: 1.0625rem;
+  font-weight: var(--fw-bold);
+}
+
+.hero-compact-snow {
+  flex-shrink: 0;
+  font-size: 0.8125rem;
+  opacity: 0.85;
+  white-space: nowrap;
+}
+
+.hero-toggle--collapsed .hero-chevron {
+  margin-top: 0;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.hero-avalanche-line {
+  flex-shrink: 0;
+  white-space: nowrap;
+  color: var(--color-hero-warning);
+  font-weight: var(--fw-semibold);
+  font-size: 0.8125rem;
 }
 
 /* ── avalanche-banner ──────────────────────────────────────────────────────── */

@@ -70,6 +70,7 @@
      Fixed across light/dark except where noted; never used for general UI. */
   --color-hero-bg:          #163A5C;
   --color-hero-text:        #FFFFFF;
+  --color-hero-warning:     #FFC857;
   --color-warning-bg:       #FBF0CE;
   --color-warning-icon:     #755A0E;
   --color-status-open:      #1F9D55;

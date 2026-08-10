@@ -1,7 +1,11 @@
-const COUNTRY_NAME = { FR: 'France', CH: 'Switzerland' };
+const COUNTRY_NAME  = { FR: 'France', CH: 'Switzerland' };
+const RISK_LABELS    = { 1: 'Low', 2: 'Moderate', 3: 'Considerable', 4: 'High', 5: 'Very high' };
+const WARNING_LEVEL  = 2; // avalanche risk at or above this level surfaces in the collapsed card
 
 class WeatherHero extends HTMLElement {
-  #data = undefined; // undefined=loading, null=unavailable, object=rendered
+  #data      = undefined; // undefined=loading, null=unavailable, object=rendered
+  #avalanche = undefined; // undefined=unknown yet, null=no data, object={level,...}
+  #expanded  = false;
 
   /**
    * Assign weather data:
@@ -16,11 +20,20 @@ class WeatherHero extends HTMLElement {
     this.#render();
   }
 
+  /** Assign avalanche risk data: undefined=unknown, null=none, object={level}. */
+  set avalanche(val) {
+    this.#avalanche = val;
+    this.#render();
+  }
+
   connectedCallback() {
     this.#render();
     this.addEventListener('click', e => {
       if (e.target.closest('[data-action="change-resort"]')) {
         this.dispatchEvent(new CustomEvent('change-resort', { bubbles: true }));
+      } else if (e.target.closest('[data-action="toggle"]')) {
+        this.#expanded = !this.#expanded;
+        this.#render();
       }
     });
   }
@@ -29,48 +42,105 @@ class WeatherHero extends HTMLElement {
     const d = this.#data;
     if (d === undefined) { this.innerHTML = this.#loadingHTML();     return; }
     if (d === null)      { this.innerHTML = this.#unavailableHTML(); return; }
-    this.innerHTML = this.#cardHTML(d);
+    this.innerHTML = this.#expanded ? this.#expandedHTML(d) : this.#collapsedHTML(d);
   }
 
-  #cardHTML(d) {
+  #liveBadgeHTML(d) {
+    return `
+      <div class="hero-top">
+        <button type="button" class="hero-live" data-action="change-resort">
+          <span class="hero-live-dot" aria-hidden="true"></span>
+          ${d.live ? 'Live location' : 'Selected resort'}
+        </button>
+      </div>
+    `;
+  }
+
+  /** Compact one-liner used in the collapsed card. */
+  #avalancheLine() {
+    const a = this.#avalanche;
+    if (!a || a.level < WARNING_LEVEL) return '';
+    const label = RISK_LABELS[a.level] ?? 'Unknown';
+    return `
+      <span class="hero-avalanche-line">
+        <span aria-hidden="true">▲</span> ${label}
+      </span>
+    `;
+  }
+
+  /** Fuller badge used in the expanded card — replaces the separate avalanche-banner. */
+  #avalancheBlock() {
+    const a = this.#avalanche;
+    if (!a || a.level < WARNING_LEVEL) return '';
+    const label = RISK_LABELS[a.level] ?? 'Unknown';
+    return `
+      <div class="hero-avalanche-block">
+        <span class="hero-avalanche-icon" aria-hidden="true">▲</span>
+        <div>
+          <strong>Avalanche risk: ${label}</strong>
+          <span>Level ${a.level} of 5</span>
+        </div>
+      </div>
+    `;
+  }
+
+  #collapsedHTML(d) {
+    return `
+      <div class="hero-card hero-card--collapsed">
+        <button type="button" class="hero-dot-btn" data-action="change-resort"
+          aria-label="${d.live ? 'Live location' : 'Selected resort'} — tap to change">
+          <span class="hero-live-dot" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="hero-toggle hero-toggle--collapsed" data-action="toggle" aria-expanded="false" aria-label="Show more weather detail">
+          <span class="hero-compact-place">${d.resortName}</span>
+          <span class="hero-compact-temp">${Math.round(d.temp)}°C</span>
+          <span class="hero-compact-snow"><span aria-hidden="true">❄</span> ${d.freshSnow} cm</span>
+          ${this.#avalancheLine()}
+          <span class="hero-chevron" aria-hidden="true">⌄</span>
+        </button>
+      </div>
+    `;
+  }
+
+  #expandedHTML(d) {
     const countryName = COUNTRY_NAME[d.country] ?? '';
     const updated = d.updatedAt ? this.#relativeTime(d.updatedAt) : null;
 
     return `
       <div class="hero-card">
-        <div class="hero-top">
-          <button type="button" class="hero-live" data-action="change-resort">
-            <span class="hero-live-dot" aria-hidden="true"></span>
-            ${d.live ? 'Live location' : 'Selected resort'}
-          </button>
-        </div>
-        <h2 class="hero-place">${d.resortName}${countryName ? `, ${countryName}` : ''}</h2>
-        <p class="hero-sub">Portes du Soleil · ${d.elevation} m</p>
+        ${this.#liveBadgeHTML(d)}
+        <button type="button" class="hero-toggle" data-action="toggle" aria-expanded="true" aria-label="Show less weather detail">
+          <h2 class="hero-place">${d.resortName}${countryName ? `, ${countryName}` : ''}</h2>
+          <p class="hero-sub">Portes du Soleil · ${d.elevation} m</p>
 
-        <div class="hero-temp-row">
-          <span class="hero-temp">${Math.round(d.temp)}°C</span>
-          <div class="hero-feels">
-            <strong>Feels like ${Math.round(d.feelsLike)}°C</strong>
-            <span>${d.condition}</span>
+          <div class="hero-temp-row">
+            <span class="hero-temp">${Math.round(d.temp)}°C</span>
+            <div class="hero-feels">
+              <strong>Feels like ${Math.round(d.feelsLike)}°C</strong>
+              <span>${d.condition}</span>
+            </div>
           </div>
-        </div>
 
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <span class="hero-stat-label">Fresh snow</span>
-            <span class="hero-stat-value">${d.freshSnow} cm</span>
-          </div>
-          <div class="hero-stat">
-            <span class="hero-stat-label">Base depth</span>
-            <span class="hero-stat-value">${d.baseDepth} cm</span>
-          </div>
-          <div class="hero-stat">
-            <span class="hero-stat-label">Wind</span>
-            <span class="hero-stat-value">${d.windSpeed} km/h ${d.windDirection}</span>
-          </div>
-        </div>
+          ${this.#avalancheBlock()}
 
-        ${updated ? `<p class="hero-updated">Updated ${updated}</p>` : ''}
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <span class="hero-stat-label">Fresh snow</span>
+              <span class="hero-stat-value">${d.freshSnow} cm</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-label">Base depth</span>
+              <span class="hero-stat-value">${d.baseDepth} cm</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-label">Wind</span>
+              <span class="hero-stat-value">${d.windSpeed} km/h ${d.windDirection}</span>
+            </div>
+          </div>
+
+          ${updated ? `<p class="hero-updated">Updated ${updated}</p>` : ''}
+          <span class="hero-chevron hero-chevron--up" aria-hidden="true">⌃</span>
+        </button>
       </div>
     `;
   }
