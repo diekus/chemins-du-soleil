@@ -176,7 +176,6 @@ weather-hero[hidden] { display: none; }
   display: flex;
   align-items: center;
   gap: var(--sp-3);
-  background: rgba(255, 200, 87, 0.15);
   border-radius: var(--r-md);
   padding: var(--sp-2) var(--sp-3);
   margin-bottom: var(--sp-4);
@@ -187,13 +186,24 @@ weather-hero[hidden] { display: none; }
   width: 1.75rem;
   height: 1.75rem;
   border-radius: var(--r-sm);
-  background: var(--color-hero-warning);
-  color: var(--color-hero-bg);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.9375rem;
 }
+
+/* Avalanche danger level 1-5 — official EAWS colours, see --color-avalanche-* in base.css */
+.hero-avalanche-block[data-level="1"] { background: color-mix(in srgb, var(--color-avalanche-1) 22%, transparent); }
+.hero-avalanche-block[data-level="2"] { background: color-mix(in srgb, var(--color-avalanche-2) 22%, transparent); }
+.hero-avalanche-block[data-level="3"] { background: color-mix(in srgb, var(--color-avalanche-3) 20%, transparent); }
+.hero-avalanche-block[data-level="4"] { background: color-mix(in srgb, var(--color-avalanche-4) 26%, transparent); }
+.hero-avalanche-block[data-level="5"] { background: color-mix(in srgb, var(--color-avalanche-5) 32%, transparent); }
+
+.hero-avalanche-block[data-level="1"] .hero-avalanche-icon { background: var(--color-avalanche-1); color: var(--color-on-avalanche-1); }
+.hero-avalanche-block[data-level="2"] .hero-avalanche-icon { background: var(--color-avalanche-2); color: var(--color-on-avalanche-2); }
+.hero-avalanche-block[data-level="3"] .hero-avalanche-icon { background: var(--color-avalanche-3); color: var(--color-on-avalanche-3); }
+.hero-avalanche-block[data-level="4"] .hero-avalanche-icon { background: var(--color-avalanche-4); color: var(--color-on-avalanche-4); }
+.hero-avalanche-block[data-level="5"] .hero-avalanche-icon { background: var(--color-avalanche-5); color: var(--color-on-avalanche-5); }
 
 .hero-avalanche-block strong {
   display: block;
@@ -342,10 +352,17 @@ weather-hero[hidden] { display: none; }
 .hero-avalanche-line {
   flex-shrink: 0;
   white-space: nowrap;
-  color: var(--color-hero-warning);
   font-weight: var(--fw-semibold);
   font-size: 0.8125rem;
 }
+
+/* Avalanche danger level 1-5 — colours the triangle glyph only; label text
+   stays the hero card's default light colour for legibility on the navy card. */
+.hero-avalanche-line[data-level="1"] span:first-child { color: var(--color-avalanche-1); }
+.hero-avalanche-line[data-level="2"] span:first-child { color: var(--color-avalanche-2); }
+.hero-avalanche-line[data-level="3"] span:first-child { color: var(--color-avalanche-3); }
+.hero-avalanche-line[data-level="4"] span:first-child { color: var(--color-avalanche-4); }
+.hero-avalanche-line[data-level="5"] span:first-child { color: var(--color-avalanche-5); }
 
 /* ── avalanche-banner ──────────────────────────────────────────────────────── */
 avalanche-banner {
@@ -383,6 +400,19 @@ avalanche-banner.avalanche-banner--fading { opacity: 0; }
   justify-content: center;
   font-size: 1rem;
 }
+
+/* Avalanche danger level 1-5 — official EAWS colours, see --color-avalanche-* in base.css */
+.warning-banner[data-level="1"] { background: color-mix(in srgb, var(--color-avalanche-1) 24%, var(--color-surface)); }
+.warning-banner[data-level="2"] { background: color-mix(in srgb, var(--color-avalanche-2) 24%, var(--color-surface)); }
+.warning-banner[data-level="3"] { background: color-mix(in srgb, var(--color-avalanche-3) 20%, var(--color-surface)); }
+.warning-banner[data-level="4"] { background: color-mix(in srgb, var(--color-avalanche-4) 18%, var(--color-surface)); }
+.warning-banner[data-level="5"] { background: color-mix(in srgb, var(--color-avalanche-5) 26%, var(--color-surface)); }
+
+.warning-banner[data-level="1"] .warning-icon-badge { background: var(--color-avalanche-1); color: var(--color-on-avalanche-1); }
+.warning-banner[data-level="2"] .warning-icon-badge { background: var(--color-avalanche-2); color: var(--color-on-avalanche-2); }
+.warning-banner[data-level="3"] .warning-icon-badge { background: var(--color-avalanche-3); color: var(--color-on-avalanche-3); }
+.warning-banner[data-level="4"] .warning-icon-badge { background: var(--color-avalanche-4); color: var(--color-on-avalanche-4); }
+.warning-banner[data-level="5"] .warning-icon-badge { background: var(--color-avalanche-5); color: var(--color-on-avalanche-5); }
 
 .warning-body { flex: 1; min-width: 0; }
 .warning-body strong {
@@ -473,11 +503,11 @@ resort-conditions-list { display: block; }
   flex-shrink: 0;
   background: var(--color-text-secondary);
 }
-.resort-avalanche[data-level="1"] .resort-ava-dot { background: var(--color-slope-green); }
-.resort-avalanche[data-level="2"] .resort-ava-dot { background: var(--color-slope-blue); }
-.resort-avalanche[data-level="3"] .resort-ava-dot,
-.resort-avalanche[data-level="4"] .resort-ava-dot { background: var(--color-slope-red); }
-.resort-avalanche[data-level="5"] .resort-ava-dot { background: var(--color-slope-black); }
+.resort-avalanche[data-level="1"] .resort-ava-dot { background: var(--color-avalanche-1); }
+.resort-avalanche[data-level="2"] .resort-ava-dot { background: var(--color-avalanche-2); }
+.resort-avalanche[data-level="3"] .resort-ava-dot { background: var(--color-avalanche-3); }
+.resort-avalanche[data-level="4"] .resort-ava-dot { background: var(--color-avalanche-4); }
+.resort-avalanche[data-level="5"] .resort-ava-dot { background: var(--color-avalanche-5); }
 
 .resort-card-skeleton {
   height: 92px;

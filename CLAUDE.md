@@ -50,6 +50,8 @@ No build step. No install required for the app itself (`devDependencies` only co
 
 **Difficulty weights** (defined in `graph.js`): silver (lifts) = 1, green = 1, blue = 2, red = 3, black = 4. `silver` difficulty is used exclusively for lift edges.
 
+**Avalanche risk colors**: `--color-avalanche-1` through `-5` in `base.css` follow the official EAWS 5-level danger scale (green/yellow/orange/red/near-black-red — level 5 is officially red with black hatching, which a flat swatch can't reproduce). Fixed across light/dark, like the slope-difficulty tokens, and never reused for general UI. Applied via `[data-level="N"]` on `.resort-ava-dot`, `.hero-avalanche-block`/`.hero-avalanche-icon`/`.hero-avalanche-line`, and `.warning-banner`/`.warning-icon-badge`.
+
 **Node types in `data/network.json`**: `lift-base`, `lift-top`, `junction`, `village`. Junction nodes are routing-internal (slope–slope connections clustered within 75 m) and are filtered out of the station search UI — only lift and village nodes appear to users.
 
 **Roc d'Enfer / Saint-Jean-d'Aulps**: a member resort that is fully routable but is its own self-contained sub-graph — it has no ski-lift link to the rest of Portes du Soleil (only a shuttle bus in real life), so routes never cross between it and the main network. It still appears in the Resorts tab.

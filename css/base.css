@@ -72,11 +72,28 @@
   --color-slope-red-bg:     #FBE7E5;
   --color-slope-black-bg:   #E7E7E7;
 
+  /* Avalanche danger scale — official EAWS 5-level colours, semantic only,
+     fixed across light/dark like the slope-difficulty set above. Level 5
+     is officially red with black diagonal hatching; a flat swatch can't
+     reproduce the hatch, so it's darkened to a near-black red instead of
+     reusing level 4's red. --color-on-avalanche-* is the readable
+     text/icon colour for each swatch (dark ink on the pale low levels,
+     white on the saturated high ones). */
+  --color-avalanche-1:      #CCFF66;
+  --color-avalanche-2:      #FFFF00;
+  --color-avalanche-3:      #FF9900;
+  --color-avalanche-4:      #FF0000;
+  --color-avalanche-5:      #8B0000;
+  --color-on-avalanche-1:   #1D2B0A;
+  --color-on-avalanche-2:   #332B00;
+  --color-on-avalanche-3:   #3A1F00;
+  --color-on-avalanche-4:   #FFFFFF;
+  --color-on-avalanche-5:   #FFFFFF;
+
   /* Informational UI (live conditions dashboard) — see prompts/BRAND_DESIGN.md.
      Fixed across light/dark except where noted; never used for general UI. */
   --color-hero-bg:          #163A5C;
   --color-hero-text:        #FFFFFF;
-  --color-hero-warning:     #FFC857;
   --color-warning-bg:       #FBF0CE;
   --color-warning-icon:     #755A0E;
   --color-status-open:      #1F9D55;
@@ -145,8 +162,8 @@
     --color-warning-bg:       #3A331A;
     --color-warning-icon:     #E0BB4D;
     --color-status-open:      #4CC97F;
-    /* --color-hero-bg / --color-hero-text / --color-hero-warning intentionally
-       unchanged — fixed "photo card" surface */
+    /* --color-hero-bg / --color-hero-text intentionally unchanged —
+       fixed "photo card" surface */
   }
 }
 

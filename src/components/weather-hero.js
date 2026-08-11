@@ -68,7 +68,7 @@ class WeatherHero extends HTMLElement {
     if (!a || a.level < WARNING_LEVEL) return '';
     const label = RISK_LABELS[a.level] ?? 'Unknown';
     return `
-      <span class="hero-avalanche-line">
+      <span class="hero-avalanche-line" data-level="${a.level}">
         <span aria-hidden="true">▲</span> ${label}
       </span>
     `;
@@ -80,7 +80,7 @@ class WeatherHero extends HTMLElement {
     if (!a || a.level < WARNING_LEVEL) return '';
     const label = RISK_LABELS[a.level] ?? 'Unknown';
     return `
-      <div class="hero-avalanche-block">
+      <div class="hero-avalanche-block" data-level="${a.level}">
         <span class="hero-avalanche-icon" aria-hidden="true">▲</span>
         <div>
           <strong>Avalanche risk: ${label}</strong>

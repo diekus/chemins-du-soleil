@@ -57,7 +57,7 @@ class AvalancheBanner extends HTMLElement {
     const updated = d.updatedAt ? `<p class="warning-provenance">Updated ${relativeTime(d.updatedAt)}</p>` : '';
 
     return `
-      <div class="warning-banner">
+      <div class="warning-banner" data-level="${d.level}">
         <span class="warning-icon-badge" aria-hidden="true">▲</span>
         <div class="warning-body">
           <strong>Avalanche risk: ${label}</strong>
