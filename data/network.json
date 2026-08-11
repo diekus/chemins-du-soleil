@@ -1,7 +1,7 @@
 {
   "_meta": {
     "season": "2024/25",
-    "scope": "Portes du Soleil — OSM-derived network with slope junction nodes. 148 lifts, 353 slope junctions, 961 directed edges. Schema v2.",
+    "scope": "Portes du Soleil — OSM-derived network with slope junction nodes. 148 lifts, 353 slope junctions, 965 directed edges. Schema v2.",
     "schema_version": "2"
   },
   "nodes": [
@@ -1931,6 +1931,12 @@
           "name": "La Casse Noisette",
           "type": "slope",
           "difficulty": "red"
+        },
+        {
+          "to": "lift_8215843_base",
+          "name": "Descent to Rochassons",
+          "type": "slope",
+          "difficulty": "red"
         }
       ]
     },
@@ -1967,6 +1973,12 @@
           "name": "Les Combes",
           "type": "slope",
           "difficulty": "red"
+        },
+        {
+          "to": "lift_30749922_top",
+          "name": "Traverse to Écho Alpin",
+          "type": "slope",
+          "difficulty": "blue"
         }
       ]
     },
@@ -2981,6 +2993,12 @@
           "to": "lift_30750444_top",
           "name": "Stade",
           "type": "lift",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_1010800534_base",
+          "name": "Linga / Stade",
+          "type": "slope",
           "difficulty": "green"
         }
       ]
@@ -5674,6 +5692,12 @@
           "to": "lift_1010800534_top",
           "name": "Linga",
           "type": "lift",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_30750444_base",
+          "name": "Linga / Stade",
+          "type": "slope",
           "difficulty": "green"
         }
       ]

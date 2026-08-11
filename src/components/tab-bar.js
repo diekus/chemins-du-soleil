@@ -1,7 +1,9 @@
+import { ICONS } from '../icons.js';
+
 const TABS = [
-  { view: 'home',    label: 'Home',    icon: '🏠' },
-  { view: 'resorts', label: 'Resorts', icon: '🏔️' },
-  { view: 'alerts',  label: 'Alerts',  icon: '⚠️' },
+  { view: 'home',    label: 'Home',    icon: ICONS.home },
+  { view: 'resorts', label: 'Resorts', icon: ICONS.resorts },
+  { view: 'alerts',  label: 'Alerts',  icon: ICONS.alerts },
 ];
 
 class TabBar extends HTMLElement {

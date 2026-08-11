@@ -24,7 +24,8 @@ tab-bar {
   cursor: pointer;
 }
 
-.tab-bar-icon  { font-size: 1.25rem; line-height: 1; }
+.tab-bar-icon  { display: block; line-height: 1; }
+.tab-bar-icon svg { width: 1.25rem; height: 1.25rem; display: block; }
 .tab-bar-label { font-size: 0.6875rem; font-weight: var(--fw-semibold); }
 
 .tab-bar-item[aria-selected="true"] { color: var(--color-primary); }
@@ -220,12 +221,18 @@ weather-hero[hidden] { display: none; }
 }
 
 .hero-stat-label {
+  display: flex;
+  align-items: center;
+  gap: 3px;
   font-size: 0.6875rem;
   font-weight: var(--fw-semibold);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   opacity: 0.8;
 }
+
+.hero-icon { display: inline-flex; }
+.hero-icon svg { width: 1em; height: 1em; display: block; }
 
 .hero-stat-value {
   font-size: 0.9375rem;
@@ -317,6 +324,9 @@ weather-hero[hidden] { display: none; }
 }
 
 .hero-compact-snow {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
   flex-shrink: 0;
   font-size: 0.8125rem;
   opacity: 0.85;
@@ -340,17 +350,11 @@ weather-hero[hidden] { display: none; }
 /* ── avalanche-banner ──────────────────────────────────────────────────────── */
 avalanche-banner {
   display: block;
-  cursor: pointer;
   border-radius: var(--r-lg);
   opacity: 1;
   transition: opacity 0.4s ease;
 }
 avalanche-banner[hidden] { display: none; }
-avalanche-banner:focus-visible {
-  outline: 2px solid var(--color-slope-blue);
-  outline-offset: 2px;
-}
-avalanche-banner[static] { cursor: default; }
 avalanche-banner.avalanche-banner--fading { opacity: 0; }
 
 .warning-banner {
@@ -397,12 +401,6 @@ avalanche-banner.avalanche-banner--fading { opacity: 0; }
   font-size: 0.75rem;
   font-style: italic;
   color: var(--color-text-secondary);
-}
-
-.warning-chevron {
-  flex-shrink: 0;
-  font-size: 1.25rem;
-  color: var(--color-warning-icon);
 }
 
 /* ── resort-conditions-list ────────────────────────────────────────────────── */
@@ -566,6 +564,54 @@ preference-selector select {
 difficulty-selector select:focus,
 preference-selector select:focus { border-color: var(--color-primary); }
 
+/* ── search-summary (collapsed find-route bar) ───────────────────────────────── */
+.search-summary {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  width: 100%;
+  margin-bottom: var(--sp-4);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-md);
+  font-family: var(--font);
+  color: var(--color-text);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s;
+}
+.search-summary:hover,
+.search-summary:focus-visible { border-color: var(--color-primary); }
+
+.search-summary-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.search-summary-route {
+  font-weight: var(--fw-semibold);
+  font-size: 0.9375rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-summary-pref {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+}
+
+.search-summary-chevron {
+  flex-shrink: 0;
+  font-size: 1rem;
+  opacity: 0.6;
+}
+.search-summary[hidden] { display: none; }
+
 /* ── route-result ──────────────────────────────────────────────────────────── */
 route-result { display: block; }
 
@@ -619,7 +665,14 @@ route-result { display: block; }
   font-size: 0.9375rem;
 }
 
-.step-icon  { width: 1.5rem; text-align: center; flex-shrink: 0; }
+/* Slope steps only — tinted with their piste-difficulty colour */
+.route-step[data-d="green"] { background: var(--color-slope-green-bg); }
+.route-step[data-d="blue"]  { background: var(--color-slope-blue-bg); }
+.route-step[data-d="red"]   { background: var(--color-slope-red-bg); }
+.route-step[data-d="black"] { background: var(--color-slope-black-bg); }
+
+.step-icon  { width: 1.5rem; flex-shrink: 0; }
+.step-icon svg { width: 1.25rem; height: 1.25rem; display: block; margin: 0 auto; }
 .step-name  { flex: 1; font-weight: var(--fw-semibold); }
 .step-flag  { flex-shrink: 0; }
 
@@ -659,7 +712,8 @@ route-result { display: block; }
   padding: var(--sp-8) var(--sp-4);
   color: var(--color-text-secondary);
 }
-.no-route-icon  { font-size: 2.5rem; display: block; margin-bottom: var(--sp-3); }
+.no-route-icon  { display: block; margin-bottom: var(--sp-3); }
+.no-route-icon svg { width: 2.5rem; height: 2.5rem; margin: 0 auto; }
 .no-route-title {
   font-weight: var(--fw-bold);
   color: var(--color-text);

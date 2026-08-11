@@ -1,4 +1,4 @@
-const CACHE_NAME = 'chemins-du-soleil-v5';
+const CACHE_NAME = 'chemins-du-soleil-v13';
 
 const PRECACHE = [
   '/',
@@ -18,11 +18,15 @@ const PRECACHE = [
   '/images/icon-192.png',
   '/images/icon-maskable.png',
   '/src/app.js',
+  '/src/blob-bg.js',
   '/src/graph.js',
   '/src/pathfinder.js',
   '/src/weather.js',
   '/src/conditions.js',
   '/src/geo.js',
+  '/src/format.js',
+  '/src/countries.js',
+  '/src/icons.js',
   '/src/components/difficulty-selector.js',
   '/src/components/preference-selector.js',
   '/src/components/route-result.js',

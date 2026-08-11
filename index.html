@@ -67,6 +67,14 @@
 
       </form>
 
+      <button type="button" class="search-summary" hidden>
+        <span class="search-summary-text">
+          <span class="search-summary-route"></span>
+          <span class="search-summary-pref"></span>
+        </span>
+        <span class="search-summary-chevron" aria-hidden="true">⌄</span>
+      </button>
+
       <route-result></route-result>
 
     </main>
@@ -85,7 +93,7 @@
     <main class="app-main">
 
       <div class="alerts-content">
-        <avalanche-banner static></avalanche-banner>
+        <avalanche-banner></avalanche-banner>
       </div>
 
       <p class="alerts-empty" hidden>No active alerts.</p>

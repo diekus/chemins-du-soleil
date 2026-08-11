@@ -1,4 +1,4 @@
-import { haversineKm, VICINITY_KM as PLAUSIBLE_KM } from '../geo.js';
+import { nearestResort, VICINITY_KM as PLAUSIBLE_KM } from '../geo.js';
 
 class LocationGate extends HTMLElement {
   #resorts = [];
@@ -94,14 +94,9 @@ class LocationGate extends HTMLElement {
 
   #onPosition(pos) {
     const { latitude, longitude } = pos.coords;
-    let nearest = null;
-    let nearestKm = Infinity;
-    for (const r of this.#resorts) {
-      const km = haversineKm(latitude, longitude, r.lat, r.lon);
-      if (km < nearestKm) { nearest = r; nearestKm = km; }
-    }
-    if (nearest && nearestKm <= PLAUSIBLE_KM) {
-      this.#resolve(nearest, true);
+    const nearest = nearestResort(latitude, longitude, this.#resorts);
+    if (nearest && nearest.km <= PLAUSIBLE_KM) {
+      this.#resolve(nearest.resort, true);
     } else {
       // Too far from every known resort to be a confident match — ask instead of guessing.
       this.#state = 'picker';

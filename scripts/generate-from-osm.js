@@ -52,7 +52,6 @@ function mapLiftType(t) { return LIFT_TYPE[t] ?? 'chairlift'; }
 function liftBaseId(id) { return `lift_${id}_base`; }
 function liftTopId(id)  { return `lift_${id}_top`;  }
 
-
 function haversine(a, b) {
   const R = 6371000;
   const dLat = (b.lat - a.lat) * Math.PI / 180;
@@ -92,17 +91,16 @@ class UF {
 
 // ── Prepare data ──────────────────────────────────────────────────────────────
 
-const usedLifts  = lifts.filter(l => !EXCLUDED_RESORTS.has(l.resort_nearest));
-const usedLiftIds = new Set(usedLifts.map(l => l.id));
-const liftsById  = new Map(lifts.map(l => [l.id, l]));
-const allUsedLifts = usedLifts;
-const pistesById = new Map(pistes.map(p => [p.id, p]));
+const usedLifts    = lifts.filter(l => !EXCLUDED_RESORTS.has(l.resort_nearest));
+const usedLiftIds  = new Set(usedLifts.map(l => l.id));
+const liftsById    = new Map(lifts.map(l => [l.id, l]));
+const pistesById   = new Map(pistes.map(p => [p.id, p]));
 
 // Spatial data for all points
 const liftPts  = new Map(); // nodeId → {lat,lon}
 const pistePts = new Map(); // nodeId → {lat,lon,pisteId}
 
-for (const lift of allUsedLifts) {
+for (const lift of usedLifts) {
   liftPts.set(liftBaseId(lift.id), { lat: lift.base_station.lat, lon: lift.base_station.lon });
   liftPts.set(liftTopId(lift.id),  { lat: lift.top_station.lat,  lon: lift.top_station.lon  });
 }
@@ -176,7 +174,7 @@ function addEdge(fromRep, toRep, name, type, difficulty) {
   return true;
 }
 
-for (const lift of allUsedLifts) {
+for (const lift of usedLifts) {
   const baseRep = uf.find(liftBaseId(lift.id));
   const topRep  = uf.find(liftTopId(lift.id));
   if (baseRep === topRep) continue; // shouldn't happen but guard it
@@ -304,12 +302,44 @@ const SJA_SECTOR = [
     name: 'La Chèvrerie', type: 'slope', difficulty: 'green' },
 ];
 
+// ── Ardent ↔ Châtel (Rochassons / Linga) corridor ─────────────────────────────
+// Real-world route confirmed against Avoriaz's own trip-planning guide and
+// Châtel resort documentation (Ardent → Chaux Fleurie lift in Lindarets →
+// Rochassons lift → Plaine Dranse → Pierre Longue lift → Pré la Joux/Combes →
+// Écho Alpin → Linga). OSM's piste tracing has gaps at each lift-to-lift
+// crossing along this route; each gap below is bridged using verified lift
+// station elevations (so direction is never guessed) and real-world distances
+// consistent with the rest of the corridor's already-mapped pistes.
+const CHATEL_SECTOR = [
+  // Chaux Fleurie summit (1912m) → Rochassons base (1642m): the "Plaine
+  // Dranse" descent — OSM has no piste geometry spanning this ~770m drop.
+  { from: liftTopId(24916433), to: liftBaseId(8215843),
+    name: 'Descent to Rochassons', type: 'slope', difficulty: 'red' },
+
+  // Combes summit (2061m) → Écho Alpin summit (2035m): a ~410m ridge
+  // traverse linking the Pré la Joux sector to the Linga sector — again
+  // untraced in OSM, confirmed by Châtel's own sector documentation
+  // ("Écho Alpin... connects to the Pré-la-Joux sector").
+  { from: liftTopId(24916937), to: liftTopId(30749922),
+    name: 'Traverse to Écho Alpin', type: 'slope', difficulty: 'blue' },
+
+  // Linga and Stade (Chatel) bases are ~25m apart — the same shared-base-area
+  // situation as La Chèvrerie above — but the one piste OSM does trace here
+  // (`Le Linga`, Écho Alpin summit → this base area) clusters onto Stade's
+  // base station instead of Linga's, since both are within the proximity
+  // threshold. This keeps Linga itself reachable either way.
+  { from: liftBaseId(1010800534), to: liftBaseId(30750444),
+    name: 'Linga / Stade', type: 'slope', difficulty: 'green' },
+  { from: liftBaseId(30750444), to: liftBaseId(1010800534),
+    name: 'Linga / Stade', type: 'slope', difficulty: 'green' },
+];
+
 // Village node initialisation (ensure keys exist before manual edges are applied)
 ensureNode('morzine-village');
 ensureNode('champery');
 ensureNode('saint-jean-daulps');
 
-for (const e of [...CROSS_SECTOR, ...SJA_SECTOR]) {
+for (const e of [...CROSS_SECTOR, ...SJA_SECTOR, ...CHATEL_SECTOR]) {
   // Village nodes are not in UF — use their ID directly
   const fromRep = uf.find(e.from) ?? e.from;
   const toRep   = uf.find(e.to)   ?? e.to;
@@ -344,11 +374,11 @@ let bridgesAdded = 0, passes = 0, changed = true;
 while (changed && passes < 10) {
   changed = false; passes++;
   const compOf = buildCompOf(nodeConns);
-  for (const liftA of allUsedLifts) {
+  for (const liftA of usedLifts) {
     const tId = liftTopId(liftA.id);
     const tRep = uf.find(tId);
     const cA   = compOf.get(tRep);
-    for (const liftB of allUsedLifts) {
+    for (const liftB of usedLifts) {
       if (liftA.id === liftB.id) continue;
       const bId  = liftBaseId(liftB.id);
       const bRep = uf.find(bId);
@@ -356,8 +386,7 @@ while (changed && passes < 10) {
       const d = haversine(liftA.top_station, liftB.base_station);
       if (d > AUTO_BRIDGE_RADIUS_M) continue;
       const name = `Traverse to ${liftB.name ?? liftB.id}`;
-      if (!addEdge(tRep, bRep, name, 'slope', 'green')) continue; // addEdge returns undefined when it deduplicates
-      // Force call: addEdge checks seenEdges internally; if new, it adds it
+      if (!addEdge(tRep, bRep, name, 'slope', 'green')) continue; // false = already added
       bridgesAdded++; changed = true;
     }
   }
@@ -375,7 +404,7 @@ const addedNodes = new Set();
 // UI shows identical entries and picking the wrong one silently lands in an
 // unrelated, disconnected part of the graph.
 const resortsByName = new Map(); // bare lift name → Set(resort_nearest)
-for (const lift of allUsedLifts) {
+for (const lift of usedLifts) {
   if (!resortsByName.has(lift.name)) resortsByName.set(lift.name, new Set());
   resortsByName.get(lift.name).add(lift.resort_nearest);
 }
@@ -413,7 +442,7 @@ for (const [ptId, pt] of pistePts) {
 }
 
 // Add lift nodes first (for all used lifts)
-for (const lift of allUsedLifts) {
+for (const lift of usedLifts) {
   for (const id of [liftBaseId(lift.id), liftTopId(lift.id)]) {
     const rep = uf.find(id);
     if (addedNodes.has(rep)) continue;
@@ -459,9 +488,6 @@ for (const node of nodes) {
     if (repToJunctionId.has(conn.to)) conn.to = repToJunctionId.get(conn.to);
   }
 }
-// Also update node.id for junctions (already set above, but verify connections point there)
-// And fix "from" side — node.id was set to jctId above, so the keys in nodeConns still point
-// to the old repId. The connections' `to` values now use jctId from the loop above.
 
 // Village nodes
 for (const [vid, vname, vcountry] of [

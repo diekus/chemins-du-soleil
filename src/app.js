@@ -3,6 +3,7 @@ import { findRoutes } from './pathfinder.js';
 import { fetchWeather } from './weather.js';
 import { fetchOpenPiste, readAvalanche } from './conditions.js';
 import { nearestResort, VICINITY_KM } from './geo.js';
+import { FLAGS } from './countries.js';
 import './components/station-input.js';
 import './components/difficulty-selector.js';
 import './components/preference-selector.js';
@@ -19,6 +20,7 @@ const destEl     = document.querySelector('station-input[name="destination"]');
 const diffEl     = document.querySelector('difficulty-selector');
 const prefEl     = document.querySelector('preference-selector');
 const resultEl   = document.querySelector('route-result');
+const summaryEl  = document.querySelector('.search-summary');
 const errorEl    = document.querySelector('.form-error');
 const gateEl     = document.querySelector('location-gate');
 const heroEl     = document.querySelector('weather-hero');
@@ -32,7 +34,6 @@ const resortsOverviewEl = document.querySelector('resort-conditions-list');
 // ── Resort resolution (geolocation / manual pick) ───────────────────────────
 
 const RESORT_STORAGE_KEY = 'cds:selected-resort';
-let currentResort = null;
 
 let resolveResortsReady;
 const resortsReady = new Promise(resolve => { resolveResortsReady = resolve; });
@@ -87,13 +88,12 @@ heroEl.addEventListener('change-resort', () => {
 });
 
 function onResortResolved(resort, live) {
-  currentResort = resort;
   gateEl.hidden = true;
   // Reset to loading state while fresh conditions are fetched.
   heroEl.data             = undefined;
   heroEl.avalanche        = undefined;
   alertsAvalancheEl.data  = undefined;
-  alertsEmptyEl.hidden   = true;
+  alertsEmptyEl.hidden    = true;
   setAlertsAvailable(false);
   loadConditions(resort, live);
 }
@@ -330,12 +330,38 @@ form.addEventListener('submit', e => {
 
   // findRoutes is synchronous — set result immediately.
   resultEl.routes = findRoutes(graph, startId, endId, difficulty, 3, preference);
+
+  collapseSearchForm(startId, endId, preference);
 });
 
 function showError(msg) {
   errorEl.textContent = msg;
   errorEl.classList.add('visible');
 }
+
+// ── Collapse/expand search form into a summary bar after a successful search ──
+
+function stationLabel(id) {
+  const node = nodeMap.get(id);
+  if (!node) return '';
+  return `${FLAGS[node.country] ?? ''} ${node.name}`.trim();
+}
+
+function collapseSearchForm(startId, endId, preference) {
+  summaryEl.querySelector('.search-summary-route').textContent =
+    `${stationLabel(startId)} → ${stationLabel(endId)}`;
+  summaryEl.querySelector('.search-summary-pref').textContent =
+    preference ? `Prefers ${preference}` : 'No difficulty preference';
+
+  form.hidden    = true;
+  summaryEl.hidden = false;
+}
+
+summaryEl.addEventListener('click', () => {
+  summaryEl.hidden = true;
+  form.hidden       = false;
+  form.querySelector('station-input[name="start"] .si-input')?.focus();
+});
 
 // ── Start ────────────────────────────────────────────────────────────────────
 

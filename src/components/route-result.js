@@ -1,6 +1,5 @@
-const FLAGS = { FR: '🇫🇷', CH: '🇨🇭' };
-const COUNTRY_NAME = { FR: 'France', CH: 'Switzerland' };
-const STEP_ICON = { lift: '🚡', slope: '⛷️' };
+import { FLAGS, COUNTRY_NAME } from '../countries.js';
+import { ICONS, liftIcon } from '../icons.js';
 
 class RouteResult extends HTMLElement {
   #routes           = undefined; // undefined=idle, null=loading, []=no route, [...]=results
@@ -79,15 +78,19 @@ class RouteResult extends HTMLElement {
     const country   = this.#nodes.get(step.from)?.country ?? null;
     const flag      = country ? FLAGS[country] ?? '' : '';
     const flagLabel = country ? COUNTRY_NAME[country] ?? '' : '';
-    const icon      = STEP_ICON[step.type] ?? '•';
+    const icon      = step.type === 'lift'
+      ? liftIcon(this.#nodes.get(step.from)?.lift_type)
+      : ICONS.ski;
 
     // Difficulty dot only shown for slopes — lifts have no piste colour.
     const diffDot = step.type === 'slope'
       ? `<span class="diff-dot" data-d="${step.difficulty}" role="img" aria-label="${step.difficulty} slope"></span>`
       : `<span class="diff-dot diff-dot--lift" aria-hidden="true"></span>`;
 
+    const diffAttr = step.type === 'slope' ? ` data-d="${step.difficulty}"` : '';
+
     return `
-      <li class="route-step">
+      <li class="route-step"${diffAttr}>
         <span class="step-icon" aria-hidden="true">${icon}</span>
         <span class="step-name">${step.name}</span>
         <span class="step-flag" aria-label="${flagLabel}">${flag}</span>
@@ -108,7 +111,7 @@ class RouteResult extends HTMLElement {
   #noRouteHTML() {
     return `
       <div class="no-route" role="status">
-        <span class="no-route-icon" aria-hidden="true">⛷️</span>
+        <span class="no-route-icon" aria-hidden="true">${ICONS.ski}</span>
         <p class="no-route-title">No route found</p>
         <p>There is no path between these stations at the chosen difficulty.
            Try raising the maximum difficulty.</p>

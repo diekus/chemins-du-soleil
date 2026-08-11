@@ -1,4 +1,4 @@
-const FLAGS = { FR: '🇫🇷', CH: '🇨🇭' };
+import { FLAGS } from '../countries.js';
 
 let _uid = 0;
 

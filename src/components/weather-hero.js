@@ -1,6 +1,9 @@
-const COUNTRY_NAME  = { FR: 'France', CH: 'Switzerland' };
-const RISK_LABELS    = { 1: 'Low', 2: 'Moderate', 3: 'Considerable', 4: 'High', 5: 'Very high' };
-const WARNING_LEVEL  = 2; // avalanche risk at or above this level surfaces in the collapsed card
+import { relativeTime } from '../format.js';
+import { COUNTRY_NAME } from '../countries.js';
+import { ICONS } from '../icons.js';
+
+const RISK_LABELS   = { 1: 'Low', 2: 'Moderate', 3: 'Considerable', 4: 'High', 5: 'Very high' };
+const WARNING_LEVEL = 2; // avalanche risk at or above this level surfaces in the collapsed card
 
 class WeatherHero extends HTMLElement {
   #data      = undefined; // undefined=loading, null=unavailable, object=rendered
@@ -94,7 +97,7 @@ class WeatherHero extends HTMLElement {
         <button type="button" class="hero-toggle hero-toggle--collapsed" data-action="toggle" aria-expanded="false" aria-label="Show more weather detail">
           <span class="hero-compact-place">${d.resortName}</span>
           <span class="hero-compact-temp">${Math.round(d.temp)}°C</span>
-          <span class="hero-compact-snow"><span aria-hidden="true">❄</span> ${d.freshSnow} cm</span>
+          <span class="hero-compact-snow"><span class="hero-icon" aria-hidden="true">${ICONS.snow}</span> ${d.freshSnow} cm</span>
           ${this.#avalancheLine()}
           <span class="hero-chevron" aria-hidden="true">⌄</span>
         </button>
@@ -104,7 +107,7 @@ class WeatherHero extends HTMLElement {
 
   #expandedHTML(d) {
     const countryName = COUNTRY_NAME[d.country] ?? '';
-    const updated = d.updatedAt ? this.#relativeTime(d.updatedAt) : null;
+    const updated = d.updatedAt ? relativeTime(d.updatedAt) : null;
 
     return `
       <div class="hero-card">
@@ -125,15 +128,15 @@ class WeatherHero extends HTMLElement {
 
           <div class="hero-stats">
             <div class="hero-stat">
-              <span class="hero-stat-label">Fresh snow</span>
+              <span class="hero-stat-label"><span class="hero-icon" aria-hidden="true">${ICONS.snow}</span> Fresh snow</span>
               <span class="hero-stat-value">${d.freshSnow} cm</span>
             </div>
             <div class="hero-stat">
-              <span class="hero-stat-label">Base depth</span>
+              <span class="hero-stat-label"><span class="hero-icon" aria-hidden="true">${ICONS.snow}</span> Base depth</span>
               <span class="hero-stat-value">${d.baseDepth} cm</span>
             </div>
             <div class="hero-stat">
-              <span class="hero-stat-label">Wind</span>
+              <span class="hero-stat-label"><span class="hero-icon" aria-hidden="true">${ICONS.wind}</span> Wind</span>
               <span class="hero-stat-value">${d.windSpeed} km/h ${d.windDirection}</span>
             </div>
           </div>
@@ -157,14 +160,6 @@ class WeatherHero extends HTMLElement {
     `;
   }
 
-  #relativeTime(timestamp) {
-    const mins = Math.round((Date.now() - timestamp) / 60000);
-    if (mins < 1)  return 'just now';
-    if (mins === 1) return '1 minute ago';
-    if (mins < 60) return `${mins} minutes ago`;
-    const hours = Math.round(mins / 60);
-    return hours === 1 ? '1 hour ago' : `${hours} hours ago`;
-  }
 }
 
 customElements.define('weather-hero', WeatherHero);

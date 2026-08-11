@@ -86,6 +86,7 @@ body { padding-bottom: 56px; }
   flex-direction: column;
   gap: var(--sp-4);
 }
+.search-form[hidden] { display: none; }
 
 .form-row {
   display: flex;

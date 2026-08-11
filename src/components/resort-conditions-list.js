@@ -1,6 +1,7 @@
-const FLAGS         = { FR: '🇫🇷', CH: '🇨🇭' };
-const RISK_LABELS    = { 1: 'Low', 2: 'Moderate', 3: 'Considerable', 4: 'High', 5: 'Very high' };
-const SKELETON_ROWS  = 6;
+import { FLAGS } from '../countries.js';
+
+const RISK_LABELS   = { 1: 'Low', 2: 'Moderate', 3: 'Considerable', 4: 'High', 5: 'Very high' };
+const SKELETON_ROWS = 6;
 
 class ResortConditionsList extends HTMLElement {
   #resorts = undefined; // undefined=loading, null=unavailable, array=rendered
