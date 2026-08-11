@@ -447,6 +447,9 @@ resort-conditions-list { display: block; }
   color: var(--color-text-secondary);
   margin-bottom: var(--sp-2);
 }
+.resort-weather-icon { display: inline-flex; flex-shrink: 0; }
+.resort-weather-icon svg { width: 1.25rem; height: 1.25rem; display: block; }
+
 .resort-temp {
   font-size: 1.25rem;
   font-weight: var(--fw-bold);

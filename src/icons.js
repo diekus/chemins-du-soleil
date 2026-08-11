@@ -82,3 +82,83 @@ export const ICONS = {
 export function liftIcon(liftType) {
   return ICONS[liftType] ?? ICONS.chairlift;
 }
+
+/**
+ * Weather-condition icons — separate namespace from ICONS so `snow` here (a
+ * snowing cloud) doesn't collide with ICONS.snow (the fresh-snow/base-depth
+ * stat snowflake). Sourced from the same design project as ICONS; the
+ * source files hard-code a few accent colours (sun yellow, raindrop blue,
+ * bolt yellow) which are stripped here in favour of `currentColor`, so
+ * these inherit the app's palette/theme like every other icon instead of
+ * introducing new hues.
+ * Look up the right key for a WMO weather code with `weatherIconKey()` in weather.js.
+ */
+export const WEATHER_ICONS = {
+  clearDay: `<svg viewBox="0 0 24 24" ${STROKE}>
+    <circle cx="12" cy="12" r="4.3"/>
+    <path d="M18.3 12 L20.7 12"/>
+    <path d="M16.5 16.5 L18.2 18.2"/>
+    <path d="M12 18.3 L12 20.7"/>
+    <path d="M7.5 16.5 L5.8 18.2"/>
+    <path d="M5.7 12 L3.3 12"/>
+    <path d="M7.5 7.5 L5.8 5.8"/>
+    <path d="M12 5.7 L12 3.3"/>
+    <path d="M16.5 7.5 L18.2 5.8"/>
+  </svg>`,
+
+  clearNight: `<svg viewBox="0 0 24 24" ${STROKE}>
+    <path d="M15.7 3.6 A8.4 8.4 0 1 0 20.3 13.5 A6.6 6.6 0 0 1 15.7 3.6 Z"/>
+  </svg>`,
+
+  partlyCloudyDay: `<svg viewBox="0 0 24 24" ${STROKE}>
+    <circle cx="8" cy="7.8" r="2.6"/>
+    <path d="M12.2 7.8 L13.2 7.8"/>
+    <path d="M11 4.8 L11.7 4.1"/>
+    <path d="M8 3.6 L8 2.6"/>
+    <path d="M5 4.8 L4.3 4.1"/>
+    <path d="M3.8 7.8 L2.8 7.8"/>
+    <path d="M5 10.8 L4.3 11.5"/>
+    <path d="M10.4 21 A2.9 2.9 0 0 1 10.9 14.9 A4.1 4.1 0 0 1 18.9 16.4 A2.7 2.7 0 0 1 19.1 21 Z"/>
+  </svg>`,
+
+  partlyCloudyNight: `<svg viewBox="0 0 24 24" ${STROKE}>
+    <path d="M16.3 2.9 A5.4 5.4 0 1 0 20.9 11.1 A4.3 4.3 0 0 1 16.3 2.9 Z"/>
+    <path d="M4.9 20.4 A2.9 2.9 0 0 1 5.4 14.3 A4.1 4.1 0 0 1 13.4 15.8 A2.7 2.7 0 0 1 13.6 20.4 Z"/>
+  </svg>`,
+
+  cloudy: `<svg viewBox="0 0 24 24" ${STROKE}>
+    <path d="M7.6 16.4 A3.3 3.3 0 0 1 8.1 9.9 A4.6 4.6 0 0 1 16.6 11.5 A3.1 3.1 0 0 1 16.8 16.4 Z"/>
+  </svg>`,
+
+  fog: `<svg viewBox="0 0 24 24" ${STROKE}>
+    <path d="M7.6 14.2 A3.3 3.3 0 0 1 8.1 7.7 A4.6 4.6 0 0 1 16.6 9.3 A3.1 3.1 0 0 1 16.8 14.2 Z"/>
+    <path d="M6.4 17.8 H15.4"/>
+    <path d="M8.8 20.6 H17.8"/>
+  </svg>`,
+
+  rain: `<svg viewBox="0 0 24 24" ${STROKE}>
+    <path d="M7.6 14.2 A3.3 3.3 0 0 1 8.1 7.7 A4.6 4.6 0 0 1 16.6 9.3 A3.1 3.1 0 0 1 16.8 14.2 Z"/>
+    <path d="M9 17.6 L8.1 20.2"/>
+    <path d="M12.4 17.6 L11.5 20.2"/>
+    <path d="M15.8 17.6 L14.9 20.2"/>
+  </svg>`,
+
+  sleet: `<svg viewBox="0 0 24 24" ${STROKE}>
+    <path d="M7.6 14.2 A3.3 3.3 0 0 1 8.1 7.7 A4.6 4.6 0 0 1 16.6 9.3 A3.1 3.1 0 0 1 16.8 14.2 Z"/>
+    <path d="M9.5 17.7 L8.6 20.3"/>
+    <path d="M15.4 17.7 L14.5 20.3"/>
+    <circle cx="12" cy="19.2" r="1" fill="currentColor" stroke="none"/>
+  </svg>`,
+
+  snow: `<svg viewBox="0 0 24 24" ${STROKE}>
+    <path d="M7.6 14.2 A3.3 3.3 0 0 1 8.1 7.7 A4.6 4.6 0 0 1 16.6 9.3 A3.1 3.1 0 0 1 16.8 14.2 Z"/>
+    <circle cx="9.3" cy="18.1" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="12.1" cy="19.6" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="14.9" cy="18.1" r="1" fill="currentColor" stroke="none"/>
+  </svg>`,
+
+  thunderstorm: `<svg viewBox="0 0 24 24" ${STROKE}>
+    <path d="M7.6 14.2 A3.3 3.3 0 0 1 8.1 7.7 A4.6 4.6 0 0 1 16.6 9.3 A3.1 3.1 0 0 1 16.8 14.2 Z"/>
+    <path d="M13.3 16.2 L10.3 16.2 L11.5 19 L9.2 21.4"/>
+  </svg>`,
+};

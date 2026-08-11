@@ -1,9 +1,11 @@
 import { loadGraph } from './graph.js';
 import { findRoutes } from './pathfinder.js';
-import { fetchWeather } from './weather.js';
+import { fetchWeather, weatherIconKey } from './weather.js';
 import { fetchOpenPiste, readAvalanche } from './conditions.js';
 import { nearestResort, VICINITY_KM } from './geo.js';
 import { FLAGS } from './countries.js';
+import { WEATHER_ICONS } from './icons.js';
+import { animateHeightChange } from './animate-height.js';
 import './components/station-input.js';
 import './components/difficulty-selector.js';
 import './components/preference-selector.js';
@@ -20,6 +22,7 @@ const destEl     = document.querySelector('station-input[name="destination"]');
 const diffEl     = document.querySelector('difficulty-selector');
 const prefEl     = document.querySelector('preference-selector');
 const resultEl   = document.querySelector('route-result');
+const searchPanelEl = document.querySelector('.search-panel');
 const summaryEl  = document.querySelector('.search-summary');
 const errorEl    = document.querySelector('.form-error');
 const gateEl     = document.querySelector('location-gate');
@@ -28,7 +31,8 @@ const alertsAvalancheEl = document.querySelector('#view-alerts avalanche-banner'
 const alertsContentEl   = document.querySelector('.alerts-content');
 const alertsEmptyEl     = document.querySelector('.alerts-empty');
 const headerEl          = document.querySelector('.app-header');
-const headerTempEl      = document.querySelector('.header-temp');
+const headerTempIconEl  = document.querySelector('.header-temp-icon');
+const headerTempValueEl = document.querySelector('.header-temp-value');
 const resortsOverviewEl = document.querySelector('resort-conditions-list');
 
 // ── Resort resolution (geolocation / manual pick) ───────────────────────────
@@ -122,7 +126,12 @@ async function loadWeather(resort, live) {
 }
 
 function setHeroData(resort, live, weather) {
-  if (!weather) { heroEl.data = null; headerTempEl.textContent = ''; return; }
+  if (!weather) {
+    heroEl.data = null;
+    headerTempIconEl.innerHTML  = '';
+    headerTempValueEl.textContent = '';
+    return;
+  }
   heroEl.data = {
     resortName: resort.name,
     country:    resort.country,
@@ -130,7 +139,8 @@ function setHeroData(resort, live, weather) {
     live,
     ...weather,
   };
-  headerTempEl.textContent = `${Math.round(weather.temp)}°C`;
+  headerTempIconEl.innerHTML    = WEATHER_ICONS[weatherIconKey(weather.weatherCode, weather.isDay)];
+  headerTempValueEl.textContent = `${Math.round(weather.temp)}°C`;
 }
 
 // ── Avalanche risk ───────────────────────────────────────────────────────────
@@ -353,13 +363,17 @@ function collapseSearchForm(startId, endId, preference) {
   summaryEl.querySelector('.search-summary-pref').textContent =
     preference ? `Prefers ${preference}` : 'No difficulty preference';
 
-  form.hidden    = true;
-  summaryEl.hidden = false;
+  animateHeightChange(searchPanelEl, () => {
+    form.hidden      = true;
+    summaryEl.hidden = false;
+  });
 }
 
 summaryEl.addEventListener('click', () => {
-  summaryEl.hidden = true;
-  form.hidden       = false;
+  animateHeightChange(searchPanelEl, () => {
+    summaryEl.hidden = true;
+    form.hidden      = false;
+  });
   form.querySelector('station-input[name="start"] .si-input')?.focus();
 });
 

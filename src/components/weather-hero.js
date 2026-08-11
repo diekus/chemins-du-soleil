@@ -1,6 +1,7 @@
 import { relativeTime } from '../format.js';
 import { COUNTRY_NAME } from '../countries.js';
 import { ICONS } from '../icons.js';
+import { animateHeightChange } from '../animate-height.js';
 
 const RISK_LABELS   = { 1: 'Low', 2: 'Moderate', 3: 'Considerable', 4: 'High', 5: 'Very high' };
 const WARNING_LEVEL = 2; // avalanche risk at or above this level surfaces in the collapsed card
@@ -35,8 +36,10 @@ class WeatherHero extends HTMLElement {
       if (e.target.closest('[data-action="change-resort"]')) {
         this.dispatchEvent(new CustomEvent('change-resort', { bubbles: true }));
       } else if (e.target.closest('[data-action="toggle"]')) {
-        this.#expanded = !this.#expanded;
-        this.#render();
+        animateHeightChange(this, () => {
+          this.#expanded = !this.#expanded;
+          this.#render();
+        });
       }
     });
   }

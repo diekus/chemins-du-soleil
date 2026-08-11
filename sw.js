@@ -1,4 +1,4 @@
-const CACHE_NAME = 'chemins-du-soleil-v13';
+const CACHE_NAME = 'chemins-du-soleil-v15';
 
 const PRECACHE = [
   '/',
@@ -27,6 +27,7 @@ const PRECACHE = [
   '/src/format.js',
   '/src/countries.js',
   '/src/icons.js',
+  '/src/animate-height.js',
   '/src/components/difficulty-selector.js',
   '/src/components/preference-selector.js',
   '/src/components/route-result.js',

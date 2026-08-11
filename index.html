@@ -21,7 +21,10 @@
       <source srcset="images/logo_inv.png" media="(prefers-color-scheme: dark)">
       <img src="images/logo.png" alt="Chemins du Soleil">
     </picture>
-    <span class="header-temp" aria-hidden="true"></span>
+    <span class="header-temp" aria-hidden="true">
+      <span class="header-temp-icon"></span>
+      <span class="header-temp-value"></span>
+    </span>
   </header>
 
   <section id="view-home" role="tabpanel" aria-labelledby="tab-home">
@@ -31,49 +34,53 @@
 
       <weather-hero></weather-hero>
 
-      <form class="search-form" novalidate>
+      <div class="search-panel">
 
-        <div class="form-row">
-          <label id="lbl-start">From</label>
-          <station-input
-            name="start"
-            aria-labelledby="lbl-start"
-            placeholder="Start station…"
-          ></station-input>
-        </div>
+        <form class="search-form" novalidate>
 
-        <div class="form-row">
-          <label id="lbl-dest">To</label>
-          <station-input
-            name="destination"
-            aria-labelledby="lbl-dest"
-            placeholder="Destination…"
-          ></station-input>
-        </div>
+          <div class="form-row">
+            <label id="lbl-start">From</label>
+            <station-input
+              name="start"
+              aria-labelledby="lbl-start"
+              placeholder="Start station…"
+            ></station-input>
+          </div>
 
-        <div class="form-row">
-          <label id="lbl-diff">Maximum difficulty</label>
-          <difficulty-selector aria-labelledby="lbl-diff"></difficulty-selector>
-        </div>
+          <div class="form-row">
+            <label id="lbl-dest">To</label>
+            <station-input
+              name="destination"
+              aria-labelledby="lbl-dest"
+              placeholder="Destination…"
+            ></station-input>
+          </div>
 
-        <div class="form-row">
-          <label id="lbl-pref">Preferred difficulty</label>
-          <preference-selector aria-labelledby="lbl-pref"></preference-selector>
-        </div>
+          <div class="form-row">
+            <label id="lbl-diff">Maximum difficulty</label>
+            <difficulty-selector aria-labelledby="lbl-diff"></difficulty-selector>
+          </div>
 
-        <p class="form-error" role="alert"></p>
+          <div class="form-row">
+            <label id="lbl-pref">Preferred difficulty</label>
+            <preference-selector aria-labelledby="lbl-pref"></preference-selector>
+          </div>
 
-        <button type="submit" class="btn-find">Find route</button>
+          <p class="form-error" role="alert"></p>
 
-      </form>
+          <button type="submit" class="btn-find">Find route</button>
 
-      <button type="button" class="search-summary" hidden>
-        <span class="search-summary-text">
-          <span class="search-summary-route"></span>
-          <span class="search-summary-pref"></span>
-        </span>
-        <span class="search-summary-chevron" aria-hidden="true">⌄</span>
-      </button>
+        </form>
+
+        <button type="button" class="search-summary" hidden>
+          <span class="search-summary-text">
+            <span class="search-summary-route"></span>
+            <span class="search-summary-pref"></span>
+          </span>
+          <span class="search-summary-chevron" aria-hidden="true">⌄</span>
+        </button>
+
+      </div>
 
       <route-result></route-result>
 

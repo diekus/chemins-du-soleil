@@ -33,6 +33,9 @@
   right: var(--sp-4);
   top: 50%;
   transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
   font-family: var(--font);
   font-weight: var(--fw-bold);
   font-size: 1.125rem;
@@ -42,6 +45,9 @@
   transition: opacity 0.25s ease;
 }
 .app-header--show-temp .header-temp { opacity: 1; }
+
+.header-temp-icon { display: inline-flex; }
+.header-temp-icon svg { width: 1.125rem; height: 1.125rem; display: block; }
 
 .app-main {
   max-width: 480px;
