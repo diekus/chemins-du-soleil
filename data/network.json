@@ -1,7 +1,7 @@
 {
   "_meta": {
     "season": "2024/25",
-    "scope": "Portes du Soleil — OSM-derived network with slope junction nodes. 148 lifts, 353 slope junctions, 965 directed edges. Schema v2.",
+    "scope": "Portes du Soleil — OSM-derived network with slope junction nodes. 148 lifts, 354 slope junctions, 975 directed edges. Schema v2.",
     "schema_version": "2"
   },
   "nodes": [
@@ -874,6 +874,12 @@
           "name": "Super-Châtel",
           "type": "lift",
           "difficulty": "green"
+        },
+        {
+          "to": "jct_0354",
+          "name": "Return to Châtel village",
+          "type": "slope",
+          "difficulty": "green"
         }
       ]
     },
@@ -911,6 +917,12 @@
         {
           "to": "lift_149425684_base",
           "name": "Traverse to Coqs 2",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_317029538_base",
+          "name": "Traverse to Poussinets",
           "type": "slope",
           "difficulty": "green"
         },
@@ -4449,6 +4461,12 @@
           "difficulty": "green"
         },
         {
+          "to": "lift_24898711_base",
+          "name": "Traverse to Morclan",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
           "to": "lift_317029539_base",
           "name": "Traverse to Débutants",
           "type": "slope",
@@ -4457,6 +4475,12 @@
         {
           "to": "lift_317029540_base",
           "name": "Traverse to Poussins",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_317029541_base",
+          "name": "Traverse to Tapis de Super Yeti",
           "type": "slope",
           "difficulty": "green"
         },
@@ -4637,6 +4661,12 @@
         {
           "to": "lift_149425684_base",
           "name": "Traverse to Coqs 2",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_317029538_base",
+          "name": "Traverse to Poussinets",
           "type": "slope",
           "difficulty": "green"
         },
@@ -5697,6 +5727,12 @@
         {
           "to": "lift_30750444_base",
           "name": "Linga / Stade",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "jct_0354",
+          "name": "Return to Châtel village",
           "type": "slope",
           "difficulty": "green"
         }
@@ -11469,6 +11505,27 @@
       ]
     },
     {
+      "id": "jct_0354",
+      "name": "Junction",
+      "country": "FR",
+      "station_type": "junction",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "lift_24898714_base",
+          "name": "Access Super-Châtel gondola",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_1010800534_base",
+          "name": "Access Linga chairlift",
+          "type": "slope",
+          "difficulty": "green"
+        }
+      ]
+    },
+    {
       "id": "morzine-village",
       "name": "Morzine",
       "country": "FR",
@@ -11526,6 +11583,27 @@
         {
           "to": "lift_23275859_base",
           "name": "Access Grande Terche gondola",
+          "type": "slope",
+          "difficulty": "green"
+        }
+      ]
+    },
+    {
+      "id": "chatel-village",
+      "name": "Châtel",
+      "country": "FR",
+      "station_type": "village",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "lift_24898714_base",
+          "name": "Access Super-Châtel gondola",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_1010800534_base",
+          "name": "Access Linga chairlift",
           "type": "slope",
           "difficulty": "green"
         }

@@ -56,6 +56,8 @@ No build step. No install required for the app itself (`devDependencies` only co
 
 **Roc d'Enfer / Saint-Jean-d'Aulps**: a member resort that is fully routable but is its own self-contained sub-graph — it has no ski-lift link to the rest of Portes du Soleil (only a shuttle bus in real life), so routes never cross between it and the main network. It still appears in the Resorts tab.
 
+**La Chapelle-d'Abondance / Crêt-Béni**: same situation as Roc d'Enfer above — its own self-contained sub-graph (Crêt Béni, Prés, Fontaines, Combe, Bambi, Dahu, Cerf, etc.), linked to Châtel/Torgon/the rest of Portes du Soleil only by a free shuttle bus in real life, confirmed against resort trip-planning sources. Don't treat this as a missing-edge bug.
+
 **Web Components** (`src/components/`, each self-registers via `customElements.define`):
 | Component | Role |
 |---|---|
@@ -88,7 +90,9 @@ Route-result slope steps also carry a `data-d="{difficulty}"` attribute on the `
 
 When editing `network.json` directly (rare — prefer regenerating), run the validator afterwards. The validator checks referential integrity, enum validity, and bidirectional edge consistency.
 
-`scripts/generate-from-osm.js` regenerates `data/network.json` from `data/portes_du_soleil_graph.json`. It clusters piste endpoints within 75 m into routing junctions, auto-bridges lift-to-lift gaps within 400 m, and corrects piste direction using OSM lift-proximity evidence. Where OSM's piste tracing has a genuine, real-world-verified gap (confirmed against an official trip-planning source, not guessed), a small manually-specified edge bridges it — see the `CROSS_SECTOR`, `SJA_SECTOR`, and `CHATEL_SECTOR` arrays near the bottom of the script for examples and the reasoning behind each one. Only add to these when OSM genuinely lacks the geometry, not as a shortcut around debugging the clustering.
+`scripts/generate-from-osm.js` regenerates `data/network.json` from `data/portes_du_soleil_graph.json`. It clusters piste endpoints within 75 m into routing junctions, auto-bridges lift-to-lift gaps within 400 m, and corrects piste direction using OSM lift-proximity evidence. Where OSM's piste tracing has a genuine, real-world-verified gap (confirmed against an official trip-planning source, not guessed), a small manually-specified edge bridges it — see the `CROSS_SECTOR`, `SJA_SECTOR`, `CHATEL_SECTOR`, and `CHATEL_VILLAGE_SECTOR` arrays near the bottom of the script for examples and the reasoning behind each one. Only add to these when OSM genuinely lacks the geometry, not as a shortcut around debugging the clustering.
+
+**Châtel village node (`chatel-village`)**: Châtel's own lift network has no shared lift/piste between its two sectors — Super-Châtel/Barbossine (gondola from the village centre) and Linga/Pré-la-Joux (chairlift ~1.8km away) — skiers transfer via the village itself, same as Morzine's village bridges. `CHATEL_VILLAGE_SECTOR` models this. Without it, the entire Super-Châtel/Barbossine sector (Morclan, Panthiaz, Corbeau, Coqs, Conches, Petit Châtel, etc.) was an orphaned sub-graph unreachable from the rest of Portes du Soleil, discovered via a full connected-components audit.
 
 ## Design constraints
 

@@ -334,12 +334,39 @@ const CHATEL_SECTOR = [
     name: 'Linga / Stade', type: 'slope', difficulty: 'green' },
 ];
 
+// ── Châtel village transfer (Linga/Pré-la-Joux sector ↔ Super-Châtel/Barbossine
+// sector) ─────────────────────────────────────────────────────────────────────
+// Châtel's own lift network is split into two sectors that don't share a lift
+// or piste: Super-Châtel/Barbossine (reached by the gondola from the village
+// centre) and Linga/Pré-la-Joux (reached by the Linga chairlift, ~1.8km from
+// the village centre along the valley road). Skiers move between them via the
+// village itself, exactly like the Morzine village transfers above — this was
+// entirely missing (no 'chatel-village' node existed), which left the whole
+// Super-Châtel/Barbossine sector (Morclan, Panthiaz, Corbeau, Coqs, Conches,
+// Petit Châtel, etc.) disconnected from the rest of Portes du Soleil in the
+// graph despite being reachable in reality. Confirmed via Châtel resort
+// documentation: "the local Chatel ski area is split into two separate
+// sectors: Super Chatel/Barbossine and Linga/Pre-la-Joux, the former accessed
+// by a gondola directly from the centre of the village" and "[Linga] chairlift
+// is located at the bottom of the resort, 1.8km from the village centre."
+const CHATEL_VILLAGE_SECTOR = [
+  { from: 'chatel-village', to: liftBaseId(24898714),
+    name: 'Access Super-Châtel gondola', type: 'slope', difficulty: 'green' },
+  { from: liftBaseId(24898714), to: 'chatel-village',
+    name: 'Return to Châtel village', type: 'slope', difficulty: 'green' },
+  { from: 'chatel-village', to: liftBaseId(1010800534),
+    name: 'Access Linga chairlift', type: 'slope', difficulty: 'green' },
+  { from: liftBaseId(1010800534), to: 'chatel-village',
+    name: 'Return to Châtel village', type: 'slope', difficulty: 'green' },
+];
+
 // Village node initialisation (ensure keys exist before manual edges are applied)
 ensureNode('morzine-village');
 ensureNode('champery');
 ensureNode('saint-jean-daulps');
+ensureNode('chatel-village');
 
-for (const e of [...CROSS_SECTOR, ...SJA_SECTOR, ...CHATEL_SECTOR]) {
+for (const e of [...CROSS_SECTOR, ...SJA_SECTOR, ...CHATEL_SECTOR, ...CHATEL_VILLAGE_SECTOR]) {
   // Village nodes are not in UF — use their ID directly
   const fromRep = uf.find(e.from) ?? e.from;
   const toRep   = uf.find(e.to)   ?? e.to;
@@ -494,6 +521,7 @@ for (const [vid, vname, vcountry] of [
   ['morzine-village',    'Morzine',               'FR'],
   ['champery',           'Champéry',               'CH'],
   ['saint-jean-daulps',  "Saint-Jean-d'Aulps",    'FR'],
+  ['chatel-village',     'Châtel',                'FR'],
 ]) {
   nodes.push({
     id:           vid,
