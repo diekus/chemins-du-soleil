@@ -178,7 +178,7 @@ for (const lift of usedLifts) {
   const baseRep = uf.find(liftBaseId(lift.id));
   const topRep  = uf.find(liftTopId(lift.id));
   if (baseRep === topRep) continue; // shouldn't happen but guard it
-  addEdge(baseRep, topRep, lift.name ?? `Lift ${lift.id}`, 'lift', 'green');
+  addEdge(baseRep, topRep, lift.name ?? `Lift ${lift.id}`, 'lift', 'silver');
 }
 
 // ── Piste (slope) edges ───────────────────────────────────────────────────────

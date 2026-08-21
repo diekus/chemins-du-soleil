@@ -16,7 +16,7 @@
           "to": "lift_8215532_top",
           "name": "Crosets",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -70,7 +70,7 @@
           "to": "lift_8215584_top",
           "name": "Pauvre Conche",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "lift_8215630_base",
@@ -124,7 +124,7 @@
           "to": "lift_8215630_top",
           "name": "Ripaille 1",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -172,7 +172,7 @@
           "to": "lift_8215671_top",
           "name": "Mossettes",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "lift_8215532_base",
@@ -238,7 +238,7 @@
           "to": "lift_8215733_top",
           "name": "Prolays",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "jct_0144",
@@ -286,7 +286,7 @@
           "to": "lift_8215798_top",
           "name": "Chaux des Rosées",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "lift_8215843_base",
@@ -322,7 +322,7 @@
           "to": "lift_8215843_top",
           "name": "Rochassons",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "lift_29288813_base",
@@ -370,7 +370,7 @@
           "to": "lift_8215989_top",
           "name": "Morgins-Foilleuse",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -424,7 +424,7 @@
           "to": "lift_8216054_top",
           "name": "Chaux",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -478,7 +478,7 @@
           "to": "lift_8216151_top",
           "name": "Aiguille des Champeys",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -526,7 +526,7 @@
           "to": "lift_8216335_top",
           "name": "Champéry - Croix de Culet",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -562,7 +562,7 @@
           "to": "lift_8216350_top",
           "name": "Marcheuson",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -598,7 +598,7 @@
           "to": "lift_8216398_top",
           "name": "Planachaux",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "jct_0023",
@@ -664,7 +664,7 @@
           "to": "lift_8216408_top",
           "name": "Grand Conche",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -730,7 +730,7 @@
           "to": "lift_8216510_top",
           "name": "Mossettes",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -760,7 +760,7 @@
           "to": "lift_8216568_top",
           "name": "Ripaille 2",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -783,7 +783,7 @@
           "to": "lift_8216644_top",
           "name": "Champeys",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -831,7 +831,7 @@
           "to": "lift_24898711_top",
           "name": "Morclan",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "lift_317029541_base",
@@ -873,7 +873,7 @@
           "to": "lift_24898714_top",
           "name": "Super-Châtel",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "jct_0354",
@@ -963,7 +963,7 @@
           "to": "lift_24898715_top",
           "name": "Coqs 1",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "lift_1075520907_base",
@@ -1023,7 +1023,7 @@
           "to": "lift_24898717_top",
           "name": "Bossons",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -1059,7 +1059,7 @@
           "to": "lift_24898730_top",
           "name": "Barbossine",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -1107,7 +1107,7 @@
           "to": "lift_24898731_top",
           "name": "Tour de Don",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -1143,7 +1143,7 @@
           "to": "lift_24898738_top",
           "name": "Chermeu",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -1179,7 +1179,7 @@
           "to": "lift_24898740_top",
           "name": "Corbeau",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -1215,7 +1215,7 @@
           "to": "lift_24898742_top",
           "name": "Corbeau",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -1251,7 +1251,7 @@
           "to": "lift_24898743_top",
           "name": "Écottis",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -1274,7 +1274,7 @@
           "to": "lift_24899026_top",
           "name": "Chalet Neuf 1",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -1322,7 +1322,7 @@
           "to": "lift_24899599_top",
           "name": "Derrière Pertuis",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -1358,7 +1358,7 @@
           "to": "lift_24899602_top",
           "name": "Sepaya I",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -1412,7 +1412,7 @@
           "to": "lift_24900087_top",
           "name": "Grand Paradis",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -1435,7 +1435,7 @@
           "to": "lift_24916407_top",
           "name": "Chavanette",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "jct_0008",
@@ -1489,7 +1489,7 @@
           "to": "lift_24916408_top",
           "name": "Chavanette 2",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "lift_24916409_base",
@@ -1525,7 +1525,7 @@
           "to": "lift_24916409_top",
           "name": "Choucas",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -1567,7 +1567,7 @@
           "to": "lift_24916410_top",
           "name": "Fornet",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -1609,7 +1609,7 @@
           "to": "lift_24916412_top",
           "name": "Stade",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "lift_29287623_base",
@@ -1663,7 +1663,7 @@
           "to": "lift_24916417_top",
           "name": "Lindarets",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "lift_24916433_base",
@@ -1747,7 +1747,7 @@
           "to": "lift_24916420_top",
           "name": "Séraussaix",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "lift_24916421_base",
@@ -1795,7 +1795,7 @@
           "to": "lift_24916421_top",
           "name": "Proclou",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -1843,7 +1843,7 @@
           "to": "lift_24916425_top",
           "name": "Grandes Combes",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -1909,7 +1909,7 @@
           "to": "lift_24916433_top",
           "name": "Chaux Fleurie",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "lift_24916417_base",
@@ -1963,7 +1963,7 @@
           "to": "lift_24916937_top",
           "name": "Combes",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -2005,7 +2005,7 @@
           "to": "lift_29283986_top",
           "name": "Hameau",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -2059,7 +2059,7 @@
           "to": "lift_29283989_top",
           "name": "Cuboré",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "jct_0315",
@@ -2088,7 +2088,7 @@
           "to": "lift_29285752_top",
           "name": "Cuboré",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "jct_0073",
@@ -2136,7 +2136,7 @@
           "to": "lift_29285756_top",
           "name": "Cuboré",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "jct_0176",
@@ -2171,7 +2171,7 @@
           "to": "lift_29286845_top",
           "name": "Surf",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -2225,7 +2225,7 @@
           "to": "lift_29287623_top",
           "name": "Tour",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -2273,7 +2273,7 @@
           "to": "lift_29287970_top",
           "name": "Léchère",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "lift_8215733_base",
@@ -2315,7 +2315,7 @@
           "to": "lift_29288813_top",
           "name": "Rubis",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "lift_29288817_base",
@@ -2351,7 +2351,7 @@
           "to": "lift_29288817_top",
           "name": "Pré la Joux",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -2387,7 +2387,7 @@
           "to": "lift_29289470_top",
           "name": "Petit Châtel",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -2417,7 +2417,7 @@
           "to": "lift_30170411_top",
           "name": "Brochaux",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -2459,7 +2459,7 @@
           "to": "lift_30351719_top",
           "name": "Baron",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -2507,7 +2507,7 @@
           "to": "lift_30352096_top",
           "name": "Zore",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -2543,7 +2543,7 @@
           "to": "lift_30353157_top",
           "name": "Écoles 1",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -2573,7 +2573,7 @@
           "to": "lift_30353221_top",
           "name": "Chapelle",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -2603,7 +2603,7 @@
           "to": "lift_30353553_top",
           "name": "Trashers",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "jct_0065",
@@ -2675,7 +2675,7 @@
           "to": "lift_30482077_top",
           "name": "Chavanette 1",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -2711,7 +2711,7 @@
           "to": "lift_30610172_top",
           "name": "Plateau",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "lift_24916412_base",
@@ -2801,7 +2801,7 @@
           "to": "lift_30627272_top",
           "name": "Cornebois",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -2849,7 +2849,7 @@
           "to": "lift_30685905_top",
           "name": "Dromonts 2",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "jct_0154",
@@ -2939,7 +2939,7 @@
           "to": "lift_30720552_top",
           "name": "Queyset",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -2975,7 +2975,7 @@
           "to": "lift_30749922_top",
           "name": "Écho Alpin",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -3005,7 +3005,7 @@
           "to": "lift_30750444_top",
           "name": "Stade",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "lift_1010800534_base",
@@ -3041,7 +3041,7 @@
           "to": "lift_31349026_top",
           "name": "Crêt Béni",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -3101,7 +3101,7 @@
           "to": "lift_31349047_top",
           "name": "Bambi",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "jct_0090",
@@ -3167,7 +3167,7 @@
           "to": "lift_31349048_top",
           "name": "Prés 2",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "jct_0093",
@@ -3215,7 +3215,7 @@
           "to": "lift_31349049_top",
           "name": "Prés 1",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -3245,7 +3245,7 @@
           "to": "lift_31738075_top",
           "name": "Combe",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "lift_31349047_base",
@@ -3287,7 +3287,7 @@
           "to": "lift_31738076_top",
           "name": "Fontaines",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -3329,7 +3329,7 @@
           "to": "lift_31770794_top",
           "name": "Panthiaz",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -3377,7 +3377,7 @@
           "to": "lift_31770796_top",
           "name": "Conche 2000",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -3413,7 +3413,7 @@
           "to": "lift_31770797_top",
           "name": "Tronchey",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -3461,7 +3461,7 @@
           "to": "lift_31770798_top",
           "name": "Djeu des Têtes",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -3491,7 +3491,7 @@
           "to": "lift_31770799_top",
           "name": "Onnaz",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "lift_24898738_base",
@@ -3533,7 +3533,7 @@
           "to": "lift_31770800_top",
           "name": "Chaux Longe",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -3556,7 +3556,7 @@
           "to": "lift_31770801_top",
           "name": "Contrebandiers",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "jct_0159",
@@ -3610,7 +3610,7 @@
           "to": "lift_32312982_top",
           "name": "Raverettes",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "jct_0102",
@@ -3658,7 +3658,7 @@
           "to": "lift_32344730_top",
           "name": "Chamossière Express",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -3694,7 +3694,7 @@
           "to": "lift_32425248_top",
           "name": "Nyon",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -3748,7 +3748,7 @@
           "to": "lift_32425250_top",
           "name": "Pré Favre",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "jct_0099",
@@ -3814,7 +3814,7 @@
           "to": "lift_35881681_top",
           "name": "Télésiège de Braitaz",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -3850,7 +3850,7 @@
           "to": "lift_49397555_top",
           "name": "Gueilly",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -3886,7 +3886,7 @@
           "to": "lift_49449610_top",
           "name": "Babylift Planachaux",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -3909,7 +3909,7 @@
           "to": "lift_96366493_top",
           "name": "Pointe de Nyon",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -3945,7 +3945,7 @@
           "to": "lift_149425684_top",
           "name": "Coqs 2",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -3987,7 +3987,7 @@
           "to": "lift_151647586_top",
           "name": "Géant",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -4023,7 +4023,7 @@
           "to": "lift_197938604_top",
           "name": "Sepaya II",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -4065,7 +4065,7 @@
           "to": "lift_198298433_top",
           "name": "Bochasses",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -4107,7 +4107,7 @@
           "to": "lift_225288644_top",
           "name": "Prodains Express 3S",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -4155,7 +4155,7 @@
           "to": "lift_280176510_top",
           "name": "Poireaux 2",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -4215,7 +4215,7 @@
           "to": "lift_280176511_top",
           "name": "Poireaux 1",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -4263,7 +4263,7 @@
           "to": "lift_317027023_top",
           "name": "Écoles 2",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -4299,7 +4299,7 @@
           "to": "lift_317027129_top",
           "name": "Dromonts 1",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -4359,7 +4359,7 @@
           "to": "lift_317027261_top",
           "name": "Barmettes",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -4395,7 +4395,7 @@
           "to": "lift_317027562_top",
           "name": "Arare 1",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "jct_0077",
@@ -4443,7 +4443,7 @@
           "to": "lift_317029538_top",
           "name": "Poussinets",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -4509,7 +4509,7 @@
           "to": "lift_317029539_top",
           "name": "Débutants",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "lift_317029559_base",
@@ -4581,7 +4581,7 @@
           "to": "lift_317029540_top",
           "name": "Poussins",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -4641,7 +4641,7 @@
           "to": "lift_317029541_top",
           "name": "Tapis de Super Yeti",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -4707,7 +4707,7 @@
           "to": "lift_317029559_top",
           "name": "Coquelets",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -4767,7 +4767,7 @@
           "to": "lift_317312454_top",
           "name": "Pré-la-Vieille",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -4803,7 +4803,7 @@
           "to": "lift_317444742_top",
           "name": "Dahu",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -4839,7 +4839,7 @@
           "to": "lift_325533218_top",
           "name": "Télésiège des Portes du Soleil",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -4893,7 +4893,7 @@
           "to": "lift_325533365_top",
           "name": "Gabelou",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -4916,7 +4916,7 @@
           "to": "lift_327582926_top",
           "name": "Truche",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -4946,7 +4946,7 @@
           "to": "lift_327582927_top",
           "name": "Pointe de l'Au",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "lift_8216644_base",
@@ -4994,7 +4994,7 @@
           "to": "lift_327585052_top",
           "name": "Gourtet",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -5024,7 +5024,7 @@
           "to": "lift_332976755_top",
           "name": "Culet 2",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -5047,7 +5047,7 @@
           "to": "lift_332978785_top",
           "name": "Snowly",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -5077,7 +5077,7 @@
           "to": "lift_332980818_top",
           "name": "Chalet Neuf 2",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -5100,7 +5100,7 @@
           "to": "lift_333170100_top",
           "name": "Chapelle",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -5142,7 +5142,7 @@
           "to": "lift_336811984_top",
           "name": "Loy",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -5172,7 +5172,7 @@
           "to": "lift_362159135_top",
           "name": "Prodains",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -5220,7 +5220,7 @@
           "to": "lift_446569623_top",
           "name": "Ardent",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -5256,7 +5256,7 @@
           "to": "lift_593806449_top",
           "name": "Lift 593806449",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -5292,7 +5292,7 @@
           "to": "lift_677468931_top",
           "name": "Pré la Joux",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -5334,7 +5334,7 @@
           "to": "lift_704966470_top",
           "name": "Dromonts 1",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -5394,7 +5394,7 @@
           "to": "lift_704966471_top",
           "name": "Dromonts 2",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -5460,7 +5460,7 @@
           "to": "lift_704966472_top",
           "name": "Dromonts 2",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -5526,7 +5526,7 @@
           "to": "lift_704966473_top",
           "name": "Dromonts 1",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -5592,7 +5592,7 @@
           "to": "lift_750062606_top",
           "name": "Arare 2",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -5615,7 +5615,7 @@
           "to": "lift_750062609_top",
           "name": "Cases",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -5657,7 +5657,7 @@
           "to": "lift_800472190_top",
           "name": "Douanier",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -5693,7 +5693,7 @@
           "to": "lift_1009693206_top",
           "name": "Pierre Longue",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "lift_29288813_base",
@@ -5722,7 +5722,7 @@
           "to": "lift_1010800534_top",
           "name": "Linga",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "lift_30750444_base",
@@ -5770,7 +5770,7 @@
           "to": "lift_1019585580_top",
           "name": "Lac",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -5818,7 +5818,7 @@
           "to": "lift_1075520907_top",
           "name": "Conches",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "lift_24898714_base",
@@ -5860,7 +5860,7 @@
           "to": "lift_1183443459_top",
           "name": "Lac-Intrêts",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -5896,7 +5896,7 @@
           "to": "lift_1308902671_top",
           "name": "Tapis de l'Aiglon",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -5944,7 +5944,7 @@
           "to": "lift_1325467177_top",
           "name": "Lift 1325467177",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -5974,7 +5974,7 @@
           "to": "lift_23275859_top",
           "name": "Grande Terche",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "jct_0353",
@@ -6022,7 +6022,7 @@
           "to": "lift_288892180_top",
           "name": "Chargeau",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -6058,7 +6058,7 @@
           "to": "lift_288893232_top",
           "name": "Graydon",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -6100,7 +6100,7 @@
           "to": "lift_297428605_top",
           "name": "Bray",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "lift_23275859_top",
@@ -6166,7 +6166,7 @@
           "to": "lift_297428606_top",
           "name": "Esserailloux",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "jct_0335",
@@ -6226,7 +6226,7 @@
           "to": "lift_317020631_top",
           "name": "Terchette",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -6274,7 +6274,7 @@
           "to": "lift_378209423_top",
           "name": "Têtes",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -6310,7 +6310,7 @@
           "to": "lift_776556045_top",
           "name": "Lac",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -6346,7 +6346,7 @@
           "to": "lift_904857550_top",
           "name": "Lanches",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -6388,7 +6388,7 @@
           "to": "lift_315824148_top",
           "name": "Torchon",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "lift_317021227_base",
@@ -6436,7 +6436,7 @@
           "to": "lift_315824149_top",
           "name": "Follys 1",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "jct_0327",
@@ -6496,7 +6496,7 @@
           "to": "lift_383430774_top",
           "name": "Follys 2",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -6526,7 +6526,7 @@
           "to": "lift_317021227_top",
           "name": "Cabri",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         },
         {
           "to": "jct_0333",
@@ -6574,7 +6574,7 @@
           "to": "lift_317021290_top",
           "name": "École 2",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -6616,7 +6616,7 @@
           "to": "lift_317021298_top",
           "name": "Étangs",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
@@ -6670,7 +6670,7 @@
           "to": "lift_317021976_top",
           "name": "École 1",
           "type": "lift",
-          "difficulty": "green"
+          "difficulty": "silver"
         }
       ]
     },
