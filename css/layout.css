@@ -171,3 +171,9 @@ body { padding-bottom: 56px; }
 @media (min-width: 640px) {
   .app-main { padding: var(--sp-8) var(--sp-6); }
 }
+
+@media (min-width: 900px) {
+  /* The tab-bar moves into the header here (see components.css), so the
+     bottom dock's reserved clearance is no longer needed. */
+  body { padding-bottom: 0; }
+}
