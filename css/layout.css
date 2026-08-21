@@ -232,4 +232,16 @@ body { padding-bottom: 112px; }
   }
 
   #view-resorts .app-main { max-width: 1080px; }
+
+  /* Home widens too, so multiple route results can sit side by side (see
+     .result-cards in components.css) — but the search form itself stays a
+     narrow, centred column rather than stretching edge to edge. */
+  #view-home .app-main { max-width: 1080px; }
+  #view-home location-gate,
+  #view-home weather-hero,
+  #view-home .search-panel {
+    width: 100%;
+    max-width: 480px;
+    margin-inline: auto;
+  }
 }

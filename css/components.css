@@ -834,3 +834,14 @@ route-result { display: block; }
   0%, 100% { opacity: 1; }
   50%       { opacity: 0.45; }
 }
+
+@media (min-width: 900px) {
+  /* Cards vary in height (different step counts), so let each size to its
+     own content instead of stretching to match its row's tallest sibling. */
+  .result-cards,
+  .loading-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    align-items: start;
+  }
+}
