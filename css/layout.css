@@ -42,6 +42,18 @@
       var(--sp-4),
       calc(100% - env(titlebar-area-x, 0px) - env(titlebar-area-width, 100%))
     );
+    /* Neither the logo nor the temp badge are interactive, so the whole bar
+       can double as a drag handle for moving the window — standard WCO UX. */
+    -webkit-app-region: drag;
+            app-region: drag;
+  }
+
+  /* tab-bar is a separate fixed element that visually overlaps the header
+     at desktop widths; keep it explicitly click/tap-able rather than
+     relying on it simply not inheriting the header's drag region. */
+  tab-bar {
+    -webkit-app-region: no-drag;
+            app-region: no-drag;
   }
 
   /* Compact's shrunken header sits visually tighter to begin with, so flush
