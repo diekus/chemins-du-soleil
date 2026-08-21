@@ -76,6 +76,11 @@ export const ICONS = {
     <path d="M2.8 14.8 H16.4 A2.8 2.8 0 1 1 13.6 17.6"/>
     <path d="M5.2 12 H19.4"/>
   </svg>`,
+
+  /** Downward chevron — expand/collapse affordance. Rotate 180° via CSS for the "up" state. */
+  chevronDown: `<svg viewBox="0 0 24 24" ${STROKE}>
+    <path d="M5 9 L12 16 L19 9"/>
+  </svg>`,
 };
 
 /** Maps a network node's `lift_type` to an icon key, defaulting to the most common type. */

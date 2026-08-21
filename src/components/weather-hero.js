@@ -102,7 +102,7 @@ class WeatherHero extends HTMLElement {
           <span class="hero-compact-temp">${Math.round(d.temp)}°C</span>
           <span class="hero-compact-snow"><span class="hero-icon" aria-hidden="true">${ICONS.snow}</span> ${d.freshSnow} cm</span>
           ${this.#avalancheLine()}
-          <span class="hero-chevron" aria-hidden="true">⌄</span>
+          <span class="hero-chevron hero-icon" aria-hidden="true">${ICONS.chevronDown}</span>
         </button>
       </div>
     `;
@@ -145,7 +145,7 @@ class WeatherHero extends HTMLElement {
           </div>
 
           ${updated ? `<p class="hero-updated">Updated ${updated}</p>` : ''}
-          <span class="hero-chevron hero-chevron--up" aria-hidden="true">⌃</span>
+          <span class="hero-chevron hero-chevron--up hero-icon" aria-hidden="true">${ICONS.chevronDown}</span>
         </button>
       </div>
     `;
