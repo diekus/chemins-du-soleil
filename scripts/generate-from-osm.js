@@ -332,6 +332,20 @@ const CHATEL_SECTOR = [
     name: 'Linga / Stade', type: 'slope', difficulty: 'green' },
   { from: liftBaseId(30750444), to: liftBaseId(1010800534),
     name: 'Linga / Stade', type: 'slope', difficulty: 'green' },
+
+  // Pierre Longue summit → Pierre Longue base: OSM does trace this piste
+  // ("La Belette", the run back down to Pré la Joux under the lift line —
+  // confirmed by Portes du Soleil's own lift description: "departs from
+  // Pré la Joux... takes you directly to Plaine-Dranse"), but its endpoints
+  // sit exactly on the Pierre Longue stations (0m) *and* within proximity of
+  // two other lifts (Rochassons base 59m, Rubis base 84.5m). The clustering
+  // pass's "never merge two different lift clusters" rule means whichever
+  // lift's proximity edge is processed first in the OSM data wins the piste
+  // endpoint, so it got attached to Rochassons/Rubis instead — leaving Pierre
+  // Longue's own summit with no way down and stranding it from the rest of
+  // the Ardent ↔ Châtel corridor above.
+  { from: liftTopId(1009693206), to: liftBaseId(1009693206),
+    name: 'La Belette', type: 'slope', difficulty: 'green' },
 ];
 
 // ── Châtel village transfer (Linga/Pré-la-Joux sector ↔ Super-Châtel/Barbossine
@@ -478,13 +492,26 @@ for (const lift of usedLifts) {
   }
 }
 
+// Village nodes (defined here so both the junction-exclusion check below and the
+// village-node assembly further down share one list — a node missing from this
+// list falls through into the junction loop and gets wrongly split into two
+// nodes: a hidden 'junction' twin that steals all its inbound edges, and the
+// visible 'village' node left with none. That happened to chatel-village.)
+const VILLAGE_NODES = [
+  ['morzine-village',    'Morzine',               'FR'],
+  ['champery',           'Champéry',               'CH'],
+  ['saint-jean-daulps',  "Saint-Jean-d'Aulps",    'FR'],
+  ['chatel-village',     'Châtel',                'FR'],
+];
+const villageIds = new Set(VILLAGE_NODES.map(([vid]) => vid));
+
 // Add junction nodes (piste-endpoint cluster reps not already added as lift nodes)
 let jctSeq = 0;
 const repToJunctionId = new Map();
 
 for (const [repId] of nodeConns) {
   if (addedNodes.has(repId)) continue;
-  if (repId === 'morzine-village' || repId === 'champery') continue; // handled below
+  if (villageIds.has(repId)) continue; // handled below
 
   addedNodes.add(repId);
   const jctId = `jct_${String(++jctSeq).padStart(4, '0')}`;
@@ -517,12 +544,7 @@ for (const node of nodes) {
 }
 
 // Village nodes
-for (const [vid, vname, vcountry] of [
-  ['morzine-village',    'Morzine',               'FR'],
-  ['champery',           'Champéry',               'CH'],
-  ['saint-jean-daulps',  "Saint-Jean-d'Aulps",    'FR'],
-  ['chatel-village',     'Châtel',                'FR'],
-]) {
+for (const [vid, vname, vcountry] of VILLAGE_NODES) {
   nodes.push({
     id:           vid,
     name:         vname,

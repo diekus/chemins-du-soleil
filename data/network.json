@@ -1,7 +1,7 @@
 {
   "_meta": {
     "season": "2024/25",
-    "scope": "Portes du Soleil — OSM-derived network with slope junction nodes. 148 lifts, 354 slope junctions, 975 directed edges. Schema v2.",
+    "scope": "Portes du Soleil — OSM-derived network with slope junction nodes. 148 lifts, 352 slope junctions, 973 directed edges. Schema v2.",
     "schema_version": "2"
   },
   "nodes": [
@@ -876,7 +876,7 @@
           "difficulty": "silver"
         },
         {
-          "to": "jct_0354",
+          "to": "chatel-village",
           "name": "Return to Châtel village",
           "type": "slope",
           "difficulty": "green"
@@ -5709,7 +5709,14 @@
       "country": "FR",
       "station_type": "lift-top",
       "lift_type": "chairlift",
-      "connections": []
+      "connections": [
+        {
+          "to": "lift_1009693206_base",
+          "name": "La Belette",
+          "type": "slope",
+          "difficulty": "green"
+        }
+      ]
     },
     {
       "id": "lift_1010800534_base",
@@ -5731,7 +5738,7 @@
           "difficulty": "green"
         },
         {
-          "to": "jct_0354",
+          "to": "chatel-village",
           "name": "Return to Châtel village",
           "type": "slope",
           "difficulty": "green"
@@ -5977,7 +5984,7 @@
           "difficulty": "silver"
         },
         {
-          "to": "jct_0353",
+          "to": "saint-jean-daulps",
           "name": "Return to Saint-Jean-d'Aulps",
           "type": "slope",
           "difficulty": "green"
@@ -11486,42 +11493,6 @@
           "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
-        }
-      ]
-    },
-    {
-      "id": "jct_0353",
-      "name": "Junction",
-      "country": "FR",
-      "station_type": "junction",
-      "lift_type": null,
-      "connections": [
-        {
-          "to": "lift_23275859_base",
-          "name": "Access Grande Terche gondola",
-          "type": "slope",
-          "difficulty": "green"
-        }
-      ]
-    },
-    {
-      "id": "jct_0354",
-      "name": "Junction",
-      "country": "FR",
-      "station_type": "junction",
-      "lift_type": null,
-      "connections": [
-        {
-          "to": "lift_24898714_base",
-          "name": "Access Super-Châtel gondola",
-          "type": "slope",
-          "difficulty": "green"
-        },
-        {
-          "to": "lift_1010800534_base",
-          "name": "Access Linga chairlift",
-          "type": "slope",
-          "difficulty": "green"
         }
       ]
     },
