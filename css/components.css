@@ -81,6 +81,15 @@ tab-bar {
   .tab-bar-label { font-size: 0.8125rem; }
 }
 
+/* In a WCO desktop PWA window, keep the pill clear of native chrome drawn on
+   the titlebar's left edge (e.g. macOS traffic-light buttons) — see the
+   matching .app-header rule in layout.css for the right edge. */
+@media (display-mode: window-controls-overlay) and (min-width: 900px) {
+  tab-bar {
+    left: max(var(--sp-4), env(titlebar-area-x, var(--sp-4)));
+  }
+}
+
 /* ── location-gate ─────────────────────────────────────────────────────────── */
 location-gate { display: block; }
 location-gate[hidden] { display: none; }

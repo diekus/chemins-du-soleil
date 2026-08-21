@@ -28,6 +28,23 @@
   height: 32px;
 }
 
+/* ── Window Controls Overlay ───────────────────────────────────────────────── */
+/* When installed as a WCO-enabled desktop PWA, the browser draws native
+   window-control buttons (Windows: right edge) and sometimes an app icon
+   (macOS: left edge, ahead of the traffic-light buttons) directly on top of
+   the page — env(titlebar-area-*) describes the safe rect between them.
+   Reserve that space on both sides of the header so the right-aligned logo
+   and the header's tab-bar pill are never drawn underneath native chrome. */
+@media (display-mode: window-controls-overlay) {
+  .app-header {
+    padding-left:  max(var(--sp-4), env(titlebar-area-x, 0px));
+    padding-right: max(
+      var(--sp-4),
+      calc(100% - env(titlebar-area-x, 0px) - env(titlebar-area-width, 100%))
+    );
+  }
+}
+
 .header-temp {
   position: absolute;
   right: var(--sp-4);
