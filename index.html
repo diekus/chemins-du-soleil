@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Chemins du Soleil</title>
   <!-- Mirrors --color-background in base.css, so the WCO title bar / window
-       controls overlay matches the app header instead of a fixed brand colour. -->
-  <meta name="theme-color" content="#FFFFFF">
-  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+       controls overlay matches the app header in light and dark. No
+       unconditioned fallback tag — an always-matching tag ahead of these
+       wins the browser's WCO colour pick regardless of the others' media,
+       which is what silently broke this the first time round. -->
   <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="images/icon-192.png" type="image/png">
   <link rel="apple-touch-icon" href="images/icon-192.png">
