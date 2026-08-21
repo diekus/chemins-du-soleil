@@ -4,6 +4,7 @@
   "description": "Find your ski route through the Portes du Soleil resort area.",
   "start_url": "/chemins-du-soleil/",
   "id": "/cheminssoleil/",
+  "scope": "/chemins-du-soleil/",
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone"],
   "theme_color": "#2E2E2E",
