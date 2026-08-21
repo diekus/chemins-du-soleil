@@ -1,7 +1,7 @@
 {
   "_meta": {
     "season": "2024/25",
-    "scope": "Portes du Soleil — OSM-derived network with slope junction nodes. 148 lifts, 352 slope junctions, 973 directed edges. Schema v2.",
+    "scope": "Portes du Soleil — OSM-derived network with slope junction nodes. 148 lifts, 352 slope junctions, 979 directed edges. Schema v2.",
     "schema_version": "2"
   },
   "nodes": [
@@ -371,6 +371,12 @@
           "name": "Morgins-Foilleuse",
           "type": "lift",
           "difficulty": "silver"
+        },
+        {
+          "to": "morgins-village",
+          "name": "Return to Morgins village",
+          "type": "slope",
+          "difficulty": "green"
         }
       ]
     },
@@ -1216,6 +1222,12 @@
           "name": "Corbeau",
           "type": "lift",
           "difficulty": "silver"
+        },
+        {
+          "to": "morgins-village",
+          "name": "Return to Morgins village",
+          "type": "slope",
+          "difficulty": "green"
         }
       ]
     },
@@ -1261,7 +1273,14 @@
       "country": "CH",
       "station_type": "lift-top",
       "lift_type": "surface",
-      "connections": []
+      "connections": [
+        {
+          "to": "lift_24899026_top",
+          "name": "Traverse to Chalet Neuf",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
     },
     {
       "id": "lift_24899026_base",
@@ -6964,7 +6983,14 @@
       "country": "CH",
       "station_type": "junction",
       "lift_type": null,
-      "connections": []
+      "connections": [
+        {
+          "to": "lift_198298433_base",
+          "name": "Traverse to Bochasses",
+          "type": "slope",
+          "difficulty": "blue"
+        }
+      ]
     },
     {
       "id": "jct_0018",
@@ -11575,6 +11601,27 @@
         {
           "to": "lift_1010800534_base",
           "name": "Access Linga chairlift",
+          "type": "slope",
+          "difficulty": "green"
+        }
+      ]
+    },
+    {
+      "id": "morgins-village",
+      "name": "Morgins",
+      "country": "CH",
+      "station_type": "village",
+      "lift_type": null,
+      "connections": [
+        {
+          "to": "lift_8215989_base",
+          "name": "Access Foilleuse gondola",
+          "type": "slope",
+          "difficulty": "green"
+        },
+        {
+          "to": "lift_24898742_base",
+          "name": "Access Corbeau chairlift",
           "type": "slope",
           "difficulty": "green"
         }

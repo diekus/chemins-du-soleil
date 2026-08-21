@@ -348,6 +348,49 @@ const CHATEL_SECTOR = [
     name: 'La Belette', type: 'slope', difficulty: 'green' },
 ];
 
+// ── Morgins connectivity ──────────────────────────────────────────────────────
+// Two separate OSM-tracing gaps left Morgins-Foilleuse (the gondola from
+// Morgins village) unable to reach the rest of Morgins' own lift network, and
+// left Morgins unable to cross into Châtel at all.
+const MORGINS_SECTOR = [
+  // Foilleuse top's own descent (via Truche/Chaux/a short red run) ends 134m
+  // from Bochasses base with no piste continuing from there in OSM — a real
+  // gap, not a genuine dead end, since Bochasses is what the rest of Morgins'
+  // lift network (Pointe de l'Au, Corbeau, Sepaya, etc.) hangs off of.
+  { from: 'piste_8216118_end', to: liftBaseId(198298433),
+    name: 'Traverse to Bochasses', type: 'slope', difficulty: 'blue' },
+
+  // Écottis summit (in Morgins' Corbeau sector) → Chalet Neuf 1 summit (Châtel):
+  // OSM traces the reverse (Châtel → Morgins) direction of this border
+  // crossing (Chalet Neuf top → Écottis base, already present below) but not
+  // this one — confirmed by Portes du Soleil's own sector documentation:
+  // "[Morgins'] Corbeau sector... allows the link with Châtel [via] the
+  // Chalet Neuf drag lifts".
+  { from: liftTopId(24898743), to: liftTopId(24899026),
+    name: 'Traverse to Chalet Neuf', type: 'slope', difficulty: 'blue' },
+];
+
+// ── Morgins village transfer (Foilleuse sector ↔ Corbeau sector) ─────────────
+// Same pattern as the Châtel village transfer below: Morgins' two sectors
+// (Foilleuse — the gondola from the village centre — and Corbeau, ~500m away)
+// share no lift or piste in OSM. Confirmed via Région Dents du Midi's own
+// visitor info: "A shuttle bus runs between the two ski lifts (Corbeau and
+// Foilleuse), every 10 minutes" and "When there is ample snow, it is possible
+// to ski from the Corbeau, through the village, to the Foilleuse." Without
+// this, the whole Corbeau sector (and everything beyond it, incl. the
+// Châtel border crossing above) was unreachable from Morgins' own village
+// gondola.
+const MORGINS_VILLAGE_SECTOR = [
+  { from: 'morgins-village', to: liftBaseId(8215989),
+    name: 'Access Foilleuse gondola', type: 'slope', difficulty: 'green' },
+  { from: liftBaseId(8215989), to: 'morgins-village',
+    name: 'Return to Morgins village', type: 'slope', difficulty: 'green' },
+  { from: 'morgins-village', to: liftBaseId(24898742),
+    name: 'Access Corbeau chairlift', type: 'slope', difficulty: 'green' },
+  { from: liftBaseId(24898742), to: 'morgins-village',
+    name: 'Return to Morgins village', type: 'slope', difficulty: 'green' },
+];
+
 // ── Châtel village transfer (Linga/Pré-la-Joux sector ↔ Super-Châtel/Barbossine
 // sector) ─────────────────────────────────────────────────────────────────────
 // Châtel's own lift network is split into two sectors that don't share a lift
@@ -379,8 +422,9 @@ ensureNode('morzine-village');
 ensureNode('champery');
 ensureNode('saint-jean-daulps');
 ensureNode('chatel-village');
+ensureNode('morgins-village');
 
-for (const e of [...CROSS_SECTOR, ...SJA_SECTOR, ...CHATEL_SECTOR, ...CHATEL_VILLAGE_SECTOR]) {
+for (const e of [...CROSS_SECTOR, ...SJA_SECTOR, ...CHATEL_SECTOR, ...MORGINS_SECTOR, ...MORGINS_VILLAGE_SECTOR, ...CHATEL_VILLAGE_SECTOR]) {
   // Village nodes are not in UF — use their ID directly
   const fromRep = uf.find(e.from) ?? e.from;
   const toRep   = uf.find(e.to)   ?? e.to;
@@ -502,6 +546,7 @@ const VILLAGE_NODES = [
   ['champery',           'Champéry',               'CH'],
   ['saint-jean-daulps',  "Saint-Jean-d'Aulps",    'FR'],
   ['chatel-village',     'Châtel',                'FR'],
+  ['morgins-village',    'Morgins',               'CH'],
 ];
 const villageIds = new Set(VILLAGE_NODES.map(([vid]) => vid));
 
