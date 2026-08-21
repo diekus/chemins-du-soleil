@@ -4,7 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Chemins du Soleil</title>
-  <meta name="theme-color" content="#2E2E2E">
+  <!-- Mirrors --color-background in base.css, so the WCO title bar / window
+       controls overlay matches the app header instead of a fixed brand colour. -->
+  <meta name="theme-color" content="#FFFFFF">
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="images/icon-192.png" type="image/png">
   <link rel="apple-touch-icon" href="images/icon-192.png">
