@@ -3,7 +3,7 @@
   "short_name": "Chemins",
   "description": "Find your ski route through the Portes du Soleil resort area.",
   "start_url": "/chemins-du-soleil/",
-  "id": "/",
+  "id": "/cheminssoleil/",
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone"],
   "theme_color": "#2E2E2E",
