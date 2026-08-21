@@ -59,8 +59,8 @@
 }
 
 /* ── Tabbed views ──────────────────────────────────────────────────────────── */
-/* Room for the fixed tab-bar so content/footer is never hidden behind it. */
-body { padding-bottom: 56px; }
+/* Room for the floating tab-bar pill so content/footer is never hidden behind it. */
+body { padding-bottom: 112px; }
 
 /* ── Alerts view ───────────────────────────────────────────────────────────── */
 .alerts-content {
@@ -176,4 +176,20 @@ body { padding-bottom: 56px; }
   /* The tab-bar moves into the header here (see components.css), so the
      bottom dock's reserved clearance is no longer needed. */
   body { padding-bottom: 0; }
+
+  /* Logo moves to the right edge; the temp badge joins the flex flow
+     (instead of overlaying absolutely) so the two can never collide —
+     it just reserves its slot, invisible via opacity, until shown. */
+  .app-header {
+    justify-content: flex-end;
+    gap: var(--sp-4);
+  }
+  .app-header > picture { order: 2; }
+  .header-temp {
+    position: static;
+    order: 1;
+    transform: none;
+  }
+
+  #view-resorts .app-main { max-width: 1080px; }
 }
