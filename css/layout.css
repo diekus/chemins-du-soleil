@@ -43,6 +43,17 @@
       calc(100% - env(titlebar-area-x, 0px) - env(titlebar-area-width, 100%))
     );
   }
+
+  /* Compact's shrunken header sits visually tighter to begin with, so flush
+     against the titlebar-area boundary reads as crowding the OS window
+     chrome — pad past it a bit further than the expanded state needs. */
+  .app-header--compact {
+    padding-left:  calc(max(var(--sp-4), env(titlebar-area-x, 0px)) + var(--sp-3));
+    padding-right: calc(
+      max(var(--sp-4), calc(100% - env(titlebar-area-x, 0px) - env(titlebar-area-width, 100%)))
+      + var(--sp-3)
+    );
+  }
 }
 
 .header-temp {
