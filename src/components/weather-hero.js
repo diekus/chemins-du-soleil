@@ -7,9 +7,10 @@ const RISK_LABELS   = { 1: 'Low', 2: 'Moderate', 3: 'Considerable', 4: 'High', 5
 const WARNING_LEVEL = 2; // avalanche risk at or above this level surfaces in the collapsed card
 
 class WeatherHero extends HTMLElement {
-  #data      = undefined; // undefined=loading, null=unavailable, object=rendered
-  #avalanche = undefined; // undefined=unknown yet, null=no data, object={level,...}
-  #expanded  = false;
+  #data       = undefined; // undefined=loading, null=unavailable, object=rendered
+  #avalanche  = undefined; // undefined=unknown yet, null=no data, object={level,...}
+  #inVicinity = undefined; // undefined=unknown yet, true=near the resort, false=not
+  #expanded   = false;
 
   /**
    * Assign weather data:
@@ -27,6 +28,12 @@ class WeatherHero extends HTMLElement {
   /** Assign avalanche risk data: undefined=unknown, null=none, object={level}. */
   set avalanche(val) {
     this.#avalanche = val;
+    this.#render();
+  }
+
+  /** Whether the device is currently near this resort: undefined=unknown yet, true/false otherwise. */
+  set inVicinity(val) {
+    this.#inVicinity = val;
     this.#render();
   }
 
@@ -74,6 +81,18 @@ class WeatherHero extends HTMLElement {
     `;
   }
 
+  /** Compact one-liner used in the collapsed card when the device isn't near this resort. */
+  #vicinityNote() {
+    if (this.#inVicinity !== false) return '';
+    return `<span class="hero-vicinity-note">Not nearby</span>`;
+  }
+
+  /** Fuller sentence used in the expanded card when the device isn't near this resort. */
+  #vicinityMessage(d) {
+    if (this.#inVicinity !== false) return '';
+    return `<p class="hero-vicinity-message">You're not near ${d.resortName} right now. This is showing conditions for your selected resort.</p>`;
+  }
+
   /** Fuller badge used in the expanded card — replaces the separate avalanche-banner. */
   #avalancheBlock() {
     const a = this.#avalanche;
@@ -101,6 +120,7 @@ class WeatherHero extends HTMLElement {
           <span class="hero-compact-place">${d.resortName}</span>
           <span class="hero-compact-temp">${Math.round(d.temp)}°C</span>
           <span class="hero-compact-snow"><span class="hero-icon" aria-hidden="true">${ICONS.snow}</span> ${d.freshSnow} cm</span>
+          ${this.#vicinityNote()}
           ${this.#avalancheLine()}
           <span class="hero-chevron hero-icon" aria-hidden="true">${ICONS.chevronDown}</span>
         </button>
@@ -118,6 +138,8 @@ class WeatherHero extends HTMLElement {
         <button type="button" class="hero-toggle" data-action="toggle" aria-expanded="true" aria-label="Show less weather detail">
           <h2 class="hero-place">${d.resortName}${countryName ? `, ${countryName}` : ''}</h2>
           <p class="hero-sub">Portes du Soleil · ${d.elevation} m</p>
+
+          ${this.#vicinityMessage(d)}
 
           <div class="hero-temp-row">
             <span class="hero-temp">${Math.round(d.temp)}°C</span>

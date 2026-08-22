@@ -418,6 +418,19 @@ weather-hero[hidden] { display: none; }
   font-size: 0.8125rem;
 }
 
+.hero-vicinity-note {
+  flex-shrink: 0;
+  white-space: nowrap;
+  opacity: 0.7;
+  font-size: 0.8125rem;
+}
+
+.hero-vicinity-message {
+  font-size: 0.8125rem;
+  opacity: 0.85;
+  margin-bottom: var(--sp-5);
+}
+
 /* Avalanche danger level 1-5 — colours the triangle glyph only; label text
    stays the hero card's default light colour for legibility on the navy card. */
 .hero-avalanche-line[data-level="1"] span:first-child { color: var(--color-avalanche-1); }

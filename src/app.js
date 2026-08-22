@@ -48,12 +48,13 @@ async function initLocation() {
   gateEl.resorts = resorts;
   resolveResortsReady(resorts);
 
-  // The live weather card is only meaningful on the mountain. Silently
-  // re-check geolocation on every load (independent of how the resort was
-  // resolved) and hide the card if the user isn't near any known resort.
+  // Silently re-check geolocation on every load (independent of how the
+  // resort was resolved) and let the card know whether the device is
+  // actually nearby — it stays visible either way (the user may have picked
+  // a resort deliberately) but shows a note when it isn't.
   heroEl.hidden = true;
   checkVicinity(resorts).then(inVicinity => {
-    heroEl.hidden = !inVicinity;
+    heroEl.inVicinity = inVicinity;
     updateHeaderTemp();
   });
 
@@ -93,6 +94,7 @@ heroEl.addEventListener('change-resort', () => {
 
 function onResortResolved(resort, live) {
   gateEl.hidden = true;
+  heroEl.hidden = false;
   // Reset to loading state while fresh conditions are fetched.
   heroEl.data             = undefined;
   heroEl.avalanche        = undefined;
