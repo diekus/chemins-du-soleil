@@ -207,6 +207,11 @@ body { padding-bottom: 112px; }
   font-size: 0.75rem;
 }
 
+.app-footer a {
+  color: inherit;
+  text-decoration: underline;
+}
+
 /* ── Desktop ───────────────────────────────────────────────────────────────── */
 @media (min-width: 640px) {
   .app-main { padding: var(--sp-8) var(--sp-6); }

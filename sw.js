@@ -1,9 +1,10 @@
-const CACHE_NAME = 'chemins-du-soleil-v16';
+const CACHE_NAME = 'chemins-du-soleil-v17';
 
 const PRECACHE = [
   '/',
   '/index.html',
   '/offline.html',
+  '/privacy.html',
   '/manifest.json',
   '/css/base.css',
   '/css/layout.css',
