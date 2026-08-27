@@ -55,10 +55,17 @@ class RouteResult extends HTMLElement {
     const stops = `${displaySteps.length} stop${displaySteps.length !== 1 ? 's' : ''}`;
     const steps = displaySteps.map(s => this.#stepHTML(s)).join('');
 
-    const prefBadge = (this.#preferDifficulty && route.preferenceScore > 0)
-      ? `<span class="route-pref-badge" aria-label="${route.preferenceScore} ${this.#preferDifficulty} steps">
+    // Counted from displaySteps (not route.preferenceScore) so the badge matches
+    // what's actually visible — a single piste split into several graph edges by
+    // routing junctions collapses to one displayed row and must count as one.
+    const prefCount = this.#preferDifficulty
+      ? displaySteps.filter(s => s.difficulty === this.#preferDifficulty).length
+      : 0;
+
+    const prefBadge = (this.#preferDifficulty && prefCount > 0)
+      ? `<span class="route-pref-badge" aria-label="${prefCount} ${this.#preferDifficulty} steps">
            <span class="diff-dot" data-d="${this.#preferDifficulty}" aria-hidden="true"></span>
-           ${route.preferenceScore} ${this.#preferDifficulty}
+           ${prefCount} ${this.#preferDifficulty}
          </span>`
       : '';
 
