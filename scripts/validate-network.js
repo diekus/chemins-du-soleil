@@ -96,9 +96,9 @@ for (const node of nodes) {
   } else {
     pass(`Node "${node.id}": lift_type "${node.lift_type}" valid`);
   }
-  if (schemaVersion === '2') {
+  if (Number(schemaVersion) >= 2) {
     if (node.station_type === undefined) {
-      fail(`Node "${node.id}": missing station_type (required in schema v2) — must be village, lift-base, lift-top, or junction`);
+      fail(`Node "${node.id}": missing station_type (required since schema v2) — must be village, lift-base, lift-top, or junction`);
       nodeEnumErrors++;
     } else if (!STATION_TYPES.has(node.station_type)) {
       fail(`Node "${node.id}": invalid station_type "${node.station_type}" — must be village, lift-base, lift-top, or junction`);
@@ -109,7 +109,29 @@ for (const node of nodes) {
   }
 }
 
-if (nodeEnumErrors === 0) process.stdout.write(`  ${G}✓${X} All node country, lift_type${schemaVersion === '2' ? ', and station_type' : ''} values are valid\n`);
+if (nodeEnumErrors === 0) process.stdout.write(`  ${G}✓${X} All node country, lift_type${Number(schemaVersion) >= 2 ? ', and station_type' : ''} values are valid\n`);
+
+// ── Check 2b: Node coordinates (schema v3+) ───────────────────────────────────
+// A loose bounding box around Portes du Soleil — wide enough for every real
+// resort/lift/piste point, tight enough to catch a swapped lat/lon or a stray 0,0.
+const LAT_RANGE = [45.9, 46.5];
+const LON_RANGE = [6.4, 7.1];
+
+if (Number(schemaVersion) >= 3) {
+  section('2b Node coordinates');
+  let coordErrors = 0;
+
+  for (const node of nodes) {
+    const { lat, lon } = node;
+    const latOk = typeof lat === 'number' && Number.isFinite(lat) && lat >= LAT_RANGE[0] && lat <= LAT_RANGE[1];
+    const lonOk = typeof lon === 'number' && Number.isFinite(lon) && lon >= LON_RANGE[0] && lon <= LON_RANGE[1];
+    if (!latOk) { fail(`Node "${node.id}": lat "${lat}" is missing or outside the expected Portes du Soleil range`); coordErrors++; }
+    if (!lonOk) { fail(`Node "${node.id}": lon "${lon}" is missing or outside the expected Portes du Soleil range`); coordErrors++; }
+    if (latOk && lonOk) pass(`Node "${node.id}": lat/lon within range`);
+  }
+
+  if (coordErrors === 0) process.stdout.write(`  ${G}✓${X} All ${nodes.length} nodes have valid lat/lon\n`);
+}
 
 // ── Check 3: Connection referential integrity and enums ───────────────────────
 section('3  Connection referential integrity and enums');

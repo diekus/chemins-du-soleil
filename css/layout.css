@@ -116,6 +116,26 @@ body { padding-bottom: 112px; }
   padding: var(--sp-8) var(--sp-4);
 }
 
+.section-hint {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  margin-top: calc(var(--sp-2) * -1);
+  margin-bottom: var(--sp-2);
+}
+
+.cautions-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+.cautions-content[hidden] { display: none; }
+
+.cautions-empty {
+  text-align: center;
+  color: var(--color-text-secondary);
+  padding: var(--sp-8) var(--sp-4);
+}
+
 /* ── Dashboard section label ──────────────────────────────────────────────── */
 .section-label {
   font-size: 0.75rem;
@@ -248,5 +268,33 @@ body { padding-bottom: 112px; }
     width: 100%;
     max-width: 480px;
     margin-inline: auto;
+  }
+
+  /* .app-main itself is capped at 480px by default (see the base rule
+     above) — needs its own override here, same as resorts/home above, or
+     route-detail's own wider max-width below has no room to take effect. */
+  #view-route-detail .app-main { max-width: 1040px; }
+
+  /* A single route's own page reads as one narrow column, like the search
+     form, rather than stretching edge to edge like the multi-card grid —
+     except when there's a map to show (see below), which gets a wider,
+     two-column treatment instead. */
+  #view-route-detail route-detail {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    margin-inline: auto;
+  }
+
+  /* Wide enough to show the map, it sits side by side with the route
+     details instead of stacked above them — see .detail-map-section in
+     components.css. Scoped to :has(.detail-map-card) so the offline state
+     (no map, see route-detail.js) keeps the plain single narrow column above
+     instead. */
+  #view-route-detail route-detail:has(.detail-map-card) {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--sp-6);
+    max-width: 1040px;
   }
 }

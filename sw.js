@@ -1,4 +1,4 @@
-const CACHE_NAME = 'chemins-du-soleil-v17';
+const CACHE_NAME = 'chemins-du-soleil-v29';
 
 const PRECACHE = [
   '/',
@@ -29,14 +29,19 @@ const PRECACHE = [
   '/src/countries.js',
   '/src/icons.js',
   '/src/animate-height.js',
+  '/src/route-view.js',
+  '/src/leaflet-loader.js',
+  '/src/compass.js',
   '/src/components/difficulty-selector.js',
   '/src/components/preference-selector.js',
   '/src/components/route-result.js',
+  '/src/components/route-detail.js',
   '/src/components/station-input.js',
   '/src/components/tab-bar.js',
   '/src/components/location-gate.js',
   '/src/components/weather-hero.js',
   '/src/components/avalanche-banner.js',
+  '/src/components/weather-caution-list.js',
   '/src/components/resort-conditions-list.js',
   '/data/network.json',
   '/data/resorts.json',
@@ -44,7 +49,14 @@ const PRECACHE = [
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(PRECACHE))
+    caches.open(CACHE_NAME).then((cache) =>
+      // cache.addAll() lets the browser's own HTTP cache satisfy these
+      // fetches, which can silently re-store an already-stale response into
+      // the fresh CACHE_NAME bucket — bumping CACHE_NAME alone doesn't help
+      // if the underlying fetch was never forced past that HTTP cache.
+      // {cache:'reload'} forces a real network round-trip for every file.
+      Promise.all(PRECACHE.map((url) => fetch(url, { cache: 'reload' }).then((res) => cache.put(url, res))))
+    )
   );
   self.skipWaiting();
 });

@@ -449,6 +449,15 @@ avalanche-banner {
 avalanche-banner[hidden] { display: none; }
 avalanche-banner.avalanche-banner--fading { opacity: 0; }
 
+.alert-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 .warning-banner {
   display: flex;
   align-items: center;
@@ -507,6 +516,67 @@ avalanche-banner.avalanche-banner--fading { opacity: 0; }
   font-style: italic;
   color: var(--color-text-secondary);
 }
+
+/* ── weather-caution-list ──────────────────────────────────────────────────── */
+weather-caution-list { display: block; }
+
+.caution-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  margin: 0;
+  padding: 0;
+}
+
+.caution-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-lg);
+  padding: var(--sp-4);
+}
+.caution-card-skeleton {
+  height: 72px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-lg);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.caution-card-top {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-2);
+}
+.caution-flag { font-size: 1.125rem; }
+.caution-name {
+  font-weight: var(--fw-bold);
+  font-size: 0.9375rem;
+  color: var(--color-text);
+}
+
+.caution-notes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  margin: 0;
+  padding: 0;
+}
+
+.caution-note {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+}
+.caution-icon {
+  flex-shrink: 0;
+  color: var(--color-warning-icon);
+}
+.caution-icon svg { width: 1.125rem; height: 1.125rem; display: block; }
 
 /* ── resort-conditions-list ────────────────────────────────────────────────── */
 resort-conditions-list { display: block; }
@@ -739,10 +809,26 @@ route-result { display: block; }
 }
 
 .route-card {
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+
+.route-card-btn {
+  display: block;
+  width: 100%;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--r-lg);
   overflow: hidden;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.route-card-btn:hover { background: var(--color-background); }
+.route-card-btn:focus-visible {
+  outline: 2px solid var(--color-slope-blue);
+  outline-offset: -2px;
 }
 
 .route-card-header {
@@ -751,6 +837,68 @@ route-result { display: block; }
   justify-content: space-between;
   padding: var(--sp-3) var(--sp-4);
   border-bottom: 1px solid var(--color-border);
+}
+
+/* Detail page reuses .route-card as a plain (non-button) container. */
+.detail-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+/* ── Live GPS progress rail (route-detail) ───────────────────────────────────
+   A vertical track beside the step list — filled/dotted to show how far
+   along the route the device's live position projects to. Hidden (no fill,
+   no dot) whenever there's no confident GPS fix on this route. */
+.route-progress {
+  display: flex;
+  align-items: stretch;
+  gap: var(--sp-3);
+  padding-left: var(--sp-4);
+}
+
+.route-progress-track {
+  position: relative;
+  width: 4px;
+  flex-shrink: 0;
+  margin: var(--sp-3) 0;
+  background: var(--color-border);
+  border-radius: var(--r-pill);
+}
+
+.route-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: var(--color-primary);
+  border-radius: var(--r-pill);
+  transition: height 0.4s ease;
+}
+
+.route-progress-dot {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  border: 2px solid var(--color-surface);
+  box-shadow: 0 0 0 3px var(--color-accent);
+  transform: translate(-50%, -50%);
+  transition: top 0.4s ease;
+}
+
+.route-progress .route-steps { flex: 1; min-width: 0; }
+
+.route-progress-status {
+  margin: 0;
+  padding: 0 var(--sp-4) var(--sp-4);
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  min-height: 1.5em;
 }
 
 .route-label {
@@ -852,6 +1000,259 @@ route-result { display: block; }
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0.45; }
+}
+
+/* ── route-detail ─────────────────────────────────────────────────────────── */
+route-detail { display: block; }
+
+.detail-back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-4);
+  color: var(--color-text-secondary);
+  font-weight: var(--fw-semibold);
+  font-size: 0.9375rem;
+  text-decoration: none;
+}
+.detail-back:hover { color: var(--color-text); }
+.detail-back:focus-visible {
+  outline: 2px solid var(--color-slope-blue);
+  outline-offset: 3px;
+}
+.detail-back svg { width: 1.1rem; height: 1.1rem; display: block; }
+
+.detail-skeleton { height: 320px; }
+
+.detail-map-offline {
+  padding: var(--sp-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-md);
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+/* Map section: a bordered card (matching .detail-card) plus the size-toggle
+   button beneath it. Stacks above .detail-body on mobile; sits side by side
+   with it on wide screens (see the :has(.detail-map-card) flex-row rule in
+   layout.css). */
+.detail-map-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-6);
+}
+@media (min-width: 900px) {
+  .detail-map-section { flex: 1 1 45%; min-width: 0; margin-bottom: 0; }
+  .detail-body { flex: 1 1 55%; min-width: 0; margin-top: 0; }
+}
+
+.detail-map-card {
+  position: relative;
+  /* Establishes a stacking context so Leaflet's own internal z-indices
+     (its controls alone go up to ~1000 — see .detail-back-floating below)
+     are contained here rather than leaking out to compete with the sticky
+     header/tab-bar when this card scrolls past it. overflow:hidden only
+     clips geometry, it does nothing to contain z-index on its own. */
+  z-index: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--color-background);
+  transition: height 0.2s ease;
+}
+.detail-map-card--large { height: 440px; }
+.detail-map-card--small { height: 220px; }
+
+/* Leaflet needs an explicit height on its container; the "Loading map…" /
+   error text (set as plain textContent, see route-detail.js) uses the same
+   flex centering before Leaflet replaces the container's contents.
+   position:relative gives .detail-map-rotor (below) its positioning context. */
+.detail-map {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+}
+
+/* The oversized, rotatable div Leaflet actually mounts into — see the
+   comment in route-detail.js's #initMap for why. Width/height are set
+   inline (computed from the visible box's diagonal); only the centring/
+   rotation behaviour lives here. The transition smooths out raw sensor
+   jitter into a steadier-looking needle when compass mode is active. */
+.detail-map-rotor {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  transition: transform 0.2s linear;
+}
+
+.detail-back-floating {
+  position: absolute;
+  top: var(--sp-4);
+  left: var(--sp-4);
+  /* Leaflet's own controls (in .detail-map, a sibling) go up to z-index
+     ~1000 and — since neither element establishes an isolated stacking
+     context — compete directly with this one, so this must clear that. */
+  z-index: 1010;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  transition: background 0.15s ease;
+}
+.detail-back-floating svg { width: 1.25rem; height: 1.25rem; display: block; }
+.detail-back-floating:hover { background: var(--color-background); }
+.detail-back-floating:focus-visible {
+  outline: 2px solid var(--color-slope-blue);
+  outline-offset: 2px;
+}
+
+/* Custom zoom control — replaces Leaflet's built-in one, which anchors to
+   .detail-map-rotor's own (oversized, off-screen) corners rather than the
+   visible viewport; see the comment in route-detail.js's #initMap. */
+.detail-zoom-controls {
+  position: absolute;
+  top: var(--sp-4);
+  right: var(--sp-4);
+  z-index: 1010;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+.detail-zoom-controls button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 1.25rem;
+  font-weight: var(--fw-bold);
+  cursor: pointer;
+}
+.detail-zoom-controls button:first-child { border-bottom: 1px solid var(--color-border); }
+.detail-zoom-controls button:hover { background: var(--color-background); }
+.detail-zoom-controls button:focus-visible {
+  outline: 2px solid var(--color-slope-blue);
+  outline-offset: -2px;
+}
+
+/* Compass toggle — requests device-orientation permission on tap; see
+   specs/mapping.md and src/compass.js. Highlighted (primary colour) while
+   heading-up rotation is active. */
+.detail-compass-toggle {
+  position: absolute;
+  bottom: var(--sp-4);
+  left: var(--sp-4);
+  z-index: 1010;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.detail-compass-toggle svg { width: 1.25rem; height: 1.25rem; display: block; }
+.detail-compass-toggle:hover { background: var(--color-background); }
+.detail-compass-toggle:focus-visible {
+  outline: 2px solid var(--color-slope-blue);
+  outline-offset: 2px;
+}
+.detail-compass-toggle[aria-pressed="true"] {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+/* Static attribution — required reading regardless of map rotation state
+   (Leaflet's own attribution control has the same off-screen-corner problem
+   as its zoom control once mounted inside the rotor, see above). */
+.detail-map-attribution {
+  position: absolute;
+  bottom: var(--sp-2);
+  right: var(--sp-2);
+  z-index: 5;
+  margin: 0;
+  padding: 1px 6px;
+  font-size: 0.6875rem;
+  background: var(--color-surface);
+  background: color-mix(in srgb, var(--color-surface) 80%, transparent);
+  color: var(--color-text-secondary);
+  border-radius: var(--r-sm);
+}
+.detail-map-attribution a { color: var(--color-primary); }
+
+.detail-compass-status {
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+}
+.detail-compass-status:empty { display: none; }
+
+.detail-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+}
+
+/* Live "you are here" marker — same visual language as .route-progress-dot
+   (filled circle, surface-colour ring, accent halo) so the two live-position
+   indicators on this page read as the same thing. */
+.route-map-you-are-here {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  border: 2px solid var(--color-surface);
+  box-shadow: 0 0 0 3px var(--color-accent);
+}
+
+/* Leaflet's own tooltips (Start/Finish/You are here) ship hard-coded light
+   colours — patched here so they don't look broken in dark mode. Zoom and
+   attribution are our own controls now (styled above) rather than Leaflet's. */
+@media (prefers-color-scheme: dark) {
+  .detail-map .leaflet-tooltip {
+    background: var(--color-surface);
+    color: var(--color-text);
+  }
+  .detail-map .leaflet-tooltip.leaflet-tooltip-top::before { border-top-color: var(--color-surface); }
+}
+
+.detail-share-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+}
+.detail-share-icon svg { width: 1.25rem; height: 1.25rem; display: block; }
+
+.detail-share-status {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  min-height: 1.25em;
 }
 
 @media (min-width: 900px) {

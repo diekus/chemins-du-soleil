@@ -1,8 +1,8 @@
 import { loadGraph } from './graph.js';
 import { findRoutes } from './pathfinder.js';
-import { fetchWeather, weatherIconKey } from './weather.js';
+import { fetchWeather, weatherIconKey, deriveCautions } from './weather.js';
 import { fetchOpenPiste, readAvalanche } from './conditions.js';
-import { nearestResort, VICINITY_KM } from './geo.js';
+import { nearestResort, VICINITY_KM, projectOntoRoute } from './geo.js';
 import { FLAGS } from './countries.js';
 import { WEATHER_ICONS } from './icons.js';
 import { animateHeightChange } from './animate-height.js';
@@ -10,10 +10,12 @@ import './components/station-input.js';
 import './components/difficulty-selector.js';
 import './components/preference-selector.js';
 import './components/route-result.js';
+import './components/route-detail.js';
 import './components/tab-bar.js';
 import './components/location-gate.js';
 import './components/weather-hero.js';
 import './components/avalanche-banner.js';
+import './components/weather-caution-list.js';
 import './components/resort-conditions-list.js';
 
 const form       = document.querySelector('.search-form');
@@ -30,10 +32,19 @@ const heroEl     = document.querySelector('weather-hero');
 const alertsAvalancheEl = document.querySelector('#view-alerts avalanche-banner');
 const alertsContentEl   = document.querySelector('.alerts-content');
 const alertsEmptyEl     = document.querySelector('.alerts-empty');
+const cautionListEl     = document.querySelector('weather-caution-list');
+const cautionsContentEl = document.querySelector('.cautions-content');
+const cautionsEmptyEl   = document.querySelector('.cautions-empty');
 const headerEl          = document.querySelector('.app-header');
 const headerTempIconEl  = document.querySelector('.header-temp-icon');
 const headerTempValueEl = document.querySelector('.header-temp-value');
 const resortsOverviewEl = document.querySelector('resort-conditions-list');
+const detailEl          = document.querySelector('route-detail');
+
+// Declared here rather than beside the functions that use it further down:
+// stopRouteTracking() runs synchronously from the very first render() call
+// in the tab-navigation section below, so this must exist before that point.
+let geoWatchId = null;
 
 // ── Resort resolution (geolocation / manual pick) ───────────────────────────
 
@@ -47,6 +58,7 @@ async function initLocation() {
   const { resorts } = await res.json();
   gateEl.resorts = resorts;
   resolveResortsReady(resorts);
+  loadAlertsOverview(resorts);
 
   // Silently re-check geolocation on every load (independent of how the
   // resort was resolved) and let the card know whether the device is
@@ -98,9 +110,6 @@ function onResortResolved(resort, live) {
   // Reset to loading state while fresh conditions are fetched.
   heroEl.data             = undefined;
   heroEl.avalanche        = undefined;
-  alertsAvalancheEl.data  = undefined;
-  alertsEmptyEl.hidden    = true;
-  setAlertsAvailable(false);
   loadConditions(resort, live);
 }
 
@@ -165,16 +174,75 @@ async function loadAvalanche(resort) {
 }
 
 function applyConditions({ avalanche, updatedAt }) {
-  const avalancheData = avalanche ? { ...avalanche, updatedAt } : null;
+  heroEl.avalanche = avalanche ? { ...avalanche, updatedAt } : null;
+}
 
-  heroEl.avalanche        = avalancheData;
-  alertsAvalancheEl.data  = avalancheData;
+// ── Alerts overview (avalanche risk + weather cautions, all PdS resorts) ────
+// Runs once resorts.json is loaded, independent of which resort (if any) the
+// user has resolved — you can be skiing in one resort and want to know about
+// elevated risk or rough weather in a neighbouring one you might cross into.
+// Avalanche risk is live only where open-piste has a matching resort record;
+// everywhere else it's excluded rather than guessed — see data/resorts.json
+// _meta. Weather cautions (deriveCautions() in weather.js) are threshold
+// nudges computed from the same live Open-Meteo reading shown elsewhere in
+// the app — not an official weather-service alert (Open-Meteo doesn't have
+// one), so they're kept visually and textually distinct from the avalanche
+// banner above.
 
-  const riskLevel = avalancheData?.level ?? 0;
-  const hasAlerts = riskLevel >= 2;
-  alertsContentEl.hidden = !hasAlerts;
-  alertsEmptyEl.hidden    = hasAlerts;
-  setAlertsAvailable(hasAlerts);
+const ALERT_RISK_THRESHOLD = 2;
+const ALERTS_CACHE_KEY = 'cds:alerts-overview';
+
+async function loadAlertsOverview(resorts) {
+  alertsAvalancheEl.data = undefined;
+  cautionListEl.cautions = undefined;
+
+  try {
+    const results = await Promise.all(resorts.map(loadResortAlertData));
+
+    const avalanche = results
+      .filter(r => r.avalanche && r.avalanche.level >= ALERT_RISK_THRESHOLD)
+      .sort((a, b) => b.avalanche.level - a.avalanche.level)
+      .map(r => ({ ...r.avalanche, slug: r.slug, name: r.name, country: r.country }));
+
+    const cautions = results
+      .filter(r => r.cautions.length > 0)
+      .map(r => ({ slug: r.slug, name: r.name, country: r.country, cautions: r.cautions }));
+
+    localStorage.setItem(ALERTS_CACHE_KEY, JSON.stringify({ avalanche, cautions }));
+    applyAlertsOverview(avalanche, cautions);
+  } catch (err) {
+    console.error('Alerts overview fetch failed:', err);
+    const cached = JSON.parse(localStorage.getItem(ALERTS_CACHE_KEY) || 'null');
+    applyAlertsOverview(cached?.avalanche ?? null, cached?.cautions ?? null);
+  }
+}
+
+async function loadResortAlertData(resort) {
+  const [weather, openPiste] = await Promise.all([
+    fetchWeather(resort.lat, resort.lon).catch(() => null),
+    fetchOpenPiste(resort.slug).catch(() => ({})),
+  ]);
+  const { avalanche } = readAvalanche(openPiste);
+  return {
+    slug:      resort.slug,
+    name:      resort.name,
+    country:   resort.country,
+    avalanche: avalanche ? { ...avalanche, updatedAt: Date.now() } : null,
+    cautions:  deriveCautions(weather),
+  };
+}
+
+function applyAlertsOverview(avalanche, cautions) {
+  alertsAvalancheEl.data = avalanche;
+  cautionListEl.cautions = cautions;
+
+  const hasAvalanche = !!avalanche && avalanche.length > 0;
+  const hasCautions  = !!cautions && cautions.length > 0;
+  alertsContentEl.hidden   = !hasAvalanche;
+  alertsEmptyEl.hidden     = hasAvalanche;
+  cautionsContentEl.hidden = !hasCautions;
+  cautionsEmptyEl.hidden   = hasCautions;
+  setAlertsAvailable(hasAvalanche || hasCautions);
 }
 
 /**
@@ -270,33 +338,121 @@ heroObserver.observe(heroEl);
 
 const tabBar = document.querySelector('tab-bar');
 const views  = {
-  home:    document.getElementById('view-home'),
-  resorts: document.getElementById('view-resorts'),
-  alerts:  document.getElementById('view-alerts'),
+  home:        document.getElementById('view-home'),
+  resorts:     document.getElementById('view-resorts'),
+  alerts:      document.getElementById('view-alerts'),
+  routeDetail: document.getElementById('view-route-detail'),
 };
 // Hidden until conditions data actually confirms there's something to alert about.
 tabBar.alertsAvailable = false;
 
-function viewFromHash() {
-  const v = location.hash.slice(1);
-  return views[v] ? v : 'home';
+// A route's detail page is addressed as "#route?from=..&to=..&max=..&pref=..&i=.."
+// rather than a plain tab name, so a link to it can be shared and reopened —
+// including on a fresh load, once the graph has finished loading below.
+function parseHash() {
+  const raw = location.hash.slice(1);
+  if (raw.startsWith('route?')) {
+    return { view: 'routeDetail', params: new URLSearchParams(raw.slice('route?'.length)) };
+  }
+  return { view: views[raw] ? raw : 'home', params: null };
 }
 
-function showView(view) {
+function showView(view, params) {
+  // Each view is conceptually its own "page" (most visible on route-detail's
+  // full-bleed map hero, whose back/zoom/compass controls sit right at the
+  // top) — without this, navigating here mid-scroll (e.g. after focusing the
+  // destination input scrolled the page down) leaves those controls stranded
+  // off-screen above the viewport, exactly like a real page nav resetting scroll.
+  window.scrollTo(0, 0);
+
   for (const [name, el] of Object.entries(views)) el.hidden = name !== view;
-  tabBar.active = view;
+  // routeDetail isn't a tab — leave the tab bar's own active tab (Home) alone.
+  if (view !== 'routeDetail') { tabBar.active = view; stopRouteTracking(); }
   updateHeaderTemp();
-  if (view === 'resorts') loadResortsOverview();
+  if (view === 'resorts')     loadResortsOverview();
+  if (view === 'routeDetail') showRouteDetail(params);
 }
+
+function render() {
+  const { view, params } = parseHash();
+  showView(view, params);
+}
+
+let graph;
+let nodeMap;
+
+let resolveGraphReady;
+const graphReady = new Promise(resolve => { resolveGraphReady = resolve; });
 
 tabBar.addEventListener('change', e => {
   location.hash = e.detail.view;
 });
-window.addEventListener('hashchange', () => showView(viewFromHash()));
-showView(viewFromHash());
+window.addEventListener('hashchange', render);
+render();
 
-let graph;
-let nodeMap;
+async function showRouteDetail(params) {
+  detailEl.route = undefined; // loading state while the graph/route resolve
+  await graphReady;
+
+  const startId    = params.get('from');
+  const endId      = params.get('to');
+  const difficulty = params.get('max');
+  const preference = params.get('pref') || null;
+  const index      = Number(params.get('i')) || 0;
+
+  const routes = findRoutes(graph, startId, endId, difficulty, 3, preference);
+  const route  = routes[index] ?? null;
+
+  detailEl.nodes            = nodeMap;
+  detailEl.preferDifficulty = preference;
+  detailEl.label            = index === 0 ? 'Best route' : `Alternative ${index + 1}`;
+  detailEl.route            = route;
+
+  if (route) {
+    const points = route.path
+      .map(id => nodeMap.get(id))
+      .filter(n => n && typeof n.lat === 'number' && typeof n.lon === 'number')
+      .map(n => ({ lat: n.lat, lon: n.lon }));
+    if (points.length >= 2) startRouteTracking(points);
+  }
+}
+
+// ── Live GPS route progress ─────────────────────────────────────────────────
+// Only active while the route-detail page for that specific route is open —
+// started in showRouteDetail above, stopped in showView whenever navigating
+// away from it (see the routeDetail branch there).
+
+function stopRouteTracking() {
+  if (geoWatchId != null) {
+    navigator.geolocation.clearWatch(geoWatchId);
+    geoWatchId = null;
+  }
+}
+
+function startRouteTracking(points) {
+  stopRouteTracking();
+
+  if (!('geolocation' in navigator)) {
+    detailEl.progress = 'denied';
+    return;
+  }
+
+  detailEl.progress = 'waiting';
+  geoWatchId = navigator.geolocation.watchPosition(
+    pos => {
+      // Ignore low-accuracy fixes rather than show a jumpy, misleading position.
+      if (pos.coords.accuracy > 100) return;
+      const result = projectOntoRoute(pos.coords.latitude, pos.coords.longitude, points);
+      if (result) detailEl.progress = result;
+    },
+    err => {
+      // PERMISSION_DENIED is a real "can't track" state; POSITION_UNAVAILABLE/
+      // TIMEOUT are transient blips on the mountain — leave the last state showing.
+      if (err.code === err.PERMISSION_DENIED) detailEl.progress = 'denied';
+    },
+    { enableHighAccuracy: true, maximumAge: 5000, timeout: 15000 },
+  );
+}
 
 // ── Bootstrap ────────────────────────────────────────────────────────────────
 
@@ -313,9 +469,13 @@ async function init() {
     .map(({ id, name, country }) => ({ id, name, country }));
   startEl.stations = stations;
   destEl.stations  = stations;
+
+  resolveGraphReady();
 }
 
 // ── Search ───────────────────────────────────────────────────────────────────
+
+let lastSearch = null;
 
 form.addEventListener('submit', e => {
   e.preventDefault();
@@ -343,7 +503,23 @@ form.addEventListener('submit', e => {
   // findRoutes is synchronous — set result immediately.
   resultEl.routes = findRoutes(graph, startId, endId, difficulty, 3, preference);
 
+  // Remembered so a card click below can address the route's own page without
+  // re-asking the form for values the user has already collapsed away.
+  lastSearch = { startId, endId, difficulty, preference };
+
   collapseSearchForm(startId, endId, preference);
+});
+
+resultEl.addEventListener('routeselect', e => {
+  if (!lastSearch) return;
+  const params = new URLSearchParams({
+    from: lastSearch.startId,
+    to:   lastSearch.endId,
+    max:  lastSearch.difficulty,
+    i:    String(e.detail.index),
+  });
+  if (lastSearch.preference) params.set('pref', lastSearch.preference);
+  location.hash = `route?${params.toString()}`;
 });
 
 function showError(msg) {
