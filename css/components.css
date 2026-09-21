@@ -726,14 +726,16 @@ station-input .si-option[aria-selected="true"] {
   color: var(--color-text);
 }
 
-/* ── difficulty-selector / preference-selector ─────────────────────────────── */
+/* ── difficulty-selector / preference-selector / settings-panel ────────────── */
 difficulty-selector,
-preference-selector {
+preference-selector,
+settings-panel {
   display: block;
 }
 
 difficulty-selector select,
-preference-selector select {
+preference-selector select,
+settings-panel select {
   width: 100%;
   padding: var(--sp-3) var(--sp-4);
   font-family: var(--font);
@@ -748,7 +750,8 @@ preference-selector select {
   transition: border-color 0.15s;
 }
 difficulty-selector select:focus,
-preference-selector select:focus { border-color: var(--color-primary); }
+preference-selector select:focus,
+settings-panel select:focus { border-color: var(--color-primary); }
 
 /* ── search-summary (collapsed find-route bar) ───────────────────────────────── */
 .search-summary {
