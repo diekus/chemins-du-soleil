@@ -82,13 +82,15 @@ Route-result slope steps also carry a `data-d="{difficulty}"` attribute on the `
 
 ## Data
 
-`data/network.json` is the single source of truth for the resort route-finding network at runtime. Schema v2: each node has `id`, `name`, `country`, `station_type`, `lift_type`, and `connections[]`. Connection fields: `to`, `name`, `type` (`lift`|`slope`), `difficulty`, `bidirectional` (optional, default false). It is **generated, not hand-edited** — see below.
+`data/network.json` is the single source of truth for the resort route-finding network at runtime. Schema v3: each node has `id`, `name`, `country`, `station_type`, `lift_type`, `lat`, `lon`, and `connections[]`. Connection fields: `to`, `name`, `type` (`lift`|`slope`), `difficulty`, `bidirectional` (optional, default false). It is **generated, not hand-edited** — see below.
+
+**Node coordinates (`lat`/`lon`, schema v3)**: lift-base/lift-top nodes use their OSM base/top station coordinates; junction nodes use the centroid of the piste endpoints clustered into them; village nodes reuse the matching resort's centroid from `data/resorts.json` (there's no OSM point for a village itself). These back the live GPS route-progress feature on the route detail page (`geo.js:projectOntoRoute()`) — a device position is matched to the nearest point along the selected route's node-to-node polyline to estimate progress. Coordinates are approximate (junction centroids and village centroids, not surveyed piste centerlines), so progress matching is inherently a nearest-node approximation, not turn-by-turn navigation.
 
 `data/portes_du_soleil_graph.json` is the raw OSM/Overpass source data (`lifts`, `pistes`, `edges`) that `network.json` is built from.
 
 `data/resorts.json` is hand-maintained resort metadata (name, country, elevation, lat/lon) for all 13 Portes du Soleil resorts — read its `_meta` field for current open-piste coverage notes.
 
-When editing `network.json` directly (rare — prefer regenerating), run the validator afterwards. The validator checks referential integrity, enum validity, and bidirectional edge consistency.
+When editing `network.json` directly (rare — prefer regenerating), run the validator afterwards. The validator checks referential integrity, enum validity, coordinate sanity (each node's lat/lon falls within the Portes du Soleil bounding box), and bidirectional edge consistency.
 
 `scripts/generate-from-osm.js` regenerates `data/network.json` from `data/portes_du_soleil_graph.json`. It clusters piste endpoints within 75 m into routing junctions, auto-bridges lift-to-lift gaps within 400 m, and corrects piste direction using OSM lift-proximity evidence. Where OSM's piste tracing has a genuine, real-world-verified gap (confirmed against an official trip-planning source, not guessed), a small manually-specified edge bridges it — see the `CROSS_SECTOR`, `SJA_SECTOR`, `CHATEL_SECTOR`, and `CHATEL_VILLAGE_SECTOR` arrays near the bottom of the script for examples and the reasoning behind each one. Only add to these when OSM genuinely lacks the geometry, not as a shortcut around debugging the clustering.
 

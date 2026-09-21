@@ -1,11 +1,13 @@
 import { relativeTime } from '../format.js';
+import { FLAGS } from '../countries.js';
 
 const RISK_LABELS = { 1: 'Low', 2: 'Moderate', 3: 'Considerable', 4: 'High', 5: 'Very high' };
 const DISMISS_AFTER_MS = 5000;
 const FADE_DURATION_MS = 400;
+const SKELETON_ROWS = 2;
 
 class AvalancheBanner extends HTMLElement {
-  #data         = undefined; // undefined=loading, null=unavailable, object=rendered
+  #data         = undefined; // undefined=loading, null=unavailable, array=rendered
   #dismissTimer = null;
   #fadeTimer    = null;
 
@@ -13,7 +15,10 @@ class AvalancheBanner extends HTMLElement {
    * Assign avalanche risk data:
    *   undefined → loading skeleton
    *   null      → "no data available" message, auto-dismissed after 5s
-   *   object    → { level (1-5), updatedAt } — always a live open-piste reading
+   *   [...]     → one banner row per resort at/above the alert threshold —
+   *               [{ slug, name, country, level (1-5), updatedAt }], always
+   *               live open-piste readings. An empty array renders nothing
+   *               (the caller shows its own "no active alerts" message).
    */
   set data(val) {
     this.#data = val;
@@ -42,7 +47,9 @@ class AvalancheBanner extends HTMLElement {
     const d = this.#data;
     if (d === undefined) { this.innerHTML = this.#loadingHTML();     return; }
     if (d === null)      { this.innerHTML = this.#unavailableHTML(); this.#scheduleDismiss(); return; }
-    this.innerHTML = this.#bannerHTML(d);
+    if (d.length === 0)  { this.innerHTML = '';                      return; }
+    const rows = d.map(r => this.#bannerHTML(r)).join('');
+    this.innerHTML = `<ul class="alert-list" role="list">${rows}</ul>`;
   }
 
   #scheduleDismiss() {
@@ -52,24 +59,29 @@ class AvalancheBanner extends HTMLElement {
     }, DISMISS_AFTER_MS);
   }
 
-  #bannerHTML(d) {
-    const label = RISK_LABELS[d.level] ?? 'Unknown';
-    const updated = d.updatedAt ? `<p class="warning-provenance">Updated ${relativeTime(d.updatedAt)}</p>` : '';
+  #bannerHTML(r) {
+    const label   = RISK_LABELS[r.level] ?? 'Unknown';
+    const flag    = FLAGS[r.country] ?? '';
+    const updated = r.updatedAt ? `<p class="warning-provenance">Updated ${relativeTime(r.updatedAt)}</p>` : '';
 
     return `
-      <div class="warning-banner" data-level="${d.level}">
+      <li class="warning-banner" data-level="${r.level}">
         <span class="warning-icon-badge" aria-hidden="true">▲</span>
         <div class="warning-body">
-          <strong>Avalanche risk: ${label}</strong>
-          <p>Level ${d.level} of 5</p>
+          <strong>${flag} ${r.name}</strong>
+          <p>Avalanche risk: ${label} — level ${r.level} of 5</p>
           ${updated}
         </div>
-      </div>
+      </li>
     `;
   }
 
   #loadingHTML() {
-    return `<div class="warning-banner warning-banner--loading" role="status" aria-busy="true" aria-label="Loading avalanche risk…"></div>`;
+    return `
+      <ul class="alert-list" role="status" aria-busy="true" aria-label="Loading avalanche alerts…">
+        ${Array.from({ length: SKELETON_ROWS }, () => '<li class="warning-banner warning-banner--loading"></li>').join('')}
+      </ul>
+    `;
   }
 
   #unavailableHTML() {

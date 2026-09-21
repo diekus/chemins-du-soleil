@@ -20,10 +20,13 @@ import { fileURLToPath } from 'url';
 import { dirname, join, relative } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const SRC = join(__dirname, '../data/portes_du_soleil_graph.json');
-const OUT = join(__dirname, '../data/network.json');
+const SRC          = join(__dirname, '../data/portes_du_soleil_graph.json');
+const RESORTS_SRC  = join(__dirname, '../data/resorts.json');
+const OUT          = join(__dirname, '../data/network.json');
 
 const { lifts, pistes, edges: osmEdges } = JSON.parse(readFileSync(SRC, 'utf8'));
+const { resorts } = JSON.parse(readFileSync(RESORTS_SRC, 'utf8'));
+const resortBySlug = new Map(resorts.map(r => [r.slug, r]));
 
 // ── Config ────────────────────────────────────────────────────────────────────
 
@@ -502,14 +505,29 @@ function makeLiftNode(repId) {
   const bareName = lift?.name ?? `Lift ${liftId}`;
   const ambiguous = (resortsByName.get(bareName)?.size ?? 0) > 1;
   const name = ambiguous && lift?.resort_nearest ? `${bareName} (${lift.resort_nearest})` : bareName;
+  const pt = liftPts.get(repId);
   return {
     id:           repId,
     name:         `${name} (${isBase ? 'base' : 'summit'})`,
     country:      mapCountry(lift?.resort_nearest ?? ''),
     station_type: isBase ? 'lift-base' : 'lift-top',
     lift_type:    mapLiftType(lift?.lift_type),
+    lat:          pt?.lat ?? null,
+    lon:          pt?.lon ?? null,
     connections:  nodeConns.get(repId) ?? [],
   };
+}
+
+/** Centroid of every piste endpoint merged into a junction cluster — its OSM-derived location. */
+function junctionCentroid(repId) {
+  let sumLat = 0, sumLon = 0, n = 0;
+  for (const [ptId, pt] of pistePts) {
+    if (uf.find(ptId) !== repId) continue;
+    sumLat += pt.lat;
+    sumLon += pt.lon;
+    n++;
+  }
+  return n > 0 ? { lat: sumLat / n, lon: sumLon / n } : null;
 }
 
 // Collect representative IDs for piste junction clusters
@@ -541,12 +559,14 @@ for (const lift of usedLifts) {
 // list falls through into the junction loop and gets wrongly split into two
 // nodes: a hidden 'junction' twin that steals all its inbound edges, and the
 // visible 'village' node left with none. That happened to chatel-village.)
+// Coordinates come from the matching entry in data/resorts.json (hand-maintained,
+// real resort centroids) rather than new hand-typed values — see resortSlug below.
 const VILLAGE_NODES = [
-  ['morzine-village',    'Morzine',               'FR'],
-  ['champery',           'Champéry',               'CH'],
-  ['saint-jean-daulps',  "Saint-Jean-d'Aulps",    'FR'],
-  ['chatel-village',     'Châtel',                'FR'],
-  ['morgins-village',    'Morgins',               'CH'],
+  ['morzine-village',    'Morzine',               'FR', 'morzine'],
+  ['champery',           'Champéry',               'CH', 'champery'],
+  ['saint-jean-daulps',  "Saint-Jean-d'Aulps",    'FR', 'st-jean-aulps'],
+  ['chatel-village',     'Châtel',                'FR', 'chatel'],
+  ['morgins-village',    'Morgins',               'CH', 'morgins'],
 ];
 const villageIds = new Set(VILLAGE_NODES.map(([vid]) => vid));
 
@@ -571,12 +591,16 @@ for (const [repId] of nodeConns) {
     if (piste?.name) { jctName = piste.name; break; }
   }
 
+  const centroid = junctionCentroid(repId);
+
   nodes.push({
     id:           jctId,
     name:         jctName,
     country:      mapCountry(resort),
     station_type: 'junction',
     lift_type:    null,
+    lat:          centroid?.lat ?? null,
+    lon:          centroid?.lon ?? null,
     connections:  nodeConns.get(repId) ?? [],
   });
 }
@@ -589,13 +613,16 @@ for (const node of nodes) {
 }
 
 // Village nodes
-for (const [vid, vname, vcountry] of VILLAGE_NODES) {
+for (const [vid, vname, vcountry, resortSlug] of VILLAGE_NODES) {
+  const resort = resortBySlug.get(resortSlug);
   nodes.push({
     id:           vid,
     name:         vname,
     country:      vcountry,
     station_type: 'village',
     lift_type:    null,
+    lat:          resort?.lat ?? null,
+    lon:          resort?.lon ?? null,
     connections:  nodeConns.get(vid) ?? [],
   });
 }
@@ -624,9 +651,9 @@ const jctCount   = nodes.filter(n => n.station_type === 'junction').length;
 const network = {
   _meta: {
     season:         '2024/25',
-    scope:          `Portes du Soleil — OSM-derived network with slope junction nodes. ` +
-                    `${liftCount} lifts, ${jctCount} slope junctions, ${totalEdges} directed edges. Schema v2.`,
-    schema_version: '2',
+    scope:          `Portes du Soleil — OSM-derived network with slope junction nodes and per-node ` +
+                    `coordinates. ${liftCount} lifts, ${jctCount} slope junctions, ${totalEdges} directed edges. Schema v3.`,
+    schema_version: '3',
   },
   nodes,
 };

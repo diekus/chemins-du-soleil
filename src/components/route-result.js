@@ -1,5 +1,5 @@
-import { FLAGS, COUNTRY_NAME } from '../countries.js';
-import { ICONS, liftIcon } from '../icons.js';
+import { ICONS } from '../icons.js';
+import { dedupeSteps, stepHTML, prefBadgeHTML } from '../route-view.js';
 
 class RouteResult extends HTMLElement {
   #routes           = undefined; // undefined=idle, null=loading, []=no route, [...]=results
@@ -28,6 +28,17 @@ class RouteResult extends HTMLElement {
     this.#render();
   }
 
+  connectedCallback() {
+    this.addEventListener('click', e => {
+      const btn = e.target.closest('.route-card-btn');
+      if (!btn) return;
+      this.dispatchEvent(new CustomEvent('routeselect', {
+        detail:  { index: Number(btn.dataset.index) },
+        bubbles: true,
+      }));
+    });
+  }
+
   #render() {
     const r = this.#routes;
     if (r === undefined)      { this.innerHTML = '';                  return; }
@@ -45,15 +56,9 @@ class RouteResult extends HTMLElement {
 
   #cardHTML(route, index) {
     const label = index === 0 ? 'Best route' : `Alternative ${index + 1}`;
-    const displaySteps = route.steps.filter((s, i, arr) => {
-      if (i === 0) return true;
-      const p = arr[i - 1];
-      const sCountry = this.#nodes.get(s.from)?.country ?? null;
-      const pCountry = this.#nodes.get(p.from)?.country ?? null;
-      return !(s.name === p.name && sCountry === pCountry && s.difficulty === p.difficulty);
-    });
+    const displaySteps = dedupeSteps(route.steps, this.#nodes);
     const stops = `${displaySteps.length} stop${displaySteps.length !== 1 ? 's' : ''}`;
-    const steps = displaySteps.map(s => this.#stepHTML(s)).join('');
+    const steps = displaySteps.map(s => stepHTML(s, this.#nodes)).join('');
 
     // Counted from displaySteps (not route.preferenceScore) so the badge matches
     // what's actually visible — a single piste split into several graph edges by
@@ -62,46 +67,18 @@ class RouteResult extends HTMLElement {
       ? displaySteps.filter(s => s.difficulty === this.#preferDifficulty).length
       : 0;
 
-    const prefBadge = (this.#preferDifficulty && prefCount > 0)
-      ? `<span class="route-pref-badge" aria-label="${prefCount} ${this.#preferDifficulty} steps">
-           <span class="diff-dot" data-d="${this.#preferDifficulty}" aria-hidden="true"></span>
-           ${prefCount} ${this.#preferDifficulty}
-         </span>`
-      : '';
+    const prefBadge = prefBadgeHTML(this.#preferDifficulty, prefCount);
 
     return `
       <li class="route-card">
-        <div class="route-card-header">
-          <span class="route-label">${label}</span>
-          ${prefBadge}
-          <span class="route-stops" aria-label="${route.steps.length} stops">${stops}</span>
-        </div>
-        <ol class="route-steps" aria-label="${label}">${steps}</ol>
-      </li>
-    `;
-  }
-
-  #stepHTML(step) {
-    const country   = this.#nodes.get(step.from)?.country ?? null;
-    const flag      = country ? FLAGS[country] ?? '' : '';
-    const flagLabel = country ? COUNTRY_NAME[country] ?? '' : '';
-    const icon      = step.type === 'lift'
-      ? liftIcon(this.#nodes.get(step.from)?.lift_type)
-      : ICONS.ski;
-
-    // Difficulty dot only shown for slopes — lifts have no piste colour.
-    const diffDot = step.type === 'slope'
-      ? `<span class="diff-dot" data-d="${step.difficulty}" role="img" aria-label="${step.difficulty} slope"></span>`
-      : `<span class="diff-dot diff-dot--lift" aria-hidden="true"></span>`;
-
-    const diffAttr = step.type === 'slope' ? ` data-d="${step.difficulty}"` : '';
-
-    return `
-      <li class="route-step"${diffAttr}>
-        <span class="step-icon" aria-hidden="true">${icon}</span>
-        <span class="step-name">${step.name}</span>
-        <span class="step-flag" aria-label="${flagLabel}">${flag}</span>
-        ${diffDot}
+        <button type="button" class="route-card-btn" data-index="${index}" aria-label="${label}, ${stops} — view full details">
+          <span class="route-card-header">
+            <span class="route-label">${label}</span>
+            ${prefBadge}
+            <span class="route-stops" aria-label="${route.steps.length} stops">${stops}</span>
+          </span>
+          <ol class="route-steps" aria-label="${label}">${steps}</ol>
+        </button>
       </li>
     `;
   }

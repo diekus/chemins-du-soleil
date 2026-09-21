@@ -81,6 +81,33 @@ export const ICONS = {
   chevronDown: `<svg viewBox="0 0 24 24" ${STROKE}>
     <path d="M5 9 L12 16 L19 9"/>
   </svg>`,
+
+  /** Leftward chevron — back navigation. */
+  back: `<svg viewBox="0 0 24 24" ${STROKE}>
+    <path d="M15 4.8 L7.4 12 L15 19.2"/>
+  </svg>`,
+
+  /** Three linked nodes — share action. */
+  share: `<svg viewBox="0 0 24 24" ${STROKE}>
+    <circle cx="18.2" cy="5.6" r="2.2"/>
+    <circle cx="5.8" cy="12" r="2.2"/>
+    <circle cx="18.2" cy="18.4" r="2.2"/>
+    <path d="M7.8 10.8 L16.2 6.8"/>
+    <path d="M7.8 13.2 L16.2 17.2"/>
+  </svg>`,
+
+  /** Folded panel map with a route pin — reserved space for the route map. */
+  map: `<svg viewBox="0 0 24 24" ${STROKE}>
+    <path d="M3.2 6.4 L8.8 4.2 L15.2 6.4 L20.8 4.2 V17.6 L15.2 19.8 L8.8 17.6 L3.2 19.8 Z"/>
+    <path d="M8.8 4.2 V17.6"/>
+    <path d="M15.2 6.4 V19.8"/>
+  </svg>`,
+
+  /** Compass needle in a ring — toggles heading-up map rotation. */
+  compass: `<svg viewBox="0 0 24 24" ${STROKE}>
+    <circle cx="12" cy="12" r="9.2"/>
+    <path d="M15.2 8.8 L13.1 13.1 L8.8 15.2 L10.9 10.9 Z"/>
+  </svg>`,
 };
 
 /** Maps a network node's `lift_type` to an icon key, defaulting to the most common type. */

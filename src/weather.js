@@ -71,3 +71,33 @@ export async function fetchWeather(lat, lon) {
     windDirection: compassDirection(c.wind_direction_10m),
   };
 }
+
+// WMO codes that mean "storm-grade precipitation" or "fog" for the caution
+// thresholds below — see WEATHER_CODES above for what each number means.
+const STORM_CODES = new Set([65, 67, 75, 82, 86, 95, 96, 99]);
+const FOG_CODES    = new Set([45, 48]);
+const WIND_CAUTION_KMH = 40;
+
+/**
+ * Derive plain-language, on-mountain cautionary notes straight from a live
+ * fetchWeather() reading — a local threshold nudge, not an official weather
+ * warning (Open-Meteo has no alerts API — see the discussion in
+ * https://github.com/open-meteo/open-meteo/discussions/183). Returns
+ * [] when nothing crosses a threshold.
+ */
+export function deriveCautions(weather) {
+  if (!weather) return [];
+  const cautions = [];
+
+  if (weather.windSpeed >= WIND_CAUTION_KMH) {
+    cautions.push({ type: 'wind', message: 'Wind speeds may be higher than usual — be careful on exposed lifts and ridges.' });
+  }
+  if (STORM_CODES.has(weather.weatherCode)) {
+    cautions.push({ type: 'storm', message: 'Stormy weather in the area — be careful, conditions can change quickly.' });
+  }
+  if (FOG_CODES.has(weather.weatherCode)) {
+    cautions.push({ type: 'fog', message: 'Visibility may be limited — be careful on the slopes.' });
+  }
+
+  return cautions;
+}
