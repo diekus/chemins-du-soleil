@@ -1,5 +1,6 @@
 import { FLAGS } from '../countries.js';
 import { ICONS, WEATHER_ICONS } from '../icons.js';
+import { t } from '../i18n.js';
 
 const CAUTION_ICONS = {
   wind:  ICONS.wind,
@@ -7,10 +8,17 @@ const CAUTION_ICONS = {
   fog:   WEATHER_ICONS.fog,
 };
 
+const CAUTION_MESSAGE_KEY = {
+  wind:  'weather.cautionWind',
+  storm: 'weather.cautionStorm',
+  fog:   'weather.cautionFog',
+};
+
 const SKELETON_ROWS = 2;
 
 class WeatherCautionList extends HTMLElement {
   #cautions = undefined; // undefined=loading, null=unavailable, array=rendered
+  #onLocaleChange = () => this.#render();
 
   /**
    * Assign cautionary weather data:
@@ -18,7 +26,7 @@ class WeatherCautionList extends HTMLElement {
    *   null      → "unavailable" — silently rendered as empty; the caller's
    *               own empty-state message covers this case, same as [].
    *   [...]     → one card per resort with at least one active caution —
-   *               [{ slug, name, country, cautions: [{ type, message }] }],
+   *               [{ slug, name, country, cautions: [{ type }] }],
    *               derived from live weather.deriveCautions(), not an
    *               official weather-service alert.
    */
@@ -29,6 +37,11 @@ class WeatherCautionList extends HTMLElement {
 
   connectedCallback() {
     this.#render();
+    window.addEventListener('localechange', this.#onLocaleChange);
+  }
+
+  disconnectedCallback() {
+    window.removeEventListener('localechange', this.#onLocaleChange);
   }
 
   #render() {
@@ -44,7 +57,7 @@ class WeatherCautionList extends HTMLElement {
     const notes = r.cautions.map(c => `
       <li class="caution-note" data-type="${c.type}">
         <span class="caution-icon" aria-hidden="true">${CAUTION_ICONS[c.type] ?? ''}</span>
-        <span>Caution: ${c.message}</span>
+        <span>${t('caution.prefix', { message: t(CAUTION_MESSAGE_KEY[c.type] ?? '') })}</span>
       </li>
     `).join('');
 
@@ -61,7 +74,7 @@ class WeatherCautionList extends HTMLElement {
 
   #loadingHTML() {
     return `
-      <ul class="caution-list" role="status" aria-busy="true" aria-label="Checking weather conditions…">
+      <ul class="caution-list" role="status" aria-busy="true" aria-label="${t('caution.loading')}">
         ${Array.from({ length: SKELETON_ROWS }, () => '<li class="caution-card-skeleton"></li>').join('')}
       </ul>
     `;

@@ -1,10 +1,12 @@
 import { ICONS } from '../icons.js';
 import { dedupeSteps, stepHTML, prefBadgeHTML } from '../route-view.js';
+import { t } from '../i18n.js';
 
 class RouteResult extends HTMLElement {
   #routes           = undefined; // undefined=idle, null=loading, []=no route, [...]=results
   #nodes            = new Map();
   #preferDifficulty = null;
+  #onLocaleChange   = () => this.#render();
 
   /** Pass the nodeMap (Map<id, node>) so country flags can be resolved. */
   set nodes(map) {
@@ -37,6 +39,11 @@ class RouteResult extends HTMLElement {
         bubbles: true,
       }));
     });
+    window.addEventListener('localechange', this.#onLocaleChange);
+  }
+
+  disconnectedCallback() {
+    window.removeEventListener('localechange', this.#onLocaleChange);
   }
 
   #render() {
@@ -55,9 +62,9 @@ class RouteResult extends HTMLElement {
   }
 
   #cardHTML(route, index) {
-    const label = index === 0 ? 'Best route' : `Alternative ${index + 1}`;
+    const label = index === 0 ? t('route.bestRoute') : t('route.alternative', { n: index + 1 });
     const displaySteps = dedupeSteps(route.steps, this.#nodes);
-    const stops = `${displaySteps.length} stop${displaySteps.length !== 1 ? 's' : ''}`;
+    const stops = t('route.stops', { count: displaySteps.length });
     const steps = displaySteps.map(s => stepHTML(s, this.#nodes)).join('');
 
     // Counted from displaySteps (not route.preferenceScore) so the badge matches
@@ -71,11 +78,11 @@ class RouteResult extends HTMLElement {
 
     return `
       <li class="route-card">
-        <button type="button" class="route-card-btn" data-index="${index}" aria-label="${label}, ${stops} — view full details">
+        <button type="button" class="route-card-btn" data-index="${index}" aria-label="${t('route.cardAriaLabel', { label, stops })}">
           <span class="route-card-header">
             <span class="route-label">${label}</span>
             ${prefBadge}
-            <span class="route-stops" aria-label="${route.steps.length} stops">${stops}</span>
+            <span class="route-stops" aria-label="${t('route.stopsAriaLabel', { count: route.steps.length })}">${stops}</span>
           </span>
           <ol class="route-steps" aria-label="${label}">${steps}</ol>
         </button>
@@ -85,7 +92,7 @@ class RouteResult extends HTMLElement {
 
   #loadingHTML() {
     return `
-      <div class="loading-cards" role="status" aria-busy="true" aria-label="Finding routes…">
+      <div class="loading-cards" role="status" aria-busy="true" aria-label="${t('route.loadingLabel')}">
         <div class="skeleton-card"></div>
         <div class="skeleton-card"></div>
       </div>
@@ -96,9 +103,8 @@ class RouteResult extends HTMLElement {
     return `
       <div class="no-route" role="status">
         <span class="no-route-icon" aria-hidden="true">${ICONS.ski}</span>
-        <p class="no-route-title">No route found</p>
-        <p>There is no path between these stations at the chosen difficulty.
-           Try raising the maximum difficulty.</p>
+        <p class="no-route-title">${t('route.noRouteTitle')}</p>
+        <p>${t('route.noRouteBody')}</p>
       </div>
     `;
   }

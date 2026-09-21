@@ -1,18 +1,20 @@
 import { ICONS } from '../icons.js';
+import { t } from '../i18n.js';
 
 const TABS = [
-  { view: 'home',    label: 'Home',    icon: ICONS.home },
-  { view: 'resorts', label: 'Resorts', icon: ICONS.resorts },
-  { view: 'alerts',  label: 'Alerts',  icon: ICONS.alerts },
+  { view: 'home',     labelKey: 'tabs.home',     icon: ICONS.home },
+  { view: 'resorts',  labelKey: 'tabs.resorts',  icon: ICONS.resorts },
+  { view: 'alerts',   labelKey: 'tabs.alerts',   icon: ICONS.alerts },
+  { view: 'settings', labelKey: 'tabs.settings', icon: ICONS.settings },
 ];
 
 class TabBar extends HTMLElement {
   #active          = 'home';
   #alertsAvailable = true;
+  #onLocaleChange  = () => this.#render();
 
   connectedCallback() {
     this.setAttribute('role', 'tablist');
-    this.setAttribute('aria-label', 'Main navigation');
     this.#render();
 
     this.addEventListener('click', e => {
@@ -24,9 +26,15 @@ class TabBar extends HTMLElement {
         bubbles: true,
       }));
     });
+
+    window.addEventListener('localechange', this.#onLocaleChange);
   }
 
-  /** The currently active view name ('home' | 'resorts' | 'alerts'). */
+  disconnectedCallback() {
+    window.removeEventListener('localechange', this.#onLocaleChange);
+  }
+
+  /** The currently active view name ('home' | 'resorts' | 'alerts' | 'settings'). */
   get active() { return this.#active; }
 
   /** Set the active tab's visual state without dispatching 'change'. */
@@ -45,19 +53,20 @@ class TabBar extends HTMLElement {
   }
 
   #render() {
-    const tabs = TABS.filter(t => t.view !== 'alerts' || this.#alertsAvailable);
-    this.innerHTML = tabs.map(t => `
+    this.setAttribute('aria-label', t('tabs.ariaLabel'));
+    const tabs = TABS.filter(tb => tb.view !== 'alerts' || this.#alertsAvailable);
+    this.innerHTML = tabs.map(tb => `
       <button
-        id="tab-${t.view}"
+        id="tab-${tb.view}"
         class="tab-bar-item"
         type="button"
         role="tab"
-        data-view="${t.view}"
-        aria-selected="${t.view === this.#active}"
-        aria-controls="view-${t.view}"
+        data-view="${tb.view}"
+        aria-selected="${tb.view === this.#active}"
+        aria-controls="view-${tb.view}"
       >
-        <span class="tab-bar-icon" aria-hidden="true">${t.icon}</span>
-        <span class="tab-bar-label">${t.label}</span>
+        <span class="tab-bar-icon" aria-hidden="true">${tb.icon}</span>
+        <span class="tab-bar-label">${t(tb.labelKey)}</span>
       </button>
     `).join('');
   }
