@@ -1,15 +1,18 @@
+import { t } from '../i18n.js';
+
 let _uid = 0;
 
 const OPTIONS = [
-  { value: '',      label: 'No preference' },
-  { value: 'green', label: 'Prefer green' },
-  { value: 'blue',  label: 'Prefer blue' },
-  { value: 'red',   label: 'Prefer red' },
-  { value: 'black', label: 'Prefer black' },
+  { value: '',      key: 'preference.none' },
+  { value: 'green', key: 'preference.green' },
+  { value: 'blue',  key: 'preference.blue' },
+  { value: 'red',   key: 'preference.red' },
+  { value: 'black', key: 'preference.black' },
 ];
 
 class PreferenceSelector extends HTMLElement {
   #selectId;
+  #onLocaleChange = () => this.#render();
 
   constructor() {
     super();
@@ -17,9 +20,19 @@ class PreferenceSelector extends HTMLElement {
   }
 
   connectedCallback() {
+    this.#render();
+    window.addEventListener('localechange', this.#onLocaleChange);
+  }
+
+  disconnectedCallback() {
+    window.removeEventListener('localechange', this.#onLocaleChange);
+  }
+
+  #render() {
+    const current = this.querySelector('select')?.value ?? '';
     const labelledBy = this.getAttribute('aria-labelledby') ?? '';
     const opts = OPTIONS.map(o =>
-      `<option value="${o.value}">${o.label}</option>`
+      `<option value="${o.value}"${o.value === current ? ' selected' : ''}>${t(o.key)}</option>`
     ).join('');
 
     this.innerHTML = `

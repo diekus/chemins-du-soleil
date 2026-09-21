@@ -1,11 +1,13 @@
 import { loadGraph } from './graph.js';
 import { findRoutes } from './pathfinder.js';
-import { fetchWeather, weatherIconKey, deriveCautions } from './weather.js';
+import { fetchWeather, weatherIconKey, weatherConditionKey, deriveCautions } from './weather.js';
 import { fetchOpenPiste, readAvalanche } from './conditions.js';
 import { nearestResort, VICINITY_KM, projectOntoRoute } from './geo.js';
 import { FLAGS } from './countries.js';
 import { WEATHER_ICONS } from './icons.js';
 import { animateHeightChange } from './animate-height.js';
+import { initLocale, t, getLocale } from './i18n.js';
+import { DIFFICULTY_NAME_KEY } from './route-view.js';
 import './components/station-input.js';
 import './components/difficulty-selector.js';
 import './components/preference-selector.js';
@@ -17,6 +19,29 @@ import './components/weather-hero.js';
 import './components/avalanche-banner.js';
 import './components/weather-caution-list.js';
 import './components/resort-conditions-list.js';
+import './components/settings-panel.js';
+
+await initLocale();
+
+// ── Static text: plain HTML nodes have no component of their own to
+// re-render themselves, so app.js owns translating them, both now and on
+// every locale change (see the 'localechange' listener at the bottom).
+function applyStaticTranslations() {
+  document.title = t('app.title');
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    el.textContent = t(el.dataset.i18n);
+  });
+  document.getElementById('lbl-start').textContent = t('home.fromLabel');
+  document.getElementById('lbl-dest').textContent  = t('home.toLabel');
+  document.getElementById('lbl-diff').textContent  = t('home.maxDifficultyLabel');
+  document.getElementById('lbl-pref').textContent  = t('home.preferredDifficultyLabel');
+  // Scoped to the search form — <location-gate>'s own "Use my location"
+  // button shares the .btn-find class for visual styling only.
+  form.querySelector('.btn-find').textContent      = t('home.findRoute');
+  startEl.placeholder = t('home.startPlaceholder');
+  destEl.placeholder  = t('home.destPlaceholder');
+  if (lastSearch) updateSummaryText(lastSearch.startId, lastSearch.endId, lastSearch.preference);
+}
 
 const form       = document.querySelector('.search-form');
 const startEl    = document.querySelector('station-input[name="start"]');
@@ -341,6 +366,7 @@ const views  = {
   home:        document.getElementById('view-home'),
   resorts:     document.getElementById('view-resorts'),
   alerts:      document.getElementById('view-alerts'),
+  settings:    document.getElementById('view-settings'),
   routeDetail: document.getElementById('view-route-detail'),
 };
 // Hidden until conditions data actually confirms there's something to alert about.
@@ -405,7 +431,7 @@ async function showRouteDetail(params) {
 
   detailEl.nodes            = nodeMap;
   detailEl.preferDifficulty = preference;
-  detailEl.label            = index === 0 ? 'Best route' : `Alternative ${index + 1}`;
+  detailEl.label            = index === 0 ? t('route.bestRoute') : t('route.alternative', { n: index + 1 });
   detailEl.route            = route;
 
   if (route) {
@@ -487,11 +513,11 @@ form.addEventListener('submit', e => {
   const preference = prefEl.value || null;
 
   if (!startId || !endId) {
-    showError('Please select both a start and a destination from the list.');
+    showError(t('app.errorMissingStations'));
     return;
   }
   if (startId === endId) {
-    showError('Start and destination must be different stations.');
+    showError(t('app.errorSameStation'));
     return;
   }
 
@@ -535,12 +561,16 @@ function stationLabel(id) {
   return `${FLAGS[node.country] ?? ''} ${node.name}`.trim();
 }
 
-function collapseSearchForm(startId, endId, preference) {
+function updateSummaryText(startId, endId, preference) {
   summaryEl.querySelector('.search-summary-route').textContent =
     `${stationLabel(startId)} → ${stationLabel(endId)}`;
-  summaryEl.querySelector('.search-summary-pref').textContent =
-    preference ? `Prefers ${preference}` : 'No difficulty preference';
+  summaryEl.querySelector('.search-summary-pref').textContent = preference
+    ? t('app.summaryPrefers', { difficulty: t(DIFFICULTY_NAME_KEY[preference] ?? '') })
+    : t('app.summaryNoPreference');
+}
 
+function collapseSearchForm(startId, endId, preference) {
+  updateSummaryText(startId, endId, preference);
   animateHeightChange(searchPanelEl, () => {
     form.hidden      = true;
     summaryEl.hidden = false;
@@ -555,11 +585,19 @@ summaryEl.addEventListener('click', () => {
   form.querySelector('station-input[name="start"] .si-input')?.focus();
 });
 
+// ── Locale ───────────────────────────────────────────────────────────────────
+
+applyStaticTranslations();
+window.addEventListener('localechange', () => {
+  applyStaticTranslations();
+  render(); // re-render the current view (route labels, etc.) in the new language
+});
+
 // ── Start ────────────────────────────────────────────────────────────────────
 
 init().catch(err => {
   console.error('Failed to load network data:', err);
-  showError('Could not load resort data. Make sure the app is served from a local server.');
+  showError(t('app.errorLoadNetwork'));
 });
 
 initLocation().catch(err => {

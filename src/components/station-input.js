@@ -1,4 +1,5 @@
 import { FLAGS } from '../countries.js';
+import { t } from '../i18n.js';
 
 let _uid = 0;
 
@@ -15,7 +16,7 @@ class StationInput extends HTMLElement {
   }
 
   connectedCallback() {
-    const placeholder = this.getAttribute('placeholder') ?? 'Search stations…';
+    const placeholder = this.getAttribute('placeholder') ?? t('station.defaultPlaceholder');
     const labelledBy  = this.getAttribute('aria-labelledby') ?? '';
 
     this.innerHTML = `
@@ -48,6 +49,12 @@ class StationInput extends HTMLElement {
   /** Array of { id, name, country } — set by app.js after data load. */
   set stations(list) {
     this.#stations = list ?? [];
+  }
+
+  /** Translated placeholder text — set by app.js and kept fresh on locale change. */
+  set placeholder(text) {
+    this.setAttribute('placeholder', text);
+    if (this.#el) this.#el.placeholder = text;
   }
 
   /** The selected node ID, or null if nothing is selected. */

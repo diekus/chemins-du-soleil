@@ -12,9 +12,10 @@ npx serve .
 # Run unit tests (graph + pathfinder)
 node --test src/*.test.js          # or: npm test
 
-# Validate network data integrity
-node scripts/validate-network.js          # exits 0/1 — or: npm run validate
+# Validate network data integrity + locale dictionaries (key/placeholder parity across en/fr/es/it)
+npm run validate                          # runs both validators, exits 0/1
 node scripts/validate-network.js --verbose
+node scripts/validate-locales.js --verbose
 
 # Smoke-test the pathfinding engine
 node scripts/smoke-test.js         # or: npm run smoke
@@ -29,10 +30,11 @@ No build step. No install required for the app itself (`devDependencies` only co
 
 **Stack**: Vanilla JS · HTML · CSS · Web Components · PWA. No framework, no transpiler, no bundler.
 
-**App structure** (`src/app.js` wires everything together): three tabs —
+**App structure** (`src/app.js` wires everything together): four tabs —
 - **Home**: the route finder (`<station-input>` × 2, `<difficulty-selector>`, `<preference-selector>`, `<route-result>`), plus the live weather card (`<weather-hero>`) for whichever resort was resolved via geolocation or manually picked.
 - **Resorts**: `<resort-conditions-list>`, a live weather + avalanche overview for all 13 Portes du Soleil resorts, loaded lazily on first visit.
 - **Alerts**: `<avalanche-banner>` with the full risk detail; the tab itself only appears in `<tab-bar>` when there's something to show (risk level ≥ 2).
+- **Settings**: `<settings-panel>`, currently just the language picker (English/French/Spanish/Italian) — always visible, unlike Alerts.
 
 **Route-finding data flow**:
 1. `app.js` fetches `data/network.json` on load.
@@ -64,13 +66,16 @@ No build step. No install required for the app itself (`devDependencies` only co
 | `<station-input>` | ARIA combobox for lift/village search |
 | `<difficulty-selector>` / `<preference-selector>` | Max-difficulty and preferred-difficulty `<select>` wrappers |
 | `<route-result>` | Renders route cards from `findRoutes()` output |
-| `<tab-bar>` | Bottom nav (Home / Resorts / Alerts) |
+| `<tab-bar>` | Bottom nav (Home / Resorts / Alerts / Settings) |
 | `<location-gate>` | Initial resort resolution prompt (geolocate or pick manually) |
 | `<weather-hero>` | Home tab's live weather card — collapsible (single-line strip by default) / expandable (full detail incl. avalanche badge) |
 | `<avalanche-banner>` | Avalanche risk banner (used standalone in the Alerts tab) |
 | `<resort-conditions-list>` | Resorts tab's per-resort weather + avalanche overview |
+| `<settings-panel>` | Settings tab's language picker (English/French/Spanish/Italian) |
 
-**Shared modules** (`src/`, not components): `graph.js`, `pathfinder.js` (route engine), `weather.js`, `conditions.js`, `geo.js` (live-conditions data), `countries.js` (flag/country-name lookups), `format.js` (`relativeTime()`), `icons.js` (the custom SVG icon set — see below).
+**Shared modules** (`src/`, not components): `graph.js`, `pathfinder.js` (route engine), `weather.js`, `conditions.js`, `geo.js` (live-conditions data), `countries.js` (flag/country-name lookups), `format.js` (`relativeTime()`, locale-aware via `i18n.js`), `icons.js` (the custom SVG icon set — see below), `route-view.js` (shared route-step/badge rendering used by `<route-result>` and `<route-detail>`).
+
+**Localization** (`src/i18n.js` + `locale/{en,fr,es,it}.json`): flat JSON dictionaries, no framework. `t(key, params?)` looks up the active locale's string (falling back to English, never to the raw key) and interpolates `{placeholder}` tokens; `params.count` selects a `_one`/`_other` pluralized variant when present. `setLocale(code)` persists the choice to `localStorage` (`cds:locale`) and dispatches a `localechange` event on `window` — every component that renders translatable text listens for it in `connectedCallback()` and re-renders. The active locale is resolved once at module-evaluation time via a real top-level `await` in `i18n.js`, so every Web Component module (which upgrades already-parsed DOM elements the instant it calls `customElements.define()`) waits for the dictionary before its first render — this is what prevents a flash of raw translation keys or English text on a non-English first load. `navigator.language` picks the initial locale when there's no stored override. Proper nouns (lift/piste/resort/village names) are never translated. Run `node scripts/validate-locales.js` after editing any `locale/*.json` file — it checks key-set and `{placeholder}` parity across all four dictionaries. `SUPPORTED_LOCALES` in `i18n.js` is the single list to extend when adding another language.
 
 **Icons**: `src/icons.js` exports `ICONS` (raw inline-SVG strings) and `liftIcon(liftType)`, sourced from the "Ski app icon set" design project (claude.ai/design). No emoji is used for meaningful UI glyphs (tab-bar, route steps) — emoji rendering varies too much across platforms, and it can't distinguish lift types anyway. All icons share one convention: 24×24 viewBox, stroke-only, `currentColor`, 2px stroke width, round caps/joins (so they inherit color automatically, including tab-bar's selected/unselected state — no per-icon CSS needed). Lift icons (`chairlift`/`gondola`/`surface`) additionally share a cable motif and differ only in what hangs from it. When adding a new icon, match this convention rather than introducing a new visual style.
 

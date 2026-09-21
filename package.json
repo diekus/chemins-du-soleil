@@ -5,7 +5,8 @@
   },
   "scripts": {
     "test": "node --test src/*.test.js",
-    "validate": "node scripts/validate-network.js",
+    "validate": "node scripts/validate-network.js && node scripts/validate-locales.js",
+    "validate-locales": "node scripts/validate-locales.js",
     "smoke": "node scripts/smoke-test.js"
   },
   "devDependencies": {

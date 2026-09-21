@@ -1,5 +1,13 @@
 import { FLAGS, COUNTRY_NAME } from './countries.js';
 import { ICONS, liftIcon } from './icons.js';
+import { t } from './i18n.js';
+
+export const DIFFICULTY_NAME_KEY = {
+  green: 'common.difficultyGreen',
+  blue:  'common.difficultyBlue',
+  red:   'common.difficultyRed',
+  black: 'common.difficultyBlack',
+};
 
 /**
  * Shared route-rendering helpers used by both <route-result> (search results)
@@ -29,7 +37,7 @@ export function stepHTML(step, nodes) {
 
   // Difficulty dot only shown for slopes — lifts have no piste colour.
   const diffDot = step.type === 'slope'
-    ? `<span class="diff-dot" data-d="${step.difficulty}" role="img" aria-label="${step.difficulty} slope"></span>`
+    ? `<span class="diff-dot" data-d="${step.difficulty}" role="img" aria-label="${t('route.slopeAriaLabel', { difficulty: t(DIFFICULTY_NAME_KEY[step.difficulty] ?? '') })}"></span>`
     : `<span class="diff-dot diff-dot--lift" aria-hidden="true"></span>`;
 
   const diffAttr = step.type === 'slope' ? ` data-d="${step.difficulty}"` : '';
@@ -47,10 +55,11 @@ export function stepHTML(step, nodes) {
 /** Badge showing how many displayed steps match the active preferred difficulty, or '' if none. */
 export function prefBadgeHTML(preferDifficulty, count) {
   if (!preferDifficulty || count <= 0) return '';
+  const difficulty = t(DIFFICULTY_NAME_KEY[preferDifficulty] ?? '');
   return `
-    <span class="route-pref-badge" aria-label="${count} ${preferDifficulty} steps">
+    <span class="route-pref-badge" aria-label="${t('route.prefBadgeAria', { count, difficulty })}">
       <span class="diff-dot" data-d="${preferDifficulty}" aria-hidden="true"></span>
-      ${count} ${preferDifficulty}
+      ${t('route.prefBadgeText', { count, difficulty })}
     </span>
   `;
 }

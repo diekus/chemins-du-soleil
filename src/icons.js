@@ -29,6 +29,14 @@ export const ICONS = {
     <circle cx="12" cy="17.5" r="1" fill="currentColor" stroke="none"/>
   </svg>`,
 
+  /** Gear/cog — settings/preferences. Ring + 8 short teeth + centre hole. */
+  settings: `<svg viewBox="0 0 24 24" ${STROKE}>
+    <circle cx="12" cy="12" r="6.2"/>
+    <circle cx="12" cy="12" r="2.3"/>
+    <path d="M18.2 12 L20.8 12 M16.4 16.4 L18.2 18.2 M12 18.2 L12 20.8 M7.6 16.4 L5.8 18.2
+              M5.8 12 L3.2 12 M7.6 7.6 L5.8 5.8 M12 5.8 L12 3.2 M16.4 7.6 L18.2 5.8"/>
+  </svg>`,
+
   /** Downhill skier — used for slope/piste route steps. */
   ski: `<svg viewBox="0 0 24 24" ${STROKE}>
     <circle cx="16.1" cy="6.2" r="1.8"/>

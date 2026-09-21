@@ -2,6 +2,7 @@ import { ICONS } from '../icons.js';
 import { dedupeSteps, stepHTML, prefBadgeHTML } from '../route-view.js';
 import { loadLeaflet } from '../leaflet-loader.js';
 import { isOrientationSupported, requestOrientationPermission, getCompassHeading } from '../compass.js';
+import { t } from '../i18n.js';
 
 /**
  * Full-page view of a single route, reached from a <route-result> card.
@@ -76,7 +77,17 @@ class RouteDetail extends HTMLElement {
     window.addEventListener('online', () => {
       if (this.#offlineAtRender && this.#route) this.#render();
     });
+
+    window.addEventListener('localechange', this.#onLocaleChange);
   }
+
+  disconnectedCallback() {
+    window.removeEventListener('localechange', this.#onLocaleChange);
+  }
+
+  #onLocaleChange = () => {
+    if (this.#route !== undefined) this.#render();
+  };
 
   #render() {
     // Whatever branch we're rendering wipes the previous route's DOM (map
@@ -115,7 +126,7 @@ class RouteDetail extends HTMLElement {
 
     const toggleBtn = this.querySelector('.detail-map-size-toggle');
     if (toggleBtn) {
-      toggleBtn.textContent = this.#mapSize === 'large' ? 'Show smaller map' : 'Show larger map';
+      toggleBtn.textContent = this.#mapSize === 'large' ? t('detail.showSmallerMap') : t('detail.showLargerMap');
       toggleBtn.setAttribute('aria-expanded', String(this.#mapSize === 'large'));
     }
 
@@ -141,7 +152,7 @@ class RouteDetail extends HTMLElement {
     const hasCoords  = n => n && typeof n.lat === 'number' && typeof n.lon === 'number';
 
     if (!nodeCoords.some(hasCoords)) {
-      container.textContent = 'Map unavailable for this route.';
+      container.textContent = t('detail.mapUnavailable');
       return;
     }
 
@@ -150,7 +161,7 @@ class RouteDetail extends HTMLElement {
       L = await loadLeaflet();
     } catch (err) {
       console.error(err);
-      container.textContent = 'Map could not be loaded.';
+      container.textContent = t('detail.mapLoadFailed');
       return;
     }
 
@@ -221,12 +232,12 @@ class RouteDetail extends HTMLElement {
     if (firstValid) {
       L.circleMarker([firstValid.lat, firstValid.lon], {
         radius: 7, color: primaryColor, weight: 2, fillColor: primaryColor, fillOpacity: 1,
-      }).addTo(map).bindTooltip('Start');
+      }).addTo(map).bindTooltip(t('detail.start'));
     }
     if (lastValid && lastValid !== firstValid) {
       L.circleMarker([lastValid.lat, lastValid.lon], {
         radius: 7, color: primaryColor, weight: 2, fillColor, fillOpacity: 1,
-      }).addTo(map).bindTooltip('Finish');
+      }).addTo(map).bindTooltip(t('detail.finish'));
     }
 
     this.#map = map;
@@ -242,7 +253,7 @@ class RouteDetail extends HTMLElement {
     const granted = await requestOrientationPermission();
     const statusEl = this.querySelector('.detail-compass-status');
     if (!granted) {
-      if (statusEl) statusEl.textContent = 'Enable motion & orientation access to rotate the map with your heading.';
+      if (statusEl) statusEl.textContent = t('detail.enableOrientation');
       return;
     }
     if (statusEl) statusEl.textContent = '';
@@ -321,7 +332,7 @@ class RouteDetail extends HTMLElement {
       });
       this.#youAreHereMarker = L.marker(latlng, { icon, zIndexOffset: 1000, keyboard: false })
         .addTo(this.#map)
-        .bindTooltip('You are here');
+        .bindTooltip(t('detail.youAreHere'));
     }
   }
 
@@ -349,19 +360,19 @@ class RouteDetail extends HTMLElement {
       statusEl.textContent = '';
     } else if (p === 'waiting') {
       setBar(null);
-      statusEl.textContent = 'Finding your position…';
+      statusEl.textContent = t('detail.findingPosition');
     } else if (p === 'denied') {
       setBar(null);
-      statusEl.textContent = 'Turn on location to track your progress on this route.';
+      statusEl.textContent = t('detail.locationOff');
     } else if (p.distanceKm > OFF_ROUTE_KM) {
       setBar(null);
-      statusEl.textContent = "You don't seem to be on this route yet.";
+      statusEl.textContent = t('detail.notOnRoute');
     } else {
       const pct = Math.max(0, Math.min(100, Math.round(p.progress * 100)));
       setBar(pct);
       statusEl.textContent = pct >= 99
-        ? "You've arrived — nice run!"
-        : `Tracking your position live — ${pct}% of the way there.`;
+        ? t('detail.arrived')
+        : t('detail.trackingProgress', { pct });
     }
 
     this.#updateMapMarker();
@@ -371,7 +382,7 @@ class RouteDetail extends HTMLElement {
 
   #detailHTML(route, offline) {
     const displaySteps = dedupeSteps(route.steps, this.#nodes);
-    const stops = `${displaySteps.length} stop${displaySteps.length !== 1 ? 's' : ''}`;
+    const stops = t('route.stops', { count: displaySteps.length });
     const steps = displaySteps.map(s => stepHTML(s, this.#nodes)).join('');
 
     const prefCount = this.#preferDifficulty
@@ -386,23 +397,23 @@ class RouteDetail extends HTMLElement {
     // is skipped in favour of the plain back link every other state here uses.
     const mapSection = offline ? `
       ${this.#backLinkHTML()}
-      <p class="detail-map-offline">Map unavailable while offline.</p>
+      <p class="detail-map-offline">${t('detail.mapOffline')}</p>
     ` : `
       <div class="detail-map-section">
         <div class="detail-map-card detail-map-card--${this.#mapSize}">
-          <div class="detail-map" role="group" aria-label="Map of ${this.#label}">Loading map…</div>
+          <div class="detail-map" role="group" aria-label="${t('detail.mapOf', { label: this.#label })}">${t('detail.loadingMap')}</div>
 
-          <a href="#home" class="detail-back-floating" aria-label="Back to results">
+          <a href="#home" class="detail-back-floating" aria-label="${t('detail.backToResults')}">
             ${ICONS.back}
           </a>
 
           <div class="detail-zoom-controls">
-            <button type="button" class="detail-zoom-in" aria-label="Zoom in">+</button>
-            <button type="button" class="detail-zoom-out" aria-label="Zoom out">&minus;</button>
+            <button type="button" class="detail-zoom-in" aria-label="${t('detail.zoomIn')}">+</button>
+            <button type="button" class="detail-zoom-out" aria-label="${t('detail.zoomOut')}">&minus;</button>
           </div>
 
           ${COMPASS_AVAILABLE ? `
-          <button type="button" class="detail-compass-toggle" aria-pressed="false" aria-label="Rotate map with your device heading">
+          <button type="button" class="detail-compass-toggle" aria-pressed="false" aria-label="${t('detail.rotateMap')}">
             ${ICONS.compass}
           </button>` : ''}
 
@@ -412,7 +423,7 @@ class RouteDetail extends HTMLElement {
         </div>
 
         <button type="button" class="detail-map-size-toggle btn-text" aria-expanded="${this.#mapSize === 'large'}">
-          ${this.#mapSize === 'large' ? 'Show smaller map' : 'Show larger map'}
+          ${this.#mapSize === 'large' ? t('detail.showSmallerMap') : t('detail.showLargerMap')}
         </button>
       </div>
     `;
@@ -427,7 +438,7 @@ class RouteDetail extends HTMLElement {
           <span class="route-card-header">
             <span class="route-label">${this.#label}</span>
             ${prefBadge}
-            <span class="route-stops" aria-label="${route.steps.length} stops">${stops}</span>
+            <span class="route-stops" aria-label="${t('route.stopsAriaLabel', { count: route.steps.length })}">${stops}</span>
           </span>
 
           <div class="route-progress">
@@ -443,7 +454,7 @@ class RouteDetail extends HTMLElement {
         <div class="detail-actions">
           <button type="button" class="btn-find detail-share-btn">
             <span class="detail-share-icon" aria-hidden="true">${ICONS.share}</span>
-            Share this route
+            ${t('detail.shareRoute')}
           </button>
         </div>
         <p class="detail-share-status" role="status" aria-live="polite"></p>
@@ -454,7 +465,7 @@ class RouteDetail extends HTMLElement {
   #loadingHTML() {
     return `
       ${this.#backLinkHTML()}
-      <div class="skeleton-card detail-skeleton" role="status" aria-busy="true" aria-label="Loading route…"></div>
+      <div class="skeleton-card detail-skeleton" role="status" aria-busy="true" aria-label="${t('detail.loadingRoute')}"></div>
     `;
   }
 
@@ -463,8 +474,8 @@ class RouteDetail extends HTMLElement {
       ${this.#backLinkHTML()}
       <div class="no-route" role="status">
         <span class="no-route-icon" aria-hidden="true">${ICONS.ski}</span>
-        <p class="no-route-title">Route not found</p>
-        <p>This link may be broken, or the route no longer exists at that difficulty.</p>
+        <p class="no-route-title">${t('detail.routeNotFound')}</p>
+        <p>${t('detail.routeNotFoundBody')}</p>
       </div>
     `;
   }
@@ -472,7 +483,7 @@ class RouteDetail extends HTMLElement {
   #backLinkHTML() {
     return `
       <a href="#home" class="detail-back">
-        <span aria-hidden="true">${ICONS.back}</span> Back to results
+        <span aria-hidden="true">${ICONS.back}</span> ${t('detail.backToResults')}
       </a>
     `;
   }
@@ -484,15 +495,15 @@ class RouteDetail extends HTMLElement {
     const url = location.href;
     try {
       if (navigator.share) {
-        await navigator.share({ title: 'Chemins du Soleil route', url });
+        await navigator.share({ title: t('detail.shareTitle'), url });
         return;
       }
       await navigator.clipboard.writeText(url);
-      if (statusEl) statusEl.textContent = 'Link copied to clipboard.';
+      if (statusEl) statusEl.textContent = t('detail.linkCopied');
     } catch (err) {
       if (err?.name === 'AbortError') return; // user dismissed the share sheet
       console.error('Share failed:', err);
-      if (statusEl) statusEl.textContent = 'Could not share this route — copy the address bar link instead.';
+      if (statusEl) statusEl.textContent = t('detail.shareFailed');
     }
   }
 }

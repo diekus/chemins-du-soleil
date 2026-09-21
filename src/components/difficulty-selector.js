@@ -1,14 +1,17 @@
+import { t } from '../i18n.js';
+
 let _uid = 0;
 
 const OPTIONS = [
-  { value: 'green', label: 'Green — Easy only' },
-  { value: 'blue',  label: 'Blue — Up to blue' },
-  { value: 'red',   label: 'Red — Up to red' },
-  { value: 'black', label: 'Black — Any difficulty' },
+  { value: 'green', key: 'difficulty.optionGreen' },
+  { value: 'blue',  key: 'difficulty.optionBlue' },
+  { value: 'red',   key: 'difficulty.optionRed' },
+  { value: 'black', key: 'difficulty.optionBlack' },
 ];
 
 class DifficultySelector extends HTMLElement {
   #selectId;
+  #onLocaleChange = () => this.#render();
 
   constructor() {
     super();
@@ -16,9 +19,19 @@ class DifficultySelector extends HTMLElement {
   }
 
   connectedCallback() {
+    this.#render();
+    window.addEventListener('localechange', this.#onLocaleChange);
+  }
+
+  disconnectedCallback() {
+    window.removeEventListener('localechange', this.#onLocaleChange);
+  }
+
+  #render() {
+    const current = this.querySelector('select')?.value ?? 'black';
     const labelledBy = this.getAttribute('aria-labelledby') ?? '';
     const opts = OPTIONS.map(o =>
-      `<option value="${o.value}"${o.value === 'black' ? ' selected' : ''}>${o.label}</option>`
+      `<option value="${o.value}"${o.value === current ? ' selected' : ''}>${t(o.key)}</option>`
     ).join('');
 
     this.innerHTML = `

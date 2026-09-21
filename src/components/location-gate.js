@@ -1,8 +1,10 @@
 import { nearestResort, VICINITY_KM as PLAUSIBLE_KM } from '../geo.js';
+import { t } from '../i18n.js';
 
 class LocationGate extends HTMLElement {
   #resorts = [];
   #state   = 'prompt'; // 'prompt' | 'locating' | 'picker'
+  #onLocaleChange = () => this.#render();
 
   /** Array of { slug, name, country, elevation, lat, lon } from data/resorts.json. */
   set resorts(list) {
@@ -12,6 +14,11 @@ class LocationGate extends HTMLElement {
 
   connectedCallback() {
     this.#render();
+    window.addEventListener('localechange', this.#onLocaleChange);
+  }
+
+  disconnectedCallback() {
+    window.removeEventListener('localechange', this.#onLocaleChange);
   }
 
   /** Reset to the initial prompt — used when the user wants to change resort. */
@@ -31,10 +38,10 @@ class LocationGate extends HTMLElement {
   #promptHTML() {
     return `
       <div class="location-gate-card">
-        <p class="location-gate-text">Show conditions for the resort nearest you?</p>
+        <p class="location-gate-text">${t('gate.prompt')}</p>
         <div class="location-gate-actions">
-          <button type="button" class="btn-find" data-action="locate">Use my location</button>
-          <button type="button" class="btn-text" data-action="pick">Choose a resort</button>
+          <button type="button" class="btn-find" data-action="locate">${t('gate.useLocation')}</button>
+          <button type="button" class="btn-text" data-action="pick">${t('gate.chooseResort')}</button>
         </div>
       </div>
     `;
@@ -43,7 +50,7 @@ class LocationGate extends HTMLElement {
   #locatingHTML() {
     return `
       <div class="location-gate-card" aria-busy="true">
-        <p class="location-gate-text">Finding your resort…</p>
+        <p class="location-gate-text">${t('gate.locating')}</p>
       </div>
     `;
   }
@@ -54,7 +61,7 @@ class LocationGate extends HTMLElement {
     `).join('');
     return `
       <div class="location-gate-card">
-        <p class="location-gate-text">Choose your resort</p>
+        <p class="location-gate-text">${t('gate.pickerTitle')}</p>
         <ul class="location-gate-list">${options}</ul>
       </div>
     `;
