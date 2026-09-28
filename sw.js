@@ -1,4 +1,4 @@
-const CACHE_NAME = 'chemins-du-soleil-v31';
+const CACHE_NAME = 'chemins-du-soleil-v32';
 
 const PRECACHE = [
   '/',
@@ -9,6 +9,7 @@ const PRECACHE = [
   '/css/base.css',
   '/css/layout.css',
   '/css/components.css',
+  '/css/foldable.css',
   '/fonts/nunito-latin.woff2',
   '/fonts/nunito-latin-ext.woff2',
   '/fonts/nunito-cyrillic.woff2',
