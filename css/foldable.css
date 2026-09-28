@@ -1,0 +1,122 @@
+/* ── Foldable device support — Phase 1 (flip-style, 2 segments) ─────────────
+   Samsung Galaxy Z Flip and equivalents, used half-open: one horizontal fold
+   splitting the screen into a top and bottom segment. Gated entirely by this
+   compound media query — both the posture and the segment geometry are
+   native CSS features (Device Posture API, CSS Viewport Segments), so this
+   file needs no JavaScript and has zero effect on any device that doesn't
+   match it exactly. See specs/2026-09-28-foldable-support/ for the full
+   spec and the decisions behind this approach.
+
+   Segment addressing: one column, two rows — segment (0,0) is the top half,
+   segment (0,1) is the bottom half, per the CSS Viewport Segments spec's
+   env(viewport-segment-* <column> <row>) indexing.
+
+   The app's own sticky header (.app-header, logo + temp badge) stays
+   visible above both the Home and route-detail top segments here, same as
+   it does on every other view — these rules offset panels *below* it
+   rather than hiding it, so measured/estimated header and pill heights
+   below are load-bearing: recheck them (see validation.md's edge-case
+   notes) if either one's own CSS changes materially. */
+
+@media (device-posture: folded)
+   and (vertical-viewport-segments: 2)
+   and (horizontal-viewport-segments: 1) {
+
+  :root {
+    /* .app-header's box: logo height + its own top/bottom padding + its
+       1px bottom border (see layout.css). Expressed from those tokens
+       rather than a bare measured pixel figure — but note this is the
+       *expanded* header height; .app-header--compact (shrunk on scroll)
+       is shorter, which these fixed offsets don't track (see
+       validation.md — the folded top segment isn't expected to scroll far
+       enough to trigger it, but it's not solved for). */
+    --fold-header-h: calc(56px + (var(--sp-4) * 2) + 1px);
+    /* The relocated tab-bar pill's own rendered height at mobile widths
+       (icon + label stack, plus its own outer/inner padding) — measured,
+       not derived, since it depends on font metrics. */
+    --fold-pill-h: 71px;
+  }
+
+  /* ── Home tab ──────────────────────────────────────────────────────────
+     tab-bar leaves the bottom dock and sits under the header instead,
+     above weather-hero. Scoped to "Home is the visible view" via :has(),
+     since tab-bar itself is a persistent element shared by every tab, not
+     nested inside #view-home. */
+  body:has(#view-home:not([hidden])) tab-bar {
+    left: 50%;
+    top: calc(var(--fold-header-h) + var(--sp-2));
+    bottom: auto;
+    transform: translateX(-50%);
+  }
+
+  /* Reserves room for that relocated pill so weather-hero doesn't render
+     underneath it. */
+  #view-home .app-main {
+    padding-top: calc(var(--fold-header-h) + var(--sp-2) + var(--fold-pill-h) + var(--sp-4));
+  }
+
+  /* Search form + results move to the lower part of the screen: pinned to
+     the bottom segment as one independently scrollable panel, so the top
+     segment (weather-hero) stays put while this one scrolls. location-gate
+     is a sibling of weather-hero, not part of .home-controls, so it stays
+     in the top segment's normal flow, unaffected. No tab-bar clearance
+     needed at the bottom here — the pill moved to the top above. */
+  #view-home .home-controls {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: env(viewport-segment-top 0 1, 50%);
+    height: env(viewport-segment-height 0 1, 50%);
+    margin: 0;
+    padding: var(--sp-4) var(--sp-4) calc(var(--sp-4) + env(safe-area-inset-bottom, 0px));
+    overflow-y: auto;
+    background: var(--color-background);
+    z-index: 40;
+  }
+
+  /* ── Route detail tab ─────────────────────────────────────────────────
+     Map pinned to the top segment (below the header, which stays visible
+     here too — see the file-level comment above), route (steps/progress/
+     share) pinned to the bottom segment as its own scrollable panel. The
+     page itself does not scroll — only the bottom panel does. */
+  #view-route-detail .detail-map-section {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: var(--fold-header-h);
+    height: calc(env(viewport-segment-height 0 0, 50%) - var(--fold-header-h));
+    margin: 0;
+    z-index: 30;
+  }
+
+  /* The large/small toggle no longer applies — the map fills whatever
+     space is left in the top segment either way — so both states are
+     overridden to the same height and the toggle button itself is hidden. */
+  #view-route-detail .detail-map-card,
+  #view-route-detail .detail-map-card--large,
+  #view-route-detail .detail-map-card--small {
+    height: 100%;
+  }
+  #view-route-detail .detail-map-size-toggle {
+    display: none;
+  }
+
+  /* tab-bar is *not* relocated on this tab (out of scope for phase 1 — see
+     requirements.md), so it keeps floating over the bottom-right of the
+     screen exactly as it does today. Bottom padding here reuses the same
+     112px clearance the rest of the app already reserves for it (see
+     layout.css's `body { padding-bottom: 112px }`), so the last scrolled
+     step/share button isn't permanently hidden underneath the pill. */
+  #view-route-detail .detail-body {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: env(viewport-segment-top 0 1, 50%);
+    height: env(viewport-segment-height 0 1, 50%);
+    margin: 0;
+    padding: var(--sp-4) var(--sp-4) calc(112px + env(safe-area-inset-bottom, 0px));
+    overflow-y: auto;
+    background: var(--color-background);
+    z-index: 40;
+  }
+}
