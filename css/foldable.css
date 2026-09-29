@@ -119,4 +119,25 @@
     background: var(--color-background);
     z-index: 40;
   }
+
+  /* .detail-body is a flex column, and .route-card (the step-list card)
+     has its own `overflow: hidden` (for rounded corners — see
+     components.css). Once .detail-body gets a constrained height, that
+     combination makes flexbox shrink .detail-card to fit *inside* it
+     instead of letting .detail-body's own overflow-y:auto take over —
+     `overflow` other than `visible` makes a flex item's automatic minimum
+     size 0, so it has nothing stopping it shrinking well below its
+     content's real height, clipping the step list via its own
+     overflow:hidden long before .detail-body ever measures an overflow.
+     flex-shrink:0 forces every direct child to keep its natural content
+     height, so the *panel* scrolls instead of the card silently
+     collapsing. Same fix applied to .home-controls's children below, for
+     the same reason should any of them ever pick up their own
+     `overflow: hidden`. */
+  #view-route-detail .detail-body > * {
+    flex-shrink: 0;
+  }
+  #view-home .home-controls > * {
+    flex-shrink: 0;
+  }
 }
