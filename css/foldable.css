@@ -12,11 +12,18 @@
    env(viewport-segment-* <column> <row>) indexing.
 
    The app's own sticky header (.app-header, logo + temp badge) stays
-   visible above both the Home and route-detail top segments here, same as
-   it does on every other view — these rules offset panels *below* it
-   rather than hiding it, so measured/estimated header and pill heights
-   below are load-bearing: recheck them (see validation.md's edge-case
-   notes) if either one's own CSS changes materially. */
+   visible above the route-detail top segment here, same as it does on
+   every other view — these rules offset panels *below* it rather than
+   hiding it, so the measured/estimated header height below is
+   load-bearing: recheck it (see validation.md's edge-case notes) if the
+   header's own CSS changes materially.
+
+   Home tab is deliberately out of scope: it doesn't change at all when
+   folded, same as Resorts/Alerts/Settings — only the route-detail tab
+   adapts. (An earlier version of this file also relocated the Home tab's
+   tab-bar pill and pinned its search form/results to the bottom segment;
+   removed at the user's request so Home stays visually identical
+   regardless of posture — see specs/2026-09-28-foldable-support/.) */
 
 @media (device-posture: folded)
    and (vertical-viewport-segments: 2)
@@ -27,51 +34,10 @@
        1px bottom border (see layout.css). Expressed from those tokens
        rather than a bare measured pixel figure — but note this is the
        *expanded* header height; .app-header--compact (shrunk on scroll)
-       is shorter, which these fixed offsets don't track (see
+       is shorter, which this fixed offset doesn't track (see
        validation.md — the folded top segment isn't expected to scroll far
        enough to trigger it, but it's not solved for). */
     --fold-header-h: calc(56px + (var(--sp-4) * 2) + 1px);
-    /* The relocated tab-bar pill's own rendered height at mobile widths
-       (icon + label stack, plus its own outer/inner padding) — measured,
-       not derived, since it depends on font metrics. */
-    --fold-pill-h: 71px;
-  }
-
-  /* ── Home tab ──────────────────────────────────────────────────────────
-     tab-bar leaves the bottom dock and sits under the header instead,
-     above weather-hero. Scoped to "Home is the visible view" via :has(),
-     since tab-bar itself is a persistent element shared by every tab, not
-     nested inside #view-home. */
-  body:has(#view-home:not([hidden])) tab-bar {
-    left: 50%;
-    top: calc(var(--fold-header-h) + var(--sp-2));
-    bottom: auto;
-    transform: translateX(-50%);
-  }
-
-  /* Reserves room for that relocated pill so weather-hero doesn't render
-     underneath it. */
-  #view-home .app-main {
-    padding-top: calc(var(--fold-header-h) + var(--sp-2) + var(--fold-pill-h) + var(--sp-4));
-  }
-
-  /* Search form + results move to the lower part of the screen: pinned to
-     the bottom segment as one independently scrollable panel, so the top
-     segment (weather-hero) stays put while this one scrolls. location-gate
-     is a sibling of weather-hero, not part of .home-controls, so it stays
-     in the top segment's normal flow, unaffected. No tab-bar clearance
-     needed at the bottom here — the pill moved to the top above. */
-  #view-home .home-controls {
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: env(viewport-segment-top 0 1, 50%);
-    height: env(viewport-segment-height 0 1, 50%);
-    margin: 0;
-    padding: var(--sp-4) var(--sp-4) calc(var(--sp-4) + env(safe-area-inset-bottom, 0px));
-    overflow-y: auto;
-    background: var(--color-background);
-    z-index: 40;
   }
 
   /* ── Route detail tab ─────────────────────────────────────────────────
@@ -131,13 +97,8 @@
      overflow:hidden long before .detail-body ever measures an overflow.
      flex-shrink:0 forces every direct child to keep its natural content
      height, so the *panel* scrolls instead of the card silently
-     collapsing. Same fix applied to .home-controls's children below, for
-     the same reason should any of them ever pick up their own
-     `overflow: hidden`. */
+     collapsing. */
   #view-route-detail .detail-body > * {
-    flex-shrink: 0;
-  }
-  #view-home .home-controls > * {
     flex-shrink: 0;
   }
 }

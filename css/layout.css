@@ -98,17 +98,6 @@
   gap: var(--sp-6);
 }
 
-/* Groups the search form + its results as one unit, distinct from
-   weather-hero/location-gate above it — purely structural (same flex/gap
-   behaviour as .app-main itself, so nesting it changes nothing visually)
-   until css/foldable.css pins it to the lower segment on a folded
-   flip-style device. */
-.home-controls {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-6);
-}
-
 /* ── Tabbed views ──────────────────────────────────────────────────────────── */
 /* Room for the floating tab-bar pill so content/footer is never hidden behind it. */
 body { padding-bottom: 112px; }

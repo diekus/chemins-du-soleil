@@ -41,57 +41,53 @@
 
       <weather-hero></weather-hero>
 
-      <div class="home-controls">
+      <div class="search-panel">
 
-        <div class="search-panel">
+        <form class="search-form" novalidate>
 
-          <form class="search-form" novalidate>
+          <div class="form-row">
+            <label id="lbl-start"></label>
+            <station-input
+              name="start"
+              aria-labelledby="lbl-start"
+            ></station-input>
+          </div>
 
-            <div class="form-row">
-              <label id="lbl-start"></label>
-              <station-input
-                name="start"
-                aria-labelledby="lbl-start"
-              ></station-input>
-            </div>
+          <div class="form-row">
+            <label id="lbl-dest"></label>
+            <station-input
+              name="destination"
+              aria-labelledby="lbl-dest"
+            ></station-input>
+          </div>
 
-            <div class="form-row">
-              <label id="lbl-dest"></label>
-              <station-input
-                name="destination"
-                aria-labelledby="lbl-dest"
-              ></station-input>
-            </div>
+          <div class="form-row">
+            <label id="lbl-diff"></label>
+            <difficulty-selector aria-labelledby="lbl-diff"></difficulty-selector>
+          </div>
 
-            <div class="form-row">
-              <label id="lbl-diff"></label>
-              <difficulty-selector aria-labelledby="lbl-diff"></difficulty-selector>
-            </div>
+          <div class="form-row">
+            <label id="lbl-pref"></label>
+            <preference-selector aria-labelledby="lbl-pref"></preference-selector>
+          </div>
 
-            <div class="form-row">
-              <label id="lbl-pref"></label>
-              <preference-selector aria-labelledby="lbl-pref"></preference-selector>
-            </div>
+          <p class="form-error" role="alert"></p>
 
-            <p class="form-error" role="alert"></p>
+          <button type="submit" class="btn-find"></button>
 
-            <button type="submit" class="btn-find"></button>
+        </form>
 
-          </form>
-
-          <button type="button" class="search-summary" hidden>
-            <span class="search-summary-text">
-              <span class="search-summary-route"></span>
-              <span class="search-summary-pref"></span>
-            </span>
-            <span class="search-summary-chevron" aria-hidden="true">⌄</span>
-          </button>
-
-        </div>
-
-        <route-result></route-result>
+        <button type="button" class="search-summary" hidden>
+          <span class="search-summary-text">
+            <span class="search-summary-route"></span>
+            <span class="search-summary-pref"></span>
+          </span>
+          <span class="search-summary-chevron" aria-hidden="true">⌄</span>
+        </button>
 
       </div>
+
+      <route-result></route-result>
 
     </main>
   </section>
