@@ -259,6 +259,10 @@ body { padding-bottom: 112px; }
 
   #view-resorts .app-main { max-width: 1080px; }
 
+  /* Alerts widens too, so avalanche alerts and weather cautions can sit in
+     three columns (see .alert-list / .caution-list in components.css). */
+  #view-alerts .app-main { max-width: 1080px; }
+
   /* Home widens too, so multiple route results can sit side by side (see
      .result-cards in components.css) — but the search form itself stays a
      narrow, centred column rather than stretching edge to edge. */
