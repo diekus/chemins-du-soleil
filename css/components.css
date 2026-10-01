@@ -753,6 +753,26 @@ difficulty-selector select:focus,
 preference-selector select:focus,
 settings-panel select:focus { border-color: var(--color-primary); }
 
+settings-panel .settings-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+settings-panel .settings-hint {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+settings-panel .btn-find:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+settings-panel .settings-status {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  min-height: 1.25em;
+}
+settings-panel .settings-status:empty { min-height: 0; }
+
 /* ── search-summary (collapsed find-route bar) ───────────────────────────────── */
 .search-summary {
   display: flex;
@@ -1236,12 +1256,17 @@ route-detail { display: block; }
    colours — patched here so they don't look broken in dark mode. Zoom and
    attribution are our own controls now (styled above) rather than Leaflet's. */
 @media (prefers-color-scheme: dark) {
-  .detail-map .leaflet-tooltip {
+  :root:not([data-theme="light"]) .detail-map .leaflet-tooltip {
     background: var(--color-surface);
     color: var(--color-text);
   }
-  .detail-map .leaflet-tooltip.leaflet-tooltip-top::before { border-top-color: var(--color-surface); }
+  :root:not([data-theme="light"]) .detail-map .leaflet-tooltip.leaflet-tooltip-top::before { border-top-color: var(--color-surface); }
 }
+:root[data-theme="dark"] .detail-map .leaflet-tooltip {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+:root[data-theme="dark"] .detail-map .leaflet-tooltip.leaflet-tooltip-top::before { border-top-color: var(--color-surface); }
 
 .detail-share-btn {
   display: flex;

@@ -34,7 +34,7 @@ No build step. No install required for the app itself (`devDependencies` only co
 - **Home**: the route finder (`<station-input>` × 2, `<difficulty-selector>`, `<preference-selector>`, `<route-result>`), plus the live weather card (`<weather-hero>`) for whichever resort was resolved via geolocation or manually picked.
 - **Resorts**: `<resort-conditions-list>`, a live weather + avalanche overview for all 13 Portes du Soleil resorts, loaded lazily on first visit.
 - **Alerts**: `<avalanche-banner>` with the full risk detail; the tab itself only appears in `<tab-bar>` when there's something to show (risk level ≥ 2).
-- **Settings**: `<settings-panel>`, currently just the language picker (English/French/Spanish/Italian) — always visible, unlike Alerts.
+- **Settings**: `<settings-panel>`: language picker (English/French/Spanish/Italian), theme picker (System/Light/Dark) and an Install button (only shown where `navigator.install` exists and the app isn't already running installed). Always visible, unlike Alerts.
 
 **Route-finding data flow**:
 1. `app.js` fetches `data/network.json` on load.
@@ -71,7 +71,7 @@ No build step. No install required for the app itself (`devDependencies` only co
 | `<weather-hero>` | Home tab's live weather card — collapsible (single-line strip by default) / expandable (full detail incl. avalanche badge) |
 | `<avalanche-banner>` | Avalanche risk banner (used standalone in the Alerts tab) |
 | `<resort-conditions-list>` | Resorts tab's per-resort weather + avalanche overview |
-| `<settings-panel>` | Settings tab's language picker (English/French/Spanish/Italian) |
+| `<settings-panel>` | Settings tab: language picker, theme picker, Web Install API button |
 
 **Shared modules** (`src/`, not components): `graph.js`, `pathfinder.js` (route engine), `weather.js`, `conditions.js`, `geo.js` (live-conditions data), `countries.js` (flag/country-name lookups), `format.js` (`relativeTime()`, locale-aware via `i18n.js`), `icons.js` (the custom SVG icon set — see below), `route-view.js` (shared route-step/badge rendering used by `<route-result>` and `<route-detail>`).
 
@@ -81,7 +81,7 @@ No build step. No install required for the app itself (`devDependencies` only co
 
 Route-result slope steps also carry a `data-d="{difficulty}"` attribute on the `<li class="route-step">`, tinting the row background to the piste-difficulty colour (`--color-slope-*-bg` tokens in `base.css`, themed for light/dark). Lift steps carry no `data-d` and get no tint.
 
-**CSS architecture**: four files loaded in order — `base.css` (design tokens, reset, Nunito font), `layout.css` (page structure, responsive breakpoints), `components.css` (Web Component styles), `foldable.css` (foldable-device layout overrides — see below). Light/dark mode via `prefers-color-scheme` only — no manual toggle. The `--color-hero-*` tokens are a fixed "photo card" surface, deliberately unchanged between light/dark.
+**CSS architecture**: four files loaded in order — `base.css` (design tokens, reset, Nunito font), `layout.css` (page structure, responsive breakpoints), `components.css` (Web Component styles), `foldable.css` (foldable-device layout overrides — see below). Light/dark mode follows `prefers-color-scheme` by default; the Settings theme picker (`src/theme.js`, stored in `localStorage` as `cds:theme`) can force either via `[data-theme="light|dark"]` on `<html>`, applied pre-paint by an inline script in `index.html`. Any dark-only CSS rule therefore needs both `@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) … }` and `:root[data-theme="dark"] …`. Elements with a scheme-dependent `media` attribute (theme-color metas, header logo `<source>`) carry `data-scheme` so `theme.js` can retarget them. The `--color-hero-*` tokens are a fixed "photo card" surface, deliberately unchanged between light/dark.
 
 **Foldable device support**: `css/foldable.css` adapts the route-detail tab for flip-style foldables (Samsung Galaxy Z Flip and equivalents) used half-open — one horizontal fold, 2 segments stacked top/bottom: the map pins to the top segment, the route steps/share button pin to the bottom segment as their own scrollable panel. Entirely pure CSS, gated by `@media (device-posture: folded) and (vertical-viewport-segments: 2) and (horizontal-viewport-segments: 1)`: no JavaScript feature-detection module, since both the posture and the segment geometry (`env(viewport-segment-*)`) are native CSS features. Has zero effect on any device that doesn't match that exact media query. The Home tab (and Resorts/Alerts/Settings) are deliberately out of scope — Home's layout and its tab-bar pill stay identical regardless of posture, by design (an earlier version relocated the pill and pinned the search form/results too; removed at the user's request). See `specs/2026-09-28-foldable-support/` for the full spec. Book-style foldables (Galaxy Z Fold, Surface Duo — vertical fold, side-by-side segments) are a later phase, not yet implemented.
 

@@ -171,5 +171,14 @@
   "detail.trackingProgress": "Tracking your position live — {pct}% of the way there.",
 
   "settings.title": "Settings",
-  "settings.languageLabel": "Language"
+  "settings.languageLabel": "Language",
+  "settings.themeLabel": "Theme",
+  "settings.theme.system": "System default",
+  "settings.theme.light": "Light",
+  "settings.theme.dark": "Dark",
+  "settings.installLabel": "Install app",
+  "settings.installHint": "Add Chemins du Soleil to your device for quick access, even offline.",
+  "settings.installButton": "Install",
+  "settings.installSuccess": "App installed.",
+  "settings.installError": "Couldn't install the app. Please try again."
 }

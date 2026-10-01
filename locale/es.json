@@ -171,5 +171,14 @@
   "detail.trackingProgress": "Siguiendo tu posición en vivo — {pct} % del trayecto recorrido.",
 
   "settings.title": "Ajustes",
-  "settings.languageLabel": "Idioma"
+  "settings.languageLabel": "Idioma",
+  "settings.themeLabel": "Tema",
+  "settings.theme.system": "Según el sistema",
+  "settings.theme.light": "Claro",
+  "settings.theme.dark": "Oscuro",
+  "settings.installLabel": "Instalar aplicación",
+  "settings.installHint": "Agrega Chemins du Soleil a tu dispositivo para tener acceso rápido, incluso sin conexión.",
+  "settings.installButton": "Instalar",
+  "settings.installSuccess": "Aplicación instalada.",
+  "settings.installError": "No se pudo instalar la aplicación. Inténtalo de nuevo."
 }
