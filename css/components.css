@@ -737,21 +737,34 @@ difficulty-selector select,
 preference-selector select,
 settings-panel select {
   width: 100%;
-  padding: var(--sp-3) var(--sp-4);
+  /* Right padding clears the 1.375rem chevron plus breathing room. */
+  padding: var(--sp-3) calc(var(--sp-4) + 1.375rem + var(--sp-3)) var(--sp-3) var(--sp-4);
   font-family: var(--font);
   font-size: 1rem;
   color: var(--color-text);
-  background: var(--color-surface);
+  background: var(--color-surface) var(--select-chevron) no-repeat right var(--sp-4) center / 1.375rem;
   border: 1px solid var(--color-border);
   border-radius: var(--r-md);
   outline: none;
   cursor: pointer;
-  appearance: auto;
+  appearance: none;
   transition: border-color 0.15s;
 }
 difficulty-selector select:focus,
 preference-selector select:focus,
 settings-panel select:focus { border-color: var(--color-primary); }
+
+/* Forced-colours mode drops background images, which would leave no
+   dropdown affordance: fall back to the native arrow there. */
+@media (forced-colors: active) {
+  difficulty-selector select,
+  preference-selector select,
+  settings-panel select {
+    appearance: auto;
+    background-image: none;
+    padding-right: var(--sp-4);
+  }
+}
 
 settings-panel .settings-list {
   display: flex;

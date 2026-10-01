@@ -98,6 +98,11 @@
   --color-warning-icon:     #755A0E;
   --color-status-open:      #1F9D55;
 
+  /* Select dropdown chevron: icons.js chevronDown drawn in --color-text at
+     60% opacity, matching the weather card's chevron. A data URI can't read
+     currentColor, so the stroke colour is baked in per theme. */
+  --select-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-opacity='0.6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 9 L12 16 L19 9'/%3E%3C/svg%3E");
+
   /* Typography */
   --font:                   'Nunito', system-ui, -apple-system, sans-serif;
   --fw-regular:             400;
@@ -172,6 +177,7 @@
     --color-warning-bg:       #3A331A;
     --color-warning-icon:     #E0BB4D;
     --color-status-open:      #4CC97F;
+    --select-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-opacity='0.6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 9 L12 16 L19 9'/%3E%3C/svg%3E");
     /* --color-hero-bg / --color-hero-text intentionally unchanged —
        fixed "photo card" surface */
   }
@@ -202,6 +208,7 @@
   --color-warning-bg:       #3A331A;
   --color-warning-icon:     #E0BB4D;
   --color-status-open:      #4CC97F;
+  --select-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-opacity='0.6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 9 L12 16 L19 9'/%3E%3C/svg%3E");
   /* --color-hero-bg / --color-hero-text intentionally unchanged —
      fixed "photo card" surface */
 }
