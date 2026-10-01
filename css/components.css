@@ -328,17 +328,27 @@ weather-hero[hidden] { display: none; }
   border-radius: var(--r-sm);
 }
 
+/* ── Shared chevron ────────────────────────────────────────────────────────
+   Every expand/collapse/dropdown chevron in the app uses ICONS.chevronDown
+   at this size and opacity (the weather card's chevron is the reference).
+   Native <select> arrows are replaced with the same glyph via
+   --select-chevron in base.css. Layout (position, margins) stays with each
+   component's own class. */
+.chevron {
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: 1.375rem;
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+}
+.chevron svg { width: 1em; height: 1em; display: block; }
+.chevron--up { transform: rotate(180deg); }
+
 .hero-chevron {
   display: flex;
   width: 100%;
   justify-content: center;
-  font-size: 1.375rem;
-  opacity: 0.6;
   margin-top: var(--sp-3);
-  transition: transform 0.2s ease;
-}
-.hero-chevron--up {
-  transform: rotate(180deg);
 }
 
 /* ── Collapsed hero card ───────────────────────────────────────────────────
@@ -827,11 +837,6 @@ settings-panel .settings-status:empty { min-height: 0; }
   color: var(--color-text-secondary);
 }
 
-.search-summary-chevron {
-  flex-shrink: 0;
-  font-size: 1rem;
-  opacity: 0.6;
-}
 .search-summary[hidden] { display: none; }
 
 /* ── route-result ──────────────────────────────────────────────────────────── */

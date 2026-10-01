@@ -4,7 +4,7 @@ import { fetchWeather, weatherIconKey, weatherConditionKey, deriveCautions } fro
 import { fetchOpenPiste, readAvalanche } from './conditions.js';
 import { nearestResort, VICINITY_KM, projectOntoRoute } from './geo.js';
 import { FLAGS } from './countries.js';
-import { WEATHER_ICONS } from './icons.js';
+import { ICONS, WEATHER_ICONS } from './icons.js';
 import { animateHeightChange } from './animate-height.js';
 import { initLocale, t, getLocale } from './i18n.js';
 import { DIFFICULTY_NAME_KEY } from './route-view.js';
@@ -51,6 +51,7 @@ const prefEl     = document.querySelector('preference-selector');
 const resultEl   = document.querySelector('route-result');
 const searchPanelEl = document.querySelector('.search-panel');
 const summaryEl  = document.querySelector('.search-summary');
+summaryEl.querySelector('.chevron').innerHTML = ICONS.chevronDown;
 const errorEl    = document.querySelector('.form-error');
 const gateEl     = document.querySelector('location-gate');
 const heroEl     = document.querySelector('weather-hero');
