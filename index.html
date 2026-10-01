@@ -9,8 +9,22 @@
        unconditioned fallback tag — an always-matching tag ahead of these
        wins the browser's WCO colour pick regardless of the others' media,
        which is what silently broke this the first time round. -->
-  <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
-  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)" data-scheme="dark">
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" data-scheme="light">
+  <!-- Applies the stored theme preference (Settings tab) before first paint,
+       so a forced light/dark choice never flashes the system scheme. The
+       runtime logic lives in src/theme.js; keep the two in sync. -->
+  <script>
+    try {
+      var cdsTheme = localStorage.getItem('cds:theme');
+      if (cdsTheme === 'light' || cdsTheme === 'dark') {
+        document.documentElement.dataset.theme = cdsTheme;
+        document.querySelectorAll('[data-scheme]').forEach(function (el) {
+          el.media = el.dataset.scheme === cdsTheme ? 'all' : 'not all';
+        });
+      }
+    } catch (e) { /* storage unavailable: follow the system scheme */ }
+  </script>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="images/icon-192.png" type="image/png">
   <link rel="apple-touch-icon" href="images/icon-192.png">
@@ -25,7 +39,7 @@
 
   <header class="app-header">
     <picture>
-      <source srcset="images/logo_inv.png" media="(prefers-color-scheme: dark)">
+      <source srcset="images/logo_inv.png" media="(prefers-color-scheme: dark)" data-scheme="dark">
       <img src="images/logo.png" alt="Chemins du Soleil">
     </picture>
     <span class="header-temp" aria-hidden="true">
