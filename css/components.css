@@ -539,16 +539,21 @@ weather-caution-list { display: block; }
   padding: 0;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 640px) {
   .alert-list,
   .caution-list {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--sp-4);
   }
   /* Caution cards hold a varying number of notes; let each keep its own
      height rather than stretching to its row's tallest sibling. */
   .caution-list { align-items: start; }
+}
+
+@media (min-width: 900px) {
+  .alert-list,
+  .caution-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 .caution-card {
