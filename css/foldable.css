@@ -1,19 +1,27 @@
-/* ── Foldable device support — Phase 1 (flip-style, 2 segments) ─────────────
-   Samsung Galaxy Z Flip and equivalents, used half-open: one horizontal fold
-   splitting the screen into a top and bottom segment. Gated entirely by this
-   compound media query — both the posture and the segment geometry are
-   native CSS features (Device Posture API, CSS Viewport Segments), so this
-   file needs no JavaScript and has zero effect on any device that doesn't
-   match it exactly. See specs/2026-09-28-foldable-support/ for the full
-   spec and the decisions behind this approach.
+/* ── Foldable device support ─────────────────────────────────────────────────
+   Two postures are handled, each gated entirely by its own compound media
+   query. Both the posture and the segment geometry are native CSS features
+   (Device Posture API, CSS Viewport Segments), so the layout itself needs no
+   JavaScript and has zero effect on any device that doesn't match one of
+   them exactly. (route-detail.js only listens for these same queries to
+   rebuild its Leaflet map once the map card's box changes size.) See
+   specs/2026-09-28-foldable-support/ for the full spec and the decisions
+   behind this approach.
 
-   Segment addressing: one column, two rows — segment (0,0) is the top half,
-   segment (0,1) is the bottom half, per the CSS Viewport Segments spec's
-   env(viewport-segment-* <column> <row>) indexing.
+   Phase 1, flip-style (Galaxy Z Flip and equivalents, half-open): one
+   horizontal fold, two segments stacked top/bottom — one column, two rows:
+   segment (0,0) is the top half, (0,1) the bottom half.
+
+   Phase 2, book-style (Galaxy Z Fold 8 / Fold 8 Ultra and equivalents,
+   half-open): one vertical fold, two segments side by side — two columns,
+   one row: segment (0,0) is the left half, (1,0) the right half.
+
+   Indexing follows the CSS Viewport Segments spec's
+   env(viewport-segment-* <column> <row>).
 
    The app's own sticky header (.app-header, logo + temp badge) stays
-   visible above the route-detail top segment here, same as it does on
-   every other view — these rules offset panels *below* it rather than
+   visible above the route-detail panels in both postures, same as it does
+   on every other view — these rules offset panels *below* it rather than
    hiding it, so the measured/estimated header height below is
    load-bearing: recheck it (see validation.md's edge-case notes) if the
    header's own CSS changes materially.
@@ -27,18 +35,55 @@
 
 @media (device-posture: folded)
    and (vertical-viewport-segments: 2)
-   and (horizontal-viewport-segments: 1) {
-
+   and (horizontal-viewport-segments: 1),
+       (device-posture: folded)
+   and (horizontal-viewport-segments: 2)
+   and (vertical-viewport-segments: 1) {
   :root {
     /* .app-header's box: logo height + its own top/bottom padding + its
        1px bottom border (see layout.css). Expressed from those tokens
        rather than a bare measured pixel figure — but note this is the
        *expanded* header height; .app-header--compact (shrunk on scroll)
        is shorter, which this fixed offset doesn't track (see
-       validation.md — the folded top segment isn't expected to scroll far
-       enough to trigger it, but it's not solved for). */
+       validation.md — the route-detail page doesn't scroll in either
+       folded layout, so it isn't expected to trigger, but it's not solved
+       for). */
     --fold-header-h: calc(56px + (var(--sp-4) * 2) + 1px);
   }
+
+  /* The large/small toggle no longer applies — the map fills whatever
+     space its segment has left either way — so both states are overridden
+     to the same height and the toggle button itself is hidden. */
+  #view-route-detail .detail-map-card,
+  #view-route-detail .detail-map-card--large,
+  #view-route-detail .detail-map-card--small {
+    height: 100%;
+  }
+  #view-route-detail .detail-map-size-toggle {
+    display: none;
+  }
+
+  /* .detail-body is a flex column, and .route-card (the step-list card)
+     has its own `overflow: hidden` (for rounded corners — see
+     components.css). Once .detail-body gets a constrained height, that
+     combination makes flexbox shrink .detail-card to fit *inside* it
+     instead of letting .detail-body's own overflow-y:auto take over —
+     `overflow` other than `visible` makes a flex item's automatic minimum
+     size 0, so it has nothing stopping it shrinking well below its
+     content's real height, clipping the step list via its own
+     overflow:hidden long before .detail-body ever measures an overflow.
+     flex-shrink:0 forces every direct child to keep its natural content
+     height, so the *panel* scrolls instead of the card silently
+     collapsing. */
+  #view-route-detail .detail-body > * {
+    flex-shrink: 0;
+  }
+}
+
+/* ── Phase 1: flip-style (horizontal fold, top/bottom) ─────────────────── */
+@media (device-posture: folded)
+   and (vertical-viewport-segments: 2)
+   and (horizontal-viewport-segments: 1) {
 
   /* ── Route detail tab ─────────────────────────────────────────────────
      Map pinned to the top segment (below the header, which stays visible
@@ -53,18 +98,6 @@
     height: calc(env(viewport-segment-height 0 0, 50%) - var(--fold-header-h));
     margin: 0;
     z-index: 30;
-  }
-
-  /* The large/small toggle no longer applies — the map fills whatever
-     space is left in the top segment either way — so both states are
-     overridden to the same height and the toggle button itself is hidden. */
-  #view-route-detail .detail-map-card,
-  #view-route-detail .detail-map-card--large,
-  #view-route-detail .detail-map-card--small {
-    height: 100%;
-  }
-  #view-route-detail .detail-map-size-toggle {
-    display: none;
   }
 
   /* tab-bar is *not* relocated on this tab (out of scope for phase 1 — see
@@ -85,20 +118,62 @@
     background: var(--color-background);
     z-index: 40;
   }
+}
 
-  /* .detail-body is a flex column, and .route-card (the step-list card)
-     has its own `overflow: hidden` (for rounded corners — see
-     components.css). Once .detail-body gets a constrained height, that
-     combination makes flexbox shrink .detail-card to fit *inside* it
-     instead of letting .detail-body's own overflow-y:auto take over —
-     `overflow` other than `visible` makes a flex item's automatic minimum
-     size 0, so it has nothing stopping it shrinking well below its
-     content's real height, clipping the step list via its own
-     overflow:hidden long before .detail-body ever measures an overflow.
-     flex-shrink:0 forces every direct child to keep its natural content
-     height, so the *panel* scrolls instead of the card silently
-     collapsing. */
-  #view-route-detail .detail-body > * {
-    flex-shrink: 0;
+/* ── Phase 2: book-style (vertical fold, left/right) ───────────────────── */
+@media (device-posture: folded)
+   and (horizontal-viewport-segments: 2)
+   and (vertical-viewport-segments: 1) {
+
+  :root {
+    /* The floating tab-bar pill's reserved clearance (see layout.css's
+       `body { padding-bottom: 112px }`) — only needed below 900px, where
+       the pill docks at the bottom; from 900px up it lives in the header
+       instead (see components.css), so the panel needs none. */
+    --fold-tab-clearance: 112px;
+  }
+  @media (min-width: 900px) {
+    :root { --fold-tab-clearance: var(--sp-4); }
+  }
+
+  /* ── Route detail tab ─────────────────────────────────────────────────
+     Map pinned to the left segment, route (steps/progress/share) pinned to
+     the right segment as its own scrollable panel — both below the header,
+     which spans the fold and stays visible here too (see the file-level
+     comment above). The page itself does not scroll — only the right
+     panel does. */
+  #view-route-detail .detail-map-section {
+    position: fixed;
+    left: env(viewport-segment-left 0 0, 0px);
+    width: env(viewport-segment-width 0 0, 50%);
+    top: var(--fold-header-h);
+    bottom: 0;
+    margin: 0;
+    padding: var(--sp-4);
+    z-index: 30;
+  }
+
+  #view-route-detail .detail-body {
+    position: fixed;
+    left: env(viewport-segment-left 1 0, 50%);
+    width: env(viewport-segment-width 1 0, 50%);
+    top: var(--fold-header-h);
+    bottom: 0;
+    margin: 0;
+    padding: var(--sp-4) var(--sp-4) calc(var(--fold-tab-clearance) + env(safe-area-inset-bottom, 0px));
+    overflow-y: auto;
+    background: var(--color-background);
+    z-index: 40;
+  }
+
+  /* Below 900px the tab-bar pill docks bottom-centre of the *whole*
+     screen, which would put it straddling the fold, half over the map.
+     While the route detail is showing, re-centre it on the right segment
+     instead, so it sits over the scrollable route panel it already
+     reserves clearance for (above). Every other tab keeps it where it is. */
+  @media (max-width: 899.98px) {
+    body:has(#view-route-detail:not([hidden])) tab-bar {
+      left: calc(env(viewport-segment-left 1 0, 50%) + env(viewport-segment-width 1 0, 50%) / 2);
+    }
   }
 }
