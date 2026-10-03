@@ -18,6 +18,16 @@ const OFF_ROUTE_KM = 1.5;
 const COMPASS_AVAILABLE = isOrientationSupported()
   && (('ontouchstart' in window) || navigator.maxTouchPoints > 0);
 
+// The same postures css/foldable.css lays this page out for (flip-style
+// top/bottom, book-style left/right). Entering or leaving one resizes the
+// map card without necessarily resizing the viewport (folding a Galaxy Z
+// Fold half-open keeps the same screen), so Leaflet's own window-resize
+// tracking can miss it — see the listener in connectedCallback().
+const FOLD_QUERIES = [
+  '(device-posture: folded) and (vertical-viewport-segments: 2) and (horizontal-viewport-segments: 1)',
+  '(device-posture: folded) and (horizontal-viewport-segments: 2) and (vertical-viewport-segments: 1)',
+].map(q => window.matchMedia(q));
+
 class RouteDetail extends HTMLElement {
   #route            = undefined; // undefined=loading, null=not found, Route=loaded
   #nodes            = new Map();
@@ -79,11 +89,21 @@ class RouteDetail extends HTMLElement {
     });
 
     window.addEventListener('localechange', this.#onLocaleChange);
+    for (const mq of FOLD_QUERIES) mq.addEventListener('change', this.#onFoldChange);
   }
 
   disconnectedCallback() {
     window.removeEventListener('localechange', this.#onLocaleChange);
+    for (const mq of FOLD_QUERIES) mq.removeEventListener('change', this.#onFoldChange);
   }
+
+  // The map card just changed box — rebuild the map, same as #toggleMapSize()
+  // and for the same reason (tile grid and compass rotor sized for the old box).
+  #onFoldChange = () => {
+    if (!this.#map || !this.#route) return;
+    this.#teardownMap();
+    this.#initMap(this.#route);
+  };
 
   #onLocaleChange = () => {
     if (this.#route !== undefined) this.#render();
