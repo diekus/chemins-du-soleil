@@ -72,7 +72,6 @@
   "weather.changeResortAria": "{status} — tocca per cambiare",
   "weather.notNearby": "Non nelle vicinanze",
   "weather.notNearbyMessage": "Al momento non sei vicino a {resort}. Questo mostra le condizioni della stazione selezionata.",
-  "weather.avalancheRiskInline": "{label}",
   "weather.avalancheRiskTitle": "Rischio valanghe: {label}",
   "weather.levelOfFive": "Livello {level} di 5",
   "weather.showMore": "Mostra più dettagli meteo",

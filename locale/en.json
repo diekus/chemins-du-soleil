@@ -72,7 +72,6 @@
   "weather.changeResortAria": "{status} — tap to change",
   "weather.notNearby": "Not nearby",
   "weather.notNearbyMessage": "You're not near {resort} right now. This is showing conditions for your selected resort.",
-  "weather.avalancheRiskInline": "{label}",
   "weather.avalancheRiskTitle": "Avalanche risk: {label}",
   "weather.levelOfFive": "Level {level} of 5",
   "weather.showMore": "Show more weather detail",

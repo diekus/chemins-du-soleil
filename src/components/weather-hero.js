@@ -1,6 +1,6 @@
 import { relativeTime } from '../format.js';
 import { COUNTRY_NAME } from '../countries.js';
-import { ICONS, WEATHER_ICONS } from '../icons.js';
+import { ICONS } from '../icons.js';
 import { animateHeightChange } from '../animate-height.js';
 import { weatherConditionKey } from '../weather.js';
 import { t } from '../i18n.js';

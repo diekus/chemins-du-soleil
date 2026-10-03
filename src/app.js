@@ -1,12 +1,12 @@
 import { loadGraph } from './graph.js';
 import { findRoutes } from './pathfinder.js';
-import { fetchWeather, weatherIconKey, weatherConditionKey, deriveCautions } from './weather.js';
+import { fetchWeather, weatherIconKey, deriveCautions } from './weather.js';
 import { fetchOpenPiste, readAvalanche } from './conditions.js';
 import { nearestResort, VICINITY_KM, projectOntoRoute } from './geo.js';
 import { FLAGS } from './countries.js';
 import { ICONS, WEATHER_ICONS } from './icons.js';
 import { animateHeightChange } from './animate-height.js';
-import { initLocale, t, getLocale } from './i18n.js';
+import { initLocale, t } from './i18n.js';
 import { DIFFICULTY_NAME_KEY } from './route-view.js';
 import './components/station-input.js';
 import './components/difficulty-selector.js';
