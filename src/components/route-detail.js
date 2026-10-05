@@ -51,10 +51,14 @@ class RouteDetail extends HTMLElement {
   #offlineAtRender  = false;
   // 'large' | 'small' — user-toggleable map card height, see #toggleMapSize().
   #mapSize          = 'large';
+  // { lat, lon } of a "Meet up" shared position, or null — see app.js.
+  #meetPoint        = null;
 
   set nodes(map) { this.#nodes = map instanceof Map ? map : new Map(); }
   set preferDifficulty(val) { this.#preferDifficulty = val || null; }
   set label(val) { this.#label = val || ''; }
+  /** { lat, lon } of the shared position for a "Meet up" route, or null. Set before `route`. */
+  set meetPoint(val) { this.#meetPoint = val ?? null; }
 
   /** undefined=loading, null=not found, Route object=loaded. */
   set route(val) {
@@ -237,11 +241,21 @@ class RouteDetail extends HTMLElement {
         ? L.polyline(latlngs, { color: liftColor, weight: 3, opacity: 0.95 })
         : L.polyline(latlngs, { color: cssVar(SLOPE_COLOR_VAR[step.difficulty]) || primaryColor, weight: 4, opacity: 0.9 }));
     });
+    const firstValid = nodeCoords.find(hasCoords);
+    const lastValid   = [...nodeCoords].reverse().find(hasCoords);
+
+    // The route ends at the network node nearest the shared position — a
+    // dashed connector covers the last stretch, so the map never implies the
+    // piste network itself goes exactly there.
+    const meet = this.#meetPoint;
+    if (meet && lastValid) {
+      segments.push(L.polyline([[lastValid.lat, lastValid.lon], [meet.lat, meet.lon]], {
+        color: primaryColor, weight: 3, opacity: 0.9, dashArray: '4 8',
+      }));
+    }
     segments.forEach(seg => seg.addTo(map));
 
     const bounds = segments.length > 0 ? L.featureGroup(segments).getBounds() : null;
-    const firstValid = nodeCoords.find(hasCoords);
-    const lastValid   = [...nodeCoords].reverse().find(hasCoords);
 
     if (bounds && bounds.isValid()) {
       map.fitBounds(bounds, { padding: [24, 24] });
@@ -258,6 +272,12 @@ class RouteDetail extends HTMLElement {
       L.circleMarker([lastValid.lat, lastValid.lon], {
         radius: 7, color: primaryColor, weight: 2, fillColor, fillOpacity: 1,
       }).addTo(map).bindTooltip(t('detail.finish'));
+    }
+    if (meet) {
+      L.marker([meet.lat, meet.lon], {
+        icon: L.divIcon({ className: 'detail-meet-marker', html: ICONS.pin, iconSize: [32, 32], iconAnchor: [16, 30] }),
+        keyboard: false,
+      }).addTo(map).bindTooltip(t('meet.sharedLocation'));
     }
 
     this.#map = map;

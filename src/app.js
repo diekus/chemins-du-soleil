@@ -2,7 +2,9 @@ import { loadGraph } from './graph.js';
 import { findRoutes } from './pathfinder.js';
 import { fetchWeather, weatherIconKey, deriveCautions } from './weather.js';
 import { fetchOpenPiste, readAvalanche } from './conditions.js';
-import { nearestResort, VICINITY_KM, projectOntoRoute } from './geo.js';
+import { nearestResort, VICINITY_KM, projectOntoRoute, isInPortesDuSoleil } from './geo.js';
+import { buildMeetUrl, parseMeetParams, findMeetupRoutes } from './meetup.js';
+import { relativeTime } from './format.js';
 import { FLAGS } from './countries.js';
 import { ICONS, WEATHER_ICONS } from './icons.js';
 import { animateHeightChange } from './animate-height.js';
@@ -20,6 +22,7 @@ import './components/avalanche-banner.js';
 import './components/weather-caution-list.js';
 import './components/resort-conditions-list.js';
 import './components/settings-panel.js';
+import './components/swipe-panel.js';
 
 await initLocale();
 
@@ -35,12 +38,11 @@ function applyStaticTranslations() {
   document.getElementById('lbl-dest').textContent  = t('home.toLabel');
   document.getElementById('lbl-diff').textContent  = t('home.maxDifficultyLabel');
   document.getElementById('lbl-pref').textContent  = t('home.preferredDifficultyLabel');
-  // Scoped to the search form — <location-gate>'s own "Use my location"
-  // button shares the .btn-find class for visual styling only.
-  form.querySelector('.btn-find').textContent      = t('home.findRoute');
+  updateSubmitLabel();
   startEl.placeholder = t('home.startPlaceholder');
   destEl.placeholder  = t('home.destPlaceholder');
-  if (lastSearch) updateSummaryText(lastSearch.startId, lastSearch.endId, lastSearch.preference);
+  renderIncomingMeet();
+  if (lastSearch) updateSummaryText(lastSearch);
 }
 
 const form       = document.querySelector('.search-form');
@@ -66,11 +68,18 @@ const headerTempIconEl  = document.querySelector('.header-temp-icon');
 const headerTempValueEl = document.querySelector('.header-temp-value');
 const resortsOverviewEl = document.querySelector('resort-conditions-list');
 const detailEl          = document.querySelector('route-detail');
+const modePanelEl       = document.querySelector('#search-mode');
+const meetIncomingEl    = document.querySelector('.meet-incoming');
+const meetShareBtn      = document.querySelector('.meet-share-btn');
+const meetShareStatusEl = document.querySelector('.meet-share-status');
+document.querySelectorAll('.meet-icon').forEach(el => { el.innerHTML = ICONS.pin; });
 
 // Declared here rather than beside the functions that use it further down:
 // stopRouteTracking() runs synchronously from the very first render() call
 // in the tab-navigation section below, so this must exist before that point.
 let geoWatchId = null;
+// Same reason: render() hands an opened "#meet?..." link to receiveMeet().
+let incomingMeet = null; // { lat, lon, time, inArea: boolean|null } — see "Meet up" below
 
 // ── Resort resolution (geolocation / manual pick) ───────────────────────────
 
@@ -381,6 +390,10 @@ function parseHash() {
   if (raw.startsWith('route?')) {
     return { view: 'routeDetail', params: new URLSearchParams(raw.slice('route?'.length)) };
   }
+  // A shared location ("Meet up") opens on Home, with the meet page showing.
+  if (raw.startsWith('meet?')) {
+    return { view: 'home', params: null, meet: parseMeetParams(new URLSearchParams(raw.slice('meet?'.length))) };
+  }
   return { view: views[raw] ? raw : 'home', params: null };
 }
 
@@ -401,8 +414,9 @@ function showView(view, params) {
 }
 
 function render() {
-  const { view, params } = parseHash();
+  const { view, params, meet } = parseHash();
   showView(view, params);
+  if (meet) receiveMeet(meet);
 }
 
 let graph;
@@ -429,6 +443,14 @@ async function showRouteDetail(params) {
 
   const routes = findRoutes(graph, startId, endId, difficulty, 3, preference);
   const route  = routes[index] ?? null;
+
+  // Present on routes found via "Meet up": the shared position itself, which
+  // the route's last node only approximates.
+  const meetLat = Number(params.get('mlat'));
+  const meetLon = Number(params.get('mlon'));
+  detailEl.meetPoint = params.has('mlat') && Number.isFinite(meetLat) && Number.isFinite(meetLon)
+    ? { lat: meetLat, lon: meetLon }
+    : null;
 
   detailEl.nodes            = nodeMap;
   detailEl.preferDifficulty = preference;
@@ -508,6 +530,8 @@ form.addEventListener('submit', e => {
   e.preventDefault();
   errorEl.classList.remove('visible');
 
+  if (modePanelEl.page === 'meet') { findMeetRoute(); return; }
+
   const startId    = startEl.value;
   const endId      = destEl.value;
   const difficulty = diffEl.value;
@@ -532,9 +556,9 @@ form.addEventListener('submit', e => {
 
   // Remembered so a card click below can address the route's own page without
   // re-asking the form for values the user has already collapsed away.
-  lastSearch = { startId, endId, difficulty, preference };
+  lastSearch = { startId, endId, difficulty, preference, meet: null };
 
-  collapseSearchForm(startId, endId, preference);
+  collapseSearchForm(lastSearch);
 });
 
 resultEl.addEventListener('routeselect', e => {
@@ -546,11 +570,17 @@ resultEl.addEventListener('routeselect', e => {
     i:    String(e.detail.index),
   });
   if (lastSearch.preference) params.set('pref', lastSearch.preference);
+  if (lastSearch.meet) {
+    params.set('mlat', String(lastSearch.meet.lat));
+    params.set('mlon', String(lastSearch.meet.lon));
+  }
   location.hash = `route?${params.toString()}`;
 });
 
-function showError(msg) {
+/** Shows a message under the form; `info` styles it as a neutral notice rather than an error. */
+function showError(msg, { info = false } = {}) {
   errorEl.textContent = msg;
+  errorEl.classList.toggle('form-error--info', info);
   errorEl.classList.add('visible');
 }
 
@@ -562,16 +592,17 @@ function stationLabel(id) {
   return `${FLAGS[node.country] ?? ''} ${node.name}`.trim();
 }
 
-function updateSummaryText(startId, endId, preference) {
-  summaryEl.querySelector('.search-summary-route').textContent =
-    `${stationLabel(startId)} → ${stationLabel(endId)}`;
+function updateSummaryText({ startId, endId, preference, meet }) {
+  summaryEl.querySelector('.search-summary-route').textContent = meet
+    ? t('meet.summaryFrom', { start: stationLabel(startId) })
+    : `${stationLabel(startId)} → ${stationLabel(endId)}`;
   summaryEl.querySelector('.search-summary-pref').textContent = preference
     ? t('app.summaryPrefers', { difficulty: t(DIFFICULTY_NAME_KEY[preference] ?? '') })
     : t('app.summaryNoPreference');
 }
 
-function collapseSearchForm(startId, endId, preference) {
-  updateSummaryText(startId, endId, preference);
+function collapseSearchForm(search) {
+  updateSummaryText(search);
   animateHeightChange(searchPanelEl, () => {
     form.hidden      = true;
     summaryEl.hidden = false;
@@ -583,7 +614,163 @@ summaryEl.addEventListener('click', () => {
     summaryEl.hidden = true;
     form.hidden      = false;
   });
-  form.querySelector('station-input[name="start"] .si-input')?.focus();
+  const focusTarget = modePanelEl.page === 'meet'
+    ? form.querySelector('.btn-find')
+    : form.querySelector('station-input[name="start"] .si-input');
+  focusTarget?.focus();
+});
+
+// ── Meet up (location sharing) ──────────────────────────────────────────────
+// The alternative to From → To on the search form's second swipe page. One
+// person shares a "#meet?lat=..&lon=..&t=.." link to their position (see
+// meetup.js — there's no server, the position lives only in the link); the
+// other opens it and gets a route from the lift nearest them to that spot.
+// Both ends must be inside Portes du Soleil (isInPortesDuSoleil in geo.js).
+
+function getPosition() {
+  return new Promise((resolve, reject) => {
+    if (!('geolocation' in navigator)) { reject(Object.assign(new Error('unsupported'), { code: 1 })); return; }
+    navigator.geolocation.getCurrentPosition(resolve, reject,
+      { enableHighAccuracy: true, timeout: 15000, maximumAge: 30000 });
+  });
+}
+
+/** Translated message for a failed getPosition(). */
+function positionErrorText(err) {
+  return err?.code === 1 ? t('meet.locationDenied') : t('meet.locationUnavailable');
+}
+
+function setSearchMode(page) {
+  form.dataset.mode = page;
+  updateSubmitLabel();
+  errorEl.classList.remove('visible');
+}
+
+function updateSubmitLabel() {
+  // Scoped to the search form — <location-gate>'s own "Use my location"
+  // button shares the .btn-find class for visual styling only.
+  form.querySelector('.btn-find').textContent =
+    form.dataset.mode === 'meet' ? t('meet.findRoute') : t('home.findRoute');
+}
+
+modePanelEl.addEventListener('swipechange', e => setSearchMode(e.detail.page));
+setSearchMode(modePanelEl.page);
+
+async function receiveMeet(meet) {
+  if (incomingMeet && incomingMeet.lat === meet.lat && incomingMeet.lon === meet.lon
+      && incomingMeet.time === meet.time) return; // same link re-rendered (e.g. locale change)
+
+  incomingMeet = { ...meet, inArea: null };
+  modePanelEl.page = 'meet';
+  setSearchMode('meet');
+  renderIncomingMeet();
+
+  await graphReady;
+  if (incomingMeet?.lat !== meet.lat || incomingMeet?.lon !== meet.lon) return;
+  incomingMeet.inArea = isInPortesDuSoleil(meet.lat, meet.lon, [...nodeMap.values()]);
+  renderIncomingMeet();
+}
+
+function renderIncomingMeet() {
+  form.toggleAttribute('data-has-incoming', !!incomingMeet && incomingMeet.inArea !== false);
+  meetIncomingEl.hidden = !incomingMeet;
+  if (!incomingMeet) return;
+
+  meetIncomingEl.querySelector('.meet-incoming-meta').textContent =
+    incomingMeet.time ? t('meet.incomingShared', { time: relativeTime(incomingMeet.time) }) : '';
+  meetIncomingEl.querySelector('.meet-incoming-hint').textContent =
+    incomingMeet.inArea === false ? t('meet.incomingOutside') : t('meet.incomingHint');
+  meetIncomingEl.classList.toggle('meet-incoming--invalid', incomingMeet.inArea === false);
+}
+
+meetIncomingEl.querySelector('.meet-dismiss').addEventListener('click', () => {
+  animateHeightChange(modePanelEl, () => {
+    incomingMeet = null;
+    renderIncomingMeet();
+  });
+  if (location.hash.startsWith('#meet?')) history.replaceState(null, '', '#home');
+  meetShareBtn.focus();
+});
+
+async function findMeetRoute() {
+  if (!incomingMeet || incomingMeet.inArea === false) return;
+  const target = { lat: incomingMeet.lat, lon: incomingMeet.lon };
+
+  let pos;
+  try {
+    pos = await getPosition();
+  } catch (err) {
+    showError(positionErrorText(err));
+    return;
+  }
+  await graphReady;
+
+  const nodes = [...nodeMap.values()];
+  const here  = { lat: pos.coords.latitude, lon: pos.coords.longitude };
+  if (!isInPortesDuSoleil(here.lat, here.lon, nodes)) {
+    showError(t('meet.outsideArea'));
+    return;
+  }
+
+  const difficulty = diffEl.value;
+  const preference = prefEl.value || null;
+  const result = findMeetupRoutes(graph, nodes, here, target, difficulty, preference);
+
+  if (result.status === 'already-there') { showError(t('meet.alreadyThere'), { info: true }); return; }
+  if (result.status === 'at-start') {
+    showError(t('meet.atStart', { name: stationLabel(result.startId) }), { info: true });
+    return;
+  }
+
+  resultEl.nodes            = nodeMap;
+  resultEl.preferDifficulty = preference;
+  resultEl.routes           = result.routes;
+
+  lastSearch = { startId: result.startId, endId: result.endId, difficulty, preference, meet: target };
+  if (result.startId) collapseSearchForm(lastSearch);
+}
+
+meetShareBtn.addEventListener('click', async () => {
+  meetShareStatusEl.textContent = t('meet.locating');
+  meetShareBtn.disabled = true;
+  try {
+    let pos;
+    try {
+      pos = await getPosition();
+    } catch (err) {
+      meetShareStatusEl.textContent = positionErrorText(err);
+      return;
+    }
+    await graphReady;
+    const { latitude: lat, longitude: lon } = pos.coords;
+    if (!isInPortesDuSoleil(lat, lon, [...nodeMap.values()])) {
+      meetShareStatusEl.textContent = t('meet.outsideArea');
+      return;
+    }
+
+    const url = buildMeetUrl(location.href, lat, lon);
+    try {
+      if (navigator.share) {
+        try {
+          await navigator.share({ title: t('meet.shareTitle'), text: t('meet.shareText'), url });
+          meetShareStatusEl.textContent = '';
+          return;
+        } catch (err) {
+          // A slow GPS fix can outlast the tap's user activation, which the
+          // share sheet requires — fall through to the clipboard instead.
+          if (err?.name !== 'NotAllowedError') throw err;
+        }
+      }
+      await navigator.clipboard.writeText(url);
+      meetShareStatusEl.textContent = t('meet.linkCopied');
+    } catch (err) {
+      if (err?.name === 'AbortError') { meetShareStatusEl.textContent = ''; return; } // share sheet dismissed
+      console.error('Location share failed:', err);
+      meetShareStatusEl.textContent = t('meet.shareFailed');
+    }
+  } finally {
+    meetShareBtn.disabled = false;
+  }
 });
 
 // ── Locale ───────────────────────────────────────────────────────────────────

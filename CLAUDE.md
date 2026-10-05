@@ -31,7 +31,7 @@ No build step. No install required for the app itself (`devDependencies` only co
 **Stack**: Vanilla JS · HTML · CSS · Web Components · PWA. No framework, no transpiler, no bundler.
 
 **App structure** (`src/app.js` wires everything together): four tabs —
-- **Home**: the route finder (`<station-input>` × 2, `<difficulty-selector>`, `<preference-selector>`, `<route-result>`), plus the live weather card (`<weather-hero>`) for whichever resort was resolved via geolocation or manually picked.
+- **Home**: the route finder — a `<swipe-panel>` with two pages, **Route** (`<station-input>` × 2) and **Meet up** (location sharing, see below) — then `<difficulty-selector>`, `<preference-selector>`, `<route-result>`, plus the live weather card (`<weather-hero>`) for whichever resort was resolved via geolocation or manually picked.
 - **Resorts**: `<resort-conditions-list>`, a live weather + avalanche overview for all 13 Portes du Soleil resorts, loaded lazily on first visit.
 - **Alerts**: `<avalanche-banner>` with the full risk detail; the tab itself only appears in `<tab-bar>` when there's something to show (risk level ≥ 2).
 - **Settings**: `<settings-panel>`: language picker (English/French/Spanish/Italian), theme picker (System/Light/Dark) and an Install button (only shown where `navigator.install` exists and the app isn't already running installed). Always visible, unlike Alerts.
@@ -41,6 +41,12 @@ No build step. No install required for the app itself (`devDependencies` only co
 2. `graph.js:loadGraph()` converts the JSON into a `Map<nodeId, Edge[]>` adjacency list. Bidirectional edges are auto-expanded on the second pass.
 3. `pathfinder.js:findRoutes()` runs **Yen's K-Shortest Simple Paths** (built on Dijkstra) against that graph. `maxDifficulty` prunes edges above the weight threshold before pathfinding. `preferDifficulty` re-ranks results after collection.
 4. Results are passed as a property to the `<route-result>` Web Component, which renders route cards.
+
+**Meet up (location sharing) data flow** (`src/meetup.js`, wired in `app.js`'s "Meet up" section):
+1. The sharer taps "Share my location" on the Meet up page. Their position is checked with `geo.js:isInPortesDuSoleil()` (within `PDS_AREA_KM` of any network node) and, if inside, `buildMeetUrl()` writes it into a `#meet?lat=..&lon=..&t=..` link sent via `navigator.share` (clipboard fallback). There is no server — the position exists only in that link.
+2. Opening the link lands on Home with the Meet up page showing an incoming-location card (with "Shared N minutes ago"); the difficulty selects and submit button ("Find route to them") only appear on that page once a valid in-area location has been received.
+3. On submit, the receiver's own position is taken (and also must be inside Portes du Soleil), then `findMeetupRoutes()` routes from one of the receiver's nearest `lift-base` nodes to one of the nodes nearest the shared spot (within 300 m), trying a few candidates of each so a self-contained sub-graph or a difficulty ceiling doesn't immediately dead-end it. Returns `already-there` (< 100 m apart) / `at-start` (shared spot is the receiver's nearest lift) without routing.
+4. Result cards link to `#route?...&mlat=..&mlon=..`; `<route-detail>`'s `meetPoint` draws the shared spot as a pin with a dashed connector from the route's last node, since that node only approximates it.
 
 **Live conditions data flow** (independent of route-finding):
 1. `data/resorts.json` lists all 13 resorts (centroid + elevation) — used both for `<location-gate>`'s nearest-resort geolocation match and as the Resorts tab's overview list.
@@ -72,8 +78,9 @@ No build step. No install required for the app itself (`devDependencies` only co
 | `<avalanche-banner>` | Avalanche risk banner (used standalone in the Alerts tab) |
 | `<resort-conditions-list>` | Resorts tab's per-resort weather + avalanche overview |
 | `<settings-panel>` | Settings tab: language picker, theme picker, Web Install API button |
+| `<swipe-panel>` | Swipeable pages (`data-swipe-page` children) with an ARIA tabs switcher; transform inside `overflow-x: clip` so dropdowns can still overflow vertically |
 
-**Shared modules** (`src/`, not components): `graph.js`, `pathfinder.js` (route engine), `weather.js`, `conditions.js`, `geo.js` (live-conditions data), `countries.js` (flag/country-name lookups), `format.js` (`relativeTime()`, locale-aware via `i18n.js`), `icons.js` (the custom SVG icon set — see below), `route-view.js` (shared route-step/badge rendering used by `<route-result>` and `<route-detail>`).
+**Shared modules** (`src/`, not components): `graph.js`, `pathfinder.js` (route engine), `weather.js`, `conditions.js`, `geo.js` (live-conditions data), `meetup.js` (location-sharing links + routing), `countries.js` (flag/country-name lookups), `format.js` (`relativeTime()`, locale-aware via `i18n.js`), `icons.js` (the custom SVG icon set — see below), `route-view.js` (shared route-step/badge rendering used by `<route-result>` and `<route-detail>`).
 
 **Localization** (`src/i18n.js` + `locale/{en,fr,es,it}.json`): flat JSON dictionaries, no framework. `t(key, params?)` looks up the active locale's string (falling back to English, never to the raw key) and interpolates `{placeholder}` tokens; `params.count` selects a `_one`/`_other` pluralized variant when present. `setLocale(code)` persists the choice to `localStorage` (`cds:locale`) and dispatches a `localechange` event on `window` — every component that renders translatable text listens for it in `connectedCallback()` and re-renders. The active locale is resolved once at module-evaluation time via a real top-level `await` in `i18n.js`, so every Web Component module (which upgrades already-parsed DOM elements the instant it calls `customElements.define()`) waits for the dictionary before its first render — this is what prevents a flash of raw translation keys or English text on a non-English first load. `navigator.language` picks the initial locale when there's no stored override. Proper nouns (lift/piste/resort/village names) are never translated. Run `node scripts/validate-locales.js` after editing any `locale/*.json` file — it checks key-set and `{placeholder}` parity across all four dictionaries. `SUPPORTED_LOCALES` in `i18n.js` is the single list to extend when adding another language.
 

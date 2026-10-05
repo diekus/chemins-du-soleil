@@ -1,4 +1,4 @@
-const CACHE_NAME = 'chemins-du-soleil-v34';
+const CACHE_NAME = 'chemins-du-soleil-v35';
 
 const PRECACHE = [
   '/',
@@ -35,6 +35,7 @@ const PRECACHE = [
   '/src/animate-height.js',
   '/src/leaflet-loader.js',
   '/src/compass.js',
+  '/src/meetup.js',
   '/src/components/difficulty-selector.js',
   '/src/components/preference-selector.js',
   '/src/components/route-result.js',
@@ -47,6 +48,7 @@ const PRECACHE = [
   '/src/components/weather-caution-list.js',
   '/src/components/resort-conditions-list.js',
   '/src/components/settings-panel.js',
+  '/src/components/swipe-panel.js',
   '/data/network.json',
   '/data/resorts.json',
   '/locale/en.json',

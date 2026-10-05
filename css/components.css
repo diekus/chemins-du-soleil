@@ -813,6 +813,180 @@ settings-panel .settings-status {
 }
 settings-panel .settings-status:empty { min-height: 0; }
 
+/* ── swipe-panel (Route / Meet up switcher on the search form) ───────────────── */
+swipe-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+/* Segmented control — same pill language as the tab bar's selected item. */
+.swipe-tabs {
+  display: flex;
+  gap: var(--sp-1);
+  padding: var(--sp-1);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-pill);
+}
+.swipe-tab {
+  flex: 1;
+  min-height: 44px; /* glove-friendly touch target */
+  padding: var(--sp-2) var(--sp-3);
+  background: none;
+  border: none;
+  border-radius: var(--r-pill);
+  font-family: var(--font);
+  font-size: 0.875rem;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.swipe-tab[aria-selected="true"] {
+  background: var(--color-background);
+  color: var(--color-primary);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+.swipe-tab:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* overflow-x: clip (not hidden) keeps overflow-y visible, so a
+   station-input dropdown can still drop out below the panel — see
+   swipe-panel.js. The clip margin keeps focus rings at the edges visible. */
+.swipe-viewport {
+  overflow-x: clip;
+  overflow-clip-margin: var(--sp-1);
+}
+/* The track's transform makes it a stacking context, which would trap the
+   dropdown's own z-index under the floating tab bar — lift the whole
+   viewport above it, but only while a dropdown is actually open. */
+.swipe-viewport:has(.si-listbox:not([hidden])) {
+  position: relative;
+  z-index: 200;
+}
+
+.swipe-track {
+  --swipe-gap: var(--sp-6);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--swipe-gap);
+  touch-action: pan-y;
+  transform: translateX(calc(var(--swipe-index, 0) * -1 * (100% + var(--swipe-gap)) + var(--swipe-drag, 0px)));
+  transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.swipe-track--dragging { transition: none; }
+
+.swipe-page {
+  flex: 0 0 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+/* Off-screen pages take no height, so the panel is only as tall as the page showing. */
+.swipe-page--away {
+  visibility: hidden;
+  max-height: 0;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .swipe-track { transition: none; }
+}
+
+/* Route options (difficulty, Find route) only apply to the meet page once
+   someone's shared location has been received. */
+.search-form[data-mode="meet"]:not([data-has-incoming]) .route-option { display: none; }
+
+/* ── Meet up page ──────────────────────────────────────────────────────────── */
+.meet-explanation {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.meet-icon { display: inline-flex; }
+.meet-icon svg { width: 1.25rem; height: 1.25rem; display: block; }
+
+.meet-share-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  width: 100%;
+  min-height: 48px;
+  padding: var(--sp-3) var(--sp-6);
+  background: var(--color-accent);
+  color: var(--color-primary);
+  font-family: var(--font);
+  font-size: 1rem;
+  font-weight: var(--fw-semibold);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--r-md);
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+.meet-share-btn:hover  { opacity: 0.85; }
+.meet-share-btn:active { opacity: 0.70; }
+.meet-share-btn:disabled { opacity: 0.6; cursor: progress; }
+.meet-share-btn:focus-visible {
+  outline: 2px solid var(--color-slope-blue);
+  outline-offset: 3px;
+}
+
+.meet-share-status {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+.meet-share-status:empty { display: none; }
+
+.meet-privacy {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+}
+
+.meet-incoming {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--color-accent);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--r-md);
+}
+.meet-incoming[hidden] { display: none; }
+.meet-incoming > .meet-icon { color: var(--color-primary); padding-top: 2px; }
+.meet-incoming--invalid { border-color: var(--color-slope-red); }
+.meet-incoming--invalid > .meet-icon { color: var(--color-slope-red); }
+.meet-incoming-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.meet-incoming-title { font-weight: var(--fw-semibold); font-size: 0.9375rem; }
+.meet-incoming-meta,
+.meet-incoming-hint { font-size: 0.8125rem; color: var(--color-text-secondary); }
+.meet-incoming-meta:empty { display: none; }
+.meet-dismiss {
+  flex: 0 0 auto;
+  min-height: 44px;
+  padding: 0 var(--sp-2);
+  margin: calc(-1 * var(--sp-2)) calc(-1 * var(--sp-2)) 0 0;
+  background: none;
+  border: none;
+  border-radius: var(--r-sm);
+  font-family: var(--font);
+  font-size: 0.8125rem;
+  font-weight: var(--fw-semibold);
+  color: var(--color-primary);
+  cursor: pointer;
+}
+.meet-dismiss:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+
 /* ── search-summary (collapsed find-route bar) ───────────────────────────────── */
 .search-summary {
   display: flex;
@@ -1286,6 +1460,14 @@ route-detail { display: block; }
   border: 2px solid var(--color-surface);
   box-shadow: 0 0 0 3px var(--color-accent);
 }
+
+/* "Meet up" shared position — the pin icon, outlined in the surface colour
+   so it reads on any tile. */
+.detail-meet-marker {
+  color: var(--color-primary);
+  filter: drop-shadow(0 0 1px var(--color-surface)) drop-shadow(0 0 1px var(--color-surface));
+}
+.detail-meet-marker svg { width: 100%; height: 100%; display: block; }
 
 /* Leaflet's own tooltips (Start/Finish/You are here) ship hard-coded light
    colours — patched here so they don't look broken in dark mode. Zoom and
