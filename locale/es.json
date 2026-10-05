@@ -177,7 +177,7 @@
   "meet.locating": "Buscando tu posición…",
   "meet.shareTitle": "Encuéntrame en las pistas",
   "meet.shareText": "Aquí estoy en Portes du Soleil — abre el enlace para ver una ruta hasta mí.",
-  "meet.linkCopied": "Enlace copiado — envíalo a la persona con la que te vas a encontrar.",
+  "meet.tapAgain": "Tu ubicación está lista — toca «Compartir mi ubicación» otra vez para enviarla.",
   "meet.shareFailed": "No se pudo compartir tu ubicación. Inténtalo de nuevo.",
   "meet.locationDenied": "Activa el acceso a la ubicación para usar esta función.",
   "meet.locationUnavailable": "No se pudo obtener tu posición. Inténtalo de nuevo.",
