@@ -176,6 +176,8 @@ body { padding-bottom: 112px; }
   padding: 0 var(--sp-1);
 }
 .form-error.visible { display: block; }
+/* A neutral notice ("you're already there") rather than a problem. */
+.form-error--info { color: var(--color-text-secondary); }
 
 /* ── Find route button ─────────────────────────────────────────────────────── */
 .btn-find {

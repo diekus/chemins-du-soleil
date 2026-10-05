@@ -90,3 +90,28 @@ export function projectOntoRoute(lat, lon, points) {
     ...fromXY({ x: best.projX, y: best.projY }),
   };
 }
+
+// A position counts as "inside Portes du Soleil" when it's within this
+// distance of any routing node (lift station, junction or village). Tighter
+// than VICINITY_KM on purpose: location sharing needs both people actually on
+// the ski area's network, not just somewhere in the surrounding valleys.
+export const PDS_AREA_KM = 2;
+
+/**
+ * Nodes sorted nearest-first to a coordinate, each as { node, km }. Nodes
+ * without numeric lat/lon are skipped; `filter` narrows the candidates.
+ */
+export function nodesByDistance(lat, lon, nodes, filter = () => true) {
+  const out = [];
+  for (const node of nodes) {
+    if (typeof node.lat !== 'number' || typeof node.lon !== 'number' || !filter(node)) continue;
+    out.push({ node, km: haversineKm(lat, lon, node.lat, node.lon) });
+  }
+  return out.sort((a, b) => a.km - b.km);
+}
+
+/** True if the coordinate is within PDS_AREA_KM of any node in the network. */
+export function isInPortesDuSoleil(lat, lon, nodes) {
+  return nodes.some(n => typeof n.lat === 'number' && typeof n.lon === 'number'
+    && haversineKm(lat, lon, n.lat, n.lon) <= PDS_AREA_KM);
+}

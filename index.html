@@ -59,35 +59,61 @@
 
         <form class="search-form" novalidate>
 
-          <div class="form-row">
-            <label id="lbl-start"></label>
-            <station-input
-              name="start"
-              aria-labelledby="lbl-start"
-            ></station-input>
-          </div>
+          <swipe-panel id="search-mode" label-key="home.modeAriaLabel">
 
-          <div class="form-row">
-            <label id="lbl-dest"></label>
-            <station-input
-              name="destination"
-              aria-labelledby="lbl-dest"
-            ></station-input>
-          </div>
+            <div data-swipe-page="route" data-label-key="home.modeRoute">
+              <div class="form-row">
+                <label id="lbl-start"></label>
+                <station-input
+                  name="start"
+                  aria-labelledby="lbl-start"
+                ></station-input>
+              </div>
 
-          <div class="form-row">
+              <div class="form-row">
+                <label id="lbl-dest"></label>
+                <station-input
+                  name="destination"
+                  aria-labelledby="lbl-dest"
+                ></station-input>
+              </div>
+            </div>
+
+            <div data-swipe-page="meet" data-label-key="home.modeMeet">
+              <div class="meet-incoming" hidden>
+                <span class="meet-icon" aria-hidden="true"></span>
+                <div class="meet-incoming-text">
+                  <p class="meet-incoming-title" data-i18n="meet.incomingTitle"></p>
+                  <p class="meet-incoming-meta"></p>
+                  <p class="meet-incoming-hint"></p>
+                </div>
+                <button type="button" class="meet-dismiss" data-i18n="meet.dismiss"></button>
+              </div>
+
+              <p class="meet-explanation" data-i18n="meet.explanation"></p>
+              <button type="button" class="meet-share-btn">
+                <span class="meet-icon" aria-hidden="true"></span>
+                <span data-i18n="meet.shareButton"></span>
+              </button>
+              <p class="meet-share-status" role="status" aria-live="polite"></p>
+              <p class="meet-privacy" data-i18n="meet.privacyNote"></p>
+            </div>
+
+          </swipe-panel>
+
+          <div class="form-row route-option">
             <label id="lbl-diff"></label>
             <difficulty-selector aria-labelledby="lbl-diff"></difficulty-selector>
           </div>
 
-          <div class="form-row">
+          <div class="form-row route-option">
             <label id="lbl-pref"></label>
             <preference-selector aria-labelledby="lbl-pref"></preference-selector>
           </div>
 
           <p class="form-error" role="alert"></p>
 
-          <button type="submit" class="btn-find"></button>
+          <button type="submit" class="btn-find route-option"></button>
 
         </form>
 

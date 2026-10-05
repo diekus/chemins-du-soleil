@@ -111,6 +111,12 @@ export const ICONS = {
     <path d="M15.2 6.4 V19.8"/>
   </svg>`,
 
+  /** Map pin — a shared location (meet-up). */
+  pin: `<svg viewBox="0 0 24 24" ${STROKE}>
+    <path d="M12 21.2 C12 21.2 5.2 14.6 5.2 9.6 A6.8 6.8 0 0 1 18.8 9.6 C18.8 14.6 12 21.2 12 21.2 Z"/>
+    <circle cx="12" cy="9.6" r="2.4"/>
+  </svg>`,
+
   /** Compass needle in a ring — toggles heading-up map rotation. */
   compass: `<svg viewBox="0 0 24 24" ${STROKE}>
     <circle cx="12" cy="12" r="9.2"/>
