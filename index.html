@@ -90,13 +90,16 @@
                 <button type="button" class="meet-dismiss" data-i18n="meet.dismiss"></button>
               </div>
 
-              <p class="meet-explanation" data-i18n="meet.explanation"></p>
-              <button type="button" class="meet-share-btn">
-                <span class="meet-icon" aria-hidden="true"></span>
-                <span data-i18n="meet.shareButton"></span>
-              </button>
-              <p class="meet-share-status" role="status" aria-live="polite"></p>
-              <p class="meet-privacy" data-i18n="meet.privacyNote"></p>
+              <!-- Sharing needs the Web Share API; app.js hides this where it's missing. -->
+              <div class="meet-share">
+                <p class="meet-explanation" data-i18n="meet.explanation"></p>
+                <button type="button" class="meet-share-btn">
+                  <span class="meet-icon" aria-hidden="true"></span>
+                  <span data-i18n="meet.shareButton"></span>
+                </button>
+                <p class="meet-share-status" role="status" aria-live="polite"></p>
+                <p class="meet-privacy" data-i18n="meet.privacyNote"></p>
+              </div>
             </div>
 
           </swipe-panel>

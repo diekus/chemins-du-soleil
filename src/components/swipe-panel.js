@@ -19,6 +19,9 @@ const SWIPE_SLOP = 10;
  * leaves overflow-y visible — so a <station-input> dropdown on a page can
  * still spill out below the panel.
  *
+ * A page can be taken out of rotation with setPageHidden(); with only one
+ * page left, the tab switcher hides too and the panel is just that page.
+ *
  * Fires 'swipechange' ({ detail: { page } }) when the user changes page.
  */
 class SwipePanel extends HTMLElement {
@@ -93,6 +96,29 @@ class SwipePanel extends HTMLElement {
     if (i >= 0 && i !== this.#index) this.#go(i, false);
   }
 
+  /** Hides (or restores) the named page and its tab. Hiding the current page moves to the first remaining one. */
+  setPageHidden(name, hidden) {
+    const i = this.#pages.findIndex(p => p.dataset.swipePage === name);
+    if (i < 0) return;
+    this.#pages[i].toggleAttribute('data-swipe-hidden', hidden);
+    this.#tabsEl.children[i].hidden = hidden;
+    this.#tabsEl.hidden = this.#available().length < 2;
+    if (hidden && i === this.#index) this.#go(this.#available()[0] ?? 0, false);
+    else this.#apply();
+  }
+
+  /** Indices of the pages not hidden via setPageHidden(), in order. */
+  #available() {
+    return this.#pages.flatMap((p, i) => p.hasAttribute('data-swipe-hidden') ? [] : [i]);
+  }
+
+  /** The available page `step` places away from the current one (clamped at the ends). */
+  #step(step) {
+    const avail = this.#available();
+    const pos = avail.indexOf(this.#index);
+    return avail[Math.max(0, Math.min(avail.length - 1, pos + step))] ?? this.#index;
+  }
+
   #renderTabs() {
     this.#tabsEl.setAttribute('aria-label', t(this.getAttribute('label-key') ?? ''));
     [...this.#tabsEl.children].forEach((tab, i) => {
@@ -112,7 +138,8 @@ class SwipePanel extends HTMLElement {
 
   /** Syncs tabs, track position and which pages are inert to #index. */
   #apply() {
-    this.#trackEl.style.setProperty('--swipe-index', String(this.#index));
+    // Hidden pages are display:none, so offset by position among the rest.
+    this.#trackEl.style.setProperty('--swipe-index', String(Math.max(0, this.#available().indexOf(this.#index))));
     this.#trackEl.style.removeProperty('--swipe-drag');
     this.#trackEl.classList.remove('swipe-track--dragging');
     [...this.#tabsEl.children].forEach((tab, i) => {
@@ -128,11 +155,12 @@ class SwipePanel extends HTMLElement {
   }
 
   #onTabKey(e) {
-    const keys = { ArrowRight: 1, ArrowLeft: -1 };
+    const keys  = { ArrowRight: 1, ArrowLeft: -1 };
+    const avail = this.#available();
     let next;
-    if (e.key in keys)        next = this.#index + keys[e.key];
-    else if (e.key === 'Home') next = 0;
-    else if (e.key === 'End')  next = this.#pages.length - 1;
+    if (e.key in keys)        next = this.#step(keys[e.key]);
+    else if (e.key === 'Home') next = avail[0];
+    else if (e.key === 'End')  next = avail[avail.length - 1];
     else return;
     e.preventDefault();
     this.#go(next, true);
@@ -144,7 +172,7 @@ class SwipePanel extends HTMLElement {
   // to the browser, so only horizontal-ish moves reach here as a drag.
 
   #onPointerDown(e) {
-    if (e.pointerType === 'mouse' || this.#pages.length < 2) return;
+    if (e.pointerType === 'mouse' || this.#available().length < 2) return;
     this.#drag = { id: e.pointerId, x: e.clientX, y: e.clientY, horizontal: null, dx: 0 };
   }
 
@@ -159,13 +187,15 @@ class SwipePanel extends HTMLElement {
       d.horizontal = Math.abs(dx) > Math.abs(dy);
       if (!d.horizontal) { this.#drag = null; return; }
       this.#trackEl.setPointerCapture(e.pointerId);
-      // Show every page while dragging so the neighbour slides in, not a blank.
-      this.#pages.forEach(p => p.classList.remove('swipe-page--away'));
+      // Show the neighbours while dragging so they slide in, not a blank.
+      this.#pages.forEach(p => {
+        if (!p.hasAttribute('data-swipe-hidden')) p.classList.remove('swipe-page--away');
+      });
       this.#trackEl.classList.add('swipe-track--dragging');
     }
 
-    // Resist dragging past the first/last page.
-    const atEdge = (this.#index === 0 && dx > 0) || (this.#index === this.#pages.length - 1 && dx < 0);
+    // Resist dragging past the first/last available page.
+    const atEdge = (dx > 0 && this.#step(-1) === this.#index) || (dx < 0 && this.#step(1) === this.#index);
     d.dx = atEdge ? dx / 3 : dx;
     this.#trackEl.style.setProperty('--swipe-drag', `${d.dx}px`);
   }
@@ -178,8 +208,8 @@ class SwipePanel extends HTMLElement {
 
     const threshold = this.offsetWidth * SWIPE_COMMIT;
     let next = this.#index;
-    if (!cancelled && d.dx <= -threshold) next++;
-    if (!cancelled && d.dx >=  threshold) next--;
+    if (!cancelled && d.dx <= -threshold) next = this.#step(1);
+    if (!cancelled && d.dx >=  threshold) next = this.#step(-1);
     this.#go(next, true);
   }
 }

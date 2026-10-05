@@ -886,6 +886,8 @@ swipe-panel {
   flex-direction: column;
   gap: var(--sp-4);
 }
+.swipe-page[data-swipe-hidden],
+.swipe-tabs[hidden] { display: none; }
 /* Off-screen pages take no height, so the panel is only as tall as the page showing. */
 .swipe-page--away {
   visibility: hidden;
@@ -902,6 +904,13 @@ swipe-panel {
 .search-form[data-mode="meet"]:not([data-has-incoming]) .route-option { display: none; }
 
 /* ── Meet up page ──────────────────────────────────────────────────────────── */
+.meet-share {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+.meet-share[hidden] { display: none; }
+
 .meet-explanation {
   font-size: 0.9375rem;
   line-height: 1.5;

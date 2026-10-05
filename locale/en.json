@@ -177,7 +177,7 @@
   "meet.locating": "Finding your position…",
   "meet.shareTitle": "Meet me on the slopes",
   "meet.shareText": "Here's where I am in Portes du Soleil — open the link for a route to me.",
-  "meet.linkCopied": "Link copied — send it to whoever you're meeting.",
+  "meet.tapAgain": "Your location is ready — tap “Share my location” again to send it.",
   "meet.shareFailed": "Could not share your location. Please try again.",
   "meet.locationDenied": "Turn on location access to use this feature.",
   "meet.locationUnavailable": "Couldn't get your position. Please try again.",

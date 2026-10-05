@@ -26,6 +26,11 @@ import './components/swipe-panel.js';
 
 await initLocale();
 
+// Sharing your own location is Web Share API only (no clipboard fallback).
+// Receiving a shared link doesn't need it, so that works everywhere.
+const CAN_SHARE_LOCATION = typeof navigator.share === 'function'
+  && (navigator.canShare?.({ url: location.href }) ?? true);
+
 // ── Static text: plain HTML nodes have no component of their own to
 // re-render themselves, so app.js owns translating them, both now and on
 // every locale change (see the 'localechange' listener at the bottom).
@@ -73,6 +78,7 @@ const meetIncomingEl    = document.querySelector('.meet-incoming');
 const meetShareBtn      = document.querySelector('.meet-share-btn');
 const meetShareStatusEl = document.querySelector('.meet-share-status');
 document.querySelectorAll('.meet-icon').forEach(el => { el.innerHTML = ICONS.pin; });
+document.querySelector('.meet-share').hidden = !CAN_SHARE_LOCATION;
 
 // Declared here rather than beside the functions that use it further down:
 // stopRouteTracking() runs synchronously from the very first render() call
@@ -661,9 +667,9 @@ async function receiveMeet(meet) {
       && incomingMeet.time === meet.time) return; // same link re-rendered (e.g. locale change)
 
   incomingMeet = { ...meet, inArea: null };
+  renderIncomingMeet(); // first, so the page exists before switching to it
   modePanelEl.page = 'meet';
   setSearchMode('meet');
-  renderIncomingMeet();
 
   await graphReady;
   if (incomingMeet?.lat !== meet.lat || incomingMeet?.lon !== meet.lon) return;
@@ -672,6 +678,9 @@ async function receiveMeet(meet) {
 }
 
 function renderIncomingMeet() {
+  // Without Web Share there's nothing on the Meet up page except a received
+  // location — so the page (and the Route/Meet up switcher) only exists then.
+  if (!CAN_SHARE_LOCATION) modePanelEl.setPageHidden('meet', !incomingMeet);
   form.toggleAttribute('data-has-incoming', !!incomingMeet && incomingMeet.inArea !== false);
   meetIncomingEl.hidden = !incomingMeet;
   if (!incomingMeet) return;
@@ -689,7 +698,8 @@ meetIncomingEl.querySelector('.meet-dismiss').addEventListener('click', () => {
     renderIncomingMeet();
   });
   if (location.hash.startsWith('#meet?')) history.replaceState(null, '', '#home');
-  meetShareBtn.focus();
+  setSearchMode(modePanelEl.page);
+  (CAN_SHARE_LOCATION ? meetShareBtn : form.querySelector('station-input[name="start"] .si-input'))?.focus();
 });
 
 async function findMeetRoute() {
@@ -730,7 +740,30 @@ async function findMeetRoute() {
   if (result.startId) collapseSearchForm(lastSearch);
 }
 
+// A link prepared on an earlier tap whose share sheet couldn't open — see
+// the NotAllowedError branch below.
+let pendingMeetUrl = null;
+
+async function shareMeetUrl(url) {
+  await navigator.share({ title: t('meet.shareTitle'), text: t('meet.shareText'), url });
+}
+
 meetShareBtn.addEventListener('click', async () => {
+  if (!CAN_SHARE_LOCATION) return;
+  if (pendingMeetUrl) {
+    const url = pendingMeetUrl;
+    pendingMeetUrl = null;
+    try {
+      await shareMeetUrl(url);
+      meetShareStatusEl.textContent = '';
+    } catch (err) {
+      if (err?.name === 'AbortError') { meetShareStatusEl.textContent = ''; return; }
+      console.error('Location share failed:', err);
+      meetShareStatusEl.textContent = t('meet.shareFailed');
+    }
+    return;
+  }
+
   meetShareStatusEl.textContent = t('meet.locating');
   meetShareBtn.disabled = true;
   try {
@@ -750,21 +783,17 @@ meetShareBtn.addEventListener('click', async () => {
 
     const url = buildMeetUrl(location.href, lat, lon);
     try {
-      if (navigator.share) {
-        try {
-          await navigator.share({ title: t('meet.shareTitle'), text: t('meet.shareText'), url });
-          meetShareStatusEl.textContent = '';
-          return;
-        } catch (err) {
-          // A slow GPS fix can outlast the tap's user activation, which the
-          // share sheet requires — fall through to the clipboard instead.
-          if (err?.name !== 'NotAllowedError') throw err;
-        }
-      }
-      await navigator.clipboard.writeText(url);
-      meetShareStatusEl.textContent = t('meet.linkCopied');
+      await shareMeetUrl(url);
+      meetShareStatusEl.textContent = '';
     } catch (err) {
       if (err?.name === 'AbortError') { meetShareStatusEl.textContent = ''; return; } // share sheet dismissed
+      if (err?.name === 'NotAllowedError') {
+        // A slow GPS fix can outlast the tap's user activation, which the
+        // share sheet requires — keep the link and let a second tap send it.
+        pendingMeetUrl = url;
+        meetShareStatusEl.textContent = t('meet.tapAgain');
+        return;
+      }
       console.error('Location share failed:', err);
       meetShareStatusEl.textContent = t('meet.shareFailed');
     }
