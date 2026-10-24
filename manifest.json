@@ -2,7 +2,7 @@
   "name": "Chemins du Soleil",
   "short_name": "Chemins Soleil",
   "description": "Find your ski route through the Portes du Soleil resort area.",
-  "start_url": "/chemins-du-soleil/",
+  "start_url": "/",
   "id": "dks-chemins",
   "scope": "/",
   "display": "standalone",
