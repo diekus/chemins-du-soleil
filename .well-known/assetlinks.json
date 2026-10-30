@@ -3,9 +3,9 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "us.diek.cheminssoleil",
+      "package_name": "us.diek.chemins",
       "sha256_cert_fingerprints":
-        ["F7:FF:DC:76:43:F5:27:9F:47:A4:70:E3:C8:0C:13:95:8F:5A:E3:F5:0B:14:30:C3:3B:37:1B:39:1A:79:94:E4"]
+        ["04:D3:E1:E9:FA:37:6A:D8:85:C8:B1:73:22:3F:16:F0:88:94:8B:E6:C9:72:FA:46:F1:53:AD:4C:CE:52:20:47"]
     }
   }
 ]
