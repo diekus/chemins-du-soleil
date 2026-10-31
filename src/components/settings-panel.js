@@ -3,6 +3,8 @@ import { getTheme, setTheme, THEMES } from '../theme.js';
 
 let _uid = 0;
 
+const FEEDBACK_EMAIL = 'apps.by.diekus@proton.me';
+
 // Web Install API (navigator.install). Only offered where the browser
 // supports it, and hidden when we're already running as the installed app.
 const INSTALL_SUPPORTED = typeof navigator.install === 'function';
@@ -70,6 +72,7 @@ class SettingsPanel extends HTMLElement {
           <p class="settings-status" role="status" aria-live="polite">${installStatus}</p>
         </div>` : ''}
         <p class="settings-hint"><a href="setup.html">${t('setup.otherDevicesLink')}</a></p>
+        <p class="settings-hint"><a href="mailto:${FEEDBACK_EMAIL}?subject=${encodeURIComponent('Chemins du Soleil feedback')}">${t('settings.feedbackLink')}</a></p>
       </div>
     `;
 

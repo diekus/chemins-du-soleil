@@ -205,6 +205,7 @@
   "settings.installButton": "Installa",
   "settings.installSuccess": "App installata.",
   "settings.installError": "Impossibile installare l'app. Riprova.",
+  "settings.feedbackLink": "Invia un feedback",
 
   "setup.otherDevicesLink": "Come installarla su altri dispositivi",
   "setup.title": "Installa Chemins du Soleil",

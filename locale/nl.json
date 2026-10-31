@@ -205,6 +205,7 @@
   "settings.installButton": "Installeren",
   "settings.installSuccess": "App geïnstalleerd.",
   "settings.installError": "Kan de app niet installeren. Probeer het opnieuw.",
+  "settings.feedbackLink": "Feedback sturen",
 
   "setup.otherDevicesLink": "Installeren op andere apparaten",
   "setup.title": "Chemins du Soleil installeren",
