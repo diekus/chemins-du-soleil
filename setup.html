@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Install — Chemins du Soleil</title>
+  <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)" data-scheme="dark">
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" data-scheme="light">
+  <!-- Same pre-paint theme script as index.html; keep the two in sync. -->
+  <script>
+    try {
+      var cdsTheme = localStorage.getItem('cds:theme');
+      if (cdsTheme === 'light' || cdsTheme === 'dark') {
+        document.documentElement.dataset.theme = cdsTheme;
+        document.querySelectorAll('[data-scheme]').forEach(function (el) {
+          el.media = el.dataset.scheme === cdsTheme ? 'all' : 'not all';
+        });
+      }
+    } catch (e) { /* storage unavailable: follow the system scheme */ }
+  </script>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="images/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/icon-192.png">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    /* No tab-bar on this page, so the space layout.css reserves for it isn't needed. */
+    body { padding-bottom: 0; }
+
+    .setup-main { max-width: 640px; }
+
+    .setup-intro {
+      color: var(--color-text);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+
+    .setup-main a { color: var(--color-primary); }
+
+    .back-link { font-size: 0.875rem; }
+
+    /* ── Jump-to-platform chips ─────────────────────────────────────────── */
+    .setup-jump ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-2);
+    }
+    .setup-jump a {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      min-height: 44px;
+      padding: var(--sp-2) var(--sp-4);
+      border: 1px solid var(--color-border);
+      border-radius: var(--r-pill);
+      background: var(--color-surface);
+      color: var(--color-text);
+      font-weight: var(--fw-semibold);
+      text-decoration: none;
+    }
+    .setup-jump a:hover { border-color: var(--color-primary); }
+    .setup-jump a:focus-visible {
+      outline: 2px solid var(--color-slope-blue);
+      outline-offset: 2px;
+    }
+    .setup-jump a.is-current {
+      background: var(--color-accent);
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    /* ── Platform sections ──────────────────────────────────────────────── */
+    .setup-platforms {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-3);
+    }
+    .setup-platform {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--r-lg);
+      /* Clears the sticky header when jumped to via #hash. */
+      scroll-margin-top: 112px;
+    }
+    .setup-platform > summary {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      min-height: 56px;
+      padding: var(--sp-3) var(--sp-4);
+      cursor: pointer;
+      list-style: none;
+      border-radius: var(--r-lg);
+    }
+    .setup-platform > summary::-webkit-details-marker { display: none; }
+    .setup-platform > summary:focus-visible {
+      outline: 2px solid var(--color-slope-blue);
+      outline-offset: 2px;
+    }
+    .setup-platform > summary h2 {
+      flex: 1;
+      font-size: 1.0625rem;
+      font-weight: var(--fw-bold);
+    }
+    .setup-platform[open] > summary .chevron { transform: rotate(180deg); }
+
+    .setup-device-badge {
+      font-size: 0.75rem;
+      font-weight: var(--fw-semibold);
+      padding: var(--sp-1) var(--sp-3);
+      border-radius: var(--r-pill);
+      background: var(--color-accent);
+      color: var(--color-primary);
+    }
+
+    .setup-body {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-3);
+      padding: 0 var(--sp-4) var(--sp-5);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+    .setup-body h3 {
+      font-size: 0.75rem;
+      font-weight: var(--fw-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-text-secondary);
+      margin-top: var(--sp-2);
+    }
+    .setup-steps {
+      padding-left: var(--sp-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+    }
+    .setup-note { color: var(--color-text-secondary); }
+
+    /* Store links reuse the primary button look. */
+    .setup-body .btn-find {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      color: var(--color-on-primary);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="app-header">
+    <a href="index.html" style="display: contents;">
+      <picture>
+        <source srcset="images/logo_inv.png" media="(prefers-color-scheme: dark)" data-scheme="dark">
+        <img src="images/logo.png" alt="Chemins du Soleil">
+      </picture>
+    </a>
+  </header>
+
+  <main class="app-main setup-main" id="setup"></main>
+
+  <footer class="app-footer">
+    <small>&copy; diekus 2026 &middot; <a href="privacy.html" data-i18n="footer.privacyPolicy">Privacy Policy</a></small>
+  </footer>
+
+  <script type="module" src="src/setup.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
+    }
+  </script>
+</body>
+</html>

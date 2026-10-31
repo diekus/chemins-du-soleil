@@ -12,7 +12,7 @@ const B = '\x1b[1m';  // bold
 const D = '\x1b[2m';  // dim
 const X = '\x1b[0m';  // reset
 
-const LOCALES = ['en', 'fr', 'es', 'it'];
+const LOCALES = ['en', 'fr', 'es', 'it', 'nl'];
 const BASE_LOCALE = 'en';
 const verbose = process.argv.includes('--verbose');
 

@@ -1,10 +1,11 @@
-const CACHE_NAME = 'chemins-du-soleil-v35';
+const CACHE_NAME = 'chemins-du-soleil-v37';
 
 const PRECACHE = [
   '/',
   '/index.html',
   '/offline.html',
   '/privacy.html',
+  '/setup.html',
   '/manifest.json',
   '/css/base.css',
   '/css/layout.css',
@@ -36,6 +37,7 @@ const PRECACHE = [
   '/src/leaflet-loader.js',
   '/src/compass.js',
   '/src/meetup.js',
+  '/src/setup.js',
   '/src/components/difficulty-selector.js',
   '/src/components/preference-selector.js',
   '/src/components/route-result.js',
@@ -55,6 +57,7 @@ const PRECACHE = [
   '/locale/fr.json',
   '/locale/es.json',
   '/locale/it.json',
+  '/locale/nl.json',
 ];
 
 self.addEventListener('install', (event) => {

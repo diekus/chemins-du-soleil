@@ -1,11 +1,16 @@
 /**
  * Minimal i18n layer: flat JSON dictionaries + a t() lookup helper.
- * No framework — locale/{en,fr,es}.json are plain "key": "string" maps.
+ * No framework — locale/{en,fr,es,it,nl}.json are plain "key": "string" maps.
  * Components re-render on the 'localechange' event dispatched on window
  * (listen in connectedCallback, unlisten in disconnectedCallback, re-render).
  */
 
-export const SUPPORTED_LOCALES = ['en', 'fr', 'es', 'it'];
+export const SUPPORTED_LOCALES = ['en', 'fr', 'es', 'it', 'nl'];
+
+// Each language's own name, in its own language — never translated per the
+// active locale, so a French speaker can always find "Français" regardless
+// of what's currently selected.
+export const LANGUAGE_NAMES = { en: 'English', fr: 'Français', es: 'Español', it: 'Italiano', nl: 'Nederlands' };
 const DEFAULT_LOCALE = 'en';
 const STORAGE_KEY = 'cds:locale';
 

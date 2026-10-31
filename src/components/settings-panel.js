@@ -1,12 +1,7 @@
-import { t, getLocale, setLocale, SUPPORTED_LOCALES } from '../i18n.js';
+import { t, getLocale, setLocale, SUPPORTED_LOCALES, LANGUAGE_NAMES } from '../i18n.js';
 import { getTheme, setTheme, THEMES } from '../theme.js';
 
 let _uid = 0;
-
-// Each language's own name, in its own language — never translated per the
-// active locale, so a French speaker can always find "Français" regardless
-// of what's currently selected.
-const LANGUAGE_NAMES = { en: 'English', fr: 'Français', es: 'Español', it: 'Italiano' };
 
 // Web Install API (navigator.install). Only offered where the browser
 // supports it, and hidden when we're already running as the installed app.
@@ -74,6 +69,7 @@ class SettingsPanel extends HTMLElement {
             ${this.#installState === 'pending' ? 'disabled aria-busy="true"' : ''}>${t('settings.installButton')}</button>
           <p class="settings-status" role="status" aria-live="polite">${installStatus}</p>
         </div>` : ''}
+        <p class="settings-hint"><a href="setup.html">${t('setup.otherDevicesLink')}</a></p>
       </div>
     `;
 

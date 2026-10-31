@@ -762,7 +762,8 @@ settings-panel {
 
 difficulty-selector select,
 preference-selector select,
-settings-panel select {
+settings-panel select,
+.setup-lang select {
   width: 100%;
   /* Right padding clears the 1.375rem chevron plus breathing room. */
   padding: var(--sp-3) calc(var(--sp-4) + 1.375rem + var(--sp-3)) var(--sp-3) var(--sp-4);
@@ -779,14 +780,16 @@ settings-panel select {
 }
 difficulty-selector select:focus,
 preference-selector select:focus,
-settings-panel select:focus { border-color: var(--color-primary); }
+settings-panel select:focus,
+.setup-lang select:focus { border-color: var(--color-primary); }
 
 /* Forced-colours mode drops background images, which would leave no
    dropdown affordance: fall back to the native arrow there. */
 @media (forced-colors: active) {
   difficulty-selector select,
   preference-selector select,
-  settings-panel select {
+  settings-panel select,
+  .setup-lang select {
     appearance: auto;
     background-image: none;
     padding-right: var(--sp-4);
