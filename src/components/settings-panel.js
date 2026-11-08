@@ -71,6 +71,7 @@ class SettingsPanel extends HTMLElement {
             ${this.#installState === 'pending' ? 'disabled aria-busy="true"' : ''}>${t('settings.installButton')}</button>
           <p class="settings-status" role="status" aria-live="polite">${installStatus}</p>
         </div>` : ''}
+        <p class="settings-hint"><a href="reference.html">${t('settings.referenceLink')}</a></p>
         <p class="settings-hint"><a href="setup.html">${t('setup.otherDevicesLink')}</a></p>
         <p class="settings-hint"><a href="mailto:${FEEDBACK_EMAIL}?subject=${encodeURIComponent('Chemins du Soleil feedback')}">${t('settings.feedbackLink')}</a></p>
       </div>

@@ -420,14 +420,53 @@ const CHATEL_VILLAGE_SECTOR = [
     name: 'Return to Châtel village', type: 'slope', difficulty: 'green' },
 ];
 
+// ── Morzine village gondolas (Pléney ↔ Super-Morzine) ─────────────────────────
+// Both gondolas leave from Morzine's village centre, on opposite sides of the
+// valley — Pléney towards Les Gets, Super-Morzine towards Avoriaz — and share
+// no lift or piste, so skiers cross between them through the village (OSM
+// puts their bases ~570 m and ~660 m from the village centroid). Confirmed via
+// Morzine-Avoriaz tourism's own lift pages (en.morzine-avoriaz.com/equipment/
+// pleney-gondola, …/super-morzine-gondola) and ski-pass office listings
+// ("by the Téléphérique du Pléney in the centre"; Super-Morzine "connects
+// Morzine to Avoriaz from the centre of Morzine").
+const MORZINE_VILLAGE_GONDOLAS = [
+  { from: 'morzine-village', to: liftBaseId(30752181),
+    name: 'Access Pléney gondola', type: 'slope', difficulty: 'green' },
+  { from: liftBaseId(30752181), to: 'morzine-village',
+    name: 'Return to Morzine village', type: 'slope', difficulty: 'green' },
+  { from: 'morzine-village', to: liftBaseId(53165460),
+    name: 'Access Super-Morzine gondola', type: 'slope', difficulty: 'green' },
+  { from: liftBaseId(53165460), to: 'morzine-village',
+    name: 'Return to Morzine village', type: 'slope', difficulty: 'green' },
+];
+
+// ── Les Gets village transfer (Chavannes ↔ Mont Chéry) ────────────────────────
+// Same pattern as Châtel/Morgins: Les Gets' two sectors — Chavannes (towards
+// Morzine/Pléney) and Mont Chéry — each start with a gondola from the village
+// (Chavannes 1170 m, Mont Chéry 1162 m; OSM bases 431 m apart) and share no
+// lift or piste. Confirmed via Les Gets' own lift pages (explore.lesgets.com:
+// "TC Chavannes… connecting the village platform", "Télécabine du Mont
+// Chéry… connecting the village to Mont Chéry").
+const LES_GETS_VILLAGE_SECTOR = [
+  { from: 'les-gets-village', to: liftBaseId(49511429),
+    name: 'Access Chavannes gondola', type: 'slope', difficulty: 'green' },
+  { from: liftBaseId(49511429), to: 'les-gets-village',
+    name: 'Return to Les Gets village', type: 'slope', difficulty: 'green' },
+  { from: 'les-gets-village', to: liftBaseId(49511436),
+    name: 'Access Mont Chéry gondola', type: 'slope', difficulty: 'green' },
+  { from: liftBaseId(49511436), to: 'les-gets-village',
+    name: 'Return to Les Gets village', type: 'slope', difficulty: 'green' },
+];
+
 // Village node initialisation (ensure keys exist before manual edges are applied)
 ensureNode('morzine-village');
+ensureNode('les-gets-village');
 ensureNode('champery');
 ensureNode('saint-jean-daulps');
 ensureNode('chatel-village');
 ensureNode('morgins-village');
 
-for (const e of [...CROSS_SECTOR, ...SJA_SECTOR, ...CHATEL_SECTOR, ...MORGINS_SECTOR, ...MORGINS_VILLAGE_SECTOR, ...CHATEL_VILLAGE_SECTOR]) {
+for (const e of [...CROSS_SECTOR, ...SJA_SECTOR, ...CHATEL_SECTOR, ...MORGINS_SECTOR, ...MORGINS_VILLAGE_SECTOR, ...CHATEL_VILLAGE_SECTOR, ...MORZINE_VILLAGE_GONDOLAS, ...LES_GETS_VILLAGE_SECTOR]) {
   // Village nodes are not in UF — use their ID directly
   const fromRep = uf.find(e.from) ?? e.from;
   const toRep   = uf.find(e.to)   ?? e.to;
@@ -567,6 +606,7 @@ const VILLAGE_NODES = [
   ['saint-jean-daulps',  "Saint-Jean-d'Aulps",    'FR', 'st-jean-aulps'],
   ['chatel-village',     'Châtel',                'FR', 'chatel'],
   ['morgins-village',    'Morgins',               'CH', 'morgins'],
+  ['les-gets-village',   'Les Gets',              'FR', 'les-gets'],
 ];
 const villageIds = new Set(VILLAGE_NODES.map(([vid]) => vid));
 
