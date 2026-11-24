@@ -34,6 +34,22 @@ const PISTE_CLUSTER_RADIUS_M = 75;   // piste endpoints within this distance sha
 const AUTO_BRIDGE_RADIUS_M   = 400;  // lift-top → lift-base gap filler (smaller than before
                                      // because junctions handle most within-resort connectivity)
 
+// Mid-piste junctions (needs `geometry`, from scripts/enrich-osm-source.js):
+// OSM pistes routinely end *on* another piste part-way along it, or run past
+// a lift station without ending there. Endpoint clustering alone can't see
+// either, so those pistes are split at the touching vertex.
+const T_JUNCTION_RADIUS_M    = 25;   // another piste's endpoint this close to a piste's line joins it
+const MID_STATION_RADIUS_M   = 50;   // a lift station this close to a piste's line is served by it
+const END_EXCLUSION_M        = 40;   // ...unless it's at the piste's own ends (endpoint clustering covers those)
+
+// Direction (needs `elev_*`, also from enrich-osm-source.js): a piste whose
+// ends differ by at least this much runs downhill, regardless of how the OSM
+// way was drawn. Below it, the lift-proximity evidence below decides, and a
+// flat `connection` (a link path) is usable both ways.
+const DOWNHILL_MIN_DROP_M    = 15;
+// Auto-bridges are skied, so they mustn't climb more than DEM noise.
+const AUTO_BRIDGE_MAX_CLIMB_M = 10;
+
 const EXCLUDED_RESORTS = new Set(['Champoussin']); // too isolated to add value
 const SWISS_RESORTS    = new Set(['Champery', 'Les Crosets', 'Morgins']);
 
@@ -139,6 +155,70 @@ for (let i = 0; i < pisteArr.length; i++) {
   }
 }
 
+// Step 3: mid-piste junctions. For each piste with a full polyline, find the
+// other pistes' endpoints and the lift stations that touch it part-way along,
+// and add a split point there (merged with whatever touches it). Splits are
+// ordered by distance along the piste so its edges can be chained below.
+const splitsOf = new Map(); // piste id → [{ key, s }] sorted by s (metres along the piste)
+{
+  // Local flat projection: fine at the few-hundred-metre scale of one piste.
+  const M_PER_DEG_LAT = 111_320;
+  const endpointPts = [...pistePts.entries()];
+  const stationPts  = [...liftPts.entries()];
+
+  for (const piste of pistes) {
+    const g = piste.geometry;
+    if (!g || g.length < 2) continue;
+    const mLon = M_PER_DEG_LAT * Math.cos(g[0][0] * Math.PI / 180);
+    const xy  = g.map(([lat, lon]) => [lon * mLon, lat * M_PER_DEG_LAT]);
+    const cum = [0];
+    for (let i = 1; i < xy.length; i++) cum.push(cum[i - 1] + Math.hypot(xy[i][0] - xy[i - 1][0], xy[i][1] - xy[i - 1][1]));
+    const total = cum[cum.length - 1];
+    if (total < 2 * END_EXCLUSION_M) continue;
+    const pad = MID_STATION_RADIUS_M / M_PER_DEG_LAT * 1.5;
+    const lats = g.map(p => p[0]), lons = g.map(p => p[1]);
+    const box = [Math.min(...lats) - pad, Math.max(...lats) + pad, Math.min(...lons) - pad * 1.5, Math.max(...lons) + pad * 1.5];
+
+    // Distance from a point to the polyline, and where along it that falls.
+    function locate(pt) {
+      const q = [pt.lon * mLon, pt.lat * M_PER_DEG_LAT];
+      let best = { d: Infinity, s: 0, lat: 0, lon: 0 };
+      for (let i = 0; i < xy.length - 1; i++) {
+        const [ax, ay] = xy[i], [bx, by] = xy[i + 1];
+        const dx = bx - ax, dy = by - ay, len2 = dx * dx + dy * dy;
+        const t = len2 ? Math.max(0, Math.min(1, ((q[0] - ax) * dx + (q[1] - ay) * dy) / len2)) : 0;
+        const d = Math.hypot(ax + t * dx - q[0], ay + t * dy - q[1]);
+        if (d < best.d) best = { d, s: cum[i] + t * Math.sqrt(len2), lat: (ay + t * dy) / M_PER_DEG_LAT, lon: (ax + t * dx) / mLon };
+      }
+      return best;
+    }
+
+    const hits = [];
+    const consider = (id, pt, radius) => {
+      if (pt.lat < box[0] || pt.lat > box[1] || pt.lon < box[2] || pt.lon > box[3]) return;
+      const at = locate(pt);
+      if (at.d <= radius && at.s >= END_EXCLUSION_M && total - at.s >= END_EXCLUSION_M) hits.push({ id, ...at });
+    };
+    for (const [id, pt] of endpointPts) if (pt.pisteId !== piste.id) consider(id, pt, T_JUNCTION_RADIUS_M);
+    for (const [id, pt] of stationPts) consider(id, pt, MID_STATION_RADIUS_M);
+    if (!hits.length) continue;
+
+    // Hits close together along the piste share one split point.
+    hits.sort((a, b) => a.s - b.s);
+    const splits = [];
+    for (const h of hits) {
+      const last = splits[splits.length - 1];
+      if (last && h.s - last.s <= PISTE_CLUSTER_RADIUS_M) { uf.union(last.key, h.id); continue; }
+      const key = `piste_${piste.id}_s${splits.length}`;
+      pistePts.set(key, { lat: h.lat, lon: h.lon, pisteId: piste.id });
+      uf.add(key);
+      uf.union(key, h.id);
+      splits.push({ key, s: h.s });
+    }
+    splitsOf.set(piste.id, splits);
+  }
+}
+
 // ── Determine piste direction from OSM edge evidence ──────────────────────────
 // 'top_start' or 'base_end' confirm the way direction is downhill (start→end).
 // 'top_end'   suggests the way is reversed.  We use this to correct edges.
@@ -150,6 +230,17 @@ for (const e of osmEdges) {
   if (e.lift_station === 'base' && e.piste_end === 'end')   pisteDir.set(e.piste_id, 'correct');
   if (e.lift_station === 'top'  && e.piste_end === 'end' && !pisteDir.has(e.piste_id))
     pisteDir.set(e.piste_id, 'reversed');
+}
+
+/** 'correct' (start → end), 'reversed', or 'both' — elevation first, OSM evidence as fallback. */
+function directionOf(piste) {
+  if (piste.elev_start != null && piste.elev_end != null) {
+    const drop = piste.elev_start - piste.elev_end;
+    if (drop >= DOWNHILL_MIN_DROP_M)  return 'correct';
+    if (-drop >= DOWNHILL_MIN_DROP_M) return 'reversed';
+    if (piste.piste_type === 'connection') return 'both';
+  }
+  return pisteDir.get(piste.id) ?? 'correct';
 }
 
 // ── Build node and connection maps ───────────────────────────────────────────
@@ -189,19 +280,21 @@ for (const lift of usedLifts) {
 for (const piste of pistes) {
   if (!piste.start?.lat || !piste.end?.lat) continue;
 
-  const startKey = `piste_${piste.id}_start`;
-  const endKey   = `piste_${piste.id}_end`;
+  // The piste as a chain of cluster reps: start → any mid-piste splits → end.
+  const chain = [`piste_${piste.id}_start`, ...(splitsOf.get(piste.id) ?? []).map(s => s.key), `piste_${piste.id}_end`]
+    .map(k => uf.find(k))
+    .filter((rep, i, arr) => i === 0 || rep !== arr[i - 1]);
+  if (chain.length < 2) continue; // piste too short / collapsed into one cluster
 
-  let fromRep = uf.find(startKey);
-  let toRep   = uf.find(endKey);
-  if (fromRep === toRep) continue; // piste too short / collapsed into one cluster
-
-  // Apply direction correction for known-reversed piste ways
-  if (pisteDir.get(piste.id) === 'reversed') [fromRep, toRep] = [toRep, fromRep];
+  const dir = directionOf(piste);
+  if (dir === 'reversed') chain.reverse();
 
   const difficulty = mapDiff(piste.difficulty);
   const name       = piste.name ?? `Slope (${difficulty})`;
-  addEdge(fromRep, toRep, name, 'slope', difficulty);
+  for (let i = 0; i < chain.length - 1; i++) {
+    addEdge(chain[i], chain[i + 1], name, 'slope', difficulty);
+    if (dir === 'both') addEdge(chain[i + 1], chain[i], name, 'slope', difficulty);
+  }
 }
 
 // ── Manual cross-sector edges ─────────────────────────────────────────────────
@@ -512,6 +605,8 @@ while (changed && passes < 10) {
       if (compOf.get(bRep) === cA) continue;
       const d = haversine(liftA.top_station, liftB.base_station);
       if (d > AUTO_BRIDGE_RADIUS_M) continue;
+      if (liftA.elev_top != null && liftB.elev_base != null
+          && liftB.elev_base - liftA.elev_top > AUTO_BRIDGE_MAX_CLIMB_M) continue;
       const name = `Traverse to ${liftB.name ?? liftB.id}`;
       if (!addEdge(tRep, bRep, name, 'slope', 'green')) continue; // false = already added
       bridgesAdded++; changed = true;
