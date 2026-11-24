@@ -1,4 +1,4 @@
-const CACHE_NAME = 'chemins-du-soleil-v39';
+const CACHE_NAME = 'chemins-du-soleil-v40';
 
 const PRECACHE = [
   '/',
@@ -38,6 +38,7 @@ const PRECACHE = [
   '/src/leaflet-loader.js',
   '/src/compass.js',
   '/src/meetup.js',
+  '/src/analytics.js',
   '/src/setup.js',
   '/src/reference.js',
   '/src/reference-page.js',
@@ -95,6 +96,9 @@ self.addEventListener('activate', (event) => {
 const NETWORK_ONLY_ORIGINS = [
   'https://api.open-meteo.com',
   'https://open-piste.raed.workers.dev',
+  // Anonymous usage counting (src/analytics.js): never cache the counter script or its hits.
+  'https://gc.zgo.at',
+  'https://chemins-soleil.goatcounter.com',
 ];
 
 self.addEventListener('fetch', (event) => {

@@ -5,6 +5,7 @@
 import { t, getLocale, setLocale, SUPPORTED_LOCALES, LANGUAGE_NAMES } from './i18n.js';
 import './theme.js';
 import { ICONS } from './icons.js';
+import { trackView } from './analytics.js';
 
 const APP_URL = 'https://chemins-du-soleil.diek.us/';
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=us.diek.chemins';
@@ -193,6 +194,7 @@ function revealHash() {
 
 render();
 if (location.hash) revealHash();
+trackView('/setup');
 
 // Jump links: open the section even when its hash is already in the URL
 // (clicking the same link twice doesn't fire hashchange).

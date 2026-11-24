@@ -73,14 +73,15 @@
 
     <div>
       <h1 class="section-label">Privacy Policy</h1>
-      <p class="legal-updated">Last updated: 26 August 2026</p>
+      <p class="legal-updated">Last updated: 24 November 2026</p>
     </div>
 
     <section>
       <p>
         Chemins du Soleil is a ski route-finder for the Portes du Soleil resort area.
         There is no account to create, no sign-in, and no server run by us that stores
-        your personal data. This page explains what little data the app does touch,
+        your personal data. The only thing we collect is an anonymous visit count,
+        described below. This page explains what little data the app does touch,
         and where it goes.
       </p>
     </section>
@@ -145,6 +146,32 @@
     </section>
 
     <section>
+      <h2>Anonymous usage statistics</h2>
+      <p>
+        To know roughly how many people use the app and which parts are useful, it
+        sends anonymous counts to <strong>GoatCounter</strong> (goatcounter.com), a
+        privacy-focused, open-source analytics service. Each count contains only:
+      </p>
+      <ul>
+        <li>which screen was opened (for example "Resorts" or "Route"), or a simple action such as "route searched" or "language changed", with the names of the lifts involved in a search;</li>
+        <li>the page that linked to the app, if any, and your browser, operating system, screen size and language, as your browser sends them anyway.</li>
+      </ul>
+      <p>
+        GoatCounter works out your country from your IP address and then discards it.
+        It sets <strong>no cookies</strong> and stores nothing on your device. To avoid
+        counting the same visit twice, it keeps a hash derived from your IP address and
+        browser for a few hours, with a key that changes daily, so visits can't be linked
+        from one day to the next or traced back to you. Your location, the coordinates in
+        a "Meet up" link and anything you type are <strong>never</strong> sent.
+      </p>
+      <p>
+        If your browser sends a Do Not Track or Global Privacy Control signal, the app
+        doesn't send any counts at all. Content blockers that block GoatCounter have the
+        same effect, and the app works exactly the same either way.
+      </p>
+    </section>
+
+    <section>
       <h2>Offline app cache</h2>
       <p>
         As an installable app, Chemins du Soleil uses a service worker to cache its
@@ -158,7 +185,7 @@
       <h2>What we don't do</h2>
       <ul>
         <li>No accounts, no sign-in.</li>
-        <li>No cookies, no analytics, no advertising, no trackers.</li>
+        <li>No cookies, no advertising, no trackers, and no analytics beyond the anonymous visit count above.</li>
         <li>No data is sold, shared, or used for any purpose beyond the live lookups above.</li>
       </ul>
     </section>
@@ -193,5 +220,9 @@
     <small>&copy; diekus 2026</small>
   </footer>
 
+  <script type="module">
+    import { trackView } from './src/analytics.js';
+    trackView('/privacy');
+  </script>
 </body>
 </html>

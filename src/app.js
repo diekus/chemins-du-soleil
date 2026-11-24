@@ -8,8 +8,9 @@ import { relativeTime } from './format.js';
 import { FLAGS } from './countries.js';
 import { ICONS, WEATHER_ICONS } from './icons.js';
 import { animateHeightChange } from './animate-height.js';
-import { initLocale, t } from './i18n.js';
+import { initLocale, t, getLocale } from './i18n.js';
 import { DIFFICULTY_NAME_KEY } from './route-view.js';
+import { trackView, trackEvent } from './analytics.js';
 import './components/station-input.js';
 import './components/difficulty-selector.js';
 import './components/preference-selector.js';
@@ -419,10 +420,23 @@ function showView(view, params) {
   if (view === 'routeDetail') showRouteDetail(params);
 }
 
+// Last hash reported to analytics, so a re-render of the same view (e.g. on
+// a locale change) isn't counted as a second visit.
+let lastTrackedHash = null;
+
 function render() {
   const { view, params, meet } = parseHash();
   showView(view, params);
   if (meet) receiveMeet(meet);
+
+  // "" and "#home" (or an unknown hash) are the same Home view.
+  const trackedHash = view === 'home' && !meet ? '#home' : location.hash;
+  if (trackedHash !== lastTrackedHash) {
+    lastTrackedHash = trackedHash;
+    // Fixed paths only: never the route/meet query strings (meet links carry coordinates).
+    const path = meet ? '/meet' : view === 'routeDetail' ? '/route' : view === 'home' ? '/' : `/${view}`;
+    trackView(path, meet ? 'Meet up link' : view);
+  }
 }
 
 let graph;
@@ -559,6 +573,8 @@ form.addEventListener('submit', e => {
 
   // findRoutes is synchronous — set result immediately.
   resultEl.routes = findRoutes(graph, startId, endId, difficulty, 3, preference);
+  trackEvent(resultEl.routes.length ? 'search-route' : 'search-route-none',
+    `${stationLabel(startId)} → ${stationLabel(endId)}`);
 
   // Remembered so a card click below can address the route's own page without
   // re-asking the form for values the user has already collapsed away.
@@ -735,6 +751,7 @@ async function findMeetRoute() {
   resultEl.nodes            = nodeMap;
   resultEl.preferDifficulty = preference;
   resultEl.routes           = result.routes;
+  trackEvent(result.routes?.length ? 'search-meetup' : 'search-meetup-none');
 
   lastSearch = { startId: result.startId, endId: result.endId, difficulty, preference, meet: target };
   if (result.startId) collapseSearchForm(lastSearch);
@@ -756,6 +773,7 @@ meetShareBtn.addEventListener('click', async () => {
     try {
       await shareMeetUrl(url);
       meetShareStatusEl.textContent = '';
+      trackEvent('meet-share');
     } catch (err) {
       if (err?.name === 'AbortError') { meetShareStatusEl.textContent = ''; return; }
       console.error('Location share failed:', err);
@@ -785,6 +803,7 @@ meetShareBtn.addEventListener('click', async () => {
     try {
       await shareMeetUrl(url);
       meetShareStatusEl.textContent = '';
+      trackEvent('meet-share');
     } catch (err) {
       if (err?.name === 'AbortError') { meetShareStatusEl.textContent = ''; return; } // share sheet dismissed
       if (err?.name === 'NotAllowedError') {
@@ -806,9 +825,17 @@ meetShareBtn.addEventListener('click', async () => {
 
 applyStaticTranslations();
 window.addEventListener('localechange', () => {
+  trackEvent(`language-${getLocale()}`);
   applyStaticTranslations();
   render(); // re-render the current view (route labels, etc.) in the new language
 });
+
+// ── Usage stats ──────────────────────────────────────────────────────────────
+
+if (matchMedia('(display-mode: standalone), (display-mode: window-controls-overlay)').matches) {
+  trackEvent('launch-installed');
+}
+window.addEventListener('appinstalled', () => trackEvent('app-installed'));
 
 // ── Start ────────────────────────────────────────────────────────────────────
 

@@ -6,6 +6,7 @@
 import { t } from './i18n.js';
 import './theme.js';
 import { ICONS, liftIcon } from './icons.js';
+import { trackView } from './analytics.js';
 import { FLAGS, COUNTRY_NAME } from './countries.js';
 import { DIFFICULTY_NAME_KEY } from './route-view.js';
 import { buildReference, SLOPE_DIFFICULTIES } from './reference.js';
@@ -161,5 +162,6 @@ try {
 
 render();
 if (location.hash) revealHash();
+trackView('/reference');
 window.addEventListener('hashchange', revealHash);
 window.addEventListener('localechange', render);
