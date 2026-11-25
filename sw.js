@@ -1,4 +1,4 @@
-const CACHE_NAME = 'chemins-du-soleil-v40';
+const CACHE_NAME = 'chemins-du-soleil-v41';
 
 const PRECACHE = [
   '/',

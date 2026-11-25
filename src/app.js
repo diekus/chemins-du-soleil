@@ -572,8 +572,10 @@ form.addEventListener('submit', e => {
   resultEl.routes           = null;
 
   // findRoutes is synchronous — set result immediately.
-  resultEl.routes = findRoutes(graph, startId, endId, difficulty, 3, preference);
-  trackEvent(resultEl.routes.length ? 'search-route' : 'search-route-none',
+  // (<route-result> exposes only a `routes` setter, so keep our own reference.)
+  const routes = findRoutes(graph, startId, endId, difficulty, 3, preference);
+  resultEl.routes = routes;
+  trackEvent(routes.length ? 'search-route' : 'search-route-none',
     `${stationLabel(startId)} → ${stationLabel(endId)}`);
 
   // Remembered so a card click below can address the route's own page without
