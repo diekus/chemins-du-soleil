@@ -1,4 +1,4 @@
-const CACHE_NAME = 'chemins-du-soleil-v42';
+const CACHE_NAME = 'chemins-du-soleil-v43';
 
 const PRECACHE = [
   '/',
@@ -34,6 +34,7 @@ const PRECACHE = [
   '/src/i18n.js',
   '/src/theme.js',
   '/src/route-view.js',
+  '/src/steps.js',
   '/src/animate-height.js',
   '/src/leaflet-loader.js',
   '/src/compass.js',

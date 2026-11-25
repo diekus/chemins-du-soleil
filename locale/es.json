@@ -70,6 +70,9 @@
   "route.slopeAriaLabel": "pista {difficulty}",
   "route.stopsAriaLabel_one": "{count} parada",
   "route.stopsAriaLabel_other": "{count} paradas",
+  "route.verticalMetres": "{metres} m",
+  "route.descentAria": "Desciende unos {metres} metros",
+  "route.ascentAria": "Sube unos {metres} metros",
 
   "weather.liveLocation": "Ubicación en vivo",
   "weather.selectedResort": "Estación seleccionada",

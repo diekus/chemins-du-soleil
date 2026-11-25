@@ -1,6 +1,9 @@
 import { FLAGS, COUNTRY_NAME } from './countries.js';
 import { ICONS, liftIcon } from './icons.js';
-import { t } from './i18n.js';
+import { t, getLocale } from './i18n.js';
+import { dedupeSteps, verticalChange } from './steps.js';
+
+export { dedupeSteps, verticalChange };
 
 export const DIFFICULTY_NAME_KEY = {
   green: 'common.difficultyGreen',
@@ -16,15 +19,16 @@ export const DIFFICULTY_NAME_KEY = {
  * only has one implementation to keep in sync.
  */
 
-/** Collapses consecutive steps that are actually the same piste split by a routing junction. */
-export function dedupeSteps(steps, nodes) {
-  return steps.filter((s, i, arr) => {
-    if (i === 0) return true;
-    const p = arr[i - 1];
-    const sCountry = nodes.get(s.from)?.country ?? null;
-    const pCountry = nodes.get(p.from)?.country ?? null;
-    return !(s.name === p.name && sCountry === pCountry && s.difficulty === p.difficulty);
-  });
+function verticalHTML(step, nodes) {
+  const d = verticalChange(step, nodes);
+  if (d === null) return '';
+  const metres = new Intl.NumberFormat(getLocale()).format(Math.abs(d));
+  const descent = d < 0;
+  return `
+      <span class="step-vertical" aria-label="${t(descent ? 'route.descentAria' : 'route.ascentAria', { metres })}">
+        <span class="step-vertical-icon" aria-hidden="true">${descent ? ICONS.descent : ICONS.ascent}</span>
+        <span aria-hidden="true">${t('route.verticalMetres', { metres })}</span>
+      </span>`;
 }
 
 export function stepHTML(step, nodes) {
@@ -45,7 +49,7 @@ export function stepHTML(step, nodes) {
   return `
     <li class="route-step"${diffAttr}>
       <span class="step-icon" aria-hidden="true">${icon}</span>
-      <span class="step-name">${step.name}</span>
+      <span class="step-name">${step.name}</span>${verticalHTML(step, nodes)}
       <span class="step-flag" aria-label="${flagLabel}">${flag}</span>
       ${diffDot}
     </li>

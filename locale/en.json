@@ -70,6 +70,9 @@
   "route.slopeAriaLabel": "{difficulty} slope",
   "route.stopsAriaLabel_one": "{count} stop",
   "route.stopsAriaLabel_other": "{count} stops",
+  "route.verticalMetres": "{metres} m",
+  "route.descentAria": "Descends about {metres} metres",
+  "route.ascentAria": "Climbs about {metres} metres",
 
   "weather.liveLocation": "Live location",
   "weather.selectedResort": "Selected resort",

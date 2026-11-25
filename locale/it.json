@@ -70,6 +70,9 @@
   "route.slopeAriaLabel": "pista {difficulty}",
   "route.stopsAriaLabel_one": "{count} tappa",
   "route.stopsAriaLabel_other": "{count} tappe",
+  "route.verticalMetres": "{metres} m",
+  "route.descentAria": "Scende di circa {metres} metri",
+  "route.ascentAria": "Sale di circa {metres} metri",
 
   "weather.liveLocation": "Posizione in tempo reale",
   "weather.selectedResort": "Stazione selezionata",
