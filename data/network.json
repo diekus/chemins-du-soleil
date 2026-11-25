@@ -1,7 +1,7 @@
 {
   "_meta": {
     "season": "2024/25",
-    "scope": "Portes du Soleil — OSM-derived network with slope junction nodes and per-node coordinates. 190 lifts, 402 slope junctions, 2161 directed edges. Schema v3.",
+    "scope": "Portes du Soleil — OSM-derived network with slope junction nodes and per-node coordinates. 190 lifts, 402 slope junctions, 2166 directed edges. Schema v3.",
     "schema_version": "3"
   },
   "nodes": [
@@ -1264,6 +1264,12 @@
           "name": "Slope (red)",
           "type": "slope",
           "difficulty": "red"
+        },
+        {
+          "to": "lift_24899602_top",
+          "name": "Traverse to Sépaya",
+          "type": "slope",
+          "difficulty": "green"
         }
       ]
     },
@@ -5144,6 +5150,12 @@
           "name": "Accès Braitaz",
           "type": "slope",
           "difficulty": "blue"
+        },
+        {
+          "to": "lift_31770794_base",
+          "name": "Panthiaz",
+          "type": "lift",
+          "difficulty": "silver"
         }
       ]
     },
@@ -7189,6 +7201,12 @@
           "name": "Gabelou",
           "type": "lift",
           "difficulty": "silver"
+        },
+        {
+          "to": "lift_325533218_base",
+          "name": "Access Portes du Soleil chairlift",
+          "type": "slope",
+          "difficulty": "green"
         }
       ]
     },
@@ -7230,6 +7248,12 @@
           "name": "Slope (blue)",
           "type": "slope",
           "difficulty": "blue"
+        },
+        {
+          "to": "lift_325533365_base",
+          "name": "Gabelou",
+          "type": "lift",
+          "difficulty": "silver"
         }
       ]
     },
@@ -14729,7 +14753,14 @@
       "lift_type": null,
       "lat": 46.3066292,
       "lon": 6.8207461,
-      "connections": []
+      "connections": [
+        {
+          "to": "jct_0130",
+          "name": "Slope (green)",
+          "type": "slope",
+          "difficulty": "green"
+        }
+      ]
     },
     {
       "id": "jct_0094",

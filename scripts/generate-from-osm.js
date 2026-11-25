@@ -516,6 +516,39 @@ const CHATEL_SECTOR = [
   // the Ardent ↔ Châtel corridor above.
   { from: liftTopId(1009693206), to: liftBaseId(1009693206),
     name: 'La Belette', type: 'slope', difficulty: 'green' },
+
+  // Vonnes: the Gabelou chairlift links Linga with Vonnes, where the Portes du
+  // Soleil chairlift (55 m away) climbs to Super-Châtel. "A l'arrivée à
+  // Vonnes, aucune piste n'est accessible, la seule remontée empruntable étant
+  // le télésiège des Portes du Soleil", and Gabelou carries skiers "de Vonnes
+  // au Linga et vice-versa" — it is "empruntable dans les deux sens"
+  // (remontees-mecaniques.net/bdd/reportage-tsd4-du-gabelou-poma-5404.html).
+  // OSM has only the Vonnes → Linga direction and no link between the two
+  // bases, which left both lifts unreachable.
+  { from: liftTopId(325533365), to: liftBaseId(325533365),
+    name: 'Gabelou', type: 'lift', difficulty: 'silver' },
+  { from: liftBaseId(325533365), to: liftBaseId(325533218),
+    name: 'Access Portes du Soleil chairlift', type: 'slope', difficulty: 'green' },
+];
+
+// ── La Chapelle-d'Abondance: Panthiaz gondola ─────────────────────────────────
+// The Panthiaz gondola climbs from just outside La Chapelle-d'Abondance
+// village to the Braitaz/Torgon side of the domain, and no piste comes back to
+// its base: "La redescente sur la station village s'effectue en empruntant la
+// télécabine de la Panthiaz" (passionportesdusoleil.com/la-chapelle-dabondance).
+// Same ride-down pattern as Petit Châtel; without it the base was unreachable.
+const LA_CHAPELLE_SECTOR = [
+  { from: liftTopId(31770794), to: liftBaseId(31770794),
+    name: 'Panthiaz', type: 'lift', difficulty: 'silver' },
+
+  // The Blanchot (from Braitaz's summit) and Marmotte pistes both end at the
+  // start of OSM way 383420833, a short unnamed novice link that OSM traces on
+  // to the head of the Belette and Chemin Rural pistes, which lead to the
+  // Panthiaz summit. Its elevation data puts that far end 23 m higher, so the
+  // generator reversed it, leaving the two pistes in a dead end and the
+  // Panthiaz summit cut off from the domain. Keep OSM's direction.
+  { from: 'piste_383420833_start', to: 'piste_383420833_end',
+    name: 'Slope (green)', type: 'slope', difficulty: 'green' },
 ];
 
 // ── Morgins connectivity ──────────────────────────────────────────────────────
@@ -529,6 +562,16 @@ const MORGINS_SECTOR = [
   // lift network (Pointe de l'Au, Corbeau, Sepaya, etc.) hangs off of.
   { from: 'piste_8216118_end', to: liftBaseId(198298433),
     name: 'Traverse to Bochasses', type: 'slope', difficulty: 'blue' },
+
+  // Champeys summit (1708 m) → Sépaya I summit (1695 m), 200 m apart at the
+  // top of Champoussin. The Sépaya beginner piste starts at Sépaya I's summit
+  // and runs down to the Sépaya I/II bases, which are "accessible only by
+  // skiing" (regiondentsdumidi.ch/en/5402392-sepaya-i-drag-lift-50122). OSM's
+  // short link piste between the two summits (way 29289836, a near-flat 9 m)
+  // is traced only away from Sépaya, so nothing in the domain could reach
+  // the Sépaya piste or lifts.
+  { from: liftTopId(8216644), to: liftTopId(24899602),
+    name: 'Traverse to Sépaya', type: 'slope', difficulty: 'green' },
 
   // Écottis summit (in Morgins' Corbeau sector) → Chalet Neuf 1 summit (Châtel):
   // OSM traces the reverse (Châtel → Morgins) direction of this border
@@ -654,7 +697,7 @@ ensureNode('saint-jean-daulps');
 ensureNode('chatel-village');
 ensureNode('morgins-village');
 
-for (const e of [...CROSS_SECTOR, ...SJA_SECTOR, ...CHATEL_SECTOR, ...MORGINS_SECTOR, ...MORGINS_VILLAGE_SECTOR, ...CHATEL_VILLAGE_SECTOR, ...MORZINE_VILLAGE_GONDOLAS, ...LES_GETS_VILLAGE_SECTOR]) {
+for (const e of [...CROSS_SECTOR, ...SJA_SECTOR, ...CHATEL_SECTOR, ...LA_CHAPELLE_SECTOR, ...MORGINS_SECTOR, ...MORGINS_VILLAGE_SECTOR, ...CHATEL_VILLAGE_SECTOR, ...MORZINE_VILLAGE_GONDOLAS, ...LES_GETS_VILLAGE_SECTOR]) {
   // Village nodes are not in UF — use their ID directly
   const fromRep = uf.find(e.from) ?? e.from;
   const toRep   = uf.find(e.to)   ?? e.to;
