@@ -83,7 +83,12 @@ function haversine(a, b) {
 // ── Union-Find ────────────────────────────────────────────────────────────────
 
 class UF {
-  constructor() { this.p = new Map(); this.rank = new Map(); }
+  constructor() {
+    this.p = new Map(); this.rank = new Map();
+    // Lift-station pairs whose clusters touched but weren't merged (see union);
+    // linked by short traverses in "Lift-station interchanges" below.
+    this.interchanges = [];
+  }
   add(id)       { if (!this.p.has(id)) { this.p.set(id, id); this.rank.set(id, 0); } }
   find(id) {
     if (this.p.get(id) !== id) this.p.set(id, this.find(this.p.get(id)));
@@ -93,8 +98,10 @@ class UF {
     const ra = this.find(a), rb = this.find(b);
     if (ra === rb) return;
     const aIsLift = ra.startsWith('lift_'), bIsLift = rb.startsWith('lift_');
-    // Never merge two different lift station clusters — each lift node stays distinct
-    if (aIsLift && bIsLift) return;
+    // Never merge two different lift station clusters — each lift node stays
+    // distinct — but remember they meet here: the piste endpoints between them
+    // can only join one of the two, which would otherwise strand the other.
+    if (aIsLift && bIsLift) { this.interchanges.push([ra, rb]); return; }
     // Lift station wins: piste endpoints absorb into the lift cluster
     if (aIsLift) { this.p.set(rb, ra); return; }
     if (bIsLift) { this.p.set(ra, rb); return; }
@@ -137,11 +144,41 @@ for (const id of liftPts.keys())  uf.add(id);
 for (const id of pistePts.keys()) uf.add(id);
 
 // Step 1: merge lift stations with nearby piste endpoints (from OSM proximity edges)
-for (const e of osmEdges) {
-  if (!usedLiftIds.has(e.lift_id)) continue;
-  const liftId = e.lift_station === 'top' ? liftTopId(e.lift_id) : liftBaseId(e.lift_id);
-  const pistId = e.piste_end   === 'start' ? `piste_${e.piste_id}_start` : `piste_${e.piste_id}_end`;
-  if (pistePts.has(pistId)) uf.union(liftId, pistId);
+// A piste end near several stations joins the nearest one (merge order would
+// otherwise decide, e.g. sending the Zore pistes to Zore's base 76 m away
+// instead of Super-Morzine's top 22 m away); the others are recorded as
+// interchanges with it.
+{
+  const nearby = new Map(); // piste endpoint → Set(lift station)
+  for (const e of osmEdges) {
+    if (!usedLiftIds.has(e.lift_id)) continue;
+    const liftId = e.lift_station === 'top' ? liftTopId(e.lift_id) : liftBaseId(e.lift_id);
+    const pistId = e.piste_end   === 'start' ? `piste_${e.piste_id}_start` : `piste_${e.piste_id}_end`;
+    if (!pistePts.has(pistId)) continue;
+    if (!nearby.has(pistId)) nearby.set(pistId, new Set());
+    nearby.get(pistId).add(liftId);
+  }
+  const dist = (pistId, station) => haversine(pistePts.get(pistId), liftPts.get(station));
+  const ranked = new Map(); // piste endpoint → its nearby stations, nearest first
+  for (const [pistId, stations] of nearby) {
+    ranked.set(pistId, [...stations].sort((a, b) => dist(pistId, a) - dist(pistId, b)));
+  }
+  // Both ends of one piste must not join the same station (the piste would
+  // collapse to nothing): the end farther from it gives up that station and,
+  // if it has no other, is left to the endpoint clustering in step 2.
+  for (const [pistId, list] of ranked) {
+    if (!pistId.endsWith('_start')) continue;
+    const endId = pistId.replace(/_start$/, '_end');
+    const endList = ranked.get(endId);
+    if (!list.length || !endList?.length || list[0] !== endList[0]) continue;
+    if (dist(pistId, list[0]) <= dist(endId, endList[0])) endList.shift();
+    else list.shift();
+  }
+  for (const [pistId, [nearest, ...others]] of ranked) {
+    if (!nearest) continue;
+    uf.union(nearest, pistId);
+    for (const other of others) uf.interchanges.push([nearest, other]);
+  }
 }
 
 // Step 2: merge piste endpoints that are within PISTE_CLUSTER_RADIUS_M of each other
@@ -296,6 +333,43 @@ for (const piste of pistes) {
     if (dir === 'both') addEdge(chain[i + 1], chain[i], name, 'slope', difficulty);
   }
 }
+
+// ── Lift-station interchanges ─────────────────────────────────────────────────
+// Where piste endpoints cluster around two (or more) lift stations — e.g. the
+// Zore and Tétras pistes ending between Zore's base and Super-Morzine's top,
+// 88 m apart — Union-Find can attach them to only one station, leaving the
+// other with no way in or out. Link each such pair with a short traverse,
+// downhill or flat only (same climb limit as the auto-bridges below), so a
+// lift's top is never "skied" back up to its own or another station.
+const INTERCHANGE_MAX_M = 300; // sanity cap: observed pairs are all ≤ ~260 m
+
+function stationInfo(rep) {
+  const m = rep.match(/^lift_(\d+)_(base|top)$/);
+  const lift = m && liftsById.get(Number(m[1]));
+  if (!lift) return null;
+  return {
+    name: lift.name ?? `Lift ${lift.id}`,
+    pt:   m[2] === 'base' ? lift.base_station : lift.top_station,
+    elev: m[2] === 'base' ? lift.elev_base    : lift.elev_top,
+  };
+}
+
+let interchangeLinks = 0;
+{
+  const seen = new Set();
+  for (const [a, b] of uf.interchanges) {
+    const key = [a, b].sort().join('|');
+    if (a === b || seen.has(key)) continue;
+    seen.add(key);
+    const A = stationInfo(a), B = stationInfo(b);
+    if (!A || !B || haversine(A.pt, B.pt) > INTERCHANGE_MAX_M) continue;
+    const climbOk = (from, to) => from.elev == null || to.elev == null
+      || to.elev - from.elev <= AUTO_BRIDGE_MAX_CLIMB_M;
+    if (climbOk(A, B) && addEdge(a, b, `Traverse to ${B.name}`, 'slope', 'green')) interchangeLinks++;
+    if (climbOk(B, A) && addEdge(b, a, `Traverse to ${A.name}`, 'slope', 'green')) interchangeLinks++;
+  }
+}
+console.log(`  → Linked ${interchangeLinks} lift-station interchange traverses`);
 
 // ── Manual cross-sector edges ─────────────────────────────────────────────────
 // These cover gaps where the OSM 100 m proximity radius doesn't reach across
@@ -485,6 +559,13 @@ const MORGINS_VILLAGE_SECTOR = [
     name: 'Access Corbeau chairlift', type: 'slope', difficulty: 'green' },
   { from: liftBaseId(24898742), to: 'morgins-village',
     name: 'Return to Morgins village', type: 'slope', difficulty: 'green' },
+  // Espace du Géant, the beginner area (Géant and Snowly drag lifts) "located
+  // in the village of Morgins" (valais.ch, Espace du Géant – zone de ski pour
+  // débutants); OSM has no piste linking it to the rest of the network.
+  { from: 'morgins-village', to: liftBaseId(151647586),
+    name: 'Access Géant beginner area', type: 'slope', difficulty: 'green' },
+  { from: liftBaseId(151647586), to: 'morgins-village',
+    name: 'Return to Morgins village', type: 'slope', difficulty: 'green' },
 ];
 
 // ── Châtel village transfer (Linga/Pré-la-Joux sector ↔ Super-Châtel/Barbossine
@@ -511,6 +592,12 @@ const CHATEL_VILLAGE_SECTOR = [
     name: 'Access Linga chairlift', type: 'slope', difficulty: 'green' },
   { from: liftBaseId(1010800534), to: 'chatel-village',
     name: 'Return to Châtel village', type: 'slope', difficulty: 'green' },
+  // Petit Châtel chairlift (from the Petit-Châtel hamlet up to Barbossine):
+  // "no official piste comes back to Châtel, so the chairlift is open for the
+  // descent" (haute-savoie-tourisme.org/334109-telesiege-du-petit-chatel).
+  // Without it the lift's base was unreachable.
+  { from: liftTopId(29289470), to: liftBaseId(29289470),
+    name: 'Petit Châtel', type: 'lift', difficulty: 'silver' },
 ];
 
 // ── Morzine village gondolas (Pléney ↔ Super-Morzine) ─────────────────────────
@@ -531,6 +618,14 @@ const MORZINE_VILLAGE_GONDOLAS = [
     name: 'Access Super-Morzine gondola', type: 'slope', difficulty: 'green' },
   { from: liftBaseId(53165460), to: 'morzine-village',
     name: 'Return to Morzine village', type: 'slope', difficulty: 'green' },
+  // There's no piste from Super-Morzine down to the village: skiers coming
+  // back from Avoriaz (Zore/Tétras pistes → Super-Morzine top) ride the
+  // gondola down — "you can get to Morzine by taking Zore chairlift and Super
+  // Morzine cablecar" (en.morzine-avoriaz.com/routes/ridges-of-super-morzine-
+  // and-lake-montriond-belvedere). Without it the main domain had no way back
+  // into Morzine at all.
+  { from: liftTopId(53165460), to: liftBaseId(53165460),
+    name: 'Super-Morzine', type: 'lift', difficulty: 'silver' },
 ];
 
 // ── Les Gets village transfer (Chavannes ↔ Mont Chéry) ────────────────────────
@@ -570,39 +665,31 @@ for (const e of [...CROSS_SECTOR, ...SJA_SECTOR, ...CHATEL_SECTOR, ...MORGINS_SE
 
 // ── Auto-bridge lift-to-lift gaps ─────────────────────────────────────────────
 // Piste junctions now handle most within-resort connectivity, but a few lift
-// tops may still be disconnected from nearby lift bases. Bridge gaps ≤ threshold.
+// tops may still be cut off from nearby lift bases. Bridge gaps ≤ threshold,
+// but only where the top can't already reach that base: the graph is directed,
+// so a lift you can ski *into* but not *out of* is just as stuck as one with
+// no pistes at all — and a top that already reaches the base needs no shortcut.
 
-function buildCompOf(conns) {
-  const compOf = new Map();
-  let cId = 0;
-  for (const start of conns.keys()) {
-    if (compOf.has(start)) continue;
-    const vis = new Set([start]), q = [start];
-    while (q.length) {
-      const curr = q.shift();
-      for (const e of conns.get(curr) ?? []) {
-        if (!vis.has(e.to) && conns.has(e.to)) { vis.add(e.to); q.push(e.to); }
-      }
+function reachableFrom(start, conns) {
+  const seen = new Set([start]), queue = [start];
+  while (queue.length) {
+    for (const e of conns.get(queue.pop()) ?? []) {
+      if (!seen.has(e.to)) { seen.add(e.to); queue.push(e.to); }
     }
-    for (const id of vis) compOf.set(id, cId);
-    cId++;
   }
-  return compOf;
+  return seen;
 }
 
 let bridgesAdded = 0, passes = 0, changed = true;
 while (changed && passes < 10) {
   changed = false; passes++;
-  const compOf = buildCompOf(nodeConns);
   for (const liftA of usedLifts) {
-    const tId = liftTopId(liftA.id);
-    const tRep = uf.find(tId);
-    const cA   = compOf.get(tRep);
+    const tRep  = uf.find(liftTopId(liftA.id));
+    const reach = reachableFrom(tRep, nodeConns); // fresh: includes bridges just added
     for (const liftB of usedLifts) {
       if (liftA.id === liftB.id) continue;
-      const bId  = liftBaseId(liftB.id);
-      const bRep = uf.find(bId);
-      if (compOf.get(bRep) === cA) continue;
+      const bRep = uf.find(liftBaseId(liftB.id));
+      if (reach.has(bRep)) continue;
       const d = haversine(liftA.top_station, liftB.base_station);
       if (d > AUTO_BRIDGE_RADIUS_M) continue;
       if (liftA.elev_top != null && liftB.elev_base != null

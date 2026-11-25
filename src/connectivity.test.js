@@ -62,11 +62,14 @@ test('C1 — every lift can reach, and be reached from, every other lift in its 
   assert.deepEqual(problems, []);
 });
 
+// Loy is Châtel's Club Piou Piou ski-school nursery (a drag lift and a 40 m
+// conveyor), reached only by shuttle bus line 2 — "Loy" stop (chatel.com,
+// Club Piou Piou – Village des Marmottons) — not by any lift or piste.
 test('C2 — only the known shuttle-only sectors are separate from the main domain', () => {
   const separate = parts.slice(1).filter(p => p.length >= 2).map(p => p.map(liftName));
   const sectors = separate.map(names =>
-    ['Grande Terche', 'Crêt Béni', 'Essert'].find(anchor => names.includes(anchor)) ?? names.join(', '));
-  assert.deepEqual(sectors.sort(), ['Crêt Béni', 'Essert', 'Grande Terche']);
+    ['Grande Terche', 'Crêt Béni', 'Essert', 'Loy'].find(anchor => names.includes(anchor)) ?? names.join(', '));
+  assert.deepEqual(sectors.sort(), ['Crêt Béni', 'Essert', 'Grande Terche', 'Loy']);
 });
 
 // Cross-domain itineraries read off the official Portes du Soleil piste maps
