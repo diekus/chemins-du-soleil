@@ -4,6 +4,7 @@ import { getTheme, setTheme, THEMES } from '../theme.js';
 let _uid = 0;
 
 const FEEDBACK_EMAIL = 'apps.by.diekus@proton.me';
+const SUPPORT_URL = 'https://buymeacoffee.com/diekus';
 
 // Web Install API (navigator.install). Only offered where the browser
 // supports it, and hidden when we're already running as the installed app.
@@ -74,6 +75,11 @@ class SettingsPanel extends HTMLElement {
         <p class="settings-hint"><a href="reference.html">${t('settings.referenceLink')}</a></p>
         <p class="settings-hint"><a href="setup.html">${t('setup.otherDevicesLink')}</a></p>
         <p class="settings-hint"><a href="mailto:${FEEDBACK_EMAIL}?subject=${encodeURIComponent('Chemins du Soleil feedback')}">${t('settings.feedbackLink')}</a></p>
+        <div class="form-row settings-support">
+          <span class="form-row-label">${t('settings.supportLabel')}</span>
+          <p class="settings-hint">${t('settings.supportBlurb')}</p>
+          <p class="settings-hint"><a href="${SUPPORT_URL}" target="_blank" rel="noopener"><span aria-hidden="true">☕ </span>${t('settings.supportLink')}</a></p>
+        </div>
       </div>
     `;
 
