@@ -28,6 +28,58 @@ const { lifts, pistes, edges: osmEdges } = JSON.parse(readFileSync(SRC, 'utf8'))
 const { resorts } = JSON.parse(readFileSync(RESORTS_SRC, 'utf8'));
 const resortBySlug = new Map(resorts.map(r => [r.slug, r]));
 
+// ── Corrections from the official resort map ─────────────────────────────────
+// Checked against the Portes du Soleil interactive map (winter.intermaps.com/
+// portes_du_soleil, data feed /portes_du_soleil/data, 2026-11). Each feature
+// there was placed geographically from its panorama SVG position (fitted on
+// ~120 name-matched lift stations, median error ~160 m) and paired with an OSM
+// way only where there's exactly one same-named way close by. Pistes the
+// official map splits into variants (e.g. "Chermillon Bleu" / "Chermillon
+// Supérieure") or where OSM has several same-named ways in different colours
+// are left alone: there's no single way to correct. Applied in memory, so
+// data/portes_du_soleil_graph.json stays a raw OSM extract.
+//
+// Official colour wins over OSM's piste:difficulty (French scale: Très facile
+// = green, Facile = blue, Difficile = red, Très difficile = black).
+const PISTE_DIFFICULTY_CORRECTIONS = {
+  // Avoriaz
+  30481274:   'easy',          // Blanchots — official blue (OSM red)
+  763210751:  'easy',          // Retour Chavanette — official blue (OSM green)
+  23657268:   'intermediate',  // Portes du Soleil — official red (OSM blue)
+  // Châtel
+  800472191:  'easy',          // Douanier — official blue (OSM green)
+  800472192:  'easy',          // Douanier — official blue (OSM green)
+  45726069:   'intermediate',  // Tour de Don — official red (OSM blue)
+  403535675:  'easy',          // Lac Léman — official blue (OSM red)
+  // Les Gets
+  32310289:   'easy',          // Choucas — official blue (OSM green)
+  // Morzine
+  693010445:  'easy',          // Bouchet — official blue (OSM green)
+  693010446:  'easy',          // Bouchet — official blue (OSM green)
+  // Abondance
+  387311517:  'easy',          // Retour Village — official blue (OSM red)
+};
+// OSM names both Cuboré chairlifts plain "Cuboré" (same CAIRN ref); the
+// official map tells them apart by the side they climb from. 29285756 is the
+// one the "Cuboré Montriond" piste ends at.
+const LIFT_NAME_CORRECTIONS = {
+  29285752: 'Cuboré Avoriaz',
+  29285756: 'Cuboré Montriond',
+};
+for (const p of pistes) {
+  if (PISTE_DIFFICULTY_CORRECTIONS[p.id]) p.difficulty = PISTE_DIFFICULTY_CORRECTIONS[p.id];
+}
+for (const l of lifts) {
+  if (LIFT_NAME_CORRECTIONS[l.id]) l.name = LIFT_NAME_CORRECTIONS[l.id];
+}
+{
+  const missing = [
+    ...Object.keys(PISTE_DIFFICULTY_CORRECTIONS).filter(id => !pistes.some(p => String(p.id) === id)),
+    ...Object.keys(LIFT_NAME_CORRECTIONS).filter(id => !lifts.some(l => String(l.id) === id)),
+  ];
+  if (missing.length) throw new Error(`Corrections reference OSM ids not in the source: ${missing.join(', ')}`);
+}
+
 // ── Config ────────────────────────────────────────────────────────────────────
 
 const PISTE_CLUSTER_RADIUS_M = 75;   // piste endpoints within this distance share a junction
@@ -133,8 +185,8 @@ for (const lift of usedLifts) {
 
 for (const piste of pistes) {
   if (!piste.start?.lat || !piste.end?.lat) continue;
-  pistePts.set(`piste_${piste.id}_start`, { lat: piste.start.lat, lon: piste.start.lon, pisteId: piste.id });
-  pistePts.set(`piste_${piste.id}_end`,   { lat: piste.end.lat,   lon: piste.end.lon,   pisteId: piste.id });
+  pistePts.set(`piste_${piste.id}_start`, { lat: piste.start.lat, lon: piste.start.lon, pisteId: piste.id, elev: piste.elev_start ?? null });
+  pistePts.set(`piste_${piste.id}_end`,   { lat: piste.end.lat,   lon: piste.end.lon,   pisteId: piste.id, elev: piste.elev_end ?? null });
 }
 
 // ── Build Union-Find ──────────────────────────────────────────────────────────
@@ -247,7 +299,12 @@ const splitsOf = new Map(); // piste id → [{ key, s }] sorted by s (metres alo
       const last = splits[splits.length - 1];
       if (last && h.s - last.s <= PISTE_CLUSTER_RADIUS_M) { uf.union(last.key, h.id); continue; }
       const key = `piste_${piste.id}_s${splits.length}`;
-      pistePts.set(key, { lat: h.lat, lon: h.lon, pisteId: piste.id });
+      // No DEM sample at a split point: interpolate between the piste's ends by
+      // distance along it — a straight-line gradient, so approximate.
+      const elev = piste.elev_start != null && piste.elev_end != null
+        ? piste.elev_start + (piste.elev_end - piste.elev_start) * (h.s / total)
+        : null;
+      pistePts.set(key, { lat: h.lat, lon: h.lon, pisteId: piste.id, elev });
       uf.add(key);
       uf.union(key, h.id);
       splits.push({ key, s: h.s });
@@ -778,20 +835,27 @@ function makeLiftNode(repId) {
     lift_type:    mapLiftType(lift?.lift_type),
     lat:          pt?.lat ?? null,
     lon:          pt?.lon ?? null,
+    // Station altitude in metres, from the Copernicus DEM (enrich-osm-source.js),
+    // not a surveyed station height — the official map publishes none. Can be
+    // off by ~10 m, enough that a few near-flat beginner lifts read as "downhill".
+    elevation:    (isBase ? lift?.elev_base : lift?.elev_top) ?? null,
     connections:  nodeConns.get(repId) ?? [],
   };
 }
 
 /** Centroid of every piste endpoint merged into a junction cluster — its OSM-derived location. */
 function junctionCentroid(repId) {
-  let sumLat = 0, sumLon = 0, n = 0;
+  let sumLat = 0, sumLon = 0, n = 0, sumElev = 0, nElev = 0;
   for (const [ptId, pt] of pistePts) {
     if (uf.find(ptId) !== repId) continue;
     sumLat += pt.lat;
     sumLon += pt.lon;
     n++;
+    if (pt.elev != null) { sumElev += pt.elev; nElev++; }
   }
-  return n > 0 ? { lat: sumLat / n, lon: sumLon / n } : null;
+  return n > 0
+    ? { lat: sumLat / n, lon: sumLon / n, elevation: nElev > 0 ? Math.round(sumElev / nElev) : null }
+    : null;
 }
 
 // Collect representative IDs for piste junction clusters
@@ -866,6 +930,8 @@ for (const [repId] of nodeConns) {
     lift_type:    null,
     lat:          centroid?.lat ?? null,
     lon:          centroid?.lon ?? null,
+    // Mean DEM altitude of the piste ends merged here (split points interpolated).
+    elevation:    centroid?.elevation ?? null,
     connections:  nodeConns.get(repId) ?? [],
   });
 }
@@ -888,6 +954,7 @@ for (const [vid, vname, vcountry, resortSlug] of VILLAGE_NODES) {
     lift_type:    null,
     lat:          resort?.lat ?? null,
     lon:          resort?.lon ?? null,
+    elevation:    resort?.elevation ?? null, // resorts.json village altitude
     connections:  nodeConns.get(vid) ?? [],
   });
 }

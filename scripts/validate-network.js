@@ -133,6 +133,26 @@ if (Number(schemaVersion) >= 3) {
   if (coordErrors === 0) process.stdout.write(`  ${G}✓${X} All ${nodes.length} nodes have valid lat/lon\n`);
 }
 
+// ── Check 2c: Lift station elevations ─────────────────────────────────────────
+// Every lift-base/lift-top node carries `elevation` (metres, DEM-derived). The
+// range spans the lowest valley station (~900 m) to the highest summit
+// (~2,470 m) with margin; it catches a missing value or feet/metre slips.
+const ELEV_RANGE = [700, 2700];
+{
+  const liftNodes = nodes.filter(n => n.station_type === 'lift-base' || n.station_type === 'lift-top');
+  if (liftNodes.some(n => 'elevation' in n)) {
+    section('2c Lift station elevations');
+    let elevErrors = 0;
+    for (const node of liftNodes) {
+      const e = node.elevation;
+      if (typeof e !== 'number' || !Number.isFinite(e) || e < ELEV_RANGE[0] || e > ELEV_RANGE[1]) {
+        fail(`Node "${node.id}": elevation "${e}" is missing or outside ${ELEV_RANGE[0]}–${ELEV_RANGE[1]} m`); elevErrors++;
+      } else pass(`Node "${node.id}": elevation ${e} m`);
+    }
+    if (elevErrors === 0) process.stdout.write(`  ${G}✓${X} All ${liftNodes.length} lift stations have a valid elevation\n`);
+  }
+}
+
 // ── Check 3: Connection referential integrity and enums ───────────────────────
 section('3  Connection referential integrity and enums');
 let connErrors = 0;
