@@ -90,6 +90,16 @@ export const ICONS = {
     <path d="M5 9 L12 16 L19 9"/>
   </svg>`,
 
+  /** Arrow down — a route step's net descent. */
+  descent: `<svg viewBox="0 0 24 24" ${STROKE}>
+    <path d="M12 4 L12 20 M6 14 L12 20 L18 14"/>
+  </svg>`,
+
+  /** Arrow up — a route step's net climb. */
+  ascent: `<svg viewBox="0 0 24 24" ${STROKE}>
+    <path d="M12 20 L12 4 M6 10 L12 4 L18 10"/>
+  </svg>`,
+
   /** Leftward chevron — back navigation. */
   back: `<svg viewBox="0 0 24 24" ${STROKE}>
     <path d="M15 4.8 L7.4 12 L15 19.2"/>

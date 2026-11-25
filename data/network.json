@@ -13,6 +13,7 @@
       "lift_type": "chairlift",
       "lat": 46.1835291,
       "lon": 6.8346732,
+      "elevation": 1678,
       "connections": [
         {
           "to": "lift_8215532_top",
@@ -72,6 +73,7 @@
       "lift_type": "chairlift",
       "lat": 46.1772269,
       "lon": 6.8402226,
+      "elevation": 1928,
       "connections": [
         {
           "to": "jct_0001",
@@ -107,6 +109,7 @@
       "lift_type": "chairlift",
       "lat": 46.1738081,
       "lon": 6.8275336,
+      "elevation": 1679,
       "connections": [
         {
           "to": "lift_8215584_top",
@@ -148,6 +151,7 @@
       "lift_type": "chairlift",
       "lat": 46.1804994,
       "lon": 6.8201107,
+      "elevation": 1965,
       "connections": [
         {
           "to": "jct_0080",
@@ -177,6 +181,7 @@
       "lift_type": "surface",
       "lat": 46.1735705,
       "lon": 6.8261795,
+      "elevation": 1674,
       "connections": [
         {
           "to": "lift_8215630_top",
@@ -212,6 +217,7 @@
       "lift_type": "surface",
       "lat": 46.1702738,
       "lon": 6.8116918,
+      "elevation": 1914,
       "connections": [
         {
           "to": "jct_0008",
@@ -247,6 +253,7 @@
       "lift_type": "chairlift",
       "lat": 46.1838475,
       "lon": 6.8341203,
+      "elevation": 1682,
       "connections": [
         {
           "to": "lift_8215671_top",
@@ -294,6 +301,7 @@
       "lift_type": "chairlift",
       "lat": 46.1920125,
       "lon": 6.8157467,
+      "elevation": 2216,
       "connections": [
         {
           "to": "lift_8216510_top",
@@ -329,6 +337,7 @@
       "lift_type": "chairlift",
       "lat": 46.2060084,
       "lon": 6.7772866,
+      "elevation": 1498,
       "connections": [
         {
           "to": "lift_8215733_top",
@@ -406,6 +415,7 @@
       "lift_type": "chairlift",
       "lat": 46.1933971,
       "lon": 6.7794813,
+      "elevation": 1908,
       "connections": [
         {
           "to": "lift_29287623_top",
@@ -429,6 +439,7 @@
       "lift_type": "chairlift",
       "lat": 46.2173186,
       "lon": 6.793556,
+      "elevation": 1641,
       "connections": [
         {
           "to": "lift_8215798_top",
@@ -494,6 +505,7 @@
       "lift_type": "chairlift",
       "lat": 46.211886,
       "lon": 6.8050837,
+      "elevation": 2042,
       "connections": [
         {
           "to": "jct_0244",
@@ -517,6 +529,7 @@
       "lift_type": "chairlift",
       "lat": 46.2183066,
       "lon": 6.7932098,
+      "elevation": 1642,
       "connections": [
         {
           "to": "lift_8215843_top",
@@ -594,6 +607,7 @@
       "lift_type": "chairlift",
       "lat": 46.2115878,
       "lon": 6.7913381,
+      "elevation": 1915,
       "connections": [
         {
           "to": "jct_0245",
@@ -641,6 +655,7 @@
       "lift_type": "gondola",
       "lat": 46.2366924,
       "lon": 6.858124,
+      "elevation": 1312,
       "connections": [
         {
           "to": "lift_8215989_top",
@@ -664,6 +679,7 @@
       "lift_type": "gondola",
       "lat": 46.2250285,
       "lon": 6.8612753,
+      "elevation": 1784,
       "connections": [
         {
           "to": "lift_327582926_base",
@@ -693,6 +709,7 @@
       "lift_type": "chairlift",
       "lat": 46.2205425,
       "lon": 6.8712131,
+      "elevation": 1545,
       "connections": [
         {
           "to": "lift_8216054_top",
@@ -710,6 +727,7 @@
       "lift_type": "chairlift",
       "lat": 46.2236475,
       "lon": 6.8594097,
+      "elevation": 1829,
       "connections": [
         {
           "to": "lift_8215989_top",
@@ -745,6 +763,7 @@
       "lift_type": "chairlift",
       "lat": 46.2066755,
       "lon": 6.8599748,
+      "elevation": 1677,
       "connections": [
         {
           "to": "lift_8216151_top",
@@ -762,6 +781,7 @@
       "lift_type": "chairlift",
       "lat": 46.2046742,
       "lon": 6.8480037,
+      "elevation": 2002,
       "connections": [
         {
           "to": "jct_0236",
@@ -797,6 +817,7 @@
       "lift_type": "gondola",
       "lat": 46.1749787,
       "lon": 6.8712087,
+      "elevation": 1034,
       "connections": [
         {
           "to": "lift_8216335_top",
@@ -814,6 +835,7 @@
       "lift_type": "gondola",
       "lat": 46.1752239,
       "lon": 6.8457271,
+      "elevation": 1935,
       "connections": [
         {
           "to": "lift_8216398_top",
@@ -837,6 +859,7 @@
       "lift_type": "surface",
       "lat": 46.178514,
       "lon": 6.8448769,
+      "elevation": 1828,
       "connections": [
         {
           "to": "lift_8216350_top",
@@ -854,6 +877,7 @@
       "lift_type": "surface",
       "lat": 46.1776389,
       "lon": 6.8402572,
+      "elevation": 1902,
       "connections": [
         {
           "to": "jct_0004",
@@ -895,6 +919,7 @@
       "lift_type": "chairlift",
       "lat": 46.1691251,
       "lon": 6.8417857,
+      "elevation": 1679,
       "connections": [
         {
           "to": "lift_8216398_top",
@@ -936,6 +961,7 @@
       "lift_type": "chairlift",
       "lat": 46.1750418,
       "lon": 6.8452063,
+      "elevation": 1935,
       "connections": [
         {
           "to": "jct_0073",
@@ -989,6 +1015,7 @@
       "lift_type": "chairlift",
       "lat": 46.1836112,
       "lon": 6.832928,
+      "elevation": 1689,
       "connections": [
         {
           "to": "lift_8216408_top",
@@ -1030,6 +1057,7 @@
       "lift_type": "chairlift",
       "lat": 46.1828557,
       "lon": 6.8147341,
+      "elevation": 2125,
       "connections": [
         {
           "to": "jct_0237",
@@ -1089,6 +1117,7 @@
       "lift_type": "chairlift",
       "lat": 46.1987954,
       "lon": 6.7879802,
+      "elevation": 1581,
       "connections": [
         {
           "to": "lift_8216510_top",
@@ -1112,6 +1141,7 @@
       "lift_type": "chairlift",
       "lat": 46.1915968,
       "lon": 6.8151579,
+      "elevation": 2243,
       "connections": [
         {
           "to": "jct_0003",
@@ -1159,6 +1189,7 @@
       "lift_type": "surface",
       "lat": 46.1736123,
       "lon": 6.8261446,
+      "elevation": 1674,
       "connections": [
         {
           "to": "lift_8216568_top",
@@ -1200,6 +1231,7 @@
       "lift_type": "surface",
       "lat": 46.1703261,
       "lon": 6.8116625,
+      "elevation": 1914,
       "connections": [
         {
           "to": "jct_0029",
@@ -1235,6 +1267,7 @@
       "lift_type": "surface",
       "lat": 46.2058105,
       "lon": 6.8649367,
+      "elevation": 1552,
       "connections": [
         {
           "to": "lift_8216644_top",
@@ -1252,6 +1285,7 @@
       "lift_type": "surface",
       "lat": 46.2060474,
       "lon": 6.8577125,
+      "elevation": 1708,
       "connections": [
         {
           "to": "lift_8216151_base",
@@ -1281,6 +1315,7 @@
       "lift_type": "chairlift",
       "lat": 46.2680415,
       "lon": 6.8566538,
+      "elevation": 1605,
       "connections": [
         {
           "to": "lift_24898711_top",
@@ -1298,6 +1333,7 @@
       "lift_type": "chairlift",
       "lat": 46.2761846,
       "lon": 6.8595294,
+      "elevation": 1955,
       "connections": [
         {
           "to": "jct_0031",
@@ -1321,6 +1357,7 @@
       "lift_type": "gondola",
       "lat": 46.2666962,
       "lon": 6.8423985,
+      "elevation": 1194,
       "connections": [
         {
           "to": "lift_24898714_top",
@@ -1344,6 +1381,7 @@
       "lift_type": "gondola",
       "lat": 46.2675721,
       "lon": 6.8572178,
+      "elevation": 1617,
       "connections": [
         {
           "to": "lift_24898711_base",
@@ -1373,6 +1411,7 @@
       "lift_type": "surface",
       "lat": 46.2664367,
       "lon": 6.8530751,
+      "elevation": 1528,
       "connections": [
         {
           "to": "lift_24898715_top",
@@ -1420,6 +1459,7 @@
       "lift_type": "surface",
       "lat": 46.2633452,
       "lon": 6.8602157,
+      "elevation": 1668,
       "connections": [
         {
           "to": "lift_24898740_base",
@@ -1449,6 +1489,7 @@
       "lift_type": "surface",
       "lat": 46.2660119,
       "lon": 6.8525721,
+      "elevation": 1528,
       "connections": [
         {
           "to": "lift_24898717_top",
@@ -1490,6 +1531,7 @@
       "lift_type": "surface",
       "lat": 46.2615608,
       "lon": 6.8596949,
+      "elevation": 1669,
       "connections": [
         {
           "to": "jct_0105",
@@ -1507,6 +1549,7 @@
       "lift_type": "chairlift",
       "lat": 46.2826304,
       "lon": 6.8421554,
+      "elevation": 1493,
       "connections": [
         {
           "to": "lift_24898730_top",
@@ -1530,6 +1573,7 @@
       "lift_type": "chairlift",
       "lat": 46.2903101,
       "lon": 6.8511905,
+      "elevation": 1892,
       "connections": [
         {
           "to": "lift_31770801_top",
@@ -1565,6 +1609,7 @@
       "lift_type": "surface",
       "lat": 46.2882226,
       "lon": 6.8547792,
+      "elevation": 1843,
       "connections": [
         {
           "to": "lift_24898731_top",
@@ -1582,12 +1627,13 @@
       "lift_type": "surface",
       "lat": 46.2887305,
       "lon": 6.86245,
+      "elevation": 1985,
       "connections": [
         {
           "to": "lift_24898731_base",
           "name": "Tour de Don",
           "type": "slope",
-          "difficulty": "blue"
+          "difficulty": "red"
         },
         {
           "to": "lift_31770800_base",
@@ -1611,6 +1657,7 @@
       "lift_type": "surface",
       "lat": 46.272696,
       "lon": 6.871206,
+      "elevation": 1599,
       "connections": [
         {
           "to": "lift_24898738_top",
@@ -1634,6 +1681,7 @@
       "lift_type": "surface",
       "lat": 46.2698406,
       "lon": 6.8647675,
+      "elevation": 1729,
       "connections": [
         {
           "to": "lift_317029539_top",
@@ -1663,6 +1711,7 @@
       "lift_type": "surface",
       "lat": 46.2647894,
       "lon": 6.8604557,
+      "elevation": 1656,
       "connections": [
         {
           "to": "lift_24898740_top",
@@ -1692,6 +1741,7 @@
       "lift_type": "surface",
       "lat": 46.2619813,
       "lon": 6.8638712,
+      "elevation": 1784,
       "connections": [
         {
           "to": "lift_24898715_top",
@@ -1715,6 +1765,7 @@
       "lift_type": "chairlift",
       "lat": 46.2411369,
       "lon": 6.8542416,
+      "elevation": 1349,
       "connections": [
         {
           "to": "lift_24898742_top",
@@ -1738,6 +1789,7 @@
       "lift_type": "chairlift",
       "lat": 46.248533,
       "lon": 6.8645903,
+      "elevation": 1790,
       "connections": [
         {
           "to": "lift_24898743_top",
@@ -1761,6 +1813,7 @@
       "lift_type": "surface",
       "lat": 46.2476912,
       "lon": 6.8710536,
+      "elevation": 1614,
       "connections": [
         {
           "to": "lift_24898743_top",
@@ -1784,6 +1837,7 @@
       "lift_type": "surface",
       "lat": 46.2489812,
       "lon": 6.8647367,
+      "elevation": 1790,
       "connections": [
         {
           "to": "jct_0121",
@@ -1819,6 +1873,7 @@
       "lift_type": "surface",
       "lat": 46.2677757,
       "lon": 6.8707829,
+      "elevation": 1613,
       "connections": [
         {
           "to": "lift_24899026_top",
@@ -1842,6 +1897,7 @@
       "lift_type": "surface",
       "lat": 46.2549621,
       "lon": 6.8686478,
+      "elevation": 1844,
       "connections": [
         {
           "to": "lift_332976755_top",
@@ -1871,6 +1927,7 @@
       "lift_type": "surface",
       "lat": 46.2093553,
       "lon": 6.8586314,
+      "elevation": 1688,
       "connections": [
         {
           "to": "lift_24899599_top",
@@ -1894,6 +1951,7 @@
       "lift_type": "surface",
       "lat": 46.2156163,
       "lon": 6.8501982,
+      "elevation": 1918,
       "connections": [
         {
           "to": "jct_0018",
@@ -1917,6 +1975,7 @@
       "lift_type": "surface",
       "lat": 46.212447,
       "lon": 6.8725536,
+      "elevation": 1454,
       "connections": [
         {
           "to": "lift_24899602_top",
@@ -1940,6 +1999,7 @@
       "lift_type": "surface",
       "lat": 46.2078213,
       "lon": 6.8574117,
+      "elevation": 1695,
       "connections": [
         {
           "to": "lift_24899599_base",
@@ -1969,6 +2029,7 @@
       "lift_type": "chairlift",
       "lat": 46.1638794,
       "lon": 6.8595968,
+      "elevation": 1067,
       "connections": [
         {
           "to": "lift_24900087_top",
@@ -1986,6 +2047,7 @@
       "lift_type": "chairlift",
       "lat": 46.169028,
       "lon": 6.8429411,
+      "elevation": 1688,
       "connections": [
         {
           "to": "lift_8216398_base",
@@ -2003,6 +2065,7 @@
       "lift_type": "chairlift",
       "lat": 46.1740818,
       "lon": 6.8157899,
+      "elevation": 1826,
       "connections": [
         {
           "to": "lift_24916407_top",
@@ -2026,6 +2089,7 @@
       "lift_type": "chairlift",
       "lat": 46.1734286,
       "lon": 6.8052188,
+      "elevation": 2137,
       "connections": [
         {
           "to": "lift_29285752_base",
@@ -2055,6 +2119,7 @@
       "lift_type": "surface",
       "lat": 46.1795781,
       "lon": 6.7893124,
+      "elevation": 1793,
       "connections": [
         {
           "to": "lift_24916408_top",
@@ -2090,6 +2155,7 @@
       "lift_type": "surface",
       "lat": 46.1732378,
       "lon": 6.8052578,
+      "elevation": 2153,
       "connections": [
         {
           "to": "lift_24916407_top",
@@ -2143,6 +2209,7 @@
       "lift_type": "chairlift",
       "lat": 46.1793127,
       "lon": 6.789174,
+      "elevation": 1793,
       "connections": [
         {
           "to": "lift_24916409_top",
@@ -2184,6 +2251,7 @@
       "lift_type": "chairlift",
       "lat": 46.1718133,
       "lon": 6.801919,
+      "elevation": 2120,
       "connections": [
         {
           "to": "lift_24916408_top",
@@ -2201,7 +2269,7 @@
           "to": "jct_0069",
           "name": "Blanchot",
           "type": "slope",
-          "difficulty": "red"
+          "difficulty": "blue"
         }
       ]
     },
@@ -2213,6 +2281,7 @@
       "lift_type": "chairlift",
       "lat": 46.1788847,
       "lon": 6.7883986,
+      "elevation": 1805,
       "connections": [
         {
           "to": "lift_24916410_top",
@@ -2254,6 +2323,7 @@
       "lift_type": "chairlift",
       "lat": 46.1652669,
       "lon": 6.7937935,
+      "elevation": 2192,
       "connections": [
         {
           "to": "jct_0069",
@@ -2289,6 +2359,7 @@
       "lift_type": "chairlift",
       "lat": 46.1872738,
       "lon": 6.7790102,
+      "elevation": 1742,
       "connections": [
         {
           "to": "lift_24916412_top",
@@ -2342,6 +2413,7 @@
       "lift_type": "chairlift",
       "lat": 46.1804857,
       "lon": 6.7798846,
+      "elevation": 1916,
       "connections": [
         {
           "to": "lift_750062606_base",
@@ -2401,6 +2473,7 @@
       "lift_type": "chairlift",
       "lat": 46.2072588,
       "lon": 6.7767169,
+      "elevation": 1495,
       "connections": [
         {
           "to": "lift_24916417_top",
@@ -2460,6 +2533,7 @@
       "lift_type": "chairlift",
       "lat": 46.1969617,
       "lon": 6.7731011,
+      "elevation": 1860,
       "connections": [
         {
           "to": "lift_24916421_top",
@@ -2507,6 +2581,7 @@
       "lift_type": "chairlift",
       "lat": 46.1956714,
       "lon": 6.7511334,
+      "elevation": 1638,
       "connections": [
         {
           "to": "lift_24916420_top",
@@ -2536,6 +2611,7 @@
       "lift_type": "chairlift",
       "lat": 46.1988306,
       "lon": 6.7390388,
+      "elevation": 1758,
       "connections": [
         {
           "to": "jct_0210",
@@ -2571,6 +2647,7 @@
       "lift_type": "chairlift",
       "lat": 46.1951924,
       "lon": 6.7522702,
+      "elevation": 1642,
       "connections": [
         {
           "to": "lift_24916421_top",
@@ -2606,6 +2683,7 @@
       "lift_type": "chairlift",
       "lat": 46.1964566,
       "lon": 6.772935,
+      "elevation": 1860,
       "connections": [
         {
           "to": "lift_24916417_top",
@@ -2665,6 +2743,7 @@
       "lift_type": "chairlift",
       "lat": 46.1867383,
       "lon": 6.7663396,
+      "elevation": 1476,
       "connections": [
         {
           "to": "lift_24916425_top",
@@ -2688,6 +2767,7 @@
       "lift_type": "chairlift",
       "lat": 46.1721414,
       "lon": 6.7767331,
+      "elevation": 2189,
       "connections": [
         {
           "to": "lift_317027562_top",
@@ -2753,6 +2833,7 @@
       "lift_type": "chairlift",
       "lat": 46.207011,
       "lon": 6.77827,
+      "elevation": 1497,
       "connections": [
         {
           "to": "lift_24916433_top",
@@ -2830,6 +2911,7 @@
       "lift_type": "chairlift",
       "lat": 46.211694,
       "lon": 6.7903527,
+      "elevation": 1906,
       "connections": [
         {
           "to": "jct_0176",
@@ -2889,6 +2971,7 @@
       "lift_type": "chairlift",
       "lat": 46.2290783,
       "lon": 6.7991323,
+      "elevation": 1640,
       "connections": [
         {
           "to": "lift_24916937_top",
@@ -2942,6 +3025,7 @@
       "lift_type": "chairlift",
       "lat": 46.2277089,
       "lon": 6.8207428,
+      "elevation": 2070,
       "connections": [
         {
           "to": "jct_0086",
@@ -2989,6 +3073,7 @@
       "lift_type": "surface",
       "lat": 46.1840304,
       "lon": 6.8380975,
+      "elevation": 1652,
       "connections": [
         {
           "to": "lift_29283986_top",
@@ -3012,6 +3097,7 @@
       "lift_type": "surface",
       "lat": 46.1832077,
       "lon": 6.8357168,
+      "elevation": 1683,
       "connections": [
         {
           "to": "lift_8215532_base",
@@ -3059,6 +3145,7 @@
       "lift_type": "surface",
       "lat": 46.186227,
       "lon": 6.8109078,
+      "elevation": 1966,
       "connections": [
         {
           "to": "lift_29283989_top",
@@ -3082,6 +3169,7 @@
       "lift_type": "surface",
       "lat": 46.1832581,
       "lon": 6.8143266,
+      "elevation": 2125,
       "connections": [
         {
           "to": "lift_8216408_top",
@@ -3111,16 +3199,17 @@
     },
     {
       "id": "lift_29285752_base",
-      "name": "Cuboré (base)",
+      "name": "Cuboré Avoriaz (base)",
       "country": "FR",
       "station_type": "lift-base",
       "lift_type": "chairlift",
       "lat": 46.1758172,
       "lon": 6.8027412,
+      "elevation": 2049,
       "connections": [
         {
           "to": "lift_29285752_top",
-          "name": "Cuboré",
+          "name": "Cuboré Avoriaz",
           "type": "lift",
           "difficulty": "silver"
         },
@@ -3134,12 +3223,13 @@
     },
     {
       "id": "lift_29285752_top",
-      "name": "Cuboré (summit)",
+      "name": "Cuboré Avoriaz (summit)",
       "country": "FR",
       "station_type": "lift-top",
       "lift_type": "chairlift",
       "lat": 46.1786804,
       "lon": 6.805329,
+      "elevation": 2197,
       "connections": [
         {
           "to": "lift_29285756_base",
@@ -3161,7 +3251,7 @@
         },
         {
           "to": "lift_29285756_top",
-          "name": "Traverse to Cuboré",
+          "name": "Traverse to Cuboré Montriond",
           "type": "slope",
           "difficulty": "green"
         }
@@ -3169,16 +3259,17 @@
     },
     {
       "id": "lift_29285756_base",
-      "name": "Cuboré (base)",
+      "name": "Cuboré Montriond (base)",
       "country": "FR",
       "station_type": "lift-base",
       "lift_type": "chairlift",
       "lat": 46.1824862,
       "lon": 6.808785,
+      "elevation": 2040,
       "connections": [
         {
           "to": "lift_29285756_top",
-          "name": "Cuboré",
+          "name": "Cuboré Montriond",
           "type": "lift",
           "difficulty": "silver"
         },
@@ -3198,16 +3289,17 @@
     },
     {
       "id": "lift_29285756_top",
-      "name": "Cuboré (summit)",
+      "name": "Cuboré Montriond (summit)",
       "country": "FR",
       "station_type": "lift-top",
       "lift_type": "chairlift",
       "lat": 46.1786804,
       "lon": 6.805329,
+      "elevation": 2197,
       "connections": [
         {
           "to": "lift_29285752_top",
-          "name": "Traverse to Cuboré",
+          "name": "Traverse to Cuboré Avoriaz",
           "type": "slope",
           "difficulty": "green"
         }
@@ -3221,6 +3313,7 @@
       "lift_type": "surface",
       "lat": 46.1872544,
       "lon": 6.7784621,
+      "elevation": 1742,
       "connections": [
         {
           "to": "lift_29286845_top",
@@ -3268,6 +3361,7 @@
       "lift_type": "surface",
       "lat": 46.185913,
       "lon": 6.7776289,
+      "elevation": 1771,
       "connections": [
         {
           "to": "jct_0058",
@@ -3291,6 +3385,7 @@
       "lift_type": "chairlift",
       "lat": 46.1880553,
       "lon": 6.7803965,
+      "elevation": 1746,
       "connections": [
         {
           "to": "lift_29287623_top",
@@ -3320,6 +3415,7 @@
       "lift_type": "chairlift",
       "lat": 46.1942383,
       "lon": 6.7766107,
+      "elevation": 1887,
       "connections": [
         {
           "to": "jct_0150",
@@ -3343,6 +3439,7 @@
       "lift_type": "chairlift",
       "lat": 46.2060945,
       "lon": 6.7792045,
+      "elevation": 1503,
       "connections": [
         {
           "to": "lift_29287970_top",
@@ -3396,6 +3493,7 @@
       "lift_type": "chairlift",
       "lat": 46.1948783,
       "lon": 6.7946493,
+      "elevation": 1731,
       "connections": [
         {
           "to": "lift_750062609_base",
@@ -3425,6 +3523,7 @@
       "lift_type": "surface",
       "lat": 46.2324491,
       "lon": 6.7888396,
+      "elevation": 1304,
       "connections": [
         {
           "to": "lift_29288813_top",
@@ -3454,6 +3553,7 @@
       "lift_type": "surface",
       "lat": 46.2323819,
       "lon": 6.786254,
+      "elevation": 1373,
       "connections": [
         {
           "to": "lift_1009693206_base",
@@ -3477,6 +3577,7 @@
       "lift_type": "chairlift",
       "lat": 46.2352598,
       "lon": 6.790554,
+      "elevation": 1281,
       "connections": [
         {
           "to": "lift_29288817_top",
@@ -3512,6 +3613,7 @@
       "lift_type": "chairlift",
       "lat": 46.225849,
       "lon": 6.8022591,
+      "elevation": 1733,
       "connections": [
         {
           "to": "lift_30720552_top",
@@ -3571,6 +3673,7 @@
       "lift_type": "chairlift",
       "lat": 46.2772552,
       "lon": 6.8367783,
+      "elevation": 1246,
       "connections": [
         {
           "to": "lift_29289470_top",
@@ -3588,6 +3691,7 @@
       "lift_type": "chairlift",
       "lat": 46.282523,
       "lon": 6.8426298,
+      "elevation": 1501,
       "connections": [
         {
           "to": "lift_24898730_base",
@@ -3617,6 +3721,7 @@
       "lift_type": "chairlift",
       "lat": 46.1983081,
       "lon": 6.7871835,
+      "elevation": 1594,
       "connections": [
         {
           "to": "lift_30170411_top",
@@ -3664,6 +3769,7 @@
       "lift_type": "chairlift",
       "lat": 46.1908729,
       "lon": 6.7827565,
+      "elevation": 1956,
       "connections": [
         {
           "to": "jct_0198",
@@ -3687,6 +3793,7 @@
       "lift_type": "surface",
       "lat": 46.1950338,
       "lon": 6.7397208,
+      "elevation": 1674,
       "connections": [
         {
           "to": "lift_30351719_top",
@@ -3710,6 +3817,7 @@
       "lift_type": "surface",
       "lat": 46.1958764,
       "lon": 6.7345309,
+      "elevation": 1741,
       "connections": [
         {
           "to": "jct_0099",
@@ -3763,6 +3871,7 @@
       "lift_type": "chairlift",
       "lat": 46.1903773,
       "lon": 6.7181591,
+      "elevation": 1445,
       "connections": [
         {
           "to": "lift_30352096_top",
@@ -3786,6 +3895,7 @@
       "lift_type": "chairlift",
       "lat": 46.1962036,
       "lon": 6.7320223,
+      "elevation": 1744,
       "connections": [
         {
           "to": "jct_0099",
@@ -3821,6 +3931,7 @@
       "lift_type": "surface",
       "lat": 46.1945194,
       "lon": 6.7703092,
+      "elevation": 1821,
       "connections": [
         {
           "to": "lift_30353157_top",
@@ -3862,6 +3973,7 @@
       "lift_type": "surface",
       "lat": 46.1959685,
       "lon": 6.7724737,
+      "elevation": 1843,
       "connections": [
         {
           "to": "lift_24916421_top",
@@ -3915,6 +4027,7 @@
       "lift_type": "surface",
       "lat": 46.1962378,
       "lon": 6.7688684,
+      "elevation": 1816,
       "connections": [
         {
           "to": "lift_30353221_top",
@@ -3944,6 +4057,7 @@
       "lift_type": "surface",
       "lat": 46.1971466,
       "lon": 6.7728538,
+      "elevation": 1860,
       "connections": [
         {
           "to": "lift_24916417_top",
@@ -3973,6 +4087,7 @@
       "lift_type": "surface",
       "lat": 46.1923238,
       "lon": 6.7678764,
+      "elevation": 1780,
       "connections": [
         {
           "to": "lift_30353553_top",
@@ -4002,6 +4117,7 @@
       "lift_type": "surface",
       "lat": 46.1914059,
       "lon": 6.7698067,
+      "elevation": 1794,
       "connections": [
         {
           "to": "lift_30353553_base",
@@ -4019,6 +4135,7 @@
       "lift_type": "surface",
       "lat": 46.1795368,
       "lon": 6.7892801,
+      "elevation": 1793,
       "connections": [
         {
           "to": "lift_30482077_top",
@@ -4048,6 +4165,7 @@
       "lift_type": "surface",
       "lat": 46.1731876,
       "lon": 6.8052524,
+      "elevation": 2153,
       "connections": [
         {
           "to": "lift_24916408_top",
@@ -4095,6 +4213,7 @@
       "lift_type": "chairlift",
       "lat": 46.1880635,
       "lon": 6.7747503,
+      "elevation": 1752,
       "connections": [
         {
           "to": "lift_30610172_top",
@@ -4148,6 +4267,7 @@
       "lift_type": "chairlift",
       "lat": 46.1943345,
       "lon": 6.772507,
+      "elevation": 1839,
       "connections": [
         {
           "to": "lift_30353157_base",
@@ -4183,6 +4303,7 @@
       "lift_type": "chairlift",
       "lat": 46.2283318,
       "lon": 6.7988313,
+      "elevation": 1640,
       "connections": [
         {
           "to": "lift_30627272_top",
@@ -4230,6 +4351,7 @@
       "lift_type": "chairlift",
       "lat": 46.2140097,
       "lon": 6.8079813,
+      "elevation": 2078,
       "connections": [
         {
           "to": "jct_0085",
@@ -4271,6 +4393,7 @@
       "lift_type": "surface",
       "lat": 46.1906593,
       "lon": 6.7765153,
+      "elevation": 1807,
       "connections": [
         {
           "to": "lift_30685905_top",
@@ -4336,6 +4459,7 @@
       "lift_type": "surface",
       "lat": 46.1922514,
       "lon": 6.7742108,
+      "elevation": 1824,
       "connections": [
         {
           "to": "lift_30685905_base",
@@ -4419,6 +4543,7 @@
       "lift_type": "surface",
       "lat": 46.2288735,
       "lon": 6.7982887,
+      "elevation": 1638,
       "connections": [
         {
           "to": "lift_30720552_top",
@@ -4460,6 +4585,7 @@
       "lift_type": "surface",
       "lat": 46.2252328,
       "lon": 6.7973704,
+      "elevation": 1686,
       "connections": [
         {
           "to": "jct_0241",
@@ -4501,6 +4627,7 @@
       "lift_type": "chairlift",
       "lat": 46.2444858,
       "lon": 6.8195537,
+      "elevation": 1517,
       "connections": [
         {
           "to": "lift_30749922_top",
@@ -4578,6 +4705,7 @@
       "lift_type": "chairlift",
       "lat": 46.2303732,
       "lon": 6.8170179,
+      "elevation": 2052,
       "connections": [
         {
           "to": "jct_0261",
@@ -4607,6 +4735,7 @@
       "lift_type": "surface",
       "lat": 46.2540506,
       "lon": 6.8215062,
+      "elevation": 1127,
       "connections": [
         {
           "to": "lift_30750444_top",
@@ -4666,6 +4795,7 @@
       "lift_type": "surface",
       "lat": 46.2498477,
       "lon": 6.8213824,
+      "elevation": 1281,
       "connections": [
         {
           "to": "jct_0256",
@@ -4701,6 +4831,7 @@
       "lift_type": "chairlift",
       "lat": 46.2922102,
       "lon": 6.7811403,
+      "elevation": 996,
       "connections": [
         {
           "to": "lift_31349026_top",
@@ -4730,6 +4861,7 @@
       "lift_type": "chairlift",
       "lat": 46.2829158,
       "lon": 6.7751899,
+      "elevation": 1344,
       "connections": [
         {
           "to": "lift_31349048_base",
@@ -4771,6 +4903,7 @@
       "lift_type": "surface",
       "lat": 46.2846631,
       "lon": 6.7743354,
+      "elevation": 1305,
       "connections": [
         {
           "to": "lift_31349047_top",
@@ -4794,6 +4927,7 @@
       "lift_type": "surface",
       "lat": 46.2823681,
       "lon": 6.7744894,
+      "elevation": 1348,
       "connections": [
         {
           "to": "jct_0180",
@@ -4853,6 +4987,7 @@
       "lift_type": "surface",
       "lat": 46.2846343,
       "lon": 6.7780433,
+      "elevation": 1303,
       "connections": [
         {
           "to": "lift_31349048_top",
@@ -4906,6 +5041,7 @@
       "lift_type": "surface",
       "lat": 46.2817794,
       "lon": 6.7753649,
+      "elevation": 1348,
       "connections": [
         {
           "to": "lift_31349026_top",
@@ -4941,6 +5077,7 @@
       "lift_type": "surface",
       "lat": 46.2846296,
       "lon": 6.7781561,
+      "elevation": 1303,
       "connections": [
         {
           "to": "lift_31349049_top",
@@ -4970,6 +5107,7 @@
       "lift_type": "surface",
       "lat": 46.2813981,
       "lon": 6.7751264,
+      "elevation": 1369,
       "connections": [
         {
           "to": "lift_31349048_top",
@@ -5005,6 +5143,7 @@
       "lift_type": "surface",
       "lat": 46.2845796,
       "lon": 6.7717514,
+      "elevation": 1303,
       "connections": [
         {
           "to": "lift_31738075_top",
@@ -5034,6 +5173,7 @@
       "lift_type": "surface",
       "lat": 46.2742806,
       "lon": 6.7642332,
+      "elevation": 1565,
       "connections": [
         {
           "to": "jct_0090",
@@ -5057,6 +5197,7 @@
       "lift_type": "chairlift",
       "lat": 46.2846731,
       "lon": 6.7786456,
+      "elevation": 1297,
       "connections": [
         {
           "to": "lift_31738076_top",
@@ -5098,6 +5239,7 @@
       "lift_type": "chairlift",
       "lat": 46.2777658,
       "lon": 6.7766206,
+      "elevation": 1495,
       "connections": [
         {
           "to": "lift_31349049_top",
@@ -5127,6 +5269,7 @@
       "lift_type": "gondola",
       "lat": 46.2911379,
       "lon": 6.7997934,
+      "elevation": 1009,
       "connections": [
         {
           "to": "lift_31770794_top",
@@ -5144,6 +5287,7 @@
       "lift_type": "gondola",
       "lat": 46.3013315,
       "lon": 6.8120723,
+      "elevation": 1505,
       "connections": [
         {
           "to": "jct_0209",
@@ -5167,6 +5311,7 @@
       "lift_type": "surface",
       "lat": 46.3092239,
       "lon": 6.8328725,
+      "elevation": 1639,
       "connections": [
         {
           "to": "lift_31770796_top",
@@ -5184,6 +5329,7 @@
       "lift_type": "surface",
       "lat": 46.309107,
       "lon": 6.8266367,
+      "elevation": 1770,
       "connections": [
         {
           "to": "jct_0101",
@@ -5207,6 +5353,7 @@
       "lift_type": "chairlift",
       "lat": 46.3053502,
       "lon": 6.85111,
+      "elevation": 1337,
       "connections": [
         {
           "to": "lift_31770797_top",
@@ -5218,7 +5365,7 @@
           "to": "lift_593806449_base",
           "name": "Lac Léman",
           "type": "slope",
-          "difficulty": "red"
+          "difficulty": "blue"
         },
         {
           "to": "lift_593806449_base",
@@ -5242,6 +5389,7 @@
       "lift_type": "chairlift",
       "lat": 46.2923026,
       "lon": 6.853502,
+      "elevation": 1877,
       "connections": [
         {
           "to": "jct_0102",
@@ -5289,6 +5437,7 @@
       "lift_type": "surface",
       "lat": 46.3063928,
       "lon": 6.8499277,
+      "elevation": 1345,
       "connections": [
         {
           "to": "lift_31770798_top",
@@ -5318,6 +5467,7 @@
       "lift_type": "surface",
       "lat": 46.3079871,
       "lon": 6.8323371,
+      "elevation": 1689,
       "connections": [
         {
           "to": "jct_0101",
@@ -5335,6 +5485,7 @@
       "lift_type": "surface",
       "lat": 46.2810084,
       "lon": 6.8718915,
+      "elevation": 1710,
       "connections": [
         {
           "to": "lift_31770799_top",
@@ -5358,6 +5509,7 @@
       "lift_type": "surface",
       "lat": 46.2837517,
       "lon": 6.8646188,
+      "elevation": 1907,
       "connections": [
         {
           "to": "lift_31770800_base",
@@ -5387,6 +5539,7 @@
       "lift_type": "surface",
       "lat": 46.2844353,
       "lon": 6.8641905,
+      "elevation": 1914,
       "connections": [
         {
           "to": "lift_31770800_top",
@@ -5410,6 +5563,7 @@
       "lift_type": "surface",
       "lat": 46.2885192,
       "lon": 6.8618116,
+      "elevation": 1985,
       "connections": [
         {
           "to": "lift_24898731_top",
@@ -5427,6 +5581,7 @@
       "lift_type": "surface",
       "lat": 46.288329,
       "lon": 6.8541661,
+      "elevation": 1861,
       "connections": [
         {
           "to": "lift_31770801_top",
@@ -5474,6 +5629,7 @@
       "lift_type": "surface",
       "lat": 46.2904409,
       "lon": 6.8512631,
+      "elevation": 1892,
       "connections": [
         {
           "to": "lift_24898730_top",
@@ -5503,6 +5659,7 @@
       "lift_type": "chairlift",
       "lat": 46.1579006,
       "lon": 6.7119781,
+      "elevation": 1411,
       "connections": [
         {
           "to": "lift_32312982_top",
@@ -5556,6 +5713,7 @@
       "lift_type": "chairlift",
       "lat": 46.1521296,
       "lon": 6.7126174,
+      "elevation": 1527,
       "connections": [
         {
           "to": "jct_0119",
@@ -5585,6 +5743,7 @@
       "lift_type": "chairlift",
       "lat": 46.1386845,
       "lon": 6.7101666,
+      "elevation": 1482,
       "connections": [
         {
           "to": "lift_32344730_top",
@@ -5596,7 +5755,7 @@
           "to": "lift_771016803_base",
           "name": "Choucas",
           "type": "slope",
-          "difficulty": "green"
+          "difficulty": "blue"
         }
       ]
     },
@@ -5608,6 +5767,7 @@
       "lift_type": "chairlift",
       "lat": 46.1343739,
       "lon": 6.7248309,
+      "elevation": 1947,
       "connections": [
         {
           "to": "jct_0097",
@@ -5631,6 +5791,7 @@
       "lift_type": "gondola",
       "lat": 46.1669618,
       "lon": 6.7155772,
+      "elevation": 1029,
       "connections": [
         {
           "to": "lift_32425248_top",
@@ -5648,6 +5809,7 @@
       "lift_type": "gondola",
       "lat": 46.157937,
       "lon": 6.7135193,
+      "elevation": 1410,
       "connections": [
         {
           "to": "lift_96366493_base",
@@ -5671,6 +5833,7 @@
       "lift_type": "chairlift",
       "lat": 46.1647655,
       "lon": 6.7073659,
+      "elevation": 1189,
       "connections": [
         {
           "to": "lift_32425250_top",
@@ -5712,6 +5875,7 @@
       "lift_type": "chairlift",
       "lat": 46.1574998,
       "lon": 6.7105839,
+      "elevation": 1402,
       "connections": [
         {
           "to": "jct_0098",
@@ -5753,6 +5917,7 @@
       "lift_type": "chairlift",
       "lat": 46.2996713,
       "lon": 6.8157732,
+      "elevation": 1399,
       "connections": [
         {
           "to": "lift_35881681_top",
@@ -5770,6 +5935,7 @@
       "lift_type": "chairlift",
       "lat": 46.3100731,
       "lon": 6.8256728,
+      "elevation": 1817,
       "connections": [
         {
           "to": "jct_0093",
@@ -5799,6 +5965,7 @@
       "lift_type": "surface",
       "lat": 46.1930532,
       "lon": 6.8374347,
+      "elevation": 1892,
       "connections": [
         {
           "to": "lift_49397555_top",
@@ -5816,6 +5983,7 @@
       "lift_type": "surface",
       "lat": 46.1944863,
       "lon": 6.8404076,
+      "elevation": 1957,
       "connections": [
         {
           "to": "lift_327582927_base",
@@ -5839,6 +6007,7 @@
       "lift_type": "surface",
       "lat": 46.1726577,
       "lon": 6.8443661,
+      "elevation": 1855,
       "connections": [
         {
           "to": "lift_49449610_top",
@@ -5862,6 +6031,7 @@
       "lift_type": "surface",
       "lat": 46.1735405,
       "lon": 6.844815,
+      "elevation": 1882,
       "connections": [
         {
           "to": "lift_8216398_top",
@@ -5879,6 +6049,7 @@
       "lift_type": "chairlift",
       "lat": 46.1579415,
       "lon": 6.712486,
+      "elevation": 1411,
       "connections": [
         {
           "to": "lift_96366493_top",
@@ -5932,6 +6103,7 @@
       "lift_type": "chairlift",
       "lat": 46.1476833,
       "lon": 6.7225398,
+      "elevation": 1916,
       "connections": [
         {
           "to": "jct_0239",
@@ -5955,6 +6127,7 @@
       "lift_type": "surface",
       "lat": 46.2663514,
       "lon": 6.8530656,
+      "elevation": 1528,
       "connections": [
         {
           "to": "lift_149425684_top",
@@ -6002,6 +6175,7 @@
       "lift_type": "surface",
       "lat": 46.2632436,
       "lon": 6.8602163,
+      "elevation": 1677,
       "connections": [
         {
           "to": "lift_24898715_top",
@@ -6019,6 +6193,7 @@
       "lift_type": "surface",
       "lat": 46.2371432,
       "lon": 6.8511036,
+      "elevation": 1355,
       "connections": [
         {
           "to": "lift_151647586_top",
@@ -6048,6 +6223,7 @@
       "lift_type": "surface",
       "lat": 46.2375228,
       "lon": 6.8460366,
+      "elevation": 1463,
       "connections": [
         {
           "to": "lift_151647586_base",
@@ -6065,6 +6241,7 @@
       "lift_type": "surface",
       "lat": 46.2124898,
       "lon": 6.8725232,
+      "elevation": 1454,
       "connections": [
         {
           "to": "lift_197938604_top",
@@ -6088,6 +6265,7 @@
       "lift_type": "surface",
       "lat": 46.2096466,
       "lon": 6.8632391,
+      "elevation": 1611,
       "connections": [
         {
           "to": "jct_0134",
@@ -6105,6 +6283,7 @@
       "lift_type": "chairlift",
       "lat": 46.2182128,
       "lon": 6.8717572,
+      "elevation": 1510,
       "connections": [
         {
           "to": "lift_198298433_top",
@@ -6122,6 +6301,7 @@
       "lift_type": "chairlift",
       "lat": 46.217008,
       "lon": 6.8507371,
+      "elevation": 1847,
       "connections": [
         {
           "to": "jct_0018",
@@ -6151,6 +6331,7 @@
       "lift_type": "gondola",
       "lat": 46.1889283,
       "lon": 6.7559532,
+      "elevation": 1183,
       "connections": [
         {
           "to": "lift_225288644_top",
@@ -6168,6 +6349,7 @@
       "lift_type": "gondola",
       "lat": 46.1873975,
       "lon": 6.7748109,
+      "elevation": 1722,
       "connections": [
         {
           "to": "jct_0191",
@@ -6203,6 +6385,7 @@
       "lift_type": "surface",
       "lat": 46.1569112,
       "lon": 6.7125827,
+      "elevation": 1420,
       "connections": [
         {
           "to": "lift_280176510_top",
@@ -6238,6 +6421,7 @@
       "lift_type": "surface",
       "lat": 46.1547526,
       "lon": 6.713592,
+      "elevation": 1472,
       "connections": [
         {
           "to": "lift_280176510_base",
@@ -6267,6 +6451,7 @@
       "lift_type": "surface",
       "lat": 46.1569178,
       "lon": 6.7126149,
+      "elevation": 1420,
       "connections": [
         {
           "to": "lift_280176511_top",
@@ -6302,6 +6487,7 @@
       "lift_type": "surface",
       "lat": 46.1547789,
       "lon": 6.7136797,
+      "elevation": 1472,
       "connections": [
         {
           "to": "lift_280176510_top",
@@ -6319,6 +6505,7 @@
       "lift_type": "surface",
       "lat": 46.1946043,
       "lon": 6.7702217,
+      "elevation": 1821,
       "connections": [
         {
           "to": "lift_317027023_top",
@@ -6360,6 +6547,7 @@
       "lift_type": "surface",
       "lat": 46.1960149,
       "lon": 6.7724097,
+      "elevation": 1843,
       "connections": [
         {
           "to": "jct_0227",
@@ -6413,6 +6601,7 @@
       "lift_type": "surface",
       "lat": 46.1906255,
       "lon": 6.7764702,
+      "elevation": 1807,
       "connections": [
         {
           "to": "lift_317027129_top",
@@ -6448,6 +6637,7 @@
       "lift_type": "surface",
       "lat": 46.1922092,
       "lon": 6.7741515,
+      "elevation": 1823,
       "connections": [
         {
           "to": "lift_30610172_base",
@@ -6519,6 +6709,7 @@
       "lift_type": "surface",
       "lat": 46.206736,
       "lon": 6.7783758,
+      "elevation": 1503,
       "connections": [
         {
           "to": "lift_317027261_top",
@@ -6572,6 +6763,7 @@
       "lift_type": "surface",
       "lat": 46.2062265,
       "lon": 6.7814724,
+      "elevation": 1526,
       "connections": [
         {
           "to": "lift_24916433_base",
@@ -6607,6 +6799,7 @@
       "lift_type": "surface",
       "lat": 46.1801142,
       "lon": 6.779485,
+      "elevation": 1916,
       "connections": [
         {
           "to": "lift_317027562_top",
@@ -6660,6 +6853,7 @@
       "lift_type": "surface",
       "lat": 46.173109,
       "lon": 6.7812437,
+      "elevation": 2150,
       "connections": [
         {
           "to": "lift_750062606_top",
@@ -6701,6 +6895,7 @@
       "lift_type": "surface",
       "lat": 46.2685474,
       "lon": 6.8579438,
+      "elevation": 1638,
       "connections": [
         {
           "to": "lift_317029538_top",
@@ -6742,6 +6937,7 @@
       "lift_type": "surface",
       "lat": 46.2687958,
       "lon": 6.8589737,
+      "elevation": 1663,
       "connections": [
         {
           "to": "lift_317029538_base",
@@ -6777,6 +6973,7 @@
       "lift_type": "surface",
       "lat": 46.2679281,
       "lon": 6.8588396,
+      "elevation": 1643,
       "connections": [
         {
           "to": "lift_317029539_top",
@@ -6818,6 +7015,7 @@
       "lift_type": "surface",
       "lat": 46.2676073,
       "lon": 6.8609559,
+      "elevation": 1695,
       "connections": [
         {
           "to": "lift_317029539_base",
@@ -6847,6 +7045,7 @@
       "lift_type": "surface",
       "lat": 46.2678613,
       "lon": 6.8581127,
+      "elevation": 1631,
       "connections": [
         {
           "to": "lift_317029540_top",
@@ -6882,6 +7081,7 @@
       "lift_type": "surface",
       "lat": 46.2684083,
       "lon": 6.859368,
+      "elevation": 1683,
       "connections": [
         {
           "to": "lift_317029539_base",
@@ -6911,6 +7111,7 @@
       "lift_type": "surface",
       "lat": 46.2692519,
       "lon": 6.8568441,
+      "elevation": 1648,
       "connections": [
         {
           "to": "lift_317029541_top",
@@ -6940,6 +7141,7 @@
       "lift_type": "surface",
       "lat": 46.2679819,
       "lon": 6.8576836,
+      "elevation": 1631,
       "connections": [
         {
           "to": "lift_24898711_base",
@@ -6975,6 +7177,7 @@
       "lift_type": "surface",
       "lat": 46.2662616,
       "lon": 6.8577323,
+      "elevation": 1617,
       "connections": [
         {
           "to": "lift_317029559_top",
@@ -7010,6 +7213,7 @@
       "lift_type": "surface",
       "lat": 46.2656279,
       "lon": 6.8595974,
+      "elevation": 1642,
       "connections": [
         {
           "to": "lift_1019585580_base",
@@ -7045,6 +7249,7 @@
       "lift_type": "surface",
       "lat": 46.2725685,
       "lon": 6.8719621,
+      "elevation": 1571,
       "connections": [
         {
           "to": "lift_317312454_top",
@@ -7062,6 +7267,7 @@
       "lift_type": "surface",
       "lat": 46.2682337,
       "lon": 6.8694382,
+      "elevation": 1636,
       "connections": [
         {
           "to": "lift_24899026_base",
@@ -7085,6 +7291,7 @@
       "lift_type": "surface",
       "lat": 46.2925554,
       "lon": 6.7819771,
+      "elevation": 993,
       "connections": [
         {
           "to": "lift_317444742_top",
@@ -7114,6 +7321,7 @@
       "lift_type": "surface",
       "lat": 46.2910418,
       "lon": 6.7812838,
+      "elevation": 1009,
       "connections": [
         {
           "to": "lift_31349026_base",
@@ -7137,6 +7345,7 @@
       "lift_type": "chairlift",
       "lat": 46.2550995,
       "lon": 6.8436736,
+      "elevation": 1254,
       "connections": [
         {
           "to": "lift_325533218_top",
@@ -7154,6 +7363,7 @@
       "lift_type": "chairlift",
       "lat": 46.2661735,
       "lon": 6.8523057,
+      "elevation": 1525,
       "connections": [
         {
           "to": "jct_0233",
@@ -7195,6 +7405,7 @@
       "lift_type": "chairlift",
       "lat": 46.2548604,
       "lon": 6.8430504,
+      "elevation": 1262,
       "connections": [
         {
           "to": "lift_325533365_top",
@@ -7218,6 +7429,7 @@
       "lift_type": "chairlift",
       "lat": 46.2524624,
       "lon": 6.8311569,
+      "elevation": 1270,
       "connections": [
         {
           "to": "jct_0377",
@@ -7265,6 +7477,7 @@
       "lift_type": "surface",
       "lat": 46.2245486,
       "lon": 6.8620107,
+      "elevation": 1812,
       "connections": [
         {
           "to": "lift_327582926_top",
@@ -7312,6 +7525,7 @@
       "lift_type": "surface",
       "lat": 46.2236704,
       "lon": 6.8596797,
+      "elevation": 1829,
       "connections": [
         {
           "to": "jct_0138",
@@ -7341,6 +7555,7 @@
       "lift_type": "chairlift",
       "lat": 46.1983326,
       "lon": 6.8524235,
+      "elevation": 1787,
       "connections": [
         {
           "to": "lift_327582927_top",
@@ -7364,6 +7579,7 @@
       "lift_type": "chairlift",
       "lat": 46.1993254,
       "lon": 6.841017,
+      "elevation": 2143,
       "connections": [
         {
           "to": "jct_0019",
@@ -7393,6 +7609,7 @@
       "lift_type": "surface",
       "lat": 46.2248449,
       "lon": 6.863119,
+      "elevation": 1806,
       "connections": [
         {
           "to": "lift_327585052_top",
@@ -7422,6 +7639,7 @@
       "lift_type": "surface",
       "lat": 46.2252361,
       "lon": 6.8620329,
+      "elevation": 1796,
       "connections": [
         {
           "to": "jct_0204",
@@ -7463,6 +7681,7 @@
       "lift_type": "surface",
       "lat": 46.2478521,
       "lon": 6.8711473,
+      "elevation": 1614,
       "connections": [
         {
           "to": "lift_332976755_top",
@@ -7486,6 +7705,7 @@
       "lift_type": "surface",
       "lat": 46.2554364,
       "lon": 6.8675564,
+      "elevation": 1834,
       "connections": [
         {
           "to": "jct_0035",
@@ -7521,6 +7741,7 @@
       "lift_type": "surface",
       "lat": 46.2371108,
       "lon": 6.8508744,
+      "elevation": 1355,
       "connections": [
         {
           "to": "lift_332978785_top",
@@ -7544,6 +7765,7 @@
       "lift_type": "surface",
       "lat": 46.2372314,
       "lon": 6.8491738,
+      "elevation": 1373,
       "connections": [
         {
           "to": "lift_151647586_base",
@@ -7561,6 +7783,7 @@
       "lift_type": "surface",
       "lat": 46.2677714,
       "lon": 6.8708261,
+      "elevation": 1613,
       "connections": [
         {
           "to": "lift_332980818_top",
@@ -7584,6 +7807,7 @@
       "lift_type": "surface",
       "lat": 46.2549463,
       "lon": 6.8687462,
+      "elevation": 1844,
       "connections": [
         {
           "to": "jct_0122",
@@ -7619,6 +7843,7 @@
       "lift_type": "surface",
       "lat": 46.1854716,
       "lon": 6.839125,
+      "elevation": 1663,
       "connections": [
         {
           "to": "lift_333170100_top",
@@ -7636,6 +7861,7 @@
       "lift_type": "surface",
       "lat": 46.1844185,
       "lon": 6.838134,
+      "elevation": 1664,
       "connections": [
         {
           "to": "lift_29283986_base",
@@ -7659,6 +7885,7 @@
       "lift_type": "surface",
       "lat": 46.2584927,
       "lon": 6.8321379,
+      "elevation": 1102,
       "connections": [
         {
           "to": "lift_336811984_top",
@@ -7676,6 +7903,7 @@
       "lift_type": "surface",
       "lat": 46.257924,
       "lon": 6.8330349,
+      "elevation": 1111,
       "connections": [
         {
           "to": "lift_1325467177_base",
@@ -7693,6 +7921,7 @@
       "lift_type": "surface",
       "lat": 46.1894336,
       "lon": 6.7526438,
+      "elevation": 1171,
       "connections": [
         {
           "to": "lift_362159135_top",
@@ -7716,6 +7945,7 @@
       "lift_type": "surface",
       "lat": 46.188259,
       "lon": 6.7534268,
+      "elevation": 1185,
       "connections": [
         {
           "to": "lift_225288644_base",
@@ -7751,6 +7981,7 @@
       "lift_type": "gondola",
       "lat": 46.2137817,
       "lon": 6.7609866,
+      "elevation": 1205,
       "connections": [
         {
           "to": "lift_446569623_top",
@@ -7768,6 +7999,7 @@
       "lift_type": "gondola",
       "lat": 46.2079166,
       "lon": 6.7781291,
+      "elevation": 1516,
       "connections": [
         {
           "to": "lift_24916433_base",
@@ -7821,6 +8053,7 @@
       "lift_type": "surface",
       "lat": 46.3053887,
       "lon": 6.8501637,
+      "elevation": 1337,
       "connections": [
         {
           "to": "lift_593806449_top",
@@ -7862,6 +8095,7 @@
       "lift_type": "surface",
       "lat": 46.3051937,
       "lon": 6.8501568,
+      "elevation": 1337,
       "connections": [
         {
           "to": "lift_31770797_base",
@@ -7891,6 +8125,7 @@
       "lift_type": "surface",
       "lat": 46.2358777,
       "lon": 6.7902321,
+      "elevation": 1288,
       "connections": [
         {
           "to": "lift_677468931_top",
@@ -7920,6 +8155,7 @@
       "lift_type": "surface",
       "lat": 46.234283,
       "lon": 6.7885315,
+      "elevation": 1307,
       "connections": [
         {
           "to": "lift_29288813_base",
@@ -7943,6 +8179,7 @@
       "lift_type": "surface",
       "lat": 46.1922092,
       "lon": 6.7741515,
+      "elevation": 1823,
       "connections": [
         {
           "to": "lift_704966470_top",
@@ -7996,6 +8233,7 @@
       "lift_type": "surface",
       "lat": 46.1923838,
       "lon": 6.7738947,
+      "elevation": 1823,
       "connections": [
         {
           "to": "lift_317027129_top",
@@ -8079,6 +8317,7 @@
       "lift_type": "surface",
       "lat": 46.1922514,
       "lon": 6.7742108,
+      "elevation": 1824,
       "connections": [
         {
           "to": "lift_704966471_top",
@@ -8144,6 +8383,7 @@
       "lift_type": "surface",
       "lat": 46.1924201,
       "lon": 6.7739567,
+      "elevation": 1823,
       "connections": [
         {
           "to": "lift_30685905_top",
@@ -8221,6 +8461,7 @@
       "lift_type": "surface",
       "lat": 46.1924201,
       "lon": 6.7739567,
+      "elevation": 1823,
       "connections": [
         {
           "to": "lift_704966472_top",
@@ -8280,6 +8521,7 @@
       "lift_type": "surface",
       "lat": 46.1933453,
       "lon": 6.773135,
+      "elevation": 1831,
       "connections": [
         {
           "to": "lift_704966471_top",
@@ -8351,6 +8593,7 @@
       "lift_type": "surface",
       "lat": 46.1923838,
       "lon": 6.7738947,
+      "elevation": 1823,
       "connections": [
         {
           "to": "lift_704966473_top",
@@ -8416,6 +8659,7 @@
       "lift_type": "surface",
       "lat": 46.1932969,
       "lon": 6.7729967,
+      "elevation": 1829,
       "connections": [
         {
           "to": "lift_704966470_top",
@@ -8475,6 +8719,7 @@
       "lift_type": "surface",
       "lat": 46.1801047,
       "lon": 6.7795703,
+      "elevation": 1916,
       "connections": [
         {
           "to": "lift_750062606_top",
@@ -8534,6 +8779,7 @@
       "lift_type": "surface",
       "lat": 46.1731205,
       "lon": 6.7813671,
+      "elevation": 2150,
       "connections": [
         {
           "to": "lift_317027562_top",
@@ -8569,6 +8815,7 @@
       "lift_type": "chairlift",
       "lat": 46.1954926,
       "lon": 6.7944225,
+      "elevation": 1716,
       "connections": [
         {
           "to": "lift_750062609_top",
@@ -8604,6 +8851,7 @@
       "lift_type": "chairlift",
       "lat": 46.1857457,
       "lon": 6.8162753,
+      "elevation": 2143,
       "connections": [
         {
           "to": "lift_29283989_base",
@@ -8639,6 +8887,7 @@
       "lift_type": "surface",
       "lat": 46.2900555,
       "lon": 6.8537506,
+      "elevation": 1864,
       "connections": [
         {
           "to": "lift_800472190_top",
@@ -8650,7 +8899,7 @@
           "to": "jct_0301",
           "name": "Douanier",
           "type": "slope",
-          "difficulty": "green"
+          "difficulty": "blue"
         }
       ]
     },
@@ -8662,6 +8911,7 @@
       "lift_type": "surface",
       "lat": 46.2920799,
       "lon": 6.8521663,
+      "elevation": 1848,
       "connections": [
         {
           "to": "lift_31770797_top",
@@ -8685,6 +8935,7 @@
       "lift_type": "chairlift",
       "lat": 46.2318407,
       "lon": 6.7881809,
+      "elevation": 1318,
       "connections": [
         {
           "to": "lift_1009693206_top",
@@ -8738,6 +8989,7 @@
       "lift_type": "chairlift",
       "lat": 46.2184935,
       "lon": 6.7924917,
+      "elevation": 1628,
       "connections": [
         {
           "to": "lift_8215843_base",
@@ -8767,6 +9019,7 @@
       "lift_type": "chairlift",
       "lat": 46.2542772,
       "lon": 6.821379,
+      "elevation": 1124,
       "connections": [
         {
           "to": "lift_1010800534_top",
@@ -8808,6 +9061,7 @@
       "lift_type": "chairlift",
       "lat": 46.2388505,
       "lon": 6.8181228,
+      "elevation": 1721,
       "connections": [
         {
           "to": "jct_0288",
@@ -8861,6 +9115,7 @@
       "lift_type": "surface",
       "lat": 46.2664172,
       "lon": 6.8598107,
+      "elevation": 1641,
       "connections": [
         {
           "to": "lift_1019585580_top",
@@ -8896,6 +9151,7 @@
       "lift_type": "surface",
       "lat": 46.2660547,
       "lon": 6.8621865,
+      "elevation": 1679,
       "connections": [
         {
           "to": "lift_1019585580_base",
@@ -8913,6 +9169,7 @@
       "lift_type": "chairlift",
       "lat": 46.2704377,
       "lon": 6.8468603,
+      "elevation": 1355,
       "connections": [
         {
           "to": "lift_1075520907_top",
@@ -8936,6 +9193,7 @@
       "lift_type": "chairlift",
       "lat": 46.2698958,
       "lon": 6.8626265,
+      "elevation": 1764,
       "connections": [
         {
           "to": "lift_24898738_top",
@@ -8953,6 +9211,7 @@
       "lift_type": "chairlift",
       "lat": 46.1872381,
       "lon": 6.7794511,
+      "elevation": 1739,
       "connections": [
         {
           "to": "lift_1183443459_top",
@@ -9000,6 +9259,7 @@
       "lift_type": "chairlift",
       "lat": 46.1708982,
       "lon": 6.7821348,
+      "elevation": 2192,
       "connections": [
         {
           "to": "lift_750062606_top",
@@ -9023,6 +9283,7 @@
       "lift_type": "surface",
       "lat": 46.1579081,
       "lon": 6.711856,
+      "elevation": 1411,
       "connections": [
         {
           "to": "lift_1308902671_top",
@@ -9070,6 +9331,7 @@
       "lift_type": "surface",
       "lat": 46.1573418,
       "lon": 6.7119134,
+      "elevation": 1421,
       "connections": [
         {
           "to": "lift_32425250_top",
@@ -9129,6 +9391,7 @@
       "lift_type": "surface",
       "lat": 46.2588252,
       "lon": 6.8327418,
+      "elevation": 1107,
       "connections": [
         {
           "to": "lift_1325467177_top",
@@ -9146,6 +9409,7 @@
       "lift_type": "surface",
       "lat": 46.2585005,
       "lon": 6.8326767,
+      "elevation": 1107,
       "connections": [
         {
           "to": "lift_336811984_base",
@@ -9163,6 +9427,7 @@
       "lift_type": "gondola",
       "lat": 46.2260879,
       "lon": 6.641346,
+      "elevation": 943,
       "connections": [
         {
           "to": "lift_23275859_top",
@@ -9186,6 +9451,7 @@
       "lift_type": "gondola",
       "lat": 46.2148862,
       "lon": 6.6318332,
+      "elevation": 1503,
       "connections": [
         {
           "to": "lift_297428605_base",
@@ -9209,6 +9475,7 @@
       "lift_type": "chairlift",
       "lat": 46.2037647,
       "lon": 6.6244991,
+      "elevation": 1564,
       "connections": [
         {
           "to": "lift_288892180_top",
@@ -9226,6 +9493,7 @@
       "lift_type": "chairlift",
       "lat": 46.2068564,
       "lon": 6.6296275,
+      "elevation": 1719,
       "connections": [
         {
           "to": "jct_0327",
@@ -9255,6 +9523,7 @@
       "lift_type": "chairlift",
       "lat": 46.2034036,
       "lon": 6.6239976,
+      "elevation": 1589,
       "connections": [
         {
           "to": "lift_288893232_top",
@@ -9284,6 +9553,7 @@
       "lift_type": "chairlift",
       "lat": 46.198847,
       "lon": 6.6125981,
+      "elevation": 1792,
       "connections": [
         {
           "to": "jct_0334",
@@ -9313,6 +9583,7 @@
       "lift_type": "surface",
       "lat": 46.214184,
       "lon": 6.6321726,
+      "elevation": 1503,
       "connections": [
         {
           "to": "lift_297428605_top",
@@ -9360,6 +9631,7 @@
       "lift_type": "surface",
       "lat": 46.211698,
       "lon": 6.6315109,
+      "elevation": 1524,
       "connections": [
         {
           "to": "lift_904857550_top",
@@ -9389,6 +9661,7 @@
       "lift_type": "surface",
       "lat": 46.2183759,
       "lon": 6.6405357,
+      "elevation": 1220,
       "connections": [
         {
           "to": "lift_297428606_top",
@@ -9412,6 +9685,7 @@
       "lift_type": "surface",
       "lat": 46.2123912,
       "lon": 6.6327457,
+      "elevation": 1534,
       "connections": [
         {
           "to": "jct_0323",
@@ -9435,6 +9709,7 @@
       "lift_type": "surface",
       "lat": 46.2142762,
       "lon": 6.6313429,
+      "elevation": 1485,
       "connections": [
         {
           "to": "lift_317020631_top",
@@ -9458,6 +9733,7 @@
       "lift_type": "surface",
       "lat": 46.2126431,
       "lon": 6.6303774,
+      "elevation": 1508,
       "connections": [
         {
           "to": "lift_317020631_base",
@@ -9481,6 +9757,7 @@
       "lift_type": "chairlift",
       "lat": 46.2140004,
       "lon": 6.6330406,
+      "elevation": 1506,
       "connections": [
         {
           "to": "lift_378209423_top",
@@ -9522,6 +9799,7 @@
       "lift_type": "chairlift",
       "lat": 46.2070802,
       "lon": 6.6290738,
+      "elevation": 1697,
       "connections": [
         {
           "to": "lift_297428605_top",
@@ -9557,6 +9835,7 @@
       "lift_type": "surface",
       "lat": 46.2149274,
       "lon": 6.6220646,
+      "elevation": 1156,
       "connections": [
         {
           "to": "lift_776556045_top",
@@ -9574,6 +9853,7 @@
       "lift_type": "surface",
       "lat": 46.2176749,
       "lon": 6.6282352,
+      "elevation": 1210,
       "connections": [
         {
           "to": "jct_0324",
@@ -9591,6 +9871,7 @@
       "lift_type": "surface",
       "lat": 46.2110545,
       "lon": 6.6283588,
+      "elevation": 1474,
       "connections": [
         {
           "to": "lift_904857550_top",
@@ -9608,6 +9889,7 @@
       "lift_type": "surface",
       "lat": 46.2124062,
       "lon": 6.6310332,
+      "elevation": 1524,
       "connections": [
         {
           "to": "lift_297428605_base",
@@ -9649,6 +9931,7 @@
       "lift_type": "chairlift",
       "lat": 46.2094974,
       "lon": 6.5765092,
+      "elevation": 1120,
       "connections": [
         {
           "to": "lift_315824148_top",
@@ -9672,6 +9955,7 @@
       "lift_type": "chairlift",
       "lat": 46.2106487,
       "lon": 6.5896781,
+      "elevation": 1500,
       "connections": [
         {
           "to": "lift_383430774_base",
@@ -9695,6 +9979,7 @@
       "lift_type": "surface",
       "lat": 46.2105639,
       "lon": 6.5921568,
+      "elevation": 1490,
       "connections": [
         {
           "to": "lift_315824149_top",
@@ -9730,6 +10015,7 @@
       "lift_type": "surface",
       "lat": 46.2099649,
       "lon": 6.5985893,
+      "elevation": 1669,
       "connections": [
         {
           "to": "lift_383430774_base",
@@ -9765,6 +10051,7 @@
       "lift_type": "surface",
       "lat": 46.2106022,
       "lon": 6.5921612,
+      "elevation": 1490,
       "connections": [
         {
           "to": "lift_383430774_top",
@@ -9788,6 +10075,7 @@
       "lift_type": "surface",
       "lat": 46.2100554,
       "lon": 6.5986636,
+      "elevation": 1647,
       "connections": [
         {
           "to": "lift_315824149_top",
@@ -9835,6 +10123,7 @@
       "lift_type": "surface",
       "lat": 46.2119055,
       "lon": 6.5697368,
+      "elevation": 1093,
       "connections": [
         {
           "to": "lift_317021227_top",
@@ -9876,6 +10165,7 @@
       "lift_type": "surface",
       "lat": 46.2079359,
       "lon": 6.5708173,
+      "elevation": 1236,
       "connections": [
         {
           "to": "lift_317021290_top",
@@ -9899,6 +10189,7 @@
       "lift_type": "surface",
       "lat": 46.2118437,
       "lon": 6.5698039,
+      "elevation": 1093,
       "connections": [
         {
           "to": "lift_317021290_top",
@@ -9934,6 +10225,7 @@
       "lift_type": "surface",
       "lat": 46.2100488,
       "lon": 6.5698974,
+      "elevation": 1133,
       "connections": [
         {
           "to": "lift_317021290_base",
@@ -9951,6 +10243,7 @@
       "lift_type": "surface",
       "lat": 46.2120441,
       "lon": 6.570091,
+      "elevation": 1096,
       "connections": [
         {
           "to": "lift_317021298_top",
@@ -9986,6 +10279,7 @@
       "lift_type": "surface",
       "lat": 46.212946,
       "lon": 6.5705902,
+      "elevation": 1111,
       "connections": [
         {
           "to": "lift_317021298_base",
@@ -10009,6 +10303,7 @@
       "lift_type": "surface",
       "lat": 46.2122579,
       "lon": 6.5692019,
+      "elevation": 1093,
       "connections": [
         {
           "to": "lift_317021976_top",
@@ -10044,6 +10339,7 @@
       "lift_type": "surface",
       "lat": 46.2130995,
       "lon": 6.5698908,
+      "elevation": 1107,
       "connections": [
         {
           "to": "lift_317021976_base",
@@ -10067,6 +10363,7 @@
       "lift_type": "chairlift",
       "lat": 46.171423,
       "lon": 6.6912753,
+      "elevation": 1470,
       "connections": [
         {
           "to": "lift_30626081_top",
@@ -10102,6 +10399,7 @@
       "lift_type": "chairlift",
       "lat": 46.162893,
       "lon": 6.6933061,
+      "elevation": 1530,
       "connections": [
         {
           "to": "lift_30961292_top",
@@ -10137,6 +10435,7 @@
       "lift_type": "chairlift",
       "lat": 46.1520395,
       "lon": 6.7036599,
+      "elevation": 1324,
       "connections": [
         {
           "to": "lift_30626904_top",
@@ -10178,6 +10477,7 @@
       "lift_type": "chairlift",
       "lat": 46.138106,
       "lon": 6.696359,
+      "elevation": 1662,
       "connections": [
         {
           "to": "jct_0345",
@@ -10207,6 +10507,7 @@
       "lift_type": "chairlift",
       "lat": 46.1801992,
       "lon": 6.701086,
+      "elevation": 980,
       "connections": [
         {
           "to": "lift_30627383_top",
@@ -10236,6 +10537,7 @@
       "lift_type": "chairlift",
       "lat": 46.1751167,
       "lon": 6.6928435,
+      "elevation": 1316,
       "connections": [
         {
           "to": "lift_30751809_base",
@@ -10271,6 +10573,7 @@
       "lift_type": "chairlift",
       "lat": 46.1359663,
       "lon": 6.6832914,
+      "elevation": 1391,
       "connections": [
         {
           "to": "lift_30749534_top",
@@ -10330,6 +10633,7 @@
       "lift_type": "chairlift",
       "lat": 46.1299403,
       "lon": 6.6781977,
+      "elevation": 1655,
       "connections": [
         {
           "to": "jct_0399",
@@ -10371,6 +10675,7 @@
       "lift_type": "chairlift",
       "lat": 46.1754177,
       "lon": 6.6942869,
+      "elevation": 1286,
       "connections": [
         {
           "to": "lift_30751809_top",
@@ -10400,6 +10705,7 @@
       "lift_type": "chairlift",
       "lat": 46.1693514,
       "lon": 6.6919212,
+      "elevation": 1492,
       "connections": [
         {
           "to": "lift_30626081_base",
@@ -10441,6 +10747,7 @@
       "lift_type": "gondola",
       "lat": 46.1799048,
       "lon": 6.7019377,
+      "elevation": 985,
       "connections": [
         {
           "to": "lift_30752181_top",
@@ -10482,6 +10789,7 @@
       "lift_type": "gondola",
       "lat": 46.1695975,
       "lon": 6.6925855,
+      "elevation": 1487,
       "connections": [
         {
           "to": "lift_30751809_top",
@@ -10517,6 +10825,7 @@
       "lift_type": "chairlift",
       "lat": 46.136956,
       "lon": 6.6834595,
+      "elevation": 1391,
       "connections": [
         {
           "to": "lift_30960128_top",
@@ -10570,6 +10879,7 @@
       "lift_type": "chairlift",
       "lat": 46.1309236,
       "lon": 6.7042592,
+      "elevation": 1782,
       "connections": [
         {
           "to": "jct_0342",
@@ -10593,6 +10903,7 @@
       "lift_type": "chairlift",
       "lat": 46.1594351,
       "lon": 6.6839939,
+      "elevation": 1350,
       "connections": [
         {
           "to": "lift_30961292_top",
@@ -10616,6 +10927,7 @@
       "lift_type": "chairlift",
       "lat": 46.1622037,
       "lon": 6.6939691,
+      "elevation": 1542,
       "connections": [
         {
           "to": "jct_0347",
@@ -10657,6 +10969,7 @@
       "lift_type": "chairlift",
       "lat": 46.1517045,
       "lon": 6.7040863,
+      "elevation": 1324,
       "connections": [
         {
           "to": "lift_32310310_top",
@@ -10692,6 +11005,7 @@
       "lift_type": "chairlift",
       "lat": 46.1430027,
       "lon": 6.7130556,
+      "elevation": 1637,
       "connections": [
         {
           "to": "jct_0206",
@@ -10715,6 +11029,7 @@
       "lift_type": "chairlift",
       "lat": 46.1659626,
       "lon": 6.7083484,
+      "elevation": 1137,
       "connections": [
         {
           "to": "lift_32310365_top",
@@ -10738,6 +11053,7 @@
       "lift_type": "chairlift",
       "lat": 46.1629329,
       "lon": 6.6939288,
+      "elevation": 1545,
       "connections": [
         {
           "to": "lift_30626081_top",
@@ -10767,6 +11083,7 @@
       "lift_type": "chairlift",
       "lat": 46.1380056,
       "lon": 6.683251,
+      "elevation": 1374,
       "connections": [
         {
           "to": "lift_32344719_top",
@@ -10796,12 +11113,13 @@
       "lift_type": "chairlift",
       "lat": 46.1402755,
       "lon": 6.6951624,
+      "elevation": 1649,
       "connections": [
         {
           "to": "jct_0346",
           "name": "Choucas",
           "type": "slope",
-          "difficulty": "green"
+          "difficulty": "blue"
         },
         {
           "to": "lift_203618751_top",
@@ -10837,6 +11155,7 @@
       "lift_type": "gondola",
       "lat": 46.1569639,
       "lon": 6.6687291,
+      "elevation": 1166,
       "connections": [
         {
           "to": "lift_49511429_top",
@@ -10878,6 +11197,7 @@
       "lift_type": "gondola",
       "lat": 46.1502844,
       "lon": 6.6854888,
+      "elevation": 1455,
       "connections": [
         {
           "to": "lift_49532861_base",
@@ -10901,6 +11221,7 @@
       "lift_type": "chairlift",
       "lat": 46.1567815,
       "lon": 6.668282,
+      "elevation": 1164,
       "connections": [
         {
           "to": "lift_49511430_top",
@@ -10930,6 +11251,7 @@
       "lift_type": "chairlift",
       "lat": 46.1450049,
       "lon": 6.694026,
+      "elevation": 1607,
       "connections": [
         {
           "to": "jct_0353",
@@ -10971,6 +11293,7 @@
       "lift_type": "chairlift",
       "lat": 46.1707767,
       "lon": 6.6329817,
+      "elevation": 1412,
       "connections": [
         {
           "to": "lift_49511432_top",
@@ -10994,6 +11317,7 @@
       "lift_type": "chairlift",
       "lat": 46.1686451,
       "lon": 6.6470347,
+      "elevation": 1789,
       "connections": [
         {
           "to": "lift_49511439_top",
@@ -11059,6 +11383,7 @@
       "lift_type": "gondola",
       "lat": 46.1607738,
       "lon": 6.6697611,
+      "elevation": 1170,
       "connections": [
         {
           "to": "lift_49511436_top",
@@ -11088,6 +11413,7 @@
       "lift_type": "gondola",
       "lat": 46.1654621,
       "lon": 6.6586983,
+      "elevation": 1540,
       "connections": [
         {
           "to": "lift_53180783_top",
@@ -11129,6 +11455,7 @@
       "lift_type": "surface",
       "lat": 46.1585156,
       "lon": 6.6708492,
+      "elevation": 1169,
       "connections": [
         {
           "to": "lift_49511437_top",
@@ -11146,6 +11473,7 @@
       "lift_type": "surface",
       "lat": 46.1575673,
       "lon": 6.6722588,
+      "elevation": 1179,
       "connections": [
         {
           "to": "jct_0370",
@@ -11187,6 +11515,7 @@
       "lift_type": "chairlift",
       "lat": 46.1645258,
       "lon": 6.6576896,
+      "elevation": 1535,
       "connections": [
         {
           "to": "lift_49511439_top",
@@ -11216,6 +11545,7 @@
       "lift_type": "chairlift",
       "lat": 46.1682902,
       "lon": 6.6469215,
+      "elevation": 1809,
       "connections": [
         {
           "to": "lift_49511432_base",
@@ -11275,6 +11605,7 @@
       "lift_type": "chairlift",
       "lat": 46.1495549,
       "lon": 6.6857587,
+      "elevation": 1480,
       "connections": [
         {
           "to": "lift_49532861_top",
@@ -11346,6 +11677,7 @@
       "lift_type": "chairlift",
       "lat": 46.1454716,
       "lon": 6.6935292,
+      "elevation": 1607,
       "connections": [
         {
           "to": "lift_49511430_top",
@@ -11387,6 +11719,7 @@
       "lift_type": "gondola",
       "lat": 46.1835453,
       "lon": 6.7035371,
+      "elevation": 957,
       "connections": [
         {
           "to": "lift_53165460_top",
@@ -11410,6 +11743,7 @@
       "lift_type": "gondola",
       "lat": 46.1911508,
       "lon": 6.7179166,
+      "elevation": 1457,
       "connections": [
         {
           "to": "lift_30352096_base",
@@ -11445,6 +11779,7 @@
       "lift_type": "chairlift",
       "lat": 46.1724618,
       "lon": 6.6619067,
+      "elevation": 1369,
       "connections": [
         {
           "to": "lift_53180783_top",
@@ -11462,6 +11797,7 @@
       "lift_type": "chairlift",
       "lat": 46.169534,
       "lon": 6.6507883,
+      "elevation": 1709,
       "connections": [
         {
           "to": "jct_0354",
@@ -11527,6 +11863,7 @@
       "lift_type": "chairlift",
       "lat": 46.1488315,
       "lon": 6.6580626,
+      "elevation": 1111,
       "connections": [
         {
           "to": "lift_53183221_top",
@@ -11556,6 +11893,7 @@
       "lift_type": "chairlift",
       "lat": 46.1377302,
       "lon": 6.67181,
+      "elevation": 1524,
       "connections": [
         {
           "to": "lift_53183269_top",
@@ -11579,6 +11917,7 @@
       "lift_type": "surface",
       "lat": 46.1484556,
       "lon": 6.6649454,
+      "elevation": 1206,
       "connections": [
         {
           "to": "lift_53183269_top",
@@ -11608,6 +11947,7 @@
       "lift_type": "surface",
       "lat": 46.1396392,
       "lon": 6.672415,
+      "elevation": 1508,
       "connections": [
         {
           "to": "jct_0355",
@@ -11655,6 +11995,7 @@
       "lift_type": "gondola",
       "lat": 46.2756646,
       "lon": 6.7210793,
+      "elevation": 951,
       "connections": [
         {
           "to": "lift_55037927_top",
@@ -11672,12 +12013,13 @@
       "lift_type": "gondola",
       "lat": 46.2649697,
       "lon": 6.7053045,
+      "elevation": 1384,
       "connections": [
         {
           "to": "lift_55037927_base",
           "name": "Retour village",
           "type": "slope",
-          "difficulty": "red"
+          "difficulty": "blue"
         },
         {
           "to": "lift_151490329_top",
@@ -11701,6 +12043,7 @@
       "lift_type": "surface",
       "lat": 46.2636311,
       "lon": 6.7051845,
+      "elevation": 1381,
       "connections": [
         {
           "to": "lift_55038474_top",
@@ -11730,6 +12073,7 @@
       "lift_type": "surface",
       "lat": 46.2587276,
       "lon": 6.695646,
+      "elevation": 1674,
       "connections": [
         {
           "to": "jct_0365",
@@ -11765,6 +12109,7 @@
       "lift_type": "chairlift",
       "lat": 46.1728003,
       "lon": 6.7014466,
+      "elevation": 1226,
       "connections": [
         {
           "to": "lift_96360500_top",
@@ -11788,6 +12133,7 @@
       "lift_type": "chairlift",
       "lat": 46.1687461,
       "lon": 6.6929335,
+      "elevation": 1505,
       "connections": [
         {
           "to": "lift_30751809_top",
@@ -11829,6 +12175,7 @@
       "lift_type": "surface",
       "lat": 46.156648,
       "lon": 6.6678884,
+      "elevation": 1168,
       "connections": [
         {
           "to": "lift_147476688_top",
@@ -11864,6 +12211,7 @@
       "lift_type": "surface",
       "lat": 46.1552701,
       "lon": 6.6698219,
+      "elevation": 1186,
       "connections": [
         {
           "to": "jct_0379",
@@ -11881,6 +12229,7 @@
       "lift_type": "surface",
       "lat": 46.1572257,
       "lon": 6.669318,
+      "elevation": 1165,
       "connections": [
         {
           "to": "lift_147533117_top",
@@ -11922,6 +12271,7 @@
       "lift_type": "surface",
       "lat": 46.1559617,
       "lon": 6.672554,
+      "elevation": 1225,
       "connections": [
         {
           "to": "lift_147533117_base",
@@ -11957,6 +12307,7 @@
       "lift_type": "surface",
       "lat": 46.1503047,
       "lon": 6.6875985,
+      "elevation": 1486,
       "connections": [
         {
           "to": "lift_147533118_top",
@@ -11986,6 +12337,7 @@
       "lift_type": "surface",
       "lat": 46.1473765,
       "lon": 6.6934442,
+      "elevation": 1594,
       "connections": []
     },
     {
@@ -11996,6 +12348,7 @@
       "lift_type": "surface",
       "lat": 46.26459,
       "lon": 6.7075652,
+      "elevation": 1354,
       "connections": [
         {
           "to": "lift_151490329_top",
@@ -12013,6 +12366,7 @@
       "lift_type": "surface",
       "lat": 46.2647773,
       "lon": 6.7055588,
+      "elevation": 1384,
       "connections": [
         {
           "to": "lift_151490329_base",
@@ -12042,6 +12396,7 @@
       "lift_type": "surface",
       "lat": 46.2643549,
       "lon": 6.7042278,
+      "elevation": 1395,
       "connections": [
         {
           "to": "lift_151490330_top",
@@ -12089,6 +12444,7 @@
       "lift_type": "surface",
       "lat": 46.2682175,
       "lon": 6.690506,
+      "elevation": 1643,
       "connections": [
         {
           "to": "lift_889626179_top",
@@ -12118,6 +12474,7 @@
       "lift_type": "surface",
       "lat": 46.265147,
       "lon": 6.7049888,
+      "elevation": 1401,
       "connections": [
         {
           "to": "lift_151490331_top",
@@ -12159,6 +12516,7 @@
       "lift_type": "surface",
       "lat": 46.2662436,
       "lon": 6.6993801,
+      "elevation": 1479,
       "connections": [
         {
           "to": "lift_151490331_base",
@@ -12176,6 +12534,7 @@
       "lift_type": "surface",
       "lat": 46.2629697,
       "lon": 6.7113215,
+      "elevation": 1304,
       "connections": [
         {
           "to": "lift_151490332_top",
@@ -12193,6 +12552,7 @@
       "lift_type": "surface",
       "lat": 46.2594828,
       "lon": 6.7019397,
+      "elevation": 1503,
       "connections": [
         {
           "to": "jct_0373",
@@ -12210,6 +12570,7 @@
       "lift_type": "surface",
       "lat": 46.1502696,
       "lon": 6.6875302,
+      "elevation": 1486,
       "connections": [
         {
           "to": "lift_203618751_top",
@@ -12239,6 +12600,7 @@
       "lift_type": "surface",
       "lat": 46.1406004,
       "lon": 6.6956433,
+      "elevation": 1649,
       "connections": [
         {
           "to": "jct_0349",
@@ -12280,6 +12642,7 @@
       "lift_type": "chairlift",
       "lat": 46.1701862,
       "lon": 6.6888135,
+      "elevation": 1454,
       "connections": [
         {
           "to": "lift_286275367_top",
@@ -12309,6 +12672,7 @@
       "lift_type": "chairlift",
       "lat": 46.1663122,
       "lon": 6.6921979,
+      "elevation": 1530,
       "connections": [
         {
           "to": "lift_286275367_base",
@@ -12332,6 +12696,7 @@
       "lift_type": "surface",
       "lat": 46.176951,
       "lon": 6.7058274,
+      "elevation": 991,
       "connections": [
         {
           "to": "lift_295651443_top",
@@ -12343,7 +12708,7 @@
           "to": "lift_295651444_base",
           "name": "Bouchet",
           "type": "slope",
-          "difficulty": "green"
+          "difficulty": "blue"
         }
       ]
     },
@@ -12355,6 +12720,7 @@
       "lift_type": "surface",
       "lat": 46.1761505,
       "lon": 6.7040223,
+      "elevation": 1034,
       "connections": [
         {
           "to": "lift_295651444_top",
@@ -12372,7 +12738,7 @@
           "to": "lift_295651443_base",
           "name": "Bouchet",
           "type": "slope",
-          "difficulty": "green"
+          "difficulty": "blue"
         }
       ]
     },
@@ -12384,6 +12750,7 @@
       "lift_type": "surface",
       "lat": 46.1782696,
       "lon": 6.7044487,
+      "elevation": 988,
       "connections": [
         {
           "to": "lift_295651444_top",
@@ -12401,6 +12768,7 @@
       "lift_type": "surface",
       "lat": 46.1776716,
       "lon": 6.7033436,
+      "elevation": 992,
       "connections": [
         {
           "to": "lift_295651444_base",
@@ -12424,6 +12792,7 @@
       "lift_type": "surface",
       "lat": 46.1456706,
       "lon": 6.686745,
+      "elevation": 1507,
       "connections": [
         {
           "to": "lift_317023891_top",
@@ -12459,6 +12828,7 @@
       "lift_type": "surface",
       "lat": 46.1457915,
       "lon": 6.69029,
+      "elevation": 1559,
       "connections": [
         {
           "to": "lift_317023891_base",
@@ -12500,6 +12870,7 @@
       "lift_type": "surface",
       "lat": 46.2636564,
       "lon": 6.7051154,
+      "elevation": 1381,
       "connections": [
         {
           "to": "lift_317447558_top",
@@ -12523,6 +12894,7 @@
       "lift_type": "surface",
       "lat": 46.2601627,
       "lon": 6.7005092,
+      "elevation": 1525,
       "connections": [
         {
           "to": "lift_317447558_base",
@@ -12540,6 +12912,7 @@
       "lift_type": "chairlift",
       "lat": 46.1521716,
       "lon": 6.7043744,
+      "elevation": 1326,
       "connections": [
         {
           "to": "lift_771016803_top",
@@ -12575,6 +12948,7 @@
       "lift_type": "chairlift",
       "lat": 46.1501403,
       "lon": 6.7133956,
+      "elevation": 1576,
       "connections": [
         {
           "to": "lift_32312982_top",
@@ -12592,6 +12966,7 @@
       "lift_type": "surface",
       "lat": 46.2668054,
       "lon": 6.6873305,
+      "elevation": 1535,
       "connections": [
         {
           "to": "lift_889626179_top",
@@ -12609,6 +12984,7 @@
       "lift_type": "surface",
       "lat": 46.2687393,
       "lon": 6.6907381,
+      "elevation": 1657,
       "connections": [
         {
           "to": "lift_151490330_base",
@@ -12632,6 +13008,7 @@
       "lift_type": "surface",
       "lat": 46.1473444,
       "lon": 6.6862572,
+      "elevation": 1491,
       "connections": [
         {
           "to": "lift_1226916177_top",
@@ -12673,6 +13050,7 @@
       "lift_type": "surface",
       "lat": 46.1457438,
       "lon": 6.6868594,
+      "elevation": 1507,
       "connections": [
         {
           "to": "lift_317023891_base",
@@ -12696,6 +13074,7 @@
       "lift_type": "surface",
       "lat": 46.1475639,
       "lon": 6.6862152,
+      "elevation": 1490,
       "connections": [
         {
           "to": "lift_1450703362_top",
@@ -12749,6 +13128,7 @@
       "lift_type": "surface",
       "lat": 46.1483379,
       "lon": 6.6861513,
+      "elevation": 1487,
       "connections": [
         {
           "to": "lift_49532861_base",
@@ -12802,6 +13182,7 @@
       "lift_type": null,
       "lat": 46.17760555627441,
       "lon": 6.837130889187383,
+      "elevation": 1840,
       "connections": [
         {
           "to": "jct_0005",
@@ -12819,6 +13200,7 @@
       "lift_type": null,
       "lat": 46.183900155341746,
       "lon": 6.823659104347986,
+      "elevation": 1859,
       "connections": [
         {
           "to": "lift_8216408_base",
@@ -12842,6 +13224,7 @@
       "lift_type": null,
       "lat": 46.191823625,
       "lon": 6.8216436,
+      "elevation": 2078,
       "connections": [
         {
           "to": "jct_0066",
@@ -12859,7 +13242,7 @@
           "to": "jct_0126",
           "name": "Portes du Soleil",
           "type": "slope",
-          "difficulty": "blue"
+          "difficulty": "red"
         }
       ]
     },
@@ -12871,6 +13254,7 @@
       "lift_type": null,
       "lat": 46.17830271555732,
       "lon": 6.838947426761854,
+      "elevation": 1872,
       "connections": [
         {
           "to": "jct_0001",
@@ -12894,6 +13278,7 @@
       "lift_type": null,
       "lat": 46.1777098,
       "lon": 6.835901849999999,
+      "elevation": 1821,
       "connections": [
         {
           "to": "jct_0006",
@@ -12917,6 +13302,7 @@
       "lift_type": null,
       "lat": 46.17804770509405,
       "lon": 6.834651367858939,
+      "elevation": 1812,
       "connections": [
         {
           "to": "lift_8215584_base",
@@ -12946,6 +13332,7 @@
       "lift_type": null,
       "lat": 46.17510973231981,
       "lon": 6.825906869353775,
+      "elevation": 1709,
       "connections": [
         {
           "to": "lift_8215584_base",
@@ -12963,6 +13350,7 @@
       "lift_type": null,
       "lat": 46.17276464628815,
       "lon": 6.821209124016884,
+      "elevation": 1759,
       "connections": [
         {
           "to": "lift_8216568_base",
@@ -12980,6 +13368,7 @@
       "lift_type": null,
       "lat": 46.1829971,
       "lon": 6.8201638,
+      "elevation": 1941,
       "connections": [
         {
           "to": "jct_0040",
@@ -13009,6 +13398,7 @@
       "lift_type": null,
       "lat": 46.19432696060724,
       "lon": 6.831414522454902,
+      "elevation": 1947,
       "connections": [
         {
           "to": "jct_0011",
@@ -13020,7 +13410,7 @@
           "to": "lift_49397555_base",
           "name": "Portes du Soleil",
           "type": "slope",
-          "difficulty": "blue"
+          "difficulty": "red"
         }
       ]
     },
@@ -13032,6 +13422,7 @@
       "lift_type": null,
       "lat": 46.211229,
       "lon": 6.8299172,
+      "elevation": 1587,
       "connections": [
         {
           "to": "jct_0205",
@@ -13049,6 +13440,7 @@
       "lift_type": null,
       "lat": 46.2308899,
       "lon": 6.8599723,
+      "elevation": 1585,
       "connections": [
         {
           "to": "jct_0013",
@@ -13066,6 +13458,7 @@
       "lift_type": null,
       "lat": 46.235731034816055,
       "lon": 6.856288715349859,
+      "elevation": 1334,
       "connections": [
         {
           "to": "lift_8215989_base",
@@ -13083,6 +13476,7 @@
       "lift_type": null,
       "lat": 46.218571,
       "lon": 6.8615909,
+      "elevation": 1711,
       "connections": [
         {
           "to": "jct_0137",
@@ -13100,6 +13494,7 @@
       "lift_type": null,
       "lat": 46.21722924410202,
       "lon": 6.861584538247364,
+      "elevation": 1731,
       "connections": [
         {
           "to": "jct_0017",
@@ -13123,6 +13518,7 @@
       "lift_type": null,
       "lat": 46.22173310516268,
       "lon": 6.861640154077576,
+      "elevation": 1770,
       "connections": [
         {
           "to": "jct_0014",
@@ -13146,6 +13542,7 @@
       "lift_type": null,
       "lat": 46.21793104594552,
       "lon": 6.870070087931919,
+      "elevation": 1546,
       "connections": [
         {
           "to": "lift_198298433_base",
@@ -13169,6 +13566,7 @@
       "lift_type": null,
       "lat": 46.21644494042111,
       "lon": 6.855424835850239,
+      "elevation": 1840,
       "connections": [
         {
           "to": "jct_0038",
@@ -13198,6 +13596,7 @@
       "lift_type": null,
       "lat": 46.1976512,
       "lon": 6.840421500000001,
+      "elevation": 2120,
       "connections": [
         {
           "to": "jct_0020",
@@ -13221,6 +13620,7 @@
       "lift_type": null,
       "lat": 46.19563434231223,
       "lon": 6.83912750942352,
+      "elevation": 2026,
       "connections": [
         {
           "to": "jct_0081",
@@ -13238,6 +13638,7 @@
       "lift_type": null,
       "lat": 46.185971272032674,
       "lon": 6.832629986976544,
+      "elevation": 1755,
       "connections": [
         {
           "to": "lift_8215671_base",
@@ -13261,6 +13662,7 @@
       "lift_type": null,
       "lat": 46.186809049999994,
       "lon": 6.83116185,
+      "elevation": 1797,
       "connections": [
         {
           "to": "jct_0021",
@@ -13278,6 +13680,7 @@
       "lift_type": null,
       "lat": 46.1668229,
       "lon": 6.8393054,
+      "elevation": 1559,
       "connections": [
         {
           "to": "jct_0024",
@@ -13295,6 +13698,7 @@
       "lift_type": null,
       "lat": 46.1633739,
       "lon": 6.839448100000001,
+      "elevation": 1412,
       "connections": [
         {
           "to": "jct_0048",
@@ -13318,6 +13722,7 @@
       "lift_type": null,
       "lat": 46.181925384062346,
       "lon": 6.832753146429011,
+      "elevation": 1700,
       "connections": [
         {
           "to": "lift_8216408_base",
@@ -13353,6 +13758,7 @@
       "lift_type": null,
       "lat": 46.1847657,
       "lon": 6.819306,
+      "elevation": 2023,
       "connections": []
     },
     {
@@ -13363,6 +13769,7 @@
       "lift_type": null,
       "lat": 46.18096273333333,
       "lon": 6.8219295666666655,
+      "elevation": 1879,
       "connections": [
         {
           "to": "jct_0042",
@@ -13386,6 +13793,7 @@
       "lift_type": null,
       "lat": 46.1998725,
       "lon": 6.7879713,
+      "elevation": 1589,
       "connections": [
         {
           "to": "lift_8216510_base",
@@ -13403,6 +13811,7 @@
       "lift_type": null,
       "lat": 46.17098864667371,
       "lon": 6.813449407684302,
+      "elevation": 1871,
       "connections": [
         {
           "to": "jct_0008",
@@ -13426,6 +13835,7 @@
       "lift_type": null,
       "lat": 46.2008061,
       "lon": 6.8434195,
+      "elevation": 2066,
       "connections": [
         {
           "to": "jct_0109",
@@ -13449,6 +13859,7 @@
       "lift_type": null,
       "lat": 46.278191427989036,
       "lon": 6.8629207593800805,
+      "elevation": 1896,
       "connections": [
         {
           "to": "lift_31770799_base",
@@ -13478,6 +13889,7 @@
       "lift_type": null,
       "lat": 46.2820123,
       "lon": 6.8514919,
+      "elevation": 1577,
       "connections": [
         {
           "to": "lift_29289470_top",
@@ -13495,6 +13907,7 @@
       "lift_type": null,
       "lat": 46.243494049999995,
       "lon": 6.8648891,
+      "elevation": 1555,
       "connections": [
         {
           "to": "jct_0113",
@@ -13512,6 +13925,7 @@
       "lift_type": null,
       "lat": 46.26341930145759,
       "lon": 6.870134062223132,
+      "elevation": 1678,
       "connections": [
         {
           "to": "jct_0124",
@@ -13529,6 +13943,7 @@
       "lift_type": null,
       "lat": 46.26076211780835,
       "lon": 6.86620022560611,
+      "elevation": 1758,
       "connections": [
         {
           "to": "jct_0034",
@@ -13552,6 +13967,7 @@
       "lift_type": null,
       "lat": 46.2188774,
       "lon": 6.8680877,
+      "elevation": 1590,
       "connections": [
         {
           "to": "jct_0037",
@@ -13569,6 +13985,7 @@
       "lift_type": null,
       "lat": 46.21992111901185,
       "lon": 6.86880758503651,
+      "elevation": 1588,
       "connections": [
         {
           "to": "lift_8216054_base",
@@ -13586,6 +14003,7 @@
       "lift_type": null,
       "lat": 46.2175600934673,
       "lon": 6.855268817652065,
+      "elevation": 1795,
       "connections": [
         {
           "to": "jct_0203",
@@ -13603,6 +14021,7 @@
       "lift_type": null,
       "lat": 46.15984555,
       "lon": 6.82618175,
+      "elevation": 1352,
       "connections": [
         {
           "to": "jct_0200",
@@ -13620,6 +14039,7 @@
       "lift_type": null,
       "lat": 46.18400307165666,
       "lon": 6.822087107267083,
+      "elevation": 1904,
       "connections": [
         {
           "to": "jct_0002",
@@ -13643,6 +14063,7 @@
       "lift_type": null,
       "lat": 46.183107400991226,
       "lon": 6.823627916566312,
+      "elevation": 1848,
       "connections": [
         {
           "to": "lift_8216408_base",
@@ -13660,6 +14081,7 @@
       "lift_type": null,
       "lat": 46.18099244843309,
       "lon": 6.828939233339746,
+      "elevation": 1762,
       "connections": [
         {
           "to": "lift_8216408_base",
@@ -13683,6 +14105,7 @@
       "lift_type": null,
       "lat": 46.17750070796421,
       "lon": 6.7908583765891075,
+      "elevation": 1842,
       "connections": [
         {
           "to": "lift_24916409_base",
@@ -13706,6 +14129,7 @@
       "lift_type": null,
       "lat": 46.17320606114799,
       "lon": 6.7747581560852135,
+      "elevation": 2125,
       "connections": [
         {
           "to": "jct_0045",
@@ -13735,6 +14159,7 @@
       "lift_type": null,
       "lat": 46.177197997325365,
       "lon": 6.771074022532992,
+      "elevation": 1944,
       "connections": [
         {
           "to": "jct_0046",
@@ -13758,6 +14183,7 @@
       "lift_type": null,
       "lat": 46.1805639148536,
       "lon": 6.768576949699423,
+      "elevation": 1884,
       "connections": [
         {
           "to": "jct_0074",
@@ -13781,6 +14207,7 @@
       "lift_type": null,
       "lat": 46.172893800000004,
       "lon": 6.8293356,
+      "elevation": 1675,
       "connections": [
         {
           "to": "jct_0023",
@@ -13798,6 +14225,7 @@
       "lift_type": null,
       "lat": 46.1627693,
       "lon": 6.8419775,
+      "elevation": 1388,
       "connections": [
         {
           "to": "jct_0049",
@@ -13815,6 +14243,7 @@
       "lift_type": null,
       "lat": 46.1621487,
       "lon": 6.8432503,
+      "elevation": 1351,
       "connections": [
         {
           "to": "jct_0050",
@@ -13832,6 +14261,7 @@
       "lift_type": null,
       "lat": 46.1621057,
       "lon": 6.8449524,
+      "elevation": 1355,
       "connections": [
         {
           "to": "jct_0051",
@@ -13849,6 +14279,7 @@
       "lift_type": null,
       "lat": 46.1626045,
       "lon": 6.8496942,
+      "elevation": 1368,
       "connections": [
         {
           "to": "lift_24900087_base",
@@ -13866,6 +14297,7 @@
       "lift_type": null,
       "lat": 46.18458857611486,
       "lon": 6.817192611759397,
+      "elevation": 2092,
       "connections": [
         {
           "to": "jct_0026",
@@ -13889,6 +14321,7 @@
       "lift_type": null,
       "lat": 46.183345599999996,
       "lon": 6.818345033333333,
+      "elevation": 2003,
       "connections": [
         {
           "to": "jct_0054",
@@ -13924,6 +14357,7 @@
       "lift_type": null,
       "lat": 46.1822731,
       "lon": 6.820563,
+      "elevation": 1930,
       "connections": [
         {
           "to": "jct_0027",
@@ -13941,6 +14375,7 @@
       "lift_type": null,
       "lat": 46.17833194610762,
       "lon": 6.84298298065258,
+      "elevation": 1859,
       "connections": [
         {
           "to": "lift_8216350_base",
@@ -13958,6 +14393,7 @@
       "lift_type": null,
       "lat": 46.18945985613536,
       "lon": 6.805062673764482,
+      "elevation": 1904,
       "connections": [
         {
           "to": "jct_0084",
@@ -13981,6 +14417,7 @@
       "lift_type": null,
       "lat": 46.17690926582322,
       "lon": 6.806289780832958,
+      "elevation": 2170,
       "connections": [
         {
           "to": "jct_0071",
@@ -14004,6 +14441,7 @@
       "lift_type": null,
       "lat": 46.18662647281744,
       "lon": 6.776234013888911,
+      "elevation": 1781,
       "connections": [
         {
           "to": "lift_29286845_base",
@@ -14027,6 +14465,7 @@
       "lift_type": null,
       "lat": 46.167997,
       "lon": 6.7929492,
+      "elevation": 2104,
       "connections": [
         {
           "to": "jct_0070",
@@ -14044,6 +14483,7 @@
       "lift_type": null,
       "lat": 46.1741897,
       "lon": 6.8122591,
+      "elevation": 1873,
       "connections": [
         {
           "to": "lift_24916407_base",
@@ -14061,6 +14501,7 @@
       "lift_type": null,
       "lat": 46.21279659639853,
       "lon": 6.80502674892797,
+      "elevation": 2017,
       "connections": [
         {
           "to": "jct_0252",
@@ -14084,6 +14525,7 @@
       "lift_type": null,
       "lat": 46.2388687,
       "lon": 6.8549048,
+      "elevation": 1330,
       "connections": []
     },
     {
@@ -14094,6 +14536,7 @@
       "lift_type": null,
       "lat": 46.1984849,
       "lon": 6.7464226499999995,
+      "elevation": 1697,
       "connections": [
         {
           "to": "jct_0064",
@@ -14111,6 +14554,7 @@
       "lift_type": null,
       "lat": 46.19673394500174,
       "lon": 6.750281744190425,
+      "elevation": 1663,
       "connections": [
         {
           "to": "lift_24916420_base",
@@ -14128,6 +14572,7 @@
       "lift_type": null,
       "lat": 46.173171919292294,
       "lon": 6.817194211118359,
+      "elevation": 1805,
       "connections": [
         {
           "to": "jct_0008",
@@ -14145,6 +14590,7 @@
       "lift_type": null,
       "lat": 46.19072509975149,
       "lon": 6.821811950510796,
+      "elevation": 2048,
       "connections": [
         {
           "to": "jct_0067",
@@ -14168,6 +14614,7 @@
       "lift_type": null,
       "lat": 46.185490184925996,
       "lon": 6.826337867585249,
+      "elevation": 1830,
       "connections": [
         {
           "to": "lift_8216408_base",
@@ -14185,6 +14632,7 @@
       "lift_type": null,
       "lat": 46.17291385025738,
       "lon": 6.796007849460564,
+      "elevation": 1962,
       "connections": [
         {
           "to": "jct_0070",
@@ -14202,6 +14650,7 @@
       "lift_type": null,
       "lat": 46.1701945716477,
       "lon": 6.797923891416758,
+      "elevation": 2036,
       "connections": [
         {
           "to": "jct_0068",
@@ -14219,6 +14668,7 @@
       "lift_type": null,
       "lat": 46.17539885161807,
       "lon": 6.791944308755534,
+      "elevation": 1886,
       "connections": [
         {
           "to": "jct_0043",
@@ -14236,6 +14686,7 @@
       "lift_type": null,
       "lat": 46.17734385999999,
       "lon": 6.8030347,
+      "elevation": 2098,
       "connections": [
         {
           "to": "lift_29285752_base",
@@ -14253,6 +14704,7 @@
       "lift_type": null,
       "lat": 46.1763976,
       "lon": 6.8016621,
+      "elevation": 2039,
       "connections": [
         {
           "to": "jct_0225",
@@ -14270,6 +14722,7 @@
       "lift_type": null,
       "lat": 46.17746960023486,
       "lon": 6.842153009891752,
+      "elevation": 1877,
       "connections": [
         {
           "to": "jct_0055",
@@ -14293,6 +14746,7 @@
       "lift_type": null,
       "lat": 46.18170872710721,
       "lon": 6.768546112866924,
+      "elevation": 1695,
       "connections": [
         {
           "to": "lift_24916425_base",
@@ -14316,6 +14770,7 @@
       "lift_type": null,
       "lat": 46.18174804702952,
       "lon": 6.7637623732838605,
+      "elevation": 1654,
       "connections": [
         {
           "to": "jct_0083",
@@ -14345,6 +14800,7 @@
       "lift_type": null,
       "lat": 46.181784182428,
       "lon": 6.778653217219667,
+      "elevation": 1886,
       "connections": [
         {
           "to": "jct_0190",
@@ -14374,6 +14830,7 @@
       "lift_type": null,
       "lat": 46.18042292557848,
       "lon": 6.777156686905976,
+      "elevation": 1939,
       "connections": [
         {
           "to": "jct_0076",
@@ -14403,6 +14860,7 @@
       "lift_type": null,
       "lat": 46.186012437182065,
       "lon": 6.769438880809254,
+      "elevation": 1578,
       "connections": [
         {
           "to": "jct_0216",
@@ -14420,6 +14878,7 @@
       "lift_type": null,
       "lat": 46.1782535,
       "lon": 6.8228283,
+      "elevation": 1830,
       "connections": []
     },
     {
@@ -14430,6 +14889,7 @@
       "lift_type": null,
       "lat": 46.17904713838384,
       "lon": 6.818924183660484,
+      "elevation": 1909,
       "connections": [
         {
           "to": "jct_0007",
@@ -14453,6 +14913,7 @@
       "lift_type": null,
       "lat": 46.1884288079701,
       "lon": 6.83323117846463,
+      "elevation": 1844,
       "connections": [
         {
           "to": "lift_333170100_base",
@@ -14476,6 +14937,7 @@
       "lift_type": null,
       "lat": 46.18320726941114,
       "lon": 6.779331872402368,
+      "elevation": 1892,
       "connections": [
         {
           "to": "lift_29286845_base",
@@ -14505,6 +14967,7 @@
       "lift_type": null,
       "lat": 46.18024465129067,
       "lon": 6.76144850336604,
+      "elevation": 1577,
       "connections": [
         {
           "to": "jct_0214",
@@ -14528,6 +14991,7 @@
       "lift_type": null,
       "lat": 46.194074524249096,
       "lon": 6.802807252915698,
+      "elevation": 1837,
       "connections": [
         {
           "to": "lift_750062609_base",
@@ -14545,6 +15009,7 @@
       "lift_type": null,
       "lat": 46.22815960513028,
       "lon": 6.80121007813283,
+      "elevation": 1786,
       "connections": [
         {
           "to": "lift_24916937_base",
@@ -14574,6 +15039,7 @@
       "lift_type": null,
       "lat": 46.227661970146215,
       "lon": 6.818601100107535,
+      "elevation": 1960,
       "connections": [
         {
           "to": "jct_0254",
@@ -14603,6 +15069,7 @@
       "lift_type": null,
       "lat": 46.17411195080422,
       "lon": 6.8434596268866095,
+      "elevation": 1866,
       "connections": [
         {
           "to": "lift_8216398_base",
@@ -14620,6 +15087,7 @@
       "lift_type": null,
       "lat": 46.19632582009152,
       "lon": 6.777721846484149,
+      "elevation": 1798,
       "connections": [
         {
           "to": "lift_8215733_base",
@@ -14673,6 +15141,7 @@
       "lift_type": null,
       "lat": 46.2865717,
       "lon": 6.776004675,
+      "elevation": 1257,
       "connections": [
         {
           "to": "jct_0229",
@@ -14696,6 +15165,7 @@
       "lift_type": null,
       "lat": 46.2782553,
       "lon": 6.7691601,
+      "elevation": 1453,
       "connections": [
         {
           "to": "jct_0231",
@@ -14719,6 +15189,7 @@
       "lift_type": null,
       "lat": 46.2808876,
       "lon": 6.7644308,
+      "elevation": 1386,
       "connections": [
         {
           "to": "jct_0181",
@@ -14736,6 +15207,7 @@
       "lift_type": null,
       "lat": 46.2861742,
       "lon": 6.7791347,
+      "elevation": 1262,
       "connections": [
         {
           "to": "jct_0229",
@@ -14753,6 +15225,7 @@
       "lift_type": null,
       "lat": 46.3066292,
       "lon": 6.8207461,
+      "elevation": 1618,
       "connections": [
         {
           "to": "jct_0130",
@@ -14770,6 +15243,7 @@
       "lift_type": null,
       "lat": 46.3078444,
       "lon": 6.8339117,
+      "elevation": 1684,
       "connections": [
         {
           "to": "lift_31770798_top",
@@ -14793,12 +15267,13 @@
       "lift_type": null,
       "lat": 46.1777023,
       "lon": 6.7895436,
+      "elevation": 1830,
       "connections": [
         {
           "to": "jct_0218",
           "name": "Retour Chavanette",
           "type": "slope",
-          "difficulty": "green"
+          "difficulty": "blue"
         }
       ]
     },
@@ -14810,6 +15285,7 @@
       "lift_type": null,
       "lat": 46.21324435731602,
       "lon": 6.853946118427263,
+      "elevation": 1798,
       "connections": [
         {
           "to": "jct_0118",
@@ -14827,6 +15303,7 @@
       "lift_type": null,
       "lat": 46.14009767835495,
       "lon": 6.714874508643446,
+      "elevation": 1592,
       "connections": [
         {
           "to": "jct_0270",
@@ -14844,6 +15321,7 @@
       "lift_type": null,
       "lat": 46.1543685,
       "lon": 6.70753695,
+      "elevation": 1399,
       "connections": [
         {
           "to": "lift_32425250_base",
@@ -14867,6 +15345,7 @@
       "lift_type": null,
       "lat": 46.193664123420355,
       "lon": 6.725240442240986,
+      "elevation": 1645,
       "connections": [
         {
           "to": "jct_0195",
@@ -14896,6 +15375,7 @@
       "lift_type": null,
       "lat": 46.204855969084804,
       "lon": 6.845653872467976,
+      "elevation": 1953,
       "connections": [
         {
           "to": "jct_0118",
@@ -14913,6 +15393,7 @@
       "lift_type": null,
       "lat": 46.30880106986101,
       "lon": 6.831546307942324,
+      "elevation": 1672,
       "connections": [
         {
           "to": "lift_31770796_base",
@@ -14930,6 +15411,7 @@
       "lift_type": null,
       "lat": 46.29861590814245,
       "lon": 6.850852038410337,
+      "elevation": 1493,
       "connections": [
         {
           "to": "lift_593806449_top",
@@ -14947,6 +15429,7 @@
       "lift_type": null,
       "lat": 46.30706520640068,
       "lon": 6.835027949040752,
+      "elevation": 1672,
       "connections": [
         {
           "to": "lift_31770798_base",
@@ -14970,6 +15453,7 @@
       "lift_type": null,
       "lat": 46.30405785091049,
       "lon": 6.836827056639761,
+      "elevation": 1589,
       "connections": [
         {
           "to": "lift_593806449_base",
@@ -14987,6 +15471,7 @@
       "lift_type": null,
       "lat": 46.26351871925107,
       "lon": 6.858283238124521,
+      "elevation": 1620,
       "connections": [
         {
           "to": "lift_149425684_base",
@@ -15004,6 +15489,7 @@
       "lift_type": null,
       "lat": 46.2109082,
       "lon": 6.7784509,
+      "elevation": 1625,
       "connections": [
         {
           "to": "jct_0223",
@@ -15027,6 +15513,7 @@
       "lift_type": null,
       "lat": 46.209788501485214,
       "lon": 6.773143766566835,
+      "elevation": 1457,
       "connections": [
         {
           "to": "jct_0161",
@@ -15044,6 +15531,7 @@
       "lift_type": null,
       "lat": 46.20345119712228,
       "lon": 6.844936752312435,
+      "elevation": 1961,
       "connections": [
         {
           "to": "jct_0109",
@@ -15067,6 +15555,7 @@
       "lift_type": null,
       "lat": 46.20237730753601,
       "lon": 6.8428168453602805,
+      "elevation": 1946,
       "connections": [
         {
           "to": "jct_0011",
@@ -15084,6 +15573,7 @@
       "lift_type": null,
       "lat": 46.15081130000001,
       "lon": 6.716562200000001,
+      "elevation": 1623,
       "connections": [
         {
           "to": "lift_771016803_top",
@@ -15107,6 +15597,7 @@
       "lift_type": null,
       "lat": 46.26663910329591,
       "lon": 6.85596120627481,
+      "elevation": 1576,
       "connections": [
         {
           "to": "lift_24898715_base",
@@ -15130,6 +15621,7 @@
       "lift_type": null,
       "lat": 46.26821106666667,
       "lon": 6.8522062,
+      "elevation": 1467,
       "connections": [
         {
           "to": "jct_0233",
@@ -15153,6 +15645,7 @@
       "lift_type": null,
       "lat": 46.24085684493862,
       "lon": 6.856161928068124,
+      "elevation": 1385,
       "connections": [
         {
           "to": "jct_0062",
@@ -15176,6 +15669,7 @@
       "lift_type": null,
       "lat": 46.27442246757125,
       "lon": 6.871605668081894,
+      "elevation": 1610,
       "connections": [
         {
           "to": "lift_24898738_base",
@@ -15193,6 +15687,7 @@
       "lift_type": null,
       "lat": 46.2828226,
       "lon": 6.8673584,
+      "elevation": 1866,
       "connections": [
         {
           "to": "jct_0116",
@@ -15216,6 +15711,7 @@
       "lift_type": null,
       "lat": 46.28337042,
       "lon": 6.869540119999999,
+      "elevation": 1807,
       "connections": [
         {
           "to": "jct_0127",
@@ -15233,6 +15729,7 @@
       "lift_type": null,
       "lat": 46.201841280000004,
       "lon": 6.84456302,
+      "elevation": 2008,
       "connections": [
         {
           "to": "jct_0108",
@@ -15250,6 +15747,7 @@
       "lift_type": null,
       "lat": 46.21225840402215,
       "lon": 6.854546320798802,
+      "elevation": 1773,
       "connections": [
         {
           "to": "lift_24899599_base",
@@ -15267,6 +15765,7 @@
       "lift_type": null,
       "lat": 46.15503390315404,
       "lon": 6.711582955542841,
+      "elevation": 1460,
       "connections": [
         {
           "to": "lift_32425250_top",
@@ -15290,6 +15789,7 @@
       "lift_type": null,
       "lat": 46.245153649509184,
       "lon": 6.863395533688041,
+      "elevation": 1619,
       "connections": [
         {
           "to": "jct_0033",
@@ -15307,6 +15807,7 @@
       "lift_type": null,
       "lat": 46.24800804642741,
       "lon": 6.868936808429613,
+      "elevation": 1680,
       "connections": [
         {
           "to": "lift_24898743_base",
@@ -15324,6 +15825,7 @@
       "lift_type": null,
       "lat": 46.24604495553064,
       "lon": 6.865908312738521,
+      "elevation": 1637,
       "connections": [
         {
           "to": "jct_0123",
@@ -15341,6 +15843,7 @@
       "lift_type": null,
       "lat": 46.24408305539278,
       "lon": 6.866675240149023,
+      "elevation": 1561,
       "connections": [
         {
           "to": "jct_0033",
@@ -15358,6 +15861,7 @@
       "lift_type": null,
       "lat": 46.26693231472444,
       "lon": 6.870170201509351,
+      "elevation": 1626,
       "connections": [
         {
           "to": "lift_24899026_base",
@@ -15375,6 +15879,7 @@
       "lift_type": null,
       "lat": 46.191124107222265,
       "lon": 6.823261809532932,
+      "elevation": 2052,
       "connections": [
         {
           "to": "jct_0022",
@@ -15398,12 +15903,13 @@
       "lift_type": null,
       "lat": 46.19136288720809,
       "lon": 6.824248658001963,
+      "elevation": 2059,
       "connections": [
         {
           "to": "jct_0010",
           "name": "Portes du Soleil",
           "type": "slope",
-          "difficulty": "blue"
+          "difficulty": "red"
         }
       ]
     },
@@ -15415,6 +15921,7 @@
       "lift_type": null,
       "lat": 46.28312825450382,
       "lon": 6.872274784937211,
+      "elevation": 1741,
       "connections": [
         {
           "to": "lift_31770799_base",
@@ -15432,6 +15939,7 @@
       "lift_type": null,
       "lat": 46.1785822,
       "lon": 6.8380477,
+      "elevation": 1836,
       "connections": [
         {
           "to": "jct_0006",
@@ -15449,6 +15957,7 @@
       "lift_type": null,
       "lat": 46.1657861,
       "lon": 6.7921787,
+      "elevation": 2193,
       "connections": [
         {
           "to": "lift_24916410_top",
@@ -15466,6 +15975,7 @@
       "lift_type": null,
       "lat": 46.30573937999999,
       "lon": 6.818581599999999,
+      "elevation": 1613,
       "connections": [
         {
           "to": "jct_0131",
@@ -15495,6 +16005,7 @@
       "lift_type": null,
       "lat": 46.3050258,
       "lon": 6.8152883,
+      "elevation": 1592,
       "connections": [
         {
           "to": "jct_0187",
@@ -15512,6 +16023,7 @@
       "lift_type": null,
       "lat": 46.1272777,
       "lon": 6.7137386,
+      "elevation": 1702,
       "connections": [
         {
           "to": "jct_0302",
@@ -15535,6 +16047,7 @@
       "lift_type": null,
       "lat": 46.124474836095885,
       "lon": 6.714143019171233,
+      "elevation": 1720,
       "connections": [
         {
           "to": "jct_0178",
@@ -15558,6 +16071,7 @@
       "lift_type": null,
       "lat": 46.21202713820861,
       "lon": 6.868942327738275,
+      "elevation": 1507,
       "connections": [
         {
           "to": "lift_197938604_base",
@@ -15575,6 +16089,7 @@
       "lift_type": null,
       "lat": 46.2169483,
       "lon": 6.8604746,
+      "elevation": 1743,
       "connections": [
         {
           "to": "jct_0015",
@@ -15592,6 +16107,7 @@
       "lift_type": null,
       "lat": 46.218916100366116,
       "lon": 6.865943048519922,
+      "elevation": 1627,
       "connections": [
         {
           "to": "jct_0017",
@@ -15615,6 +16131,7 @@
       "lift_type": null,
       "lat": 46.21889219627832,
       "lon": 6.863551441514982,
+      "elevation": 1671,
       "connections": [
         {
           "to": "jct_0136",
@@ -15632,6 +16149,7 @@
       "lift_type": null,
       "lat": 46.22244960228604,
       "lon": 6.86169303538516,
+      "elevation": 1763,
       "connections": [
         {
           "to": "jct_0016",
@@ -15649,6 +16167,7 @@
       "lift_type": null,
       "lat": 46.20837630582031,
       "lon": 6.775711413675821,
+      "elevation": 1505,
       "connections": [
         {
           "to": "jct_0162",
@@ -15678,6 +16197,7 @@
       "lift_type": null,
       "lat": 46.15155773823672,
       "lon": 6.7181655741449005,
+      "elevation": 1635,
       "connections": [
         {
           "to": "lift_280176511_top",
@@ -15701,6 +16221,7 @@
       "lift_type": null,
       "lat": 46.129636299999994,
       "lon": 6.712563800000001,
+      "elevation": 1695,
       "connections": [
         {
           "to": "jct_0142",
@@ -15724,6 +16245,7 @@
       "lift_type": null,
       "lat": 46.13125397742267,
       "lon": 6.71306501374626,
+      "elevation": 1706,
       "connections": [
         {
           "to": "jct_0143",
@@ -15759,6 +16281,7 @@
       "lift_type": null,
       "lat": 46.12993204285714,
       "lon": 6.7115962,
+      "elevation": 1680,
       "connections": []
     },
     {
@@ -15769,6 +16292,7 @@
       "lift_type": null,
       "lat": 46.12998495296533,
       "lon": 6.714649392184222,
+      "elevation": 1707,
       "connections": [
         {
           "to": "jct_0132",
@@ -15798,6 +16322,7 @@
       "lift_type": null,
       "lat": 46.15104256512255,
       "lon": 6.720979728268901,
+      "elevation": 1739,
       "connections": [
         {
           "to": "jct_0140",
@@ -15821,6 +16346,7 @@
       "lift_type": null,
       "lat": 46.1917581,
       "lon": 6.7786795,
+      "elevation": 1886,
       "connections": [
         {
           "to": "jct_0147",
@@ -15844,6 +16370,7 @@
       "lift_type": null,
       "lat": 46.1932637,
       "lon": 6.7748511,
+      "elevation": 1831,
       "connections": [
         {
           "to": "jct_0148",
@@ -15861,6 +16388,7 @@
       "lift_type": null,
       "lat": 46.1925034,
       "lon": 6.7757801,
+      "elevation": 1837,
       "connections": [
         {
           "to": "lift_30685905_top",
@@ -15878,6 +16406,7 @@
       "lift_type": null,
       "lat": 46.190114333333334,
       "lon": 6.779048933333333,
+      "elevation": 1818,
       "connections": [
         {
           "to": "lift_1183443459_base",
@@ -15901,6 +16430,7 @@
       "lift_type": null,
       "lat": 46.19504319665339,
       "lon": 6.775093899695216,
+      "elevation": 1869,
       "connections": [
         {
           "to": "lift_24916421_top",
@@ -15918,6 +16448,7 @@
       "lift_type": null,
       "lat": 46.1975069,
       "lon": 6.7806611,
+      "elevation": 1754,
       "connections": [
         {
           "to": "jct_0152",
@@ -15935,6 +16466,7 @@
       "lift_type": null,
       "lat": 46.19983428614892,
       "lon": 6.781212905955253,
+      "elevation": 1650,
       "connections": [
         {
           "to": "jct_0169",
@@ -15970,6 +16502,7 @@
       "lift_type": null,
       "lat": 46.29062816,
       "lon": 6.845821580000001,
+      "elevation": 1802,
       "connections": [
         {
           "to": "jct_0156",
@@ -15993,6 +16526,7 @@
       "lift_type": null,
       "lat": 46.2877367,
       "lon": 6.8523492,
+      "elevation": 1845,
       "connections": [
         {
           "to": "jct_0183",
@@ -16010,6 +16544,7 @@
       "lift_type": null,
       "lat": 46.285433007966034,
       "lon": 6.846477656418628,
+      "elevation": 1648,
       "connections": [
         {
           "to": "jct_0156",
@@ -16033,6 +16568,7 @@
       "lift_type": null,
       "lat": 46.28583913491201,
       "lon": 6.842513361575433,
+      "elevation": 1625,
       "connections": [
         {
           "to": "lift_29289470_top",
@@ -16050,6 +16586,7 @@
       "lift_type": null,
       "lat": 46.30343836666666,
       "lon": 6.828384683333333,
+      "elevation": 1736,
       "connections": [
         {
           "to": "jct_0158",
@@ -16079,6 +16616,7 @@
       "lift_type": null,
       "lat": 46.30036295261945,
       "lon": 6.817086151950894,
+      "elevation": 1420,
       "connections": [
         {
           "to": "lift_35881681_base",
@@ -16096,6 +16634,7 @@
       "lift_type": null,
       "lat": 46.1601195,
       "lon": 6.8595433,
+      "elevation": 1092,
       "connections": [
         {
           "to": "jct_0273",
@@ -16113,6 +16652,7 @@
       "lift_type": null,
       "lat": 46.16230365,
       "lon": 6.8587882,
+      "elevation": 1075,
       "connections": [
         {
           "to": "lift_24900087_base",
@@ -16130,6 +16670,7 @@
       "lift_type": null,
       "lat": 46.21324167280554,
       "lon": 6.762935956995971,
+      "elevation": 1217,
       "connections": [
         {
           "to": "lift_446569623_base",
@@ -16147,6 +16688,7 @@
       "lift_type": null,
       "lat": 46.20937443081817,
       "lon": 6.774613710413587,
+      "elevation": 1480,
       "connections": [
         {
           "to": "jct_0107",
@@ -16176,6 +16718,7 @@
       "lift_type": null,
       "lat": 46.2054542,
       "lon": 6.7758673,
+      "elevation": 1539,
       "connections": [
         {
           "to": "lift_8215733_base",
@@ -16193,6 +16736,7 @@
       "lift_type": null,
       "lat": 46.1987391,
       "lon": 6.7763027,
+      "elevation": 1743,
       "connections": [
         {
           "to": "jct_0165",
@@ -16210,6 +16754,7 @@
       "lift_type": null,
       "lat": 46.2046235,
       "lon": 6.7748619,
+      "elevation": 1593,
       "connections": [
         {
           "to": "jct_0163",
@@ -16227,6 +16772,7 @@
       "lift_type": null,
       "lat": 46.19765325091121,
       "lon": 6.775211439211657,
+      "elevation": 1765,
       "connections": [
         {
           "to": "jct_0164",
@@ -16250,6 +16796,7 @@
       "lift_type": null,
       "lat": 46.198719004160765,
       "lon": 6.774607707989231,
+      "elevation": 1751,
       "connections": [
         {
           "to": "jct_0168",
@@ -16267,6 +16814,7 @@
       "lift_type": null,
       "lat": 46.20048260000001,
       "lon": 6.774252100000001,
+      "elevation": 1706,
       "connections": [
         {
           "to": "jct_0263",
@@ -16284,6 +16832,7 @@
       "lift_type": null,
       "lat": 46.20185501497523,
       "lon": 6.779672061182775,
+      "elevation": 1610,
       "connections": [
         {
           "to": "jct_0277",
@@ -16307,6 +16856,7 @@
       "lift_type": null,
       "lat": 46.1813578,
       "lon": 6.8108395,
+      "elevation": 2068,
       "connections": [
         {
           "to": "jct_0219",
@@ -16324,6 +16874,7 @@
       "lift_type": null,
       "lat": 46.1847298,
       "lon": 6.8082069,
+      "elevation": 1975,
       "connections": [
         {
           "to": "jct_0056",
@@ -16341,6 +16892,7 @@
       "lift_type": null,
       "lat": 46.19683933026745,
       "lon": 6.791972935058126,
+      "elevation": 1683,
       "connections": [
         {
           "to": "jct_0221",
@@ -16358,6 +16910,7 @@
       "lift_type": null,
       "lat": 46.2017533,
       "lon": 6.7872597,
+      "elevation": 1573,
       "connections": [
         {
           "to": "lift_317027261_top",
@@ -16375,6 +16928,7 @@
       "lift_type": null,
       "lat": 46.2123089,
       "lon": 6.7830702,
+      "elevation": 1756,
       "connections": [
         {
           "to": "jct_0175",
@@ -16392,6 +16946,7 @@
       "lift_type": null,
       "lat": 46.2123508,
       "lon": 6.7805308,
+      "elevation": 1709,
       "connections": [
         {
           "to": "jct_0177",
@@ -16409,6 +16964,7 @@
       "lift_type": null,
       "lat": 46.2094054,
       "lon": 6.786303,
+      "elevation": 1754,
       "connections": [
         {
           "to": "jct_0177",
@@ -16426,6 +16982,7 @@
       "lift_type": null,
       "lat": 46.211360121747425,
       "lon": 6.781070596054597,
+      "elevation": 1696,
       "connections": [
         {
           "to": "jct_0106",
@@ -16443,6 +17000,7 @@
       "lift_type": null,
       "lat": 46.12093422369794,
       "lon": 6.717828578938791,
+      "elevation": 1741,
       "connections": [
         {
           "to": "jct_0133",
@@ -16472,6 +17030,7 @@
       "lift_type": null,
       "lat": 46.2886999,
       "lon": 6.7687327,
+      "elevation": 1137,
       "connections": [
         {
           "to": "jct_0264",
@@ -16489,6 +17048,7 @@
       "lift_type": null,
       "lat": 46.2822453,
       "lon": 6.7709562,
+      "elevation": 1363,
       "connections": [
         {
           "to": "jct_0265",
@@ -16506,6 +17066,7 @@
       "lift_type": null,
       "lat": 46.2825552,
       "lon": 6.7700103,
+      "elevation": 1354,
       "connections": [
         {
           "to": "jct_0265",
@@ -16523,6 +17084,7 @@
       "lift_type": null,
       "lat": 46.2897862,
       "lon": 6.855418,
+      "elevation": 1865,
       "connections": [
         {
           "to": "lift_24898731_base",
@@ -16540,6 +17102,7 @@
       "lift_type": null,
       "lat": 46.2861518,
       "lon": 6.8491351,
+      "elevation": 1726,
       "connections": [
         {
           "to": "jct_0155",
@@ -16557,6 +17120,7 @@
       "lift_type": null,
       "lat": 46.2847497,
       "lon": 6.846021,
+      "elevation": 1618,
       "connections": [
         {
           "to": "jct_0185",
@@ -16574,6 +17138,7 @@
       "lift_type": null,
       "lat": 46.2841458,
       "lon": 6.8472455,
+      "elevation": 1590,
       "connections": [
         {
           "to": "lift_29289470_top",
@@ -16591,6 +17156,7 @@
       "lift_type": null,
       "lat": 46.291226725,
       "lon": 6.846592875,
+      "elevation": 1743,
       "connections": [
         {
           "to": "jct_0102",
@@ -16602,7 +17168,7 @@
           "to": "lift_31770797_base",
           "name": "Lac Léman",
           "type": "slope",
-          "difficulty": "red"
+          "difficulty": "blue"
         }
       ]
     },
@@ -16614,6 +17180,7 @@
       "lift_type": null,
       "lat": 46.3029763,
       "lon": 6.813957,
+      "elevation": 1524,
       "connections": [
         {
           "to": "jct_0282",
@@ -16637,6 +17204,7 @@
       "lift_type": null,
       "lat": 46.3037895,
       "lon": 6.8317645,
+      "elevation": 1688,
       "connections": [
         {
           "to": "jct_0104",
@@ -16654,6 +17222,7 @@
       "lift_type": null,
       "lat": 46.3012652,
       "lon": 6.8267522,
+      "elevation": 1711,
       "connections": [
         {
           "to": "jct_0093",
@@ -16671,6 +17240,7 @@
       "lift_type": null,
       "lat": 46.184751769922485,
       "lon": 6.774600181247363,
+      "elevation": 1703,
       "connections": [
         {
           "to": "jct_0228",
@@ -16688,6 +17258,7 @@
       "lift_type": null,
       "lat": 46.18764199127718,
       "lon": 6.776894038137777,
+      "elevation": 1781,
       "connections": [
         {
           "to": "lift_29286845_base",
@@ -16705,6 +17276,7 @@
       "lift_type": null,
       "lat": 46.2007251,
       "lon": 6.7884688,
+      "elevation": 1602,
       "connections": [
         {
           "to": "jct_0173",
@@ -16722,6 +17294,7 @@
       "lift_type": null,
       "lat": 46.1871899,
       "lon": 6.770443,
+      "elevation": 1589,
       "connections": [
         {
           "to": "jct_0078",
@@ -16739,6 +17312,7 @@
       "lift_type": null,
       "lat": 46.18680868928396,
       "lon": 6.76362562963655,
+      "elevation": 1468,
       "connections": [
         {
           "to": "jct_0213",
@@ -16756,6 +17330,7 @@
       "lift_type": null,
       "lat": 46.192800582110706,
       "lon": 6.723374538456993,
+      "elevation": 1584,
       "connections": [
         {
           "to": "lift_53165460_top",
@@ -16779,6 +17354,7 @@
       "lift_type": null,
       "lat": 46.193558676091214,
       "lon": 6.719859392454978,
+      "elevation": 1600,
       "connections": [
         {
           "to": "lift_53165460_top",
@@ -16814,6 +17390,7 @@
       "lift_type": null,
       "lat": 46.196083674700844,
       "lon": 6.780192437489174,
+      "elevation": 1790,
       "connections": [
         {
           "to": "jct_0198",
@@ -16837,6 +17414,7 @@
       "lift_type": null,
       "lat": 46.19559927957819,
       "lon": 6.7816886004331085,
+      "elevation": 1783,
       "connections": [
         {
           "to": "jct_0276",
@@ -16866,6 +17444,7 @@
       "lift_type": null,
       "lat": 46.196578,
       "lon": 6.780879,
+      "elevation": 1779,
       "connections": [
         {
           "to": "jct_0151",
@@ -16883,6 +17462,7 @@
       "lift_type": null,
       "lat": 46.1595487,
       "lon": 6.8310321,
+      "elevation": 1337,
       "connections": [
         {
           "to": "jct_0159",
@@ -16900,6 +17480,7 @@
       "lift_type": null,
       "lat": 46.184961687880026,
       "lon": 6.756350423797722,
+      "elevation": 1297,
       "connections": [
         {
           "to": "lift_225288644_base",
@@ -16923,6 +17504,7 @@
       "lift_type": null,
       "lat": 46.218506859515095,
       "lon": 6.855794369527257,
+      "elevation": 1777,
       "connections": [
         {
           "to": "jct_0015",
@@ -16946,6 +17528,7 @@
       "lift_type": null,
       "lat": 46.21840489076804,
       "lon": 6.859947958164032,
+      "elevation": 1735,
       "connections": [
         {
           "to": "jct_0014",
@@ -16963,6 +17546,7 @@
       "lift_type": null,
       "lat": 46.230041819346155,
       "lon": 6.855670890189565,
+      "elevation": 1639,
       "connections": [
         {
           "to": "jct_0012",
@@ -16986,6 +17570,7 @@
       "lift_type": null,
       "lat": 46.2328311,
       "lon": 6.849065899999999,
+      "elevation": 1373,
       "connections": [
         {
           "to": "jct_0013",
@@ -17003,6 +17588,7 @@
       "lift_type": null,
       "lat": 46.14854105260109,
       "lon": 6.712821765087257,
+      "elevation": 1555,
       "connections": [
         {
           "to": "lift_32312982_top",
@@ -17026,6 +17612,7 @@
       "lift_type": null,
       "lat": 46.149966677154694,
       "lon": 6.709514157124142,
+      "elevation": 1439,
       "connections": [
         {
           "to": "lift_771016803_base",
@@ -17043,6 +17630,7 @@
       "lift_type": null,
       "lat": 46.1420621,
       "lon": 6.7143142,
+      "elevation": 1631,
       "connections": [
         {
           "to": "jct_0270",
@@ -17066,6 +17654,7 @@
       "lift_type": null,
       "lat": 46.29943712167772,
       "lon": 6.8118802736792095,
+      "elevation": 1439,
       "connections": [
         {
           "to": "lift_35881681_base",
@@ -17083,6 +17672,7 @@
       "lift_type": null,
       "lat": 46.19820082120606,
       "lon": 6.744529759096748,
+      "elevation": 1700,
       "connections": [
         {
           "to": "jct_0063",
@@ -17106,6 +17696,7 @@
       "lift_type": null,
       "lat": 46.22040775,
       "lon": 6.8001469,
+      "elevation": 1810,
       "connections": []
     },
     {
@@ -17116,6 +17707,7 @@
       "lift_type": null,
       "lat": 46.2214639,
       "lon": 6.783553700000001,
+      "elevation": 1706,
       "connections": []
     },
     {
@@ -17126,6 +17718,7 @@
       "lift_type": null,
       "lat": 46.1849478,
       "lon": 6.7623921,
+      "elevation": 1429,
       "connections": [
         {
           "to": "jct_0296",
@@ -17143,6 +17736,7 @@
       "lift_type": null,
       "lat": 46.1838566,
       "lon": 6.7589049,
+      "elevation": 1358,
       "connections": [
         {
           "to": "jct_0201",
@@ -17160,6 +17754,7 @@
       "lift_type": null,
       "lat": 46.176390639227535,
       "lon": 6.769162816611764,
+      "elevation": 1982,
       "connections": [
         {
           "to": "jct_0045",
@@ -17195,6 +17790,7 @@
       "lift_type": null,
       "lat": 46.18593315632856,
       "lon": 6.765739569065916,
+      "elevation": 1505,
       "connections": [
         {
           "to": "jct_0194",
@@ -17218,6 +17814,7 @@
       "lift_type": null,
       "lat": 46.18552598201384,
       "lon": 6.771495524261382,
+      "elevation": 1625,
       "connections": [
         {
           "to": "jct_0078",
@@ -17235,12 +17832,13 @@
       "lift_type": null,
       "lat": 46.17903612300179,
       "lon": 6.786784948181257,
+      "elevation": 1823,
       "connections": [
         {
           "to": "lift_1183443459_base",
           "name": "Retour Chavanette",
           "type": "slope",
-          "difficulty": "green"
+          "difficulty": "blue"
         },
         {
           "to": "lift_24916410_base",
@@ -17258,6 +17856,7 @@
       "lift_type": null,
       "lat": 46.181619752206046,
       "lon": 6.809377352573188,
+      "elevation": 2055,
       "connections": [
         {
           "to": "lift_29285756_base",
@@ -17275,6 +17874,7 @@
       "lift_type": null,
       "lat": 46.18201069768914,
       "lon": 6.812075776009526,
+      "elevation": 2078,
       "connections": [
         {
           "to": "jct_0170",
@@ -17298,6 +17898,7 @@
       "lift_type": null,
       "lat": 46.199821903822034,
       "lon": 6.789392019192578,
+      "elevation": 1620,
       "connections": [
         {
           "to": "jct_0192",
@@ -17321,6 +17922,7 @@
       "lift_type": null,
       "lat": 46.19524895434792,
       "lon": 6.766055189282023,
+      "elevation": 1759,
       "connections": [
         {
           "to": "jct_0064",
@@ -17344,6 +17946,7 @@
       "lift_type": null,
       "lat": 46.20994799132755,
       "lon": 6.778347799211597,
+      "elevation": 1587,
       "connections": [
         {
           "to": "jct_0162",
@@ -17367,6 +17970,7 @@
       "lift_type": null,
       "lat": 46.211988,
       "lon": 6.7853967,
+      "elevation": 1824,
       "connections": [
         {
           "to": "jct_0174",
@@ -17384,6 +17988,7 @@
       "lift_type": null,
       "lat": 46.17605683653949,
       "lon": 6.796395582388331,
+      "elevation": 1954,
       "connections": [
         {
           "to": "jct_0043",
@@ -17401,6 +18006,7 @@
       "lift_type": null,
       "lat": 46.1840153,
       "lon": 6.7569739,
+      "elevation": 1323,
       "connections": [
         {
           "to": "jct_0201",
@@ -17418,6 +18024,7 @@
       "lift_type": null,
       "lat": 46.19579875987148,
       "lon": 6.771055956616024,
+      "elevation": 1832,
       "connections": [
         {
           "to": "lift_317027023_base",
@@ -17441,6 +18048,7 @@
       "lift_type": null,
       "lat": 46.1865399,
       "lon": 6.7737908,
+      "elevation": 1658,
       "connections": [
         {
           "to": "jct_0193",
@@ -17458,6 +18066,7 @@
       "lift_type": null,
       "lat": 46.28838565045102,
       "lon": 6.777874096622208,
+      "elevation": 1165,
       "connections": [
         {
           "to": "lift_31349026_base",
@@ -17475,6 +18084,7 @@
       "lift_type": null,
       "lat": 46.27788979880316,
       "lon": 6.772250108512404,
+      "elevation": 1467,
       "connections": [
         {
           "to": "jct_0090",
@@ -17498,6 +18108,7 @@
       "lift_type": null,
       "lat": 46.28080933421097,
       "lon": 6.772722063234142,
+      "elevation": 1385,
       "connections": [
         {
           "to": "lift_31349047_top",
@@ -17515,6 +18126,7 @@
       "lift_type": null,
       "lat": 46.28690206701248,
       "lon": 6.772317004887465,
+      "elevation": 1210,
       "connections": [
         {
           "to": "jct_0264",
@@ -17538,6 +18150,7 @@
       "lift_type": null,
       "lat": 46.26966473695704,
       "lon": 6.848533467531407,
+      "elevation": 1388,
       "connections": [
         {
           "to": "lift_1075520907_base",
@@ -17555,6 +18168,7 @@
       "lift_type": null,
       "lat": 46.1946259,
       "lon": 6.7684257,
+      "elevation": 1811,
       "connections": [
         {
           "to": "lift_30353553_base",
@@ -17572,6 +18186,7 @@
       "lift_type": null,
       "lat": 46.19672281235566,
       "lon": 6.842159410726109,
+      "elevation": 2062,
       "connections": [
         {
           "to": "lift_327582927_base",
@@ -17595,6 +18210,7 @@
       "lift_type": null,
       "lat": 46.20355891874988,
       "lon": 6.848149088981171,
+      "elevation": 1981,
       "connections": [
         {
           "to": "lift_327582927_base",
@@ -17612,6 +18228,7 @@
       "lift_type": null,
       "lat": 46.183715608097245,
       "lon": 6.816016858097241,
+      "elevation": 2103,
       "connections": [
         {
           "to": "jct_0052",
@@ -17635,6 +18252,7 @@
       "lift_type": null,
       "lat": 46.149135830740136,
       "lon": 6.720552329264917,
+      "elevation": 1820,
       "connections": [
         {
           "to": "jct_0145",
@@ -17652,6 +18270,7 @@
       "lift_type": null,
       "lat": 46.148354848277656,
       "lon": 6.721599853467055,
+      "elevation": 1853,
       "connections": [
         {
           "to": "jct_0238",
@@ -17669,6 +18288,7 @@
       "lift_type": null,
       "lat": 46.16577011500182,
       "lon": 6.7068162218251155,
+      "elevation": 1176,
       "connections": [
         {
           "to": "lift_32425250_base",
@@ -17692,6 +18312,7 @@
       "lift_type": null,
       "lat": 46.227244492043326,
       "lon": 6.797979523029952,
+      "elevation": 1679,
       "connections": [
         {
           "to": "lift_30627272_base",
@@ -17721,6 +18342,7 @@
       "lift_type": null,
       "lat": 46.223693117498314,
       "lon": 6.797709236286172,
+      "elevation": 1675,
       "connections": [
         {
           "to": "lift_30720552_top",
@@ -17768,6 +18390,7 @@
       "lift_type": null,
       "lat": 46.21714144999743,
       "lon": 6.805073025546523,
+      "elevation": 1966,
       "connections": [
         {
           "to": "jct_0250",
@@ -17791,6 +18414,7 @@
       "lift_type": null,
       "lat": 46.209636921132486,
       "lon": 6.803851495003618,
+      "elevation": 1942,
       "connections": [
         {
           "to": "jct_0253",
@@ -17808,6 +18432,7 @@
       "lift_type": null,
       "lat": 46.21713141126237,
       "lon": 6.7911782358013415,
+      "elevation": 1739,
       "connections": [
         {
           "to": "lift_8215798_base",
@@ -17849,6 +18474,7 @@
       "lift_type": null,
       "lat": 46.22210601684383,
       "lon": 6.791696614874082,
+      "elevation": 1575,
       "connections": [
         {
           "to": "jct_0248",
@@ -17878,6 +18504,7 @@
       "lift_type": null,
       "lat": 46.21295864908691,
       "lon": 6.788730268295728,
+      "elevation": 1856,
       "connections": [
         {
           "to": "jct_0295",
@@ -17925,6 +18552,7 @@
       "lift_type": null,
       "lat": 46.223256351242725,
       "lon": 6.790994145737428,
+      "elevation": 1557,
       "connections": [
         {
           "to": "lift_1009693206_base",
@@ -17948,6 +18576,7 @@
       "lift_type": null,
       "lat": 46.224574642793755,
       "lon": 6.795238634273939,
+      "elevation": 1680,
       "connections": [
         {
           "to": "jct_0292",
@@ -17971,6 +18600,7 @@
       "lift_type": null,
       "lat": 46.22477280794367,
       "lon": 6.801651815567488,
+      "elevation": 1759,
       "connections": [
         {
           "to": "lift_29288817_top",
@@ -18000,6 +18630,7 @@
       "lift_type": null,
       "lat": 46.22842800077488,
       "lon": 6.807006733154578,
+      "elevation": 1872,
       "connections": [
         {
           "to": "jct_0085",
@@ -18029,6 +18660,7 @@
       "lift_type": null,
       "lat": 46.215039951604666,
       "lon": 6.798361458083855,
+      "elevation": 1809,
       "connections": [
         {
           "to": "lift_8215798_base",
@@ -18052,6 +18684,7 @@
       "lift_type": null,
       "lat": 46.213323728910495,
       "lon": 6.795851934234382,
+      "elevation": 1812,
       "connections": [
         {
           "to": "lift_8215798_base",
@@ -18075,6 +18708,7 @@
       "lift_type": null,
       "lat": 46.228461724384275,
       "lon": 6.816583914019835,
+      "elevation": 1965,
       "connections": [
         {
           "to": "jct_0368",
@@ -18128,6 +18762,7 @@
       "lift_type": null,
       "lat": 46.2210942525163,
       "lon": 6.792907721471557,
+      "elevation": 1534,
       "connections": [
         {
           "to": "jct_0246",
@@ -18145,6 +18780,7 @@
       "lift_type": null,
       "lat": 46.251473817850126,
       "lon": 6.822203853549806,
+      "elevation": 1211,
       "connections": [
         {
           "to": "lift_1010800534_base",
@@ -18168,6 +18804,7 @@
       "lift_type": null,
       "lat": 46.249807360407154,
       "lon": 6.823153056766597,
+      "elevation": 1295,
       "connections": [
         {
           "to": "jct_0256",
@@ -18197,6 +18834,7 @@
       "lift_type": null,
       "lat": 46.24715806553694,
       "lon": 6.8251958598021885,
+      "elevation": 1387,
       "connections": [
         {
           "to": "jct_0257",
@@ -18262,6 +18900,7 @@
       "lift_type": null,
       "lat": 46.23577833518336,
       "lon": 6.818507588046854,
+      "elevation": 1803,
       "connections": [
         {
           "to": "jct_0260",
@@ -18291,6 +18930,7 @@
       "lift_type": null,
       "lat": 46.23751317838258,
       "lon": 6.819001517490881,
+      "elevation": 1741,
       "connections": [
         {
           "to": "lift_1010800534_top",
@@ -18320,6 +18960,7 @@
       "lift_type": null,
       "lat": 46.22992859916701,
       "lon": 6.818586900897161,
+      "elevation": 2002,
       "connections": [
         {
           "to": "jct_0262",
@@ -18361,6 +19002,7 @@
       "lift_type": null,
       "lat": 46.232270262399716,
       "lon": 6.81818663861345,
+      "elevation": 1926,
       "connections": [
         {
           "to": "jct_0392",
@@ -18390,6 +19032,7 @@
       "lift_type": null,
       "lat": 46.20701611753857,
       "lon": 6.771063155230139,
+      "elevation": 1538,
       "connections": [
         {
           "to": "jct_0107",
@@ -18413,6 +19056,7 @@
       "lift_type": null,
       "lat": 46.29109989254292,
       "lon": 6.7743723090844155,
+      "elevation": 1038,
       "connections": [
         {
           "to": "lift_31349026_base",
@@ -18430,6 +19074,7 @@
       "lift_type": null,
       "lat": 46.283221916769094,
       "lon": 6.771878032671436,
+      "elevation": 1334,
       "connections": [
         {
           "to": "lift_31738075_base",
@@ -18447,6 +19092,7 @@
       "lift_type": null,
       "lat": 46.279205338932954,
       "lon": 6.774931007660413,
+      "elevation": 1452,
       "connections": [
         {
           "to": "lift_31349049_top",
@@ -18470,6 +19116,7 @@
       "lift_type": null,
       "lat": 46.279541602686905,
       "lon": 6.773023089918309,
+      "elevation": 1416,
       "connections": [
         {
           "to": "jct_0231",
@@ -18487,6 +19134,7 @@
       "lift_type": null,
       "lat": 46.28111004000236,
       "lon": 6.770122177300879,
+      "elevation": 1397,
       "connections": [
         {
           "to": "jct_0180",
@@ -18510,6 +19158,7 @@
       "lift_type": null,
       "lat": 46.285591212387466,
       "lon": 6.775811172943005,
+      "elevation": 1279,
       "connections": [
         {
           "to": "jct_0089",
@@ -18527,6 +19176,7 @@
       "lift_type": null,
       "lat": 46.13961193423053,
       "lon": 6.710455731458632,
+      "elevation": 1496,
       "connections": [
         {
           "to": "lift_32344730_base",
@@ -18544,6 +19194,7 @@
       "lift_type": null,
       "lat": 46.1409762,
       "lon": 6.7204745,
+      "elevation": 1652,
       "connections": []
     },
     {
@@ -18554,6 +19205,7 @@
       "lift_type": null,
       "lat": 46.15160492381894,
       "lon": 6.715744968867915,
+      "elevation": 1588,
       "connections": [
         {
           "to": "lift_32312982_top",
@@ -18571,6 +19223,7 @@
       "lift_type": null,
       "lat": 46.15980173333333,
       "lon": 6.857252733333333,
+      "elevation": 1110,
       "connections": [
         {
           "to": "jct_0160",
@@ -18588,6 +19241,7 @@
       "lift_type": null,
       "lat": 46.2157898489272,
       "lon": 6.788953565699894,
+      "elevation": 1757,
       "connections": [
         {
           "to": "jct_0245",
@@ -18641,6 +19295,7 @@
       "lift_type": null,
       "lat": 46.216965689369545,
       "lon": 6.7890042970645625,
+      "elevation": 1716,
       "connections": [
         {
           "to": "jct_0246",
@@ -18688,6 +19343,7 @@
       "lift_type": null,
       "lat": 46.197712847080496,
       "lon": 6.786273696273417,
+      "elevation": 1643,
       "connections": [
         {
           "to": "lift_30170411_base",
@@ -18723,6 +19379,7 @@
       "lift_type": null,
       "lat": 46.204327353467704,
       "lon": 6.781606502004725,
+      "elevation": 1546,
       "connections": [
         {
           "to": "lift_29287970_base",
@@ -18746,6 +19403,7 @@
       "lift_type": null,
       "lat": 46.130893725,
       "lon": 6.71133725,
+      "elevation": 1706,
       "connections": [
         {
           "to": "jct_0143",
@@ -18769,6 +19427,7 @@
       "lift_type": null,
       "lat": 46.17933028907615,
       "lon": 6.7824579252865735,
+      "elevation": 1957,
       "connections": [
         {
           "to": "lift_24916412_top",
@@ -18786,6 +19445,7 @@
       "lift_type": null,
       "lat": 46.17486226758812,
       "lon": 6.782986832411881,
+      "elevation": 2065,
       "connections": [
         {
           "to": "jct_0279",
@@ -18809,6 +19469,7 @@
       "lift_type": null,
       "lat": 46.17865794477656,
       "lon": 6.7836446709080835,
+      "elevation": 1972,
       "connections": [
         {
           "to": "jct_0279",
@@ -18826,6 +19487,7 @@
       "lift_type": null,
       "lat": 46.30202700000001,
       "lon": 6.815561,
+      "elevation": 1480,
       "connections": [
         {
           "to": "jct_0158",
@@ -18849,6 +19511,7 @@
       "lift_type": null,
       "lat": 46.11888379062046,
       "lon": 6.720485169081819,
+      "elevation": 1737,
       "connections": [
         {
           "to": "jct_0178",
@@ -18866,6 +19529,7 @@
       "lift_type": null,
       "lat": 46.1290305,
       "lon": 6.7167423,
+      "elevation": 1722,
       "connections": [
         {
           "to": "jct_0132",
@@ -18895,6 +19559,7 @@
       "lift_type": null,
       "lat": 46.197194203142125,
       "lon": 6.739779468680964,
+      "elevation": 1722,
       "connections": [
         {
           "to": "jct_0210",
@@ -18930,6 +19595,7 @@
       "lift_type": null,
       "lat": 46.1954846,
       "lon": 6.7610713,
+      "elevation": 1704,
       "connections": []
     },
     {
@@ -18940,6 +19606,7 @@
       "lift_type": null,
       "lat": 46.24063335424958,
       "lon": 6.820686303120753,
+      "elevation": 1598,
       "connections": [
         {
           "to": "jct_0393",
@@ -18969,6 +19636,7 @@
       "lift_type": null,
       "lat": 46.24361531928331,
       "lon": 6.819844402662915,
+      "elevation": 1556,
       "connections": [
         {
           "to": "lift_30749922_base",
@@ -18992,6 +19660,7 @@
       "lift_type": null,
       "lat": 46.24703310734021,
       "lon": 6.823479750075847,
+      "elevation": 1375,
       "connections": [
         {
           "to": "jct_0258",
@@ -19039,6 +19708,7 @@
       "lift_type": null,
       "lat": 46.2490433383756,
       "lon": 6.820739923287924,
+      "elevation": 1317,
       "connections": [
         {
           "to": "jct_0291",
@@ -19062,6 +19732,7 @@
       "lift_type": null,
       "lat": 46.24633436346123,
       "lon": 6.817990945847865,
+      "elevation": 1399,
       "connections": [
         {
           "to": "jct_0289",
@@ -19103,6 +19774,7 @@
       "lift_type": null,
       "lat": 46.226076602359534,
       "lon": 6.794020032739701,
+      "elevation": 1537,
       "connections": [
         {
           "to": "lift_1009693206_base",
@@ -19150,6 +19822,7 @@
       "lift_type": null,
       "lat": 46.2220734194428,
       "lon": 6.796853782379589,
+      "elevation": 1666,
       "connections": [
         {
           "to": "lift_8215843_base",
@@ -19185,6 +19858,7 @@
       "lift_type": null,
       "lat": 46.2174224,
       "lon": 6.787596266666667,
+      "elevation": 1723,
       "connections": [
         {
           "to": "jct_0397",
@@ -19208,6 +19882,7 @@
       "lift_type": null,
       "lat": 46.21422940300498,
       "lon": 6.789959190030663,
+      "elevation": 1794,
       "connections": [
         {
           "to": "jct_0274",
@@ -19255,6 +19930,7 @@
       "lift_type": null,
       "lat": 46.184828933508726,
       "lon": 6.76062646629775,
+      "elevation": 1577,
       "connections": [
         {
           "to": "jct_0226",
@@ -19278,6 +19954,7 @@
       "lift_type": null,
       "lat": 46.2877743,
       "lon": 6.8062654,
+      "elevation": 1020,
       "connections": [
         {
           "to": "jct_0298",
@@ -19295,6 +19972,7 @@
       "lift_type": null,
       "lat": 46.2899884,
       "lon": 6.7990061,
+      "elevation": 1007,
       "connections": []
     },
     {
@@ -19305,6 +19983,7 @@
       "lift_type": null,
       "lat": 46.303445,
       "lon": 6.808737,
+      "elevation": 1622,
       "connections": [
         {
           "to": "jct_0300",
@@ -19322,6 +20001,7 @@
       "lift_type": null,
       "lat": 46.30399785978247,
       "lon": 6.810226617994497,
+      "elevation": 1613,
       "connections": [
         {
           "to": "jct_0131",
@@ -19345,12 +20025,13 @@
       "lift_type": null,
       "lat": 46.29106520414636,
       "lon": 6.853171810055411,
+      "elevation": 1868,
       "connections": [
         {
           "to": "lift_800472190_top",
           "name": "Douanier",
           "type": "slope",
-          "difficulty": "green"
+          "difficulty": "blue"
         }
       ]
     },
@@ -19362,6 +20043,7 @@
       "lift_type": null,
       "lat": 46.125298882071384,
       "lon": 6.713588169206395,
+      "elevation": 1717,
       "connections": [
         {
           "to": "jct_0133",
@@ -19391,6 +20073,7 @@
       "lift_type": null,
       "lat": 46.1151819,
       "lon": 6.7203052,
+      "elevation": 1751,
       "connections": [
         {
           "to": "jct_0283",
@@ -19408,6 +20091,7 @@
       "lift_type": null,
       "lat": 46.18655105222699,
       "lon": 6.809663104102685,
+      "elevation": 1981,
       "connections": [
         {
           "to": "jct_0056",
@@ -19425,6 +20109,7 @@
       "lift_type": null,
       "lat": 46.2141405,
       "lon": 6.9491133,
+      "elevation": 1688,
       "connections": [
         {
           "to": "jct_0309",
@@ -19442,6 +20127,7 @@
       "lift_type": null,
       "lat": 46.2166895,
       "lon": 6.9546556,
+      "elevation": 1526,
       "connections": []
     },
     {
@@ -19452,6 +20138,7 @@
       "lift_type": null,
       "lat": 46.21583538876829,
       "lon": 6.9546856414411735,
+      "elevation": 1525,
       "connections": [
         {
           "to": "jct_0306",
@@ -19475,6 +20162,7 @@
       "lift_type": null,
       "lat": 46.2212508,
       "lon": 6.9601344,
+      "elevation": 1288,
       "connections": []
     },
     {
@@ -19485,6 +20173,7 @@
       "lift_type": null,
       "lat": 46.21527202257897,
       "lon": 6.951468707470239,
+      "elevation": 1637,
       "connections": [
         {
           "to": "jct_0307",
@@ -19502,6 +20191,7 @@
       "lift_type": null,
       "lat": 46.208732850000004,
       "lon": 6.5754259,
+      "elevation": 1125,
       "connections": [
         {
           "to": "lift_317021227_base",
@@ -19519,6 +20209,7 @@
       "lift_type": null,
       "lat": 46.2036669,
       "lon": 6.6205374,
+      "elevation": 1599,
       "connections": [
         {
           "to": "jct_0327",
@@ -19536,6 +20227,7 @@
       "lift_type": null,
       "lat": 46.201967266666664,
       "lon": 6.618944666666668,
+      "elevation": 1655,
       "connections": [
         {
           "to": "jct_0311",
@@ -19559,6 +20251,7 @@
       "lift_type": null,
       "lat": 46.200417200000004,
       "lon": 6.599549766666667,
+      "elevation": 1506,
       "connections": [
         {
           "to": "jct_0314",
@@ -19582,6 +20275,7 @@
       "lift_type": null,
       "lat": 46.199816600000005,
       "lon": 6.59586066,
+      "elevation": 1389,
       "connections": [
         {
           "to": "jct_0316",
@@ -19599,6 +20293,7 @@
       "lift_type": null,
       "lat": 46.20243312592627,
       "lon": 6.621787995664259,
+      "elevation": 1594,
       "connections": [
         {
           "to": "lift_288893232_base",
@@ -19622,6 +20317,7 @@
       "lift_type": null,
       "lat": 46.199765760000005,
       "lon": 6.5919197,
+      "elevation": 1302,
       "connections": [
         {
           "to": "jct_0329",
@@ -19639,6 +20335,7 @@
       "lift_type": null,
       "lat": 46.21387060000001,
       "lon": 6.6208668500000005,
+      "elevation": 1174,
       "connections": [
         {
           "to": "lift_776556045_base",
@@ -19656,6 +20353,7 @@
       "lift_type": null,
       "lat": 46.21554555,
       "lon": 6.6193261,
+      "elevation": 1224,
       "connections": [
         {
           "to": "jct_0317",
@@ -19673,6 +20371,7 @@
       "lift_type": null,
       "lat": 46.21168795994603,
       "lon": 6.608324167325706,
+      "elevation": 1481,
       "connections": [
         {
           "to": "jct_0320",
@@ -19690,6 +20389,7 @@
       "lift_type": null,
       "lat": 46.2121986,
       "lon": 6.6099013,
+      "elevation": 1445,
       "connections": [
         {
           "to": "jct_0332",
@@ -19707,6 +20407,7 @@
       "lift_type": null,
       "lat": 46.20791928,
       "lon": 6.573665800000001,
+      "elevation": 1165,
       "connections": [
         {
           "to": "jct_0322",
@@ -19730,6 +20431,7 @@
       "lift_type": null,
       "lat": 46.210666,
       "lon": 6.5722178,
+      "elevation": 1117,
       "connections": [
         {
           "to": "lift_317021290_base",
@@ -19747,6 +20449,7 @@
       "lift_type": null,
       "lat": 46.213763300000004,
       "lon": 6.635445999999999,
+      "elevation": 1457,
       "connections": [
         {
           "to": "lift_297428606_base",
@@ -19764,6 +20467,7 @@
       "lift_type": null,
       "lat": 46.22048019872176,
       "lon": 6.638177953938836,
+      "elevation": 1098,
       "connections": [
         {
           "to": "lift_23275859_base",
@@ -19781,6 +20485,7 @@
       "lift_type": null,
       "lat": 46.21137680788761,
       "lon": 6.5937542719133555,
+      "elevation": 1536,
       "connections": [
         {
           "to": "jct_0326",
@@ -19804,6 +20509,7 @@
       "lift_type": null,
       "lat": 46.211871811596055,
       "lon": 6.589901630171342,
+      "elevation": 1452,
       "connections": [
         {
           "to": "lift_315824148_base",
@@ -19821,6 +20527,7 @@
       "lift_type": null,
       "lat": 46.2046348,
       "lon": 6.6229461,
+      "elevation": 1598,
       "connections": [
         {
           "to": "jct_0315",
@@ -19838,6 +20545,7 @@
       "lift_type": null,
       "lat": 46.2014294,
       "lon": 6.6178197,
+      "elevation": 1673,
       "connections": [
         {
           "to": "jct_0312",
@@ -19855,6 +20563,7 @@
       "lift_type": null,
       "lat": 46.2021147,
       "lon": 6.5884634,
+      "elevation": 1285,
       "connections": [
         {
           "to": "jct_0339",
@@ -19872,6 +20581,7 @@
       "lift_type": null,
       "lat": 46.207265,
       "lon": 6.5808952,
+      "elevation": 1169,
       "connections": [
         {
           "to": "lift_315824148_base",
@@ -19889,6 +20599,7 @@
       "lift_type": null,
       "lat": 46.2002388,
       "lon": 6.6014197,
+      "elevation": 1531,
       "connections": [
         {
           "to": "jct_0313",
@@ -19906,6 +20617,7 @@
       "lift_type": null,
       "lat": 46.2142197,
       "lon": 6.6188648,
+      "elevation": 1269,
       "connections": [
         {
           "to": "jct_0318",
@@ -19929,6 +20641,7 @@
       "lift_type": null,
       "lat": 46.21358089999999,
       "lon": 6.6295985,
+      "elevation": 1478,
       "connections": [
         {
           "to": "lift_776556045_top",
@@ -19958,6 +20671,7 @@
       "lift_type": null,
       "lat": 46.20097095200309,
       "lon": 6.616954746427727,
+      "elevation": 1673,
       "connections": [
         {
           "to": "jct_0328",
@@ -19981,6 +20695,7 @@
       "lift_type": null,
       "lat": 46.200999733915666,
       "lon": 6.619226422545134,
+      "elevation": 1656,
       "connections": [
         {
           "to": "jct_0315",
@@ -20004,6 +20719,7 @@
       "lift_type": null,
       "lat": 46.200582799030926,
       "lon": 6.608180054487514,
+      "elevation": 1628,
       "connections": [
         {
           "to": "jct_0337",
@@ -20027,6 +20743,7 @@
       "lift_type": null,
       "lat": 46.200445743780236,
       "lon": 6.60426265117839,
+      "elevation": 1570,
       "connections": [
         {
           "to": "jct_0331",
@@ -20044,6 +20761,7 @@
       "lift_type": null,
       "lat": 46.20535892805924,
       "lon": 6.592624715119727,
+      "elevation": 1407,
       "connections": [
         {
           "to": "jct_0316",
@@ -20067,6 +20785,7 @@
       "lift_type": null,
       "lat": 46.202381827189505,
       "lon": 6.587384077824039,
+      "elevation": 1268,
       "connections": [
         {
           "to": "jct_0330",
@@ -20084,6 +20803,7 @@
       "lift_type": null,
       "lat": 46.21107923615485,
       "lon": 6.606862038996559,
+      "elevation": 1500,
       "connections": [
         {
           "to": "jct_0319",
@@ -20101,6 +20821,7 @@
       "lift_type": null,
       "lat": 46.211347993079315,
       "lon": 6.6049049020875055,
+      "elevation": 1538,
       "connections": [
         {
           "to": "jct_0340",
@@ -20124,6 +20845,7 @@
       "lift_type": null,
       "lat": 46.13134110779496,
       "lon": 6.702675231165558,
+      "elevation": 1753,
       "connections": [
         {
           "to": "jct_0345",
@@ -20153,6 +20875,7 @@
       "lift_type": null,
       "lat": 46.1542537,
       "lon": 6.6985367,
+      "elevation": 1357,
       "connections": [
         {
           "to": "lift_30626904_base",
@@ -20170,6 +20893,7 @@
       "lift_type": null,
       "lat": 46.175477,
       "lon": 6.689579599999999,
+      "elevation": 1332,
       "connections": [
         {
           "to": "jct_0363",
@@ -20193,6 +20917,7 @@
       "lift_type": null,
       "lat": 46.135983799063425,
       "lon": 6.684609443210687,
+      "elevation": 1409,
       "connections": [
         {
           "to": "lift_30749534_base",
@@ -20210,18 +20935,19 @@
       "lift_type": null,
       "lat": 46.1393512938876,
       "lon": 6.69585329178026,
+      "elevation": 1653,
       "connections": [
         {
           "to": "lift_32344719_top",
           "name": "Choucas",
           "type": "slope",
-          "difficulty": "green"
+          "difficulty": "blue"
         },
         {
           "to": "jct_0364",
           "name": "Choucas",
           "type": "slope",
-          "difficulty": "green"
+          "difficulty": "blue"
         },
         {
           "to": "jct_0372",
@@ -20239,6 +20965,7 @@
       "lift_type": null,
       "lat": 46.16121837467786,
       "lon": 6.694006258260764,
+      "elevation": 1524,
       "connections": [
         {
           "to": "jct_0343",
@@ -20256,6 +20983,7 @@
       "lift_type": null,
       "lat": 46.13337061885208,
       "lon": 6.676491703696087,
+      "elevation": 1569,
       "connections": [
         {
           "to": "jct_0382",
@@ -20291,6 +21019,7 @@
       "lift_type": null,
       "lat": 46.1403489,
       "lon": 6.6887564,
+      "elevation": 1501,
       "connections": [
         {
           "to": "jct_0353",
@@ -20308,6 +21037,7 @@
       "lift_type": null,
       "lat": 46.137383400585996,
       "lon": 6.685020185534576,
+      "elevation": 1428,
       "connections": [
         {
           "to": "lift_30960128_base",
@@ -20331,6 +21061,7 @@
       "lift_type": null,
       "lat": 46.171352543094294,
       "lon": 6.634818582758437,
+      "elevation": 1618,
       "connections": [
         {
           "to": "lift_49511432_base",
@@ -20360,6 +21091,7 @@
       "lift_type": null,
       "lat": 46.1472845,
       "lon": 6.6895696,
+      "elevation": 1552,
       "connections": [
         {
           "to": "lift_1450703362_top",
@@ -20377,6 +21109,7 @@
       "lift_type": null,
       "lat": 46.13946409808588,
       "lon": 6.687727401776934,
+      "elevation": 1478,
       "connections": [
         {
           "to": "jct_0380",
@@ -20406,6 +21139,7 @@
       "lift_type": null,
       "lat": 46.17118023692304,
       "lon": 6.661522675758264,
+      "elevation": 1501,
       "connections": [
         {
           "to": "lift_53180783_base",
@@ -20429,6 +21163,7 @@
       "lift_type": null,
       "lat": 46.146646262862355,
       "lon": 6.663260000483071,
+      "elevation": 1229,
       "connections": [
         {
           "to": "lift_53183221_base",
@@ -20458,6 +21193,7 @@
       "lift_type": null,
       "lat": 46.17508173329202,
       "lon": 6.697426531050375,
+      "elevation": 1243,
       "connections": [
         {
           "to": "lift_30627383_base",
@@ -20481,6 +21217,7 @@
       "lift_type": null,
       "lat": 46.1752269654109,
       "lon": 6.700882573337126,
+      "elevation": 1150,
       "connections": [
         {
           "to": "lift_295651444_top",
@@ -20498,6 +21235,7 @@
       "lift_type": null,
       "lat": 46.1477259,
       "lon": 6.6903305,
+      "elevation": 1549,
       "connections": [
         {
           "to": "lift_30961292_base",
@@ -20515,6 +21253,7 @@
       "lift_type": null,
       "lat": 46.15452684207197,
       "lon": 6.674200517296818,
+      "elevation": 1278,
       "connections": [
         {
           "to": "lift_147476688_top",
@@ -20544,6 +21283,7 @@
       "lift_type": null,
       "lat": 46.16649668121737,
       "lon": 6.660227928491953,
+      "elevation": 1527,
       "connections": [
         {
           "to": "lift_49511436_base",
@@ -20561,6 +21301,7 @@
       "lift_type": null,
       "lat": 46.172621937065834,
       "lon": 6.689830184619987,
+      "elevation": 1409,
       "connections": [
         {
           "to": "jct_0378",
@@ -20584,6 +21325,7 @@
       "lift_type": null,
       "lat": 46.17601081768766,
       "lon": 6.692870924406565,
+      "elevation": 1291,
       "connections": [
         {
           "to": "jct_0363",
@@ -20601,6 +21343,7 @@
       "lift_type": null,
       "lat": 46.18551386597446,
       "lon": 6.690077215229051,
+      "elevation": 1135,
       "connections": [
         {
           "to": "lift_30627383_base",
@@ -20618,12 +21361,13 @@
       "lift_type": null,
       "lat": 46.13794989313982,
       "lon": 6.701967395851738,
+      "elevation": 1566,
       "connections": [
         {
           "to": "lift_32344730_base",
           "name": "Choucas",
           "type": "slope",
-          "difficulty": "green"
+          "difficulty": "blue"
         }
       ]
     },
@@ -20635,6 +21379,7 @@
       "lift_type": null,
       "lat": 46.26211674369311,
       "lon": 6.700527943298045,
+      "elevation": 1489,
       "connections": [
         {
           "to": "lift_151490330_base",
@@ -20652,6 +21397,7 @@
       "lift_type": null,
       "lat": 46.2592611,
       "lon": 6.6969404,
+      "elevation": 1635,
       "connections": [
         {
           "to": "lift_317447558_top",
@@ -20669,6 +21415,7 @@
       "lift_type": null,
       "lat": 46.2516562009604,
       "lon": 6.828280441022936,
+      "elevation": 1348,
       "connections": [
         {
           "to": "lift_325533365_top",
@@ -20698,6 +21445,7 @@
       "lift_type": null,
       "lat": 46.22714527297177,
       "lon": 6.813664691595438,
+      "elevation": 1916,
       "connections": [
         {
           "to": "jct_0402",
@@ -20727,6 +21475,7 @@
       "lift_type": null,
       "lat": 46.226077308895306,
       "lon": 6.805533036110523,
+      "elevation": 1790,
       "connections": [
         {
           "to": "lift_29288817_top",
@@ -20750,6 +21499,7 @@
       "lift_type": null,
       "lat": 46.15755575977502,
       "lon": 6.671149033930208,
+      "elevation": 1177,
       "connections": [
         {
           "to": "lift_49511437_base",
@@ -20767,6 +21517,7 @@
       "lift_type": null,
       "lat": 46.1408002,
       "lon": 6.6832922,
+      "elevation": 1418,
       "connections": [
         {
           "to": "jct_0359",
@@ -20790,6 +21541,7 @@
       "lift_type": null,
       "lat": 46.15021441780838,
       "lon": 6.702615256169302,
+      "elevation": 1358,
       "connections": [
         {
           "to": "lift_30626904_base",
@@ -20807,6 +21559,7 @@
       "lift_type": null,
       "lat": 46.26177212992731,
       "lon": 6.704866145795355,
+      "elevation": 1423,
       "connections": [
         {
           "to": "jct_0374",
@@ -20830,6 +21583,7 @@
       "lift_type": null,
       "lat": 46.263174677351095,
       "lon": 6.709165618777639,
+      "elevation": 1338,
       "connections": [
         {
           "to": "lift_151490332_base",
@@ -20847,6 +21601,7 @@
       "lift_type": null,
       "lat": 46.21207341534693,
       "lon": 6.79259166186678,
+      "elevation": 1882,
       "connections": [
         {
           "to": "jct_0391",
@@ -20870,6 +21625,7 @@
       "lift_type": null,
       "lat": 46.1477517500411,
       "lon": 6.661262537894887,
+      "elevation": 1183,
       "connections": [
         {
           "to": "lift_53183221_base",
@@ -20911,6 +21667,7 @@
       "lift_type": null,
       "lat": 46.25431260488536,
       "lon": 6.823253875219608,
+      "elevation": 1268,
       "connections": [
         {
           "to": "lift_30750444_base",
@@ -20940,6 +21697,7 @@
       "lift_type": null,
       "lat": 46.17252750983224,
       "lon": 6.69992368113713,
+      "elevation": 1258,
       "connections": [
         {
           "to": "lift_96360500_base",
@@ -20963,6 +21721,7 @@
       "lift_type": null,
       "lat": 46.15598438021394,
       "lon": 6.669026943384512,
+      "elevation": 1276,
       "connections": [
         {
           "to": "lift_147533117_base",
@@ -20992,6 +21751,7 @@
       "lift_type": null,
       "lat": 46.13869767035723,
       "lon": 6.68739454785706,
+      "elevation": 1458,
       "connections": [
         {
           "to": "lift_32344719_base",
@@ -21021,6 +21781,7 @@
       "lift_type": null,
       "lat": 46.1327473252737,
       "lon": 6.677236239575627,
+      "elevation": 1614,
       "connections": [
         {
           "to": "jct_0348",
@@ -21044,6 +21805,7 @@
       "lift_type": null,
       "lat": 46.13542160812386,
       "lon": 6.673776247345899,
+      "elevation": 1582,
       "connections": [
         {
           "to": "lift_53183221_top",
@@ -21061,6 +21823,7 @@
       "lift_type": null,
       "lat": 46.1433015,
       "lon": 6.6894615,
+      "elevation": 1522,
       "connections": []
     },
     {
@@ -21071,6 +21834,7 @@
       "lift_type": null,
       "lat": 46.24716685675894,
       "lon": 6.864548166609724,
+      "elevation": 1718,
       "connections": [
         {
           "to": "jct_0120",
@@ -21094,6 +21858,7 @@
       "lift_type": null,
       "lat": 46.16666777390548,
       "lon": 6.653093238336107,
+      "elevation": 1710,
       "connections": [
         {
           "to": "lift_49511439_base",
@@ -21123,6 +21888,7 @@
       "lift_type": null,
       "lat": 46.16640123122937,
       "lon": 6.651890447130032,
+      "elevation": 1694,
       "connections": [
         {
           "to": "jct_0385",
@@ -21146,6 +21912,7 @@
       "lift_type": null,
       "lat": 46.16574388020857,
       "lon": 6.652577150880152,
+      "elevation": 1692,
       "connections": [
         {
           "to": "lift_49511439_base",
@@ -21169,6 +21936,7 @@
       "lift_type": null,
       "lat": 46.3097129,
       "lon": 6.8632547,
+      "elevation": 1350,
       "connections": [
         {
           "to": "lift_593806449_base",
@@ -21186,6 +21954,7 @@
       "lift_type": null,
       "lat": 46.179217461191115,
       "lon": 6.833823930354433,
+      "elevation": 1796,
       "connections": [
         {
           "to": "jct_0128",
@@ -21215,6 +21984,7 @@
       "lift_type": null,
       "lat": 46.1893822,
       "lon": 6.7490416,
+      "elevation": 1166,
       "connections": []
     },
     {
@@ -21225,6 +21995,7 @@
       "lift_type": null,
       "lat": 46.21108795262654,
       "lon": 6.795565964660934,
+      "elevation": 1866,
       "connections": [
         {
           "to": "lift_8215843_top",
@@ -21242,6 +22013,7 @@
       "lift_type": null,
       "lat": 46.233895405179815,
       "lon": 6.818326625739471,
+      "elevation": 1859,
       "connections": [
         {
           "to": "jct_0259",
@@ -21271,6 +22043,7 @@
       "lift_type": null,
       "lat": 46.24199441369059,
       "lon": 6.820940803247133,
+      "elevation": 1558,
       "connections": [
         {
           "to": "lift_30749922_base",
@@ -21300,6 +22073,7 @@
       "lift_type": null,
       "lat": 46.22524188757188,
       "lon": 6.810025606524689,
+      "elevation": 1843,
       "connections": [
         {
           "to": "jct_0369",
@@ -21323,6 +22097,7 @@
       "lift_type": null,
       "lat": 46.22855275190887,
       "lon": 6.811391154944242,
+      "elevation": 1948,
       "connections": [
         {
           "to": "jct_0254",
@@ -21346,6 +22121,7 @@
       "lift_type": null,
       "lat": 46.2238748,
       "lon": 6.8051232,
+      "elevation": 1820,
       "connections": [
         {
           "to": "lift_29288817_top",
@@ -21363,6 +22139,7 @@
       "lift_type": null,
       "lat": 46.22195535368221,
       "lon": 6.789549350400736,
+      "elevation": 1607,
       "connections": [
         {
           "to": "jct_0248",
@@ -21392,6 +22169,7 @@
       "lift_type": null,
       "lat": 46.21072208330453,
       "lon": 6.60322573554557,
+      "elevation": 1542,
       "connections": [
         {
           "to": "jct_0340",
@@ -21409,6 +22187,7 @@
       "lift_type": null,
       "lat": 46.134776420221144,
       "lon": 6.6848650065059045,
+      "elevation": 1539,
       "connections": [
         {
           "to": "lift_30960128_base",
@@ -21438,6 +22217,7 @@
       "lift_type": null,
       "lat": 46.16972162303707,
       "lon": 6.694192158005762,
+      "elevation": 1438,
       "connections": [
         {
           "to": "jct_0401",
@@ -21467,6 +22247,7 @@
       "lift_type": null,
       "lat": 46.16580358366414,
       "lon": 6.702944752829036,
+      "elevation": 1244,
       "connections": [
         {
           "to": "jct_0240",
@@ -21484,6 +22265,7 @@
       "lift_type": null,
       "lat": 46.22760663176558,
       "lon": 6.8121576047511825,
+      "elevation": 1884,
       "connections": [
         {
           "to": "jct_0394",
@@ -21507,6 +22289,7 @@
       "lift_type": null,
       "lat": 46.1791,
       "lon": 6.7093,
+      "elevation": 1000,
       "connections": [
         {
           "to": "lift_225288644_base",
@@ -21542,6 +22325,7 @@
       "lift_type": null,
       "lat": 46.183,
       "lon": 6.867,
+      "elevation": 1055,
       "connections": [
         {
           "to": "lift_8215584_base",
@@ -21571,6 +22355,7 @@
       "lift_type": null,
       "lat": 46.2148,
       "lon": 6.6317,
+      "elevation": 950,
       "connections": [
         {
           "to": "lift_23275859_base",
@@ -21588,6 +22373,7 @@
       "lift_type": null,
       "lat": 46.2632,
       "lon": 6.8305,
+      "elevation": 1200,
       "connections": [
         {
           "to": "lift_24898714_base",
@@ -21611,6 +22397,7 @@
       "lift_type": null,
       "lat": 46.2382,
       "lon": 6.8519,
+      "elevation": 1350,
       "connections": [
         {
           "to": "lift_8215989_base",
@@ -21640,6 +22427,7 @@
       "lift_type": null,
       "lat": 46.1606,
       "lon": 6.6708,
+      "elevation": 1172,
       "connections": [
         {
           "to": "lift_49511429_base",

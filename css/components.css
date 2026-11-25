@@ -1184,6 +1184,19 @@ route-result { display: block; }
 .step-name  { flex: 1; font-weight: var(--fw-semibold); }
 .step-flag  { flex-shrink: 0; }
 
+/* Approximate net height change of a step (↓ descent / ↑ climb) */
+.step-vertical {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  /* full text colour: the secondary grey drops below 4.5:1 on the light red/black slope tints */
+  white-space: nowrap;
+}
+.step-vertical-icon svg { width: 0.875rem; height: 0.875rem; display: block; }
+
 /* Slope difficulty dot — semantic colours only */
 .diff-dot {
   width: 10px;

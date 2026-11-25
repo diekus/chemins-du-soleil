@@ -70,6 +70,9 @@
   "route.slopeAriaLabel": "{difficulty} piste",
   "route.stopsAriaLabel_one": "{count} stop",
   "route.stopsAriaLabel_other": "{count} stops",
+  "route.verticalMetres": "{metres} m",
+  "route.descentAria": "Daalt ongeveer {metres} meter",
+  "route.ascentAria": "Stijgt ongeveer {metres} meter",
 
   "weather.liveLocation": "Live locatie",
   "weather.selectedResort": "Gekozen skidorp",
